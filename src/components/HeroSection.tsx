@@ -33,12 +33,12 @@ const HeroSection = () => {
             <div className="space-y-6">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight uppercase tracking-wide">
                 IT'S EITHER{' '}
-                <span className="text-orange-500">
+                <span className="text-orange-400">
                   NOW
                 </span>
                 <br />
                 OR IT'S{' '}
-                <span className="text-red-500">
+                <span className="text-red-400">
                   NEVER
                 </span>
               </h1>
@@ -50,7 +50,7 @@ const HeroSection = () => {
             <div className="space-y-8">
               <button 
                 onClick={scrollToForm}
-                className="bg-orange-600 hover:bg-orange-700 text-white px-10 py-4 rounded-full text-xl font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+                className="btn-matte text-xl font-bold"
               >
                 Start Your Fitness Journey Today
               </button>
@@ -59,15 +59,15 @@ const HeroSection = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
               <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-orange-500 mb-2">500+</div>
+                <div className="text-3xl md:text-4xl font-bold text-orange-400 mb-2">500+</div>
                 <div className="text-sm text-gray-300 font-medium">TRANSFORMED</div>
               </div>
               <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-red-500 mb-2">95%</div>
+                <div className="text-3xl md:text-4xl font-bold text-red-400 mb-2">95%</div>
                 <div className="text-sm text-gray-300 font-medium">SUCCESS RATE</div>
               </div>
               <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-green-500 mb-2">24/7</div>
+                <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">24/7</div>
                 <div className="text-sm text-gray-300 font-medium">SUPPORT</div>
               </div>
             </div>

@@ -78,7 +78,7 @@ const PricingSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="pricing" className="py-16 bg-gradient-to-br from-white to-gray-50">
+    <section ref={sectionRef} id="pricing" className="py-16 bg-gradient-to-br from-yellow-50 to-orange-50">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
@@ -98,13 +98,13 @@ const PricingSection = () => {
               key={index}
               className={`relative bg-white rounded-2xl shadow-lg border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl ${
                 plan.popular 
-                  ? 'border-orange-500 shadow-orange-100' 
-                  : 'border-gray-200 hover:border-orange-300'
+                  ? 'border-orange-400 shadow-orange-100' 
+                  : 'border-orange-200 hover:border-orange-300'
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-orange-600 to-red-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                  <span className="bg-orange-400 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
                     MOST POPULAR
                   </span>
                 </div>
@@ -119,7 +119,7 @@ const PricingSection = () => {
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
-                      <span className="text-orange-500 font-bold text-sm">✓</span>
+                      <span className="text-orange-400 font-bold text-sm">✓</span>
                       <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
                     </li>
                   ))}
@@ -129,8 +129,8 @@ const PricingSection = () => {
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   className={`w-full py-3 rounded-xl font-bold transition-all duration-300 ${
                     plan.popular
-                      ? 'bg-orange-600 hover:bg-orange-700 text-white shadow-lg hover:shadow-xl'
-                      : 'bg-gray-100 hover:bg-orange-50 text-gray-900 hover:text-orange-600 border-2 border-transparent hover:border-orange-300'
+                      ? 'btn-matte'
+                      : 'bg-orange-100 hover:bg-orange-200 text-orange-600 hover:text-orange-700 border-2 border-transparent hover:border-orange-300'
                   }`}
                 >
                   Get Started
@@ -146,7 +146,7 @@ const PricingSection = () => {
           </p>
           <button 
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-orange-600 hover:bg-orange-700 text-white px-12 py-4 rounded-full text-xl font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="btn-matte text-xl font-bold"
           >
             Get Free Consultation
           </button>

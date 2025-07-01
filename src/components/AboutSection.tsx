@@ -24,7 +24,7 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 bg-gradient-to-br from-gray-50 to-white">
+    <section ref={sectionRef} id="about" className="py-24 bg-gradient-to-br from-orange-50 to-red-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* First Row - Image Left, Content Right */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
@@ -36,7 +36,7 @@ const AboutSection = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-8 -right-8 bg-orange-600 text-white p-8 rounded-3xl shadow-2xl animate-bounce">
+            <div className="absolute -bottom-8 -right-8 bg-orange-400 text-white p-8 rounded-3xl shadow-2xl animate-bounce">
               <div className="text-3xl font-bold">#1</div>
               <div className="text-sm font-medium">COACH</div>
             </div>
@@ -50,7 +50,7 @@ const AboutSection = () => {
                   Abhiram
                 </span>
               </h2>
-              <div className="h-2 w-24 bg-orange-600 rounded-full"></div>
+              <div className="h-2 w-24 bg-orange-400 rounded-full"></div>
             </div>
             
             <div className="space-y-6 text-xl text-gray-700 leading-relaxed">
@@ -60,6 +60,10 @@ const AboutSection = () => {
               
               <p>
                 <strong className="text-gray-900">No shortcuts. Just proven results.</strong> My holistic fitness and mindset approach has transformed 500+ lives across India.
+              </p>
+              
+              <p>
+                With over 5 years of experience in fitness coaching, I've developed a systematic approach that combines personalized workout plans, nutrition guidance, and mental conditioning to create lasting transformations.
               </p>
             </div>
           </div>
@@ -84,16 +88,20 @@ const AboutSection = () => {
               </p>
               
               <p>
-                With personalized workout and nutrition plans, I've helped hundreds achieve their dream physique through sustainable, science-based methods.
+                With personalized workout and nutrition plans, I've helped hundreds achieve their dream physique through sustainable, science-based methods that focus on long-term lifestyle changes rather than quick fixes.
+              </p>
+              
+              <p>
+                My approach isn't just about physical transformation - it's about building confidence, discipline, and a mindset that carries over into every aspect of your life. Every client receives individual attention and customized programs designed specifically for their goals, lifestyle, and challenges.
               </p>
             </div>
             
             <div className="grid grid-cols-2 gap-8">
-              <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-200 transform hover:scale-105 transition-transform duration-300">
+              <div className="bg-white p-8 rounded-2xl shadow-xl border border-orange-100 transform hover:scale-105 transition-transform duration-300">
                 <div className="text-4xl font-bold text-orange-600 mb-3">5+</div>
                 <div className="text-gray-600 font-medium">YEARS EXPERIENCE</div>
               </div>
-              <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-200 transform hover:scale-105 transition-transform duration-300">
+              <div className="bg-white p-8 rounded-2xl shadow-xl border border-red-100 transform hover:scale-105 transition-transform duration-300">
                 <div className="text-4xl font-bold text-red-500 mb-3">500+</div>
                 <div className="text-gray-600 font-medium">TRANSFORMED</div>
               </div>

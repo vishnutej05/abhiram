@@ -40,47 +40,32 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
-
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
@@ -101,7 +86,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
@@ -110,21 +95,21 @@ All colors MUST be HSL.
   }
 }
 
-/* Custom scrollbar - Orange theme */
+/* Custom scrollbar - Pastel theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100;
+  @apply bg-orange-50;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-orange-500 to-red-500 rounded-full;
+  @apply bg-orange-300 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply from-orange-600 to-red-600;
+  @apply bg-orange-400;
 }
 
 /* Smooth hover transitions */
@@ -139,6 +124,17 @@ All colors MUST be HSL.
   
   .section-padding {
     @apply py-16 md:py-20 lg:py-24;
+  }
+  
+  .btn-matte {
+    @apply bg-orange-400 hover:bg-orange-500 text-white font-medium px-8 py-3 rounded-lg transition-all duration-300 shadow-none border-none;
+    box-shadow: none !important;
+    background-image: none !important;
+  }
+  
+  .btn-matte:hover {
+    @apply bg-orange-500 transform translate-y-[-1px];
+    box-shadow: 0 4px 12px rgba(251, 146, 60, 0.3) !important;
   }
 }
 
@@ -162,6 +158,6 @@ All colors MUST be HSL.
   input:focus-visible,
   textarea:focus-visible,
   select:focus-visible {
-    @apply outline-none ring-2 ring-orange-500 ring-offset-2;
+    @apply outline-none ring-2 ring-orange-400 ring-offset-2;
   }
 }

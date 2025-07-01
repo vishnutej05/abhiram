@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
@@ -24,21 +23,17 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-black/95 backdrop-blur-md border-b border-white/10' : 'bg-transparent'
-    }`}>
+    <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div className="font-bold text-2xl text-white">
+          <div className="font-bold text-2xl text-white drop-shadow-lg">
             ABHIRAM NAIR
           </div>
           
           <div className="hidden md:flex space-x-10">
             <button 
               onClick={() => scrollToSection('about')} 
-              className={`transition-colors font-medium relative group ${
-                isScrolled ? 'text-white hover:text-orange-500' : 'text-white hover:text-orange-500'
-              }`}
+              className="transition-colors font-medium relative group text-white hover:text-orange-400 drop-shadow-lg"
               title="Learn about Coach Abhiram"
             >
               About
@@ -48,9 +43,7 @@ const Navbar = () => {
             </button>
             <button 
               onClick={() => scrollToSection('transformations')} 
-              className={`transition-colors font-medium relative group ${
-                isScrolled ? 'text-white hover:text-orange-500' : 'text-white hover:text-orange-500'
-              }`}
+              className="transition-colors font-medium relative group text-white hover:text-orange-400 drop-shadow-lg"
               title="See transformation results"
             >
               Results
@@ -60,9 +53,7 @@ const Navbar = () => {
             </button>
             <button 
               onClick={() => scrollToSection('pricing')} 
-              className={`transition-colors font-medium relative group ${
-                isScrolled ? 'text-white hover:text-orange-500' : 'text-white hover:text-orange-500'
-              }`}
+              className="transition-colors font-medium relative group text-white hover:text-orange-400 drop-shadow-lg"
               title="View training programs"
             >
               Programs
@@ -72,14 +63,14 @@ const Navbar = () => {
             </button>
             <button 
               onClick={() => scrollToSection('contact')} 
-              className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-full font-semibold hover:shadow-xl transition-all transform hover:scale-105"
+              className="btn-matte font-semibold"
             >
               Get Started
             </button>
           </div>
           
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-white">
+            <button onClick={() => setIsOpen(!isOpen)} className="text-white drop-shadow-lg">
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
@@ -97,7 +88,7 @@ const Navbar = () => {
               <button onClick={() => scrollToSection('pricing')} className="block w-full text-left px-4 py-3 text-white font-medium hover:bg-white/10 rounded-xl transition-colors">
                 Programs
               </button>
-              <button onClick={() => scrollToSection('contact')} className="block w-full bg-orange-600 hover:bg-orange-700 text-white rounded-xl py-3 text-center font-semibold transition-colors">
+              <button onClick={() => scrollToSection('contact')} className="block w-full btn-matte text-center font-semibold">
                 Get Started
               </button>
             </div>
