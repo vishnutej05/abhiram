@@ -1,103 +1,166 @@
 
-import { CheckCircle } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 
 const PricingSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.title = "Transformation Programs - Online Fitness Coach India";
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const plans = [
     {
-      name: "Starter Journey",
+      name: "Kickstart",
       duration: "3 Months",
-      features: ["Basic workout plan", "Nutrition guidelines", "Email support", "Progress tracking"]
+      features: [
+        "Personalized workout plan",
+        "Basic nutrition guidance",
+        "Weekly check-ins",
+        "WhatsApp support",
+        "Exercise form videos"
+      ],
+      popular: false
     },
     {
-      name: "Transformation Path",
+      name: "Transform",
       duration: "6 Months",
-      features: ["Personalized workout plan", "Custom meal plans", "WhatsApp support", "Body recomposition focus", "Weekly check-ins"],
+      features: [
+        "Advanced workout programs",
+        "Detailed meal plans",
+        "Bi-weekly progress reviews",
+        "24/7 chat support",
+        "Supplement guidance",
+        "Body composition tracking"
+      ],
       popular: true
     },
     {
-      name: "Beast Mode",
+      name: "Master",
       duration: "8 Months",
-      features: ["Complete transformation", "Advanced nutrition", "24/7 support", "Supplement guidance", "Mindset coaching"]
+      features: [
+        "Elite training protocols",
+        "Custom nutrition coaching",
+        "Weekly video calls",
+        "Priority support access",
+        "Advanced tracking tools",
+        "Mindset coaching sessions",
+        "Recipe database access"
+      ],
+      popular: false
     },
     {
-      name: "Elite Transformation",
+      name: "Champion",
       duration: "12 Months",
-      features: ["Full lifestyle change", "1-on-1 coaching", "Holistic fitness approach", "Long-term maintenance", "Exclusive community access"]
+      features: [
+        "Complete lifestyle transformation",
+        "1-on-1 monthly consultations",
+        "Holistic fitness and mindset approach",
+        "VIP support channel",
+        "Competition prep training",
+        "Long-term maintenance planning",
+        "Exclusive community access",
+        "Lifetime plan updates"
+      ],
+      popular: false
     }
   ];
 
   return (
-    <section id="pricing" className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <section ref={sectionRef} id="pricing" className="py-24 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
         style={{
-          backgroundImage: 'url(/lovable-uploads/a795f6ea-7927-4bac-bc1c-5ffcda5ff920.png)'
+          backgroundImage: 'url(/lovable-uploads/f33dcdcd-1e3a-474e-9f33-e075851661a6.png)'
         }}
       ></div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Choose Your{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-orange-600">
               Journey
             </span>
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Select the perfect fitness transformation journey that fits your goals
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Personalized workout and nutrition plan programs designed for every fitness transformation journey
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {plans.map((plan, index) => (
             <div 
               key={index}
-              className={`bg-white p-6 rounded-xl shadow-lg border hover:shadow-xl transition-all duration-300 ${
+              className={`relative bg-white rounded-3xl shadow-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
                 plan.popular 
-                  ? 'border-blue-500 relative transform scale-105' 
-                  : 'border-gray-200 hover:border-blue-300'
+                  ? 'border-orange-500 shadow-orange-100' 
+                  : 'border-gray-200 hover:border-orange-300'
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-1 text-sm font-semibold rounded-full">
-                    MOST POPULAR
-                  </div>
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <span className="bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold">
+                    Most Popular
+                  </span>
                 </div>
               )}
               
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  {plan.duration}
+              <div className="p-8">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+                  <div className="text-orange-600 font-semibold text-lg">{plan.duration}</div>
                 </div>
+                
+                <ul className="space-y-4 mb-8">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-3">
+                      <span className="text-orange-500 font-bold">✓</span>
+                      <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <button 
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className={`w-full py-4 rounded-xl font-bold transition-all duration-300 ${
+                    plan.popular
+                      ? 'bg-orange-600 hover:bg-orange-700 text-white shadow-lg hover:shadow-xl'
+                      : 'bg-gray-100 hover:bg-orange-50 text-gray-900 hover:text-orange-600 border-2 border-transparent hover:border-orange-300'
+                  }`}
+                >
+                  Get Started
+                </button>
               </div>
-              
-              <div className="space-y-3 mb-6">
-                {plan.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center gap-3">
-                    <CheckCircle className="text-blue-600 w-4 h-4 flex-shrink-0" />
-                    <span className="text-gray-700 text-sm">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              
-              <button className={`w-full py-3 rounded-full font-semibold transition-all duration-300 ${
-                plan.popular
-                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg'
-                  : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-              }`}>
-                Choose {plan.name}
-              </button>
             </div>
           ))}
         </div>
         
-        <div className="text-center mt-12">
-          <p className="text-gray-600 mb-4">
-            🚨 Limited Spots Available • Best Online Fitness Coaching in India
+        <div className="text-center mt-16">
+          <p className="text-gray-600 text-lg mb-6">
+            Not sure which program is right for you?
           </p>
+          <button 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-orange-600 hover:bg-orange-700 text-white px-12 py-4 rounded-full text-xl font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+          >
+            Get Free Consultation
+          </button>
         </div>
       </div>
     </section>

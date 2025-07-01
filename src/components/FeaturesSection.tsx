@@ -1,83 +1,93 @@
 
-import { CheckCircle } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const FeaturesSection = () => {
+  const [currentCard, setCurrentCard] = useState(0);
+  
   const features = [
     {
       title: "Personalized Workout Plan",
-      description: "Custom training designed for your fitness transformation journey",
+      description: "Custom exercise routines tailored to your fitness level and goals",
       icon: "💪"
     },
     {
-      title: "Best Physique Nutrition",
-      description: "Holistic fitness and mindset approach to body recomposition",
+      title: "Best Physique",
+      description: "Achieve your dream body with proven transformation methods",
+      icon: "🏆"
+    },
+    {
+      title: "Nutrition Guidance",
+      description: "Complete meal plans and nutrition coaching for optimal results",
       icon: "🥗"
     },
     {
-      title: "Muscle Gain Program",
-      description: "Proven muscle gain and fat loss program for real results",
-      icon: "⚡"
+      title: "Meal Planning",
+      description: "Structured meal plans that fit your lifestyle and preferences",
+      icon: "📋"
     },
     {
-      title: "Fat Loss Coaching",
-      description: "Best online fitness coaching for sustainable transformation",
+      title: "Muscle Gain Program",
+      description: "Build lean muscle mass with strategic training protocols",
       icon: "🔥"
+    },
+    {
+      title: "Fat Loss & Health",
+      description: "Sustainable fat loss strategies for overall health improvement",
+      icon: "⚡"
     }
   ];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCard((prev) => (prev + 1) % features.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="py-16 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+    <section id="features" className="py-16 bg-gradient-to-br from-gray-50 to-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             What You{' '}
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-orange-600">
               Get
             </span>
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Transform your body with our comprehensive online fitness coaching program
+            Complete fitness transformation journey with personalized workout and nutrition plan
           </p>
         </div>
         
-        <div className="relative">
-          <div className="flex animate-[slide_20s_linear_infinite] gap-6">
+        {/* Desktop View - Animated Cards */}
+        <div className="hidden md:block overflow-hidden">
+          <div 
+            className="flex transition-transform duration-1000 ease-in-out"
+            style={{ transform: `translateX(-${currentCard * (100 / 3)}%)` }}
+          >
             {[...features, ...features].map((feature, index) => (
-              <div 
-                key={index}
-                className="flex-shrink-0 w-80 bg-white p-6 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300"
-              >
-                <div className="text-3xl mb-4">
-                  {feature.icon}
+              <div key={index} className="w-1/3 flex-shrink-0 px-4">
+                <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full">
+                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
-                  <CheckCircle className="text-blue-600 w-4 h-4" />
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {feature.description}
-                </p>
               </div>
             ))}
           </div>
         </div>
         
-        <div className="text-center mt-12">
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
-          >
-            Get Your Personalized Workout and Nutrition Plan
-          </button>
+        {/* Mobile View - Grid */}
+        <div className="md:hidden grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {features.map((feature, index) => (
+            <div key={index} className="bg-white p-6 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300">
+              <div className="text-3xl mb-3">{feature.icon}</div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
+              <p className="text-gray-600 text-sm">{feature.description}</p>
+            </div>
+          ))}
         </div>
       </div>
-      
-      <style jsx>{`
-        @keyframes slide {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
     </section>
   );
 };

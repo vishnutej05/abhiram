@@ -14,48 +14,72 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200/50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="font-bold text-xl text-gray-900">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-md border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          <div className="font-bold text-2xl text-white">
             ABHIRAM NAIR
           </div>
           
-          <div className="hidden md:flex space-x-8">
-            <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
+          <div className="hidden md:flex space-x-10">
+            <button 
+              onClick={() => scrollToSection('about')} 
+              className="text-white/90 hover:text-orange-500 transition-colors font-medium relative group"
+              title="Learn about Coach Abhiram"
+            >
               About
+              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Learn about Coach Abhiram
+              </div>
             </button>
-            <button onClick={() => scrollToSection('transformations')} className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
+            <button 
+              onClick={() => scrollToSection('transformations')} 
+              className="text-white/90 hover:text-orange-500 transition-colors font-medium relative group"
+              title="See transformation results"
+            >
               Results
+              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                See transformation results
+              </div>
             </button>
-            <button onClick={() => scrollToSection('pricing')} className="text-gray-700 hover:text-blue-600 transition-colors font-medium">
+            <button 
+              onClick={() => scrollToSection('pricing')} 
+              className="text-white/90 hover:text-orange-500 transition-colors font-medium relative group"
+              title="View training programs"
+            >
               Programs
+              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                View training programs
+              </div>
             </button>
-            <button onClick={() => scrollToSection('contact')} className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all">
+            <button 
+              onClick={() => scrollToSection('contact')} 
+              className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-full font-semibold hover:shadow-xl transition-all transform hover:scale-105"
+            >
               Get Started
             </button>
           </div>
           
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700">
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            <button onClick={() => setIsOpen(!isOpen)} className="text-white">
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
         
         {isOpen && (
-          <div className="md:hidden bg-white/95 border-t border-gray-200">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <button onClick={() => scrollToSection('about')} className="block px-3 py-2 text-gray-700 font-medium">
+          <div className="md:hidden bg-black/95 backdrop-blur-md border border-white/10 rounded-2xl mt-4 mb-4">
+            <div className="px-6 pt-4 pb-6 space-y-3">
+              <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-3 text-white font-medium hover:bg-white/10 rounded-xl transition-colors">
                 About
               </button>
-              <button onClick={() => scrollToSection('transformations')} className="block px-3 py-2 text-gray-700 font-medium">
+              <button onClick={() => scrollToSection('transformations')} className="block w-full text-left px-4 py-3 text-white font-medium hover:bg-white/10 rounded-xl transition-colors">
                 Results
               </button>
-              <button onClick={() => scrollToSection('pricing')} className="block px-3 py-2 text-gray-700 font-medium">
+              <button onClick={() => scrollToSection('pricing')} className="block w-full text-left px-4 py-3 text-white font-medium hover:bg-white/10 rounded-xl transition-colors">
                 Programs
               </button>
-              <button onClick={() => scrollToSection('contact')} className="block px-3 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full mx-3 text-center font-semibold">
+              <button onClick={() => scrollToSection('contact')} className="block w-full bg-orange-600 hover:bg-orange-700 text-white rounded-xl py-3 text-center font-semibold transition-colors">
                 Get Started
               </button>
             </div>
