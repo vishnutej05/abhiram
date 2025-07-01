@@ -23,11 +23,11 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+    <nav className="fixed top-0 left-0 right-0 z-50 transition-all backdrop-blur-sm duration-300 bg-transparent pl-12">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          <div className="font-bold text-2xl text-white drop-shadow-lg">
-            ABHIRAM NAIR
+          <div className="font-light text-2xl text-white drop-shadow-lg tracking-wider">
+            the<span className='font-extrabold'>might</span>
           </div>
           
           <div className="hidden md:flex space-x-10">
