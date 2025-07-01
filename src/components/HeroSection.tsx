@@ -9,14 +9,14 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Dark Overlay */}
+      {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url(/lovable-uploads/4d6fcca9-a196-4eea-bec3-0e9f8b7cfa56.png)'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
       </div>
       
       {/* Content */}
@@ -25,44 +25,44 @@ const HeroSection = () => {
           {/* Left Content */}
           <div className="text-white space-y-8">
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tight">
-                IT'S EITHER{' '}
-                <span className="text-red-500">
-                  NOW
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+                It's Either{' '}
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  Now
                 </span>
                 <br />
-                OR IT'S{' '}
-                <span className="text-orange-500">
-                  NEVER
+                Or It's{' '}
+                <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+                  Never
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-300 font-medium">
-                GET JACKED. GET STRONG. GET RESULTS.
+                Transform your body with India's leading online fitness transformation coach
               </p>
             </div>
             
             <div className="space-y-6">
               <button 
                 onClick={scrollToForm}
-                className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-12 py-5 text-xl font-black tracking-wide hover:shadow-2xl hover:shadow-red-500/25 hover:scale-105 transition-all duration-300"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-4 rounded-full text-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
               >
-                START NOW
+                Start Your Fitness Journey Today
               </button>
             </div>
             
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 pt-8">
               <div className="text-center">
-                <div className="text-4xl font-black text-red-500">500+</div>
-                <div className="text-sm text-gray-400 font-semibold">TRANSFORMED</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">500+</div>
+                <div className="text-sm text-gray-400 font-medium">TRANSFORMED</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-black text-orange-500">95%</div>
-                <div className="text-sm text-gray-400 font-semibold">SUCCESS</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">95%</div>
+                <div className="text-sm text-gray-400 font-medium">SUCCESS RATE</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-black text-red-500">24/7</div>
-                <div className="text-sm text-gray-400 font-semibold">SUPPORT</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-green-500 to-teal-500 bg-clip-text text-transparent">24/7</div>
+                <div className="text-sm text-gray-400 font-medium">SUPPORT</div>
               </div>
             </div>
           </div>
