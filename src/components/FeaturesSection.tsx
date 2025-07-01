@@ -46,8 +46,8 @@ const FeaturesSection = () => {
 
   return (
     <section id="features" className="py-16 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+      <div className="max-w-[90%] mx-auto ">
+        <div className="text-center mb-16 p-3">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             What You{' '}
             <span className="text-orange-600">

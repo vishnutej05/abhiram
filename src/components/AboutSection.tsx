@@ -102,7 +102,7 @@ const AboutSection = () => {
                 <div className="text-gray-600 font-medium">YEARS EXPERIENCE</div>
               </div>
               <div className="bg-white p-8 rounded-2xl shadow-xl border border-red-100 transform hover:scale-105 transition-transform duration-300">
-                <div className="text-4xl font-bold text-red-500 mb-3">500+</div>
+                <div className="text-4xl font-bold text-red-500 mb-3">100+</div>
                 <div className="text-gray-600 font-medium">TRANSFORMED</div>
               </div>
             </div>
