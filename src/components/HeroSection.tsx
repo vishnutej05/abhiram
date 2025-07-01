@@ -26,23 +26,23 @@ const HeroSection = () => {
       </div>
       
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="text-white space-y-10 animate-fade-in">
-            <div className="space-y-8">
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                It's Either{' '}
-                <span className="text-orange-500 animate-pulse">
-                  Now
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 pt-20">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Content */}
+          <div className="text-white space-y-8 animate-fade-in">
+            <div className="space-y-6">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight uppercase tracking-wide">
+                IT'S EITHER{' '}
+                <span className="text-orange-500">
+                  NOW
                 </span>
                 <br />
-                Or It's{' '}
-                <span className="text-red-500 animate-pulse">
-                  Never
+                OR IT'S{' '}
+                <span className="text-red-500">
+                  NEVER
                 </span>
               </h1>
-              <p className="text-2xl md:text-3xl text-gray-200 font-medium leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-200 font-medium leading-relaxed max-w-3xl mx-auto">
                 Transform your body with India's leading online fitness transformation coach
               </p>
             </div>
@@ -50,24 +50,24 @@ const HeroSection = () => {
             <div className="space-y-8">
               <button 
                 onClick={scrollToForm}
-                className="bg-orange-600 hover:bg-orange-700 text-white px-12 py-5 rounded-full text-2xl font-bold hover:shadow-2xl hover:scale-110 transition-all duration-300 animate-bounce"
+                className="bg-orange-600 hover:bg-orange-700 text-white px-10 py-4 rounded-full text-xl font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
                 Start Your Fitness Journey Today
               </button>
             </div>
             
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-12">
+            <div className="grid grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
               <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-4xl font-bold text-orange-500 mb-2">500+</div>
+                <div className="text-3xl md:text-4xl font-bold text-orange-500 mb-2">500+</div>
                 <div className="text-sm text-gray-300 font-medium">TRANSFORMED</div>
               </div>
               <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-4xl font-bold text-red-500 mb-2">95%</div>
+                <div className="text-3xl md:text-4xl font-bold text-red-500 mb-2">95%</div>
                 <div className="text-sm text-gray-300 font-medium">SUCCESS RATE</div>
               </div>
               <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-4xl font-bold text-green-500 mb-2">24/7</div>
+                <div className="text-3xl md:text-4xl font-bold text-green-500 mb-2">24/7</div>
                 <div className="text-sm text-gray-300 font-medium">SUPPORT</div>
               </div>
             </div>

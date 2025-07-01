@@ -110,7 +110,7 @@ All colors MUST be HSL.
   }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Orange theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -120,11 +120,11 @@ All colors MUST be HSL.
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-blue-500 to-purple-500 rounded-full;
+  @apply bg-gradient-to-b from-orange-500 to-red-500 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply from-blue-600 to-purple-600;
+  @apply from-orange-600 to-red-600;
 }
 
 /* Smooth hover transitions */
@@ -134,7 +134,7 @@ All colors MUST be HSL.
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent;
   }
   
   .section-padding {
@@ -162,6 +162,6 @@ All colors MUST be HSL.
   input:focus-visible,
   textarea:focus-visible,
   select:focus-visible {
-    @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+    @apply outline-none ring-2 ring-orange-500 ring-offset-2;
   }
 }
