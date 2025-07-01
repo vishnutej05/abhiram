@@ -2,74 +2,57 @@
 const TransformationsSection = () => {
   const transformations = [
     {
-      name: "Rajesh Kumar",
-      age: 28,
-      location: "Mumbai",
-      before: "85kg → 72kg",
-      result: "Lost 13kg, Gained Muscle",
-      testimonial: "Abhiram's personalized approach changed my life. The nutrition plan was easy to follow and the results speak for themselves!"
+      name: "Rajesh K.",
+      result: "Lost 13kg, Built Muscle",
+      testimonial: "BEAST MODE activated!"
     },
     {
-      name: "Priya Sharma",
-      age: 32,
-      location: "Delhi",
-      before: "68kg → 58kg",
+      name: "Priya S.",
       result: "Body Recomposition",
-      testimonial: "Amazing transformation coach! I finally achieved the lean, toned physique I always wanted with his holistic fitness program."
+      testimonial: "Finally got the physique I wanted."
     },
     {
-      name: "Arjun Patel",
-      age: 25,
-      location: "Bangalore",
-      before: "70kg → 78kg",
+      name: "Arjun P.",
       result: "Gained 8kg Muscle",
-      testimonial: "Best online fitness coaching in India! The muscle gain program was exactly what I needed to get jacked."
+      testimonial: "Got absolutely JACKED."
     }
   ];
 
   return (
-    <section id="transformations" className="py-20 bg-gradient-to-br from-gray-900 to-black">
+    <section id="transformations" className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Real{' '}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Transformations
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
+            REAL{' '}
+            <span className="text-red-500">
+              RESULTS
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            See the incredible results our clients achieve through dedicated coaching and proven methods
-          </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {transformations.map((transformation, index) => (
             <div 
               key={index}
-              className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 border border-gray-700"
+              className="bg-gray-900 p-6 rounded-2xl border border-gray-700 hover:border-red-500/50 transition-all duration-300 hover:-translate-y-2"
             >
               {/* Placeholder for before/after images */}
               <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="aspect-[3/4] bg-gradient-to-br from-gray-700 to-gray-800 rounded-2xl flex items-center justify-center">
-                  <span className="text-gray-400 text-sm">Before</span>
+                <div className="aspect-[3/4] bg-gray-800 rounded-xl flex items-center justify-center">
+                  <span className="text-gray-500 text-sm font-bold">BEFORE</span>
                 </div>
-                <div className="aspect-[3/4] bg-gradient-to-br from-blue-600/20 to-purple-600/20 rounded-2xl flex items-center justify-center">
-                  <span className="text-blue-400 text-sm">After</span>
+                <div className="aspect-[3/4] bg-gradient-to-br from-red-600/20 to-orange-600/20 rounded-xl flex items-center justify-center">
+                  <span className="text-red-400 text-sm font-bold">AFTER</span>
                 </div>
               </div>
               
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-xl font-bold text-white">{transformation.name}</h3>
-                  <p className="text-gray-400">{transformation.age} years • {transformation.location}</p>
+                  <h3 className="text-lg font-black text-white">{transformation.name}</h3>
+                  <div className="text-red-500 font-bold text-sm">{transformation.result}</div>
                 </div>
                 
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 rounded-2xl">
-                  <div className="text-white font-semibold">{transformation.before}</div>
-                  <div className="text-blue-100 text-sm">{transformation.result}</div>
-                </div>
-                
-                <blockquote className="text-gray-300 italic leading-relaxed">
+                <blockquote className="text-gray-300 italic text-sm">
                   "{transformation.testimonial}"
                 </blockquote>
               </div>
@@ -78,12 +61,11 @@ const TransformationsSection = () => {
         </div>
         
         <div className="text-center mt-16">
-          <p className="text-gray-400 mb-6">Ready to write your own success story?</p>
           <button 
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-8 py-4 text-lg font-black hover:shadow-2xl hover:shadow-red-500/25 hover:scale-105 transition-all duration-300"
           >
-            Start Your Transformation
+            START YOUR TRANSFORMATION
           </button>
         </div>
       </div>

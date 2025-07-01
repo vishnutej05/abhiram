@@ -1,3 +1,4 @@
+
 const HeroSection = () => {
   const scrollToForm = () => {
     const element = document.getElementById('contact');
@@ -8,14 +9,14 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Background Image with Dark Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url(/lovable-uploads/4d6fcca9-a196-4eea-bec3-0e9f8b7cfa56.png)'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/60"></div>
       </div>
       
       {/* Content */}
@@ -23,63 +24,47 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-white space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                It's either{' '}
-                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  Now
-                </span>{' '}
-                or it's{' '}
-                <span className="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
-                  Never
+            <div className="space-y-6">
+              <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tight">
+                IT'S EITHER{' '}
+                <span className="text-red-500">
+                  NOW
+                </span>
+                <br />
+                OR IT'S{' '}
+                <span className="text-orange-500">
+                  NEVER
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-200">
-                Transform your body and mindset with India's leading online fitness transformation coach
+              <p className="text-xl md:text-2xl text-gray-300 font-medium">
+                GET JACKED. GET STRONG. GET RESULTS.
               </p>
             </div>
             
-            <div className="space-y-4">
-              <p className="text-lg text-gray-300">
-                Join thousands who've achieved their dream physique through personalized workout and nutrition plans designed for real results.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick={scrollToForm}
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                >
-                  Start Your Fitness Journey Today
-                </button>
-                <button 
-                  onClick={() => document.getElementById('vsl')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300"
-                >
-                  Watch Success Stories
-                </button>
-              </div>
+            <div className="space-y-6">
+              <button 
+                onClick={scrollToForm}
+                className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-12 py-5 text-xl font-black tracking-wide hover:shadow-2xl hover:shadow-red-500/25 hover:scale-105 transition-all duration-300"
+              >
+                START NOW
+              </button>
             </div>
             
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 pt-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-400">500+</div>
-                <div className="text-sm text-gray-300">Transformations</div>
+                <div className="text-4xl font-black text-red-500">500+</div>
+                <div className="text-sm text-gray-400 font-semibold">TRANSFORMED</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-purple-400">95%</div>
-                <div className="text-sm text-gray-300">Success Rate</div>
+                <div className="text-4xl font-black text-orange-500">95%</div>
+                <div className="text-sm text-gray-400 font-semibold">SUCCESS</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-orange-400">24/7</div>
-                <div className="text-sm text-gray-300">Support</div>
+                <div className="text-4xl font-black text-red-500">24/7</div>
+                <div className="text-sm text-gray-400 font-semibold">SUPPORT</div>
               </div>
             </div>
-          </div>
-          
-          {/* Right side for larger screens - keeps image visible */}
-          <div className="hidden lg:block">
-            {/* Transparent div to maintain layout */}
           </div>
         </div>
       </div>
