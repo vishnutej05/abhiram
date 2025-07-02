@@ -112,6 +112,49 @@ All colors MUST be HSL.
   @apply bg-orange-400;
 }
 
+@layer components {
+  .soft-lavender {
+    background-color: hsl(250, 60%, 95%);
+  }
+
+  .soft-blush {
+    background-color: hsl(340, 50%, 96%);
+  }
+
+  .soft-sage {
+    background-color: hsl(120, 25%, 95%);
+  }
+
+  .soft-peach {
+    background-color: hsl(20, 60%, 95%);
+  }
+
+  .soft-sky {
+    background-color: hsl(200, 60%, 95%);
+  }
+
+  .text-soft-gray {
+    color: hsl(220, 10%, 35%);
+  }
+
+  .text-muted-gray {
+    color: hsl(220, 8%, 45%);
+  }
+
+  /* .seamless-section {
+    @apply py-20 lg:py-32;
+  }
+
+  .section-padding {
+    @apply px-6 md:px-12 lg:px-20 xl:px-32;
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 hover:transform hover:-translate-y-1;
+  } */
+}
+
+
 /* Smooth hover transitions */
 @layer components {
   .hover-lift {

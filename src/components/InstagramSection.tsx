@@ -32,7 +32,7 @@ const InstagramSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gradient-to-br from-orange-50 to-red-50">
+    <section ref={sectionRef} className="py-24 soft-peach">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-4 mb-6">

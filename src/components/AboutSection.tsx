@@ -24,7 +24,7 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 bg-gradient-to-br from-orange-50 to-red-50">
+    <section ref={sectionRef} id="about" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* First Row - Image Left, Content Right */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">

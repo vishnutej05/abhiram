@@ -50,13 +50,19 @@ const ContactForm = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="py-20 bg-gradient-to-br from-red-50 to-orange-50">
+    <section ref={sectionRef} id="contact" className="py-20 soft-peach">
       <div className="w-full">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          {/* <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Ready To{' '}
             <span className="text-orange-600">
               Transform?
+            </span>
+          </h2> */}
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Start your{' '}
+            <span className="text-orange-600">
+              Journey
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">

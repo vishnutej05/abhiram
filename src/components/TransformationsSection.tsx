@@ -79,7 +79,7 @@ const TransformationsSection = () => {
 
         {/* Featured Transformation */}
         <div className="mb-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
             {/* Before/After Images */}
             <div className="grid grid-cols-2 gap-4">
               <div className="relative group">
@@ -132,7 +132,7 @@ const TransformationsSection = () => {
         </div>
 
         {/* Transformation Gallery */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
           {transformations.map((transformation, index) => (
             <div 
               key={index}

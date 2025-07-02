@@ -1,16 +1,16 @@
-
 import { Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-gray-900 to-black text-white py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-12">
+    <footer className="bg-gradient-to-br from-green-50 to-green-100 text-soft-grey py-16">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Updated to grid-cols-3 with justify-between for even spacing */}
+        <div className="grid md:grid-cols-3 gap-12 justify-between">
           {/* Brand Section */}
-          <div className="space-y-6">
+          <div className="space-y-6 max-w-md">
             <div>
               <h3 className="text-2xl font-bold mb-4">Abhiram Nair</h3>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-soft-grey leading-relaxed">
                 India's leading online fitness transformation coach, helping you achieve your dream physique 
                 through personalized coaching and proven methods.
               </p>
@@ -21,19 +21,19 @@ const Footer = () => {
                 href="https://instagram.com/abhiramnair" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-gradient-to-r from-pink-600 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+                className="w-12 h-12 text-white bg-gradient-to-r from-pink-600 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a 
                 href="mailto:coach@abhiramnair.com"
-                className="w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+                className="w-12 h-12 text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
               >
                 <Mail className="w-5 h-5" />
               </a>
               <a 
                 href="tel:+919876543210"
-                className="w-12 h-12 bg-gradient-to-r from-green-600 to-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
+                className="w-12 h-12 text-white bg-gradient-to-r from-green-600 to-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
               >
                 <Phone className="w-5 h-5" />
               </a>
@@ -46,15 +46,15 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-300">coach@abhiramnair.com</span>
+                <span className="text-soft-grey">coach@abhiramnair.com</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-green-400" />
-                <span className="text-gray-300">+91 98765 43210</span>
+                <span className="text-soft-grey">+91 98765 43210</span>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-red-400" />
-                <span className="text-gray-300">Mumbai, India</span>
+                <span className="text-soft-grey">Mumbai, India</span>
               </div>
             </div>
           </div>
@@ -65,25 +65,25 @@ const Footer = () => {
             <div className="space-y-3">
               <button 
                 onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-                className="block text-gray-300 hover:text-blue-400 transition-colors"
+                className="block text-orange-400 hover:text-blue-600 transition-colors"
               >
                 About Coach
               </button>
               <button 
                 onClick={() => document.getElementById('transformations')?.scrollIntoView({ behavior: 'smooth' })}
-                className="block text-gray-300 hover:text-blue-400 transition-colors"
+                className="block text-orange-400 hover:text-blue-600 transition-colors"
               >
                 Success Stories
               </button>
               <button 
                 onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-                className="block text-gray-300 hover:text-blue-400 transition-colors"
+                className="block text-orange-400 hover:text-blue-600 transition-colors"
               >
                 Pricing
               </button>
               <button 
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="block text-gray-300 hover:text-blue-400 transition-colors"
+                className="block text-orange-400 hover:text-blue-600 transition-colors"
               >
                 Get Started
               </button>
