@@ -1,166 +1,164 @@
 
-import { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
 
 const TransformationsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const sectionRef = useRef<HTMLElement>(null);
+  const [activeTransformation, setActiveTransformation] = useState(0);
 
   const transformations = [
     {
-      name: "Rajesh K.",
-      result: "Lost 13kg, Built Muscle",
-      testimonial: "Best online fitness coaching experience! Got jacked transformation in 6 months with personalized workout and nutrition plan.",
+      name: "Rahul S.",
+      age: 28,
       location: "Mumbai",
-      beforeImage: "placeholder",
-      afterImage: "placeholder"
+      beforeImg: "/lovable-uploads/pic1.png",
+      afterImg: "/lovable-uploads/pic 2.png",
+      results: "Lost 15kg, Gained Muscle",
+      timeframe: "4 months",
+      testimonial: "The personalized approach completely transformed my body and confidence. Best investment ever!",
     },
     {
-      name: "Priya S.",
-      result: "Body Recomposition Success",
-      testimonial: "Holistic fitness and mindset approach changed my life completely. Amazing transformation coach journey!",
-      location: "Delhi",
-      beforeImage: "placeholder",
-      afterImage: "placeholder"
+      name: "Priya M.",
+      age: 32,
+      location: "Delhi", 
+      beforeImg: "/lovable-uploads/pic 3.png",
+      afterImg: "/lovable-uploads/pic 4.png",
+      results: "Toned Body, +10kg Strength",
+      timeframe: "3 months",
+      testimonial: "The guidance was game-changing. I finally found a sustainable approach to fitness!",
     },
     {
-      name: "Arjun P.",
-      result: "Gained 8kg Muscle",
-      testimonial: "Muscle gain and fat loss program delivered incredible results. Best fitness transformation journey ever!",
+      name: "Arjun K.",
+      age: 25,
       location: "Bangalore",
-      beforeImage: "placeholder",
-      afterImage: "placeholder"
+      beforeImg: "/lovable-uploads/pic 2.png",
+      afterImg: "/lovable-uploads/pic1.png",
+      results: "Shredded 20kg, Built Lean Muscle",
+      timeframe: "5 months",
+      testimonial: "Abhiram's coaching style is perfect. He made fitness enjoyable and sustainable for me!",
     },
     {
-      name: "Sneha M.",
-      result: "Lost 15kg Fat",
-      testimonial: "Personalized workout and nutrition plan made all the difference in my body recomposition goals.",
+      name: "Sneha R.",
+      age: 29,
+      location: "Pune",
+      beforeImg: "/lovable-uploads/pic 3.png",
+      afterImg: "/lovable-uploads/pic 4.png",
+      results: "Fat Loss + Strength Gains",
+      timeframe: "6 months",
+      testimonial: "Amazing transformation journey! The meal plans and workouts were perfectly tailored.",
+    },
+    {
+      name: "Vikram D.",
+      age: 34,
       location: "Chennai",
-      beforeImage: "placeholder",
-      afterImage: "placeholder"
+      beforeImg: "/lovable-uploads/pic1.png",
+      afterImg: "/lovable-uploads/pic 2.png",
+      results: "Complete Body Recomposition",
+      timeframe: "8 months",
+      testimonial: "Life-changing experience! Not just physical transformation but mental strength too.",
     }
   ];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            document.title = "Real Results - Online Fitness Transformation Coach India";
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  // Auto-play for mobile
-  useEffect(() => {
-    const isMobile = window.innerWidth < 768;
-    if (isMobile) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % transformations.length);
-      }, 4000);
-      return () => clearInterval(interval);
-    }
-  }, []);
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % transformations.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + transformations.length) % transformations.length);
-  };
-
   return (
-    <section ref={sectionRef} id="transformations" className="py-16 bg-gradient-to-br from-gray-900 to-black">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Real{' '}
-            <span className="text-orange-500">
-              Results
-            </span>
+    <section className="seamless-section soft-blush relative overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+        style={{
+          backgroundImage: `url('/lovable-uploads/pic 2.png')`,
+        }}
+      ></div>
+      
+      <div className="max-w-7xl mx-auto section-padding relative z-10">
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-4xl lg:text-6xl font-dm-sans font-bold text-soft-gray mb-6 leading-tight">
+            Real Transformations
           </h2>
-          <p className="text-gray-300 text-xl max-w-3xl mx-auto">
-            Join hundreds who transformed their bodies with our online fitness transformation coaching
+          <p className="text-lg text-muted-gray font-inter font-light max-w-2xl mx-auto">
+            See how our clients achieved their fitness transformation journey with personalized coaching
           </p>
         </div>
-        
-        {/* Single Large Card */}
-        <div className="max-w-4xl mx-auto relative">
-          <div className="bg-gray-800 p-8 md:p-12 rounded-3xl border border-gray-700 hover:border-orange-500/50 transition-all duration-500 shadow-2xl min-h-[500px]">
+
+        {/* Featured Transformation */}
+        <div className="mb-20">
+          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
             {/* Before/After Images */}
-            <div className="grid grid-cols-2 gap-6 mb-8">
-              <div className="aspect-[3/4] bg-gray-700 rounded-2xl flex items-center justify-center shadow-xl">
-                <div className="text-center">
-                  <span className="text-gray-400 text-lg font-semibold block mb-2">BEFORE</span>
-                  <div className="w-24 h-24 md:w-32 md:h-32 bg-gray-600 rounded-full mx-auto"></div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative group">
+                <img 
+                  src={transformations[activeTransformation].beforeImg}
+                  alt={`${transformations[activeTransformation].name} before transformation`}
+                  className="w-full h-80 object-cover rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute bottom-4 left-4">
+                  <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-dm-sans font-bold shadow-lg">BEFORE</span>
                 </div>
               </div>
-              <div className="aspect-[3/4] bg-gradient-to-br from-orange-600/20 to-red-600/20 rounded-2xl flex items-center justify-center shadow-xl">
-                <div className="text-center">
-                  <span className="text-orange-400 text-lg font-semibold block mb-2">AFTER</span>
-                  <div className="w-24 h-24 md:w-32 md:h-32 bg-orange-600/30 rounded-full mx-auto"></div>
+              <div className="relative group">
+                <img 
+                  src={transformations[activeTransformation].afterImg}
+                  alt={`${transformations[activeTransformation].name} after transformation`}
+                  className="w-full h-80 object-cover rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute bottom-4 right-4">
+                  <span className="bg-mint-500 text-white px-3 py-1 rounded-full text-sm font-dm-sans font-bold shadow-lg">AFTER</span>
                 </div>
               </div>
             </div>
-            
-            <div className="text-center space-y-6">
+
+            {/* Transformation Details */}
+            <div className="space-y-6 animate-fade-in">
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{transformations[currentIndex].name}</h3>
-                <div className="text-orange-400 font-semibold text-lg md:text-xl mb-2">{transformations[currentIndex].result}</div>
-                <div className="text-gray-400">{transformations[currentIndex].location}</div>
+                <h3 className="text-3xl font-dm-sans font-bold text-soft-gray mb-2">
+                  {transformations[activeTransformation].name}
+                </h3>
+                <p className="text-muted-gray font-inter font-medium">
+                  {transformations[activeTransformation].age} years • {transformations[activeTransformation].location}
+                </p>
               </div>
-              
-              <blockquote className="text-gray-300 italic text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-                "{transformations[currentIndex].testimonial}"
+
+              <div className="space-y-4">
+                <div className="text-xl font-dm-sans font-bold text-coral-500">
+                  {transformations[activeTransformation].results}
+                </div>
+                <div className="text-muted-gray font-inter font-medium">
+                  Timeline: {transformations[activeTransformation].timeframe}
+                </div>
+              </div>
+
+              <blockquote className="text-lg italic text-muted-gray font-inter font-light border-l-4 border-coral-400 pl-6 bg-white/50 p-4 rounded-r-lg shadow-md">
+                "{transformations[activeTransformation].testimonial}"
               </blockquote>
             </div>
           </div>
-          
-          {/* Navigation Buttons */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 hover:bg-orange-600 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 hover:bg-orange-600 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
-          >
-            <ChevronRight size={24} />
-          </button>
-          
-          {/* Progress Indicators */}
-          <div className="flex justify-center mt-8 space-x-3">
-            {transformations.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentIndex ? 'bg-orange-500' : 'bg-gray-600'
-                }`}
-              />
-            ))}
-          </div>
         </div>
-        
-        <div className="text-center mt-12">
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-orange-600 hover:bg-orange-700 text-white px-12 py-4 rounded-full text-xl font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300"
-          >
-            Start Your Transformation Coach Journey
-          </button>
+
+        {/* Transformation Gallery */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-6xl mx-auto">
+          {transformations.map((transformation, index) => (
+            <div 
+              key={index}
+              className={`cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-white rounded-2xl p-4 shadow-xl ${
+                activeTransformation === index ? 'ring-4 ring-coral-400 shadow-2xl' : 'hover:shadow-xl'
+              }`}
+              onClick={() => setActiveTransformation(index)}
+            >
+              <div className="grid grid-cols-2 gap-2 mb-4">
+                <img 
+                  src={transformation.beforeImg}
+                  alt={`${transformation.name} before`}
+                  className="w-full h-20 object-cover rounded-lg"
+                />
+                <img 
+                  src={transformation.afterImg}
+                  alt={`${transformation.name} after`}
+                  className="w-full h-20 object-cover rounded-lg"
+                />
+              </div>
+              <div className="text-center">
+                <h4 className="font-dm-sans font-bold text-soft-gray mb-1">{transformation.name}</h4>
+                <p className="text-sm text-muted-gray font-inter font-medium">{transformation.results}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

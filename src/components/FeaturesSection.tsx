@@ -1,9 +1,7 @@
-
 import { useState, useEffect } from 'react';
+import '../styles/features-animation.css';
 
 const FeaturesSection = () => {
-  const [currentCard, setCurrentCard] = useState(0);
-  
   const features = [
     {
       title: "Personalized Workout Plan",
@@ -37,36 +35,45 @@ const FeaturesSection = () => {
     }
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentCard((prev) => (prev + 1) % features.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section id="features" className="py-16 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-[90%] mx-auto ">
-        <div className="text-center mb-16 p-3">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            What You{' '}
-            <span className="text-orange-600">
-              Get
-            </span>
+    <section id="features" className="seamless-section soft-sage relative">
+      
+      {/* Background Image - Adjusted positioning */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15 z-0"
+        style={{
+          backgroundImage: `url('/lovable-uploads/pic1.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 50%',
+        }}
+      ></div>
+      
+      <div className="w-full mx-auto relative section-padding z-10">
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-4xl lg:text-6xl font-dm-sans font-bold text-soft-gray mb-6 leading-tight">
+            What You Get
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-gray font-inter font-light max-w-3xl mx-auto">
             Complete fitness transformation journey with personalized workout and nutrition plan
           </p>
         </div>
         
-        {/* Desktop View - Animated Cards */}
-        <div className="hidden md:block overflow-hidden">
-          <div 
-            className="flex transition-transform duration-1000 ease-in-out"
-            style={{ transform: `translateX(-${currentCard * (100 / 3)}%)` }}
-          >
-            {[...features, ...features].map((feature, index) => (
-              <div key={index} className="w-1/3 flex-shrink-0 px-4">
+        {/* Desktop View - Continuous Scrolling Animation */}
+        <div className="hidden md:block overflow-hidden p-3">
+          <div className="flex animate-slide">
+            {/* First set of feature cards */}
+            {features.map((feature, index) => (
+              <div key={index} className="w-1/3 flex-shrink-0 px-4 min-w-[350px]">
+                <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full">
+                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600">{feature.description}</p>
+                </div>
+              </div>
+            ))}
+            {/* Duplicate set for seamless loop */}
+            {features.map((feature, index) => (
+              <div key={`duplicate-${index}`} className="w-1/3 flex-shrink-0 px-4 min-w-[350px]">
                 <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full">
                   <div className="text-4xl mb-4">{feature.icon}</div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
