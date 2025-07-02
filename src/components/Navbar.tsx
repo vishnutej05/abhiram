@@ -1,94 +1,127 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      // Change navbar background after scrolling 100px
+      const isScrolled = window.scrollY > 100;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
     };
 
+    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    
+    // Clean up
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
+      setMenuOpen(false); // Close menu after navigation
     }
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 transition-all backdrop-blur-sm duration-300 bg-transparent pl-12">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          <div className="font-light text-2xl text-white drop-shadow-lg tracking-wider">
-            the<span className='font-extrabold'>might</span>
+    <nav 
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled 
+          ? 'bg-black/25 backdrop-blur-lg shadow-lg' 
+          : 'bg-black'
+      }`}
+    >
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link to="/" className="text-white font-bold text-xl md:text-2xl">
+              themight
+            </Link>
           </div>
           
-          <div className="hidden md:flex space-x-10">
-            <button 
-              onClick={() => scrollToSection('about')} 
-              className="transition-colors font-medium relative group text-white hover:text-orange-400 drop-shadow-lg"
-              title="Learn about Coach Abhiram"
-            >
-              About
-              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                Learn about Coach Abhiram
-              </div>
-            </button>
-            <button 
-              onClick={() => scrollToSection('transformations')} 
-              className="transition-colors font-medium relative group text-white hover:text-orange-400 drop-shadow-lg"
-              title="See transformation results"
-            >
-              Results
-              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                See transformation results
-              </div>
-            </button>
-            <button 
-              onClick={() => scrollToSection('pricing')} 
-              className="transition-colors font-medium relative group text-white hover:text-orange-400 drop-shadow-lg"
-              title="View training programs"
-            >
-              Programs
-              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                View training programs
-              </div>
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')} 
-              className="btn-matte font-semibold"
-            >
-              Get Started
-            </button>
+          {/* Desktop Navigation */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-center space-x-8">
+              <button 
+                onClick={() => scrollToSection('about')}
+                className="text-gray-300 hover:text-white transition-colors font-medium"
+              >
+                About
+              </button>
+              <button 
+                onClick={() => scrollToSection('features')}
+                className="text-gray-300 hover:text-white transition-colors font-medium"
+              >
+                Results
+              </button>
+              <button 
+                onClick={() => scrollToSection('transformations')}
+                className="text-gray-300 hover:text-white transition-colors font-medium"
+              >
+                Programs
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className="btn-matte px-5 py-2 rounded-md"
+              >
+                Get Started
+              </button>
+            </div>
           </div>
           
+          {/* Mobile menu button */}
           <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-white drop-shadow-lg">
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            <button 
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="text-gray-300 hover:text-white"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+            >
+              <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                {menuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
             </button>
           </div>
         </div>
-        
-        {isOpen && (
-          <div className="md:hidden bg-black/95 backdrop-blur-md border border-white/10 rounded-2xl mt-4 mb-4">
-            <div className="px-6 pt-4 pb-6 space-y-3">
-              <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-3 text-white font-medium hover:bg-white/10 rounded-xl transition-colors">
+
+        {/* Mobile menu, toggle based on menu state */}
+        {menuOpen && (
+          <div className="md:hidden py-4 px-2 rounded-b-lg animate-fade-in">
+            <div className="flex flex-col space-y-4">
+              <button 
+                onClick={() => scrollToSection('about')}
+                className="text-gray-300 hover:text-white transition-colors font-medium py-2"
+              >
                 About
               </button>
-              <button onClick={() => scrollToSection('transformations')} className="block w-full text-left px-4 py-3 text-white font-medium hover:bg-white/10 rounded-xl transition-colors">
+              <button 
+                onClick={() => scrollToSection('features')}
+                className="text-gray-300 hover:text-white transition-colors font-medium py-2"
+              >
                 Results
               </button>
-              <button onClick={() => scrollToSection('pricing')} className="block w-full text-left px-4 py-3 text-white font-medium hover:bg-white/10 rounded-xl transition-colors">
+              <button 
+                onClick={() => scrollToSection('transformations')}
+                className="text-gray-300 hover:text-white transition-colors font-medium py-2"
+              >
                 Programs
               </button>
-              <button onClick={() => scrollToSection('contact')} className="block w-full btn-matte text-center font-semibold">
+              <button 
+                onClick={() => scrollToSection('contact')}
+                className="btn-matte w-full text-center py-3 rounded-md"
+              >
                 Get Started
               </button>
             </div>

@@ -41,7 +41,7 @@ const Footer = () => {
           </div>
           
           {/* Contact Info */}
-          <div className="space-y-6">
+          <div className="ml-12 space-y-8">
             <h4 className="text-xl font-semibold mb-4">Contact Information</h4>
             <div className="space-y-4">
               <div className="flex items-center gap-3">
@@ -65,25 +65,25 @@ const Footer = () => {
             <div className="space-y-3">
               <button 
                 onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-                className="block text-orange-400 hover:text-blue-600 transition-colors"
+                className="block text-grey-400 hover:text-blue-600 transition-colors"
               >
                 About Coach
               </button>
               <button 
                 onClick={() => document.getElementById('transformations')?.scrollIntoView({ behavior: 'smooth' })}
-                className="block text-orange-400 hover:text-blue-600 transition-colors"
+                className="block text-grey-400 hover:text-blue-600 transition-colors"
               >
                 Success Stories
               </button>
               <button 
                 onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-                className="block text-orange-400 hover:text-blue-600 transition-colors"
+                className="block text-grey-400 hover:text-blue-600 transition-colors"
               >
                 Pricing
               </button>
               <button 
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="block text-orange-400 hover:text-blue-600 transition-colors"
+                className="block text-grey-400 hover:text-blue-600 transition-colors"
               >
                 Get Started
               </button>
