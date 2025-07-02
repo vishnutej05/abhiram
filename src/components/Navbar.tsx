@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
@@ -33,39 +34,39 @@ const Navbar = () => {
           <div className="hidden md:flex space-x-10">
             <button 
               onClick={() => scrollToSection('about')} 
-              className="transition-colors font-medium relative group text-white hover:text-orange-400 drop-shadow-lg"
+              className="transition-colors font-medium relative group text-white hover:text-blue-400 drop-shadow-lg"
               title="Learn about Coach Abhiram"
             >
-              About
+              ABOUT
               <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 Learn about Coach Abhiram
               </div>
             </button>
             <button 
               onClick={() => scrollToSection('transformations')} 
-              className="transition-colors font-medium relative group text-white hover:text-orange-400 drop-shadow-lg"
+              className="transition-colors font-medium relative group text-white hover:text-blue-400 drop-shadow-lg"
               title="See transformation results"
             >
-              Results
+              RESULTS
               <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 See transformation results
               </div>
             </button>
             <button 
               onClick={() => scrollToSection('pricing')} 
-              className="transition-colors font-medium relative group text-white hover:text-orange-400 drop-shadow-lg"
+              className="transition-colors font-medium relative group text-white hover:text-blue-400 drop-shadow-lg"
               title="View training programs"
             >
-              Programs
+              PROGRAMS
               <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                 View training programs
               </div>
             </button>
             <button 
               onClick={() => scrollToSection('contact')} 
-              className="btn-matte font-semibold"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300"
             >
-              Get Started
+              GET STARTED
             </button>
           </div>
           
@@ -80,16 +81,16 @@ const Navbar = () => {
           <div className="md:hidden bg-black/95 backdrop-blur-md border border-white/10 rounded-2xl mt-4 mb-4">
             <div className="px-6 pt-4 pb-6 space-y-3">
               <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-3 text-white font-medium hover:bg-white/10 rounded-xl transition-colors">
-                About
+                ABOUT
               </button>
               <button onClick={() => scrollToSection('transformations')} className="block w-full text-left px-4 py-3 text-white font-medium hover:bg-white/10 rounded-xl transition-colors">
-                Results
+                RESULTS
               </button>
               <button onClick={() => scrollToSection('pricing')} className="block w-full text-left px-4 py-3 text-white font-medium hover:bg-white/10 rounded-xl transition-colors">
-                Programs
+                PROGRAMS
               </button>
-              <button onClick={() => scrollToSection('contact')} className="block w-full btn-matte text-center font-semibold">
-                Get Started
+              <button onClick={() => scrollToSection('contact')} className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg text-center transition-all duration-300">
+                GET STARTED
               </button>
             </div>
           </div>

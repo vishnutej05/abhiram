@@ -24,7 +24,7 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 bg-gradient-to-br from-orange-50 to-red-50">
+    <section ref={sectionRef} id="about" className="py-24 bg-gradient-to-br from-blue-50 to-indigo-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* First Row - Image Left, Content Right */}
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
@@ -36,7 +36,7 @@ const AboutSection = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-8 -right-8 bg-orange-400 text-white p-8 rounded-3xl shadow-2xl animate-bounce">
+            <div className="absolute -bottom-8 -right-8 bg-blue-600 text-white p-8 rounded-3xl shadow-2xl animate-bounce">
               <div className="text-3xl font-bold">#1</div>
               <div className="text-sm font-medium">COACH</div>
             </div>
@@ -46,11 +46,11 @@ const AboutSection = () => {
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                 Coach{' '}
-                <span className="text-orange-600">
+                <span className="text-blue-600">
                   Abhiram
                 </span>
               </h2>
-              <div className="h-2 w-24 bg-orange-400 rounded-full"></div>
+              <div className="h-2 w-24 bg-blue-600 rounded-full"></div>
             </div>
             
             <div className="space-y-6 text-xl text-gray-700 leading-relaxed">
@@ -84,7 +84,7 @@ const AboutSection = () => {
           <div className="lg:order-1 space-y-8 animate-fade-in">
             <div className="space-y-6 text-xl text-gray-700 leading-relaxed">
               <p>
-                Ready to start your <strong className="text-orange-600">transformation journey?</strong>
+                Ready to start your <strong className="text-blue-600">transformation journey?</strong>
               </p>
               
               <p>
@@ -97,12 +97,12 @@ const AboutSection = () => {
             </div>
             
             <div className="grid grid-cols-2 gap-8">
-              <div className="bg-white p-8 rounded-2xl shadow-xl border border-orange-100 transform hover:scale-105 transition-transform duration-300">
-                <div className="text-4xl font-bold text-orange-600 mb-3">5+</div>
+              <div className="bg-white p-8 rounded-2xl shadow-xl border border-blue-100 transform hover:scale-105 transition-transform duration-300">
+                <div className="text-4xl font-bold text-blue-600 mb-3">5+</div>
                 <div className="text-gray-600 font-medium">YEARS EXPERIENCE</div>
               </div>
-              <div className="bg-white p-8 rounded-2xl shadow-xl border border-red-100 transform hover:scale-105 transition-transform duration-300">
-                <div className="text-4xl font-bold text-red-500 mb-3">500+</div>
+              <div className="bg-white p-8 rounded-2xl shadow-xl border border-indigo-100 transform hover:scale-105 transition-transform duration-300">
+                <div className="text-4xl font-bold text-indigo-600 mb-3">500+</div>
                 <div className="text-gray-600 font-medium">TRANSFORMED</div>
               </div>
             </div>

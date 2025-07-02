@@ -32,7 +32,7 @@ const InstagramSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-24 bg-gradient-to-br from-orange-50 to-red-50">
+    <section ref={sectionRef} className="py-24 bg-gradient-to-br from-yellow-50 to-orange-50">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-4 mb-6">
@@ -53,7 +53,7 @@ const InstagramSection = () => {
           {instagramPosts.map((post, index) => (
             <div 
               key={post.id}
-              className="aspect-square bg-gradient-to-br from-orange-200 to-red-200 rounded-3xl overflow-hidden hover:scale-110 transition-all duration-500 cursor-pointer group shadow-2xl transform hover:rotate-3"
+              className="aspect-square bg-gradient-to-br from-orange-200 to-yellow-200 rounded-3xl overflow-hidden hover:scale-110 transition-all duration-500 cursor-pointer group shadow-2xl transform hover:rotate-3"
             >
               <div className="w-full h-full flex flex-col items-center justify-center text-gray-700 group-hover:text-orange-700 transition-colors relative">
                 <Instagram className="w-16 h-16 mb-4" />
@@ -69,7 +69,7 @@ const InstagramSection = () => {
             href="https://instagram.com/abhiramnair" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-4 bg-gradient-to-r from-orange-600 to-red-600 text-white px-12 py-5 rounded-full text-2xl font-bold hover:shadow-2xl hover:scale-110 transition-all duration-300 transform hover:rotate-1"
+            className="inline-flex items-center gap-4 bg-gradient-to-r from-orange-600 to-yellow-600 text-white px-12 py-5 rounded-full text-2xl font-bold hover:shadow-2xl hover:scale-110 transition-all duration-300 transform hover:rotate-1"
           >
             <Instagram className="w-8 h-8" />
             Follow @AbhiramNair

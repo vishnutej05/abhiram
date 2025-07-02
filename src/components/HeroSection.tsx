@@ -33,7 +33,7 @@ const HeroSection = () => {
             <div className="space-y-6">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight uppercase tracking-wide">
                 IT'S EITHER{' '}
-                <span className="text-orange-400">
+                <span className="text-blue-400">
                   NOW
                 </span>
                 <br />
@@ -50,24 +50,24 @@ const HeroSection = () => {
             <div className="space-y-8">
               <button 
                 onClick={scrollToForm}
-                className="btn-matte text-xl font-bold"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-lg text-xl transition-all duration-300"
               >
-                Start Your Fitness Journey Today
+                START YOUR FITNESS JOURNEY TODAY
               </button>
             </div>
             
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
               <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-orange-400 mb-2">500+</div>
+                <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">500+</div>
                 <div className="text-sm text-gray-300 font-medium">TRANSFORMED</div>
               </div>
               <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-red-400 mb-2">95%</div>
+                <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">95%</div>
                 <div className="text-sm text-gray-300 font-medium">SUCCESS RATE</div>
               </div>
               <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">24/7</div>
+                <div className="text-3xl md:text-4xl font-bold text-purple-400 mb-2">24/7</div>
                 <div className="text-sm text-gray-300 font-medium">SUPPORT</div>
               </div>
             </div>
