@@ -78,16 +78,16 @@ const PricingSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="pricing" className="py-16 bg-gradient-to-br from-purple-50 to-pink-50">
+    <section ref={sectionRef} id="pricing" className="py-16 bg-gradient-to-br from-green-50 to-emerald-50">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
             Choose Your{' '}
-            <span className="text-purple-600">
+            <span className="text-green-700">
               Journey
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-stone-600 max-w-3xl mx-auto">
             Personalized workout and nutrition plan programs designed for every fitness transformation journey
           </p>
         </div>
@@ -96,15 +96,15 @@ const PricingSection = () => {
           {plans.map((plan, index) => (
             <div 
               key={index}
-              className={`relative bg-white rounded-2xl shadow-lg border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl ${
+              className={`relative bg-stone-50 rounded-2xl shadow-lg border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl ${
                 plan.popular 
-                  ? 'border-purple-400 shadow-purple-100' 
-                  : 'border-purple-200 hover:border-purple-300'
+                  ? 'border-green-400 shadow-green-100 bg-gradient-to-br from-green-50 to-emerald-50' 
+                  : 'border-stone-200 hover:border-green-300'
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                  <span className="bg-gradient-to-r from-green-700 to-green-600 text-stone-50 px-6 py-2 rounded-full text-sm font-bold shadow-lg">
                     MOST POPULAR
                   </span>
                 </div>
@@ -112,15 +112,15 @@ const PricingSection = () => {
               
               <div className="p-6">
                 <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                  <div className="text-purple-600 font-semibold text-lg">{plan.duration}</div>
+                  <h3 className="text-xl font-bold text-stone-800 mb-2">{plan.name}</h3>
+                  <div className="text-green-700 font-semibold text-lg">{plan.duration}</div>
                 </div>
                 
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
-                      <span className="text-purple-500 font-bold text-sm">✓</span>
-                      <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
+                      <span className="text-green-600 font-bold text-sm">✓</span>
+                      <span className="text-stone-700 text-sm leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -129,8 +129,8 @@ const PricingSection = () => {
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   className={`w-full py-3 rounded-xl font-bold transition-all duration-300 ${
                     plan.popular
-                      ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white'
-                      : 'bg-purple-100 hover:bg-purple-200 text-purple-600 hover:text-purple-700 border-2 border-transparent hover:border-purple-300'
+                      ? 'btn-matte text-base'
+                      : 'bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-800 border-2 border-transparent hover:border-green-300'
                   }`}
                 >
                   Get Started
@@ -141,12 +141,12 @@ const PricingSection = () => {
         </div>
         
         <div className="text-center mt-12">
-          <p className="text-gray-600 text-lg mb-6">
+          <p className="text-stone-600 text-lg mb-6">
             Not sure which program is right for you?
           </p>
           <button 
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold px-8 py-3 rounded-lg text-xl transition-all duration-300"
+            className="btn-matte text-xl"
           >
             Get Free Consultation
           </button>

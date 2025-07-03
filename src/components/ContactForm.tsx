@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 
 const ContactForm = () => {
@@ -80,21 +81,21 @@ const ContactForm = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="py-24 bg-gradient-to-br from-green-50 to-teal-50">
+    <section ref={sectionRef} id="contact" className="py-24 bg-gradient-to-br from-amber-50 to-orange-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
             Ready To{' '}
-            <span className="text-green-600">
+            <span className="text-green-700">
               Transform?
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-stone-600 max-w-3xl mx-auto">
             Start your fitness transformation journey today with India's leading online fitness coach
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-0 max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div className="grid lg:grid-cols-2 gap-0 max-w-6xl mx-auto bg-stone-50 rounded-3xl shadow-2xl overflow-hidden border border-stone-200">
           {/* Left side - Image */}
           <div className="relative">
             <img 
@@ -102,20 +103,20 @@ const ContactForm = () => {
               alt="Fitness transformation coach"
               className="w-full h-full object-cover min-h-[600px]"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-stone-900/20 to-transparent"></div>
           </div>
           
           {/* Right side - Form */}
-          <div className="p-12 bg-white">
+          <div className="p-12 bg-stone-50">
             <div className="max-w-md mx-auto">
-              <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
+              <h3 className="text-2xl font-bold text-stone-800 mb-8 text-center">
                 Start Your Transformation
               </h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-stone-700 mb-2">
                       First Name *
                     </label>
                     <input
@@ -124,11 +125,11 @@ const ContactForm = () => {
                       value={formData.firstName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-white"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-stone-700 mb-2">
                       Last Name *
                     </label>
                     <input
@@ -137,7 +138,7 @@ const ContactForm = () => {
                       value={formData.lastName}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-white"
                     />
                   </div>
                 </div>
@@ -263,7 +264,7 @@ const ContactForm = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
+                  className="w-full btn-matte text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
                 >
                   {isSubmitting ? 'Submitting...' : 'START MY TRANSFORMATION'}
                 </button>
