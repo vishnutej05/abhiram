@@ -84,17 +84,22 @@ const HeroSection = () => {
         </div>
         
         {/* Desktop Content (left-aligned) */}
-        <div className="hidden md:block max-w-4xl">
-          <div className="text-white space-y-8 animate-fade-in">
+        <div className="hidden md:block max-w-6xl">
+          <div className="text-[#E6D9C4] space-y-8 animate-fade-in">
             <div className="space-y-6">
-              <h1 className="text-5xl lg:text-6xl font-bold leading-tight uppercase tracking-tight">
-                Hi, I'm <span className="text-orange-400 tracking-wide">Abhiram</span>
+              <h1 className="text-5xl lg:text-7xl font-black leading-[0.9] uppercase tracking-tight">
+                Your body deserves<span className="text-[#BACDB0] font-extrabold"> better.</span>
+                <br />
+                So do<span className="text-[#C97C5D] font-extrabold"> you.</span>
               </h1>
-              <p className="text-xl text-gray-200 font-medium leading-relaxed max-w-2xl">
-                Founder of themight and your online fitness coach based in Kochi, Kerala.
-                I help real people achieve real, lasting change — using a mix of mental coaching, science-backed strategies, and purpose-driven guidance.
-                Whether you're just starting out or ready for a serious transformation, I'm here to help you unlock your full potential — inside and out.
-              </p>
+              <div className="space-y-3">
+                <p className="text-lg text-gray-300 font-medium">
+                  Hi, I'm <span className="text-[orange-400] font-semibold">Abhiram</span> — Founder of themight
+                </p>
+                <p className="text-xl lg:text-2xl text-white font-semibold leading-tight max-w-3xl">
+                  Transform your body with India's leading online fitness transformation coach
+                </p>
+              </div>
             </div>
             
             <div>

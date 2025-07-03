@@ -5,15 +5,15 @@ import { Label } from '@/components/ui/label';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
     age: '',
     goal: '',
-    experience: '',
-    timeline: '',
-    commitment: '',
-    budget: ''
+    fitnessLevel: '',
+    workoutFrequency: '',
+    message: ''
   });
 
   const sectionRef = useRef<HTMLElement>(null);
@@ -42,7 +42,7 @@ const ContactForm = () => {
     console.log('Form submitted:', formData);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -50,54 +50,280 @@ const ContactForm = () => {
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="py-20 soft-peach">
-      <div className="w-full">
-        <div className="text-center mb-16">
-          {/* <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Ready To{' '}
-            <span className="text-orange-600">
-              Transform?
-            </span>
-          </h2> */}
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Start your{' '}
-            <span className="text-orange-600">
-              Journey
-            </span>
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Take the first step towards your fitness transformation. Fill out the form below and let's begin your journey together.
-          </p>
-        </div>
+    <div id="contact">
+      <>
+        {/* Mobile Section - Completely Separate */}
+        <section ref={sectionRef} className="block lg:hidden seamless-section soft-peach relative overflow-hidden">
+        {/* Mobile Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
+          style={{
+            backgroundImage: `url('/lovable-uploads/pic 2.png')`,
+          }}
+        ></div>
         
-        <div className="grid lg:grid-cols-2 min-h-[600px] max-w-7xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
-          {/* Left side - Image */}
-          <div className="relative">
-            <img 
-              src="/lovable-uploads/pic 2.png"
-              alt="Abhiram Nair fitness transformation coach"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        <div className="relative z-10 px-4 py-12">
+          {/* Mobile Header */}
+          <div className="text-center mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              Transform Your{' '}
+              <span className="text-orange-600">Body & Mind</span>
+            </h2>
+            <p className="text-base sm:text-lg text-gray-600 max-w-lg mx-auto">
+              Ready to unlock your full potential? Join thousands who've transformed their lives.
+            </p>
           </div>
           
-          {/* Right side - Form */}
-          <div className="p-8 lg:p-12 bg-orange-50 flex flex-col justify-center">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Mobile Form Container */}
+          <div className="max-w-md mx-auto bg-white/95 backdrop-blur-sm rounded-3xl shadow-xl p-6">
+            <div className="mb-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">
+                Start Your Transformation
+              </h3>
+              <p className="text-gray-600 text-center text-sm">
+                Fill out the form below and let's begin your journey together.
+              </p>
+            </div>
+            
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="name" className="text-sm font-medium text-gray-700 mb-2 block">
-                    Full Name *
+                  <Label htmlFor="mobile-firstName" className="text-sm font-medium text-gray-700 mb-2 block">
+                    First Name *
                   </Label>
                   <Input
-                    id="name"
-                    name="name"
+                    id="mobile-firstName"
+                    name="firstName"
                     type="text"
                     required
-                    value={formData.name}
+                    value={formData.firstName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent"
                   />
+                </div>
+                
+                <div>
+                  <Label htmlFor="mobile-lastName" className="text-sm font-medium text-gray-700 mb-2 block">
+                    Last Name *
+                  </Label>
+                  <Input
+                    id="mobile-lastName"
+                    name="lastName"
+                    type="text"
+                    required
+                    value={formData.lastName}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <Label htmlFor="mobile-email" className="text-sm font-medium text-gray-700 mb-2 block">
+                  Email Address *
+                </Label>
+                <Input
+                  id="mobile-email"
+                  name="email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                />
+              </div>
+              
+              <div>
+                <Label htmlFor="mobile-phone" className="text-sm font-medium text-gray-700 mb-2 block">
+                  Phone Number *
+                </Label>
+                <Input
+                  id="mobile-phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                />
+              </div>
+              
+              <div>
+                <Label htmlFor="mobile-age" className="text-sm font-medium text-gray-700 mb-2 block">
+                  Age *
+                </Label>
+                <select
+                  id="mobile-age"
+                  name="age"
+                  required
+                  value={formData.age}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                >
+                  <option value="">Select Age Range</option>
+                  <option value="18-25">18-25 years</option>
+                  <option value="26-35">26-35 years</option>
+                  <option value="36-45">36-45 years</option>
+                  <option value="46-55">46-55 years</option>
+                  <option value="56+">56+ years</option>
+                </select>
+              </div>
+              
+              <div>
+                <Label htmlFor="mobile-goal" className="text-sm font-medium text-gray-700 mb-2 block">
+                  Primary Fitness Goal *
+                </Label>
+                <select
+                  id="mobile-goal"
+                  name="goal"
+                  required
+                  value={formData.goal}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                >
+                  <option value="">Select Your Goal</option>
+                  <option value="weight-loss">Weight Loss</option>
+                  <option value="muscle-gain">Muscle Gain</option>
+                  <option value="strength">Strength Building</option>
+                  <option value="endurance">Endurance</option>
+                  <option value="overall-fitness">Overall Fitness</option>
+                  <option value="body-toning">Body Toning</option>
+                </select>
+              </div>
+              
+              <div>
+                <Label htmlFor="mobile-fitnessLevel" className="text-sm font-medium text-gray-700 mb-2 block">
+                  Current Fitness Level *
+                </Label>
+                <select
+                  id="mobile-fitnessLevel"
+                  name="fitnessLevel"
+                  required
+                  value={formData.fitnessLevel}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                >
+                  <option value="">Select Your Level</option>
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="advanced">Advanced</option>
+                </select>
+              </div>
+              
+              <div>
+                <Label htmlFor="mobile-workoutFrequency" className="text-sm font-medium text-gray-700 mb-2 block">
+                  Workout Frequency *
+                </Label>
+                <select
+                  id="mobile-workoutFrequency"
+                  name="workoutFrequency"
+                  required
+                  value={formData.workoutFrequency}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                >
+                  <option value="">How often can you workout?</option>
+                  <option value="2-3-times">2-3 times per week</option>
+                  <option value="4-5-times">4-5 times per week</option>
+                  <option value="6-7-times">6-7 times per week</option>
+                  <option value="daily">Daily</option>
+                </select>
+              </div>
+              
+              <div>
+                <Label htmlFor="mobile-message" className="text-sm font-medium text-gray-700 mb-2 block">
+                  Message (Optional)
+                </Label>
+                <textarea
+                  id="mobile-message"
+                  name="message"
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Tell us about your fitness journey..."
+                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent resize-none"
+                />
+              </div>
+              
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-coral-500 to-orange-500 hover:from-coral-600 hover:to-orange-600 text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                START MY TRANSFORMATION
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* Desktop Section - Completely Separate */}
+      <section className="hidden lg:block seamless-section soft-peach">
+        <div className="w-full py-20">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Transform Your{' '}
+              <span className="text-orange-600">
+                Body & Mind
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Join thousands who've transformed their lives with our proven fitness system.
+            </p>
+          </div>
+          
+          <div className="grid lg:grid-cols-2 min-h-[600px] max-w-7xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
+            {/* Left side - Image */}
+            <div className="relative">
+              <img 
+                src="/lovable-uploads/pic 2.png"
+                alt="Abhiram Nair fitness transformation coach"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            </div>
+            
+            {/* Right side - Form */}
+            <div className="p-8 lg:p-12 bg-white-50 flex flex-col justify-center">
+              <div className="mb-8 text-center">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                  Start Your Transformation
+                </h3>
+                <p className="text-gray-600">
+                  Fill out the form below and let's begin your journey together.
+                </p>
+              </div>
+              
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <Label htmlFor="firstName" className="text-sm font-medium text-gray-700 mb-2 block">
+                      First Name *
+                    </Label>
+                    <Input
+                      id="firstName"
+                      name="firstName"
+                      type="text"
+                      required
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                    />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="lastName" className="text-sm font-medium text-gray-700 mb-2 block">
+                      Last Name *
+                    </Label>
+                    <Input
+                      id="lastName"
+                      name="lastName"
+                      type="text"
+                      required
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                    />
+                  </div>
                 </div>
                 
                 <div>
@@ -114,138 +340,136 @@ const ContactForm = () => {
                     className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent"
                   />
                 </div>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <Label htmlFor="phone" className="text-sm font-medium text-gray-700 mb-2 block">
+                      Phone Number *
+                    </Label>
+                    <Input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                    />
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="age" className="text-sm font-medium text-gray-700 mb-2 block">
+                      Age *
+                    </Label>
+                    <select
+                      id="age"
+                      name="age"
+                      required
+                      value={formData.age}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                    >
+                      <option value="">Select Age Range</option>
+                      <option value="18-25">18-25 years</option>
+                      <option value="26-35">26-35 years</option>
+                      <option value="36-45">36-45 years</option>
+                      <option value="46-55">46-55 years</option>
+                      <option value="56+">56+ years</option>
+                    </select>
+                  </div>
+                </div>
+                
                 <div>
-                  <Label htmlFor="phone" className="text-sm font-medium text-gray-700 mb-2 block">
-                    Phone Number *
+                  <Label htmlFor="goal" className="text-sm font-medium text-gray-700 mb-2 block">
+                    Primary Fitness Goal *
                   </Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
+                  <select
+                    id="goal"
+                    name="goal"
                     required
-                    value={formData.phone}
+                    value={formData.goal}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                  >
+                    <option value="">Select Your Goal</option>
+                    <option value="weight-loss">Weight Loss</option>
+                    <option value="muscle-gain">Muscle Gain</option>
+                    <option value="strength">Strength Building</option>
+                    <option value="endurance">Endurance</option>
+                    <option value="overall-fitness">Overall Fitness</option>
+                    <option value="body-toning">Body Toning</option>
+                  </select>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <Label htmlFor="fitnessLevel" className="text-sm font-medium text-gray-700 mb-2 block">
+                      Current Fitness Level *
+                    </Label>
+                    <select
+                      id="fitnessLevel"
+                      name="fitnessLevel"
+                      required
+                      value={formData.fitnessLevel}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                    >
+                      <option value="">Select Your Level</option>
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="advanced">Advanced</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="workoutFrequency" className="text-sm font-medium text-gray-700 mb-2 block">
+                      Workout Frequency *
+                    </Label>
+                    <select
+                      id="workoutFrequency"
+                      name="workoutFrequency"
+                      required
+                      value={formData.workoutFrequency}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                    >
+                      <option value="">How often can you workout?</option>
+                      <option value="2-3-times">2-3 times per week</option>
+                      <option value="4-5-times">4-5 times per week</option>
+                      <option value="6-7-times">6-7 times per week</option>
+                      <option value="daily">Daily</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div>
+                  <Label htmlFor="message" className="text-sm font-medium text-gray-700 mb-2 block">
+                    Message (Optional)
+                  </Label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell us about your fitness journey..."
+                    className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent resize-none"
                   />
                 </div>
                 
-                <div>
-                  <Label htmlFor="age" className="text-sm font-medium text-gray-700 mb-2 block">
-                    Age *
-                  </Label>
-                  <select
-                    id="age"
-                    name="age"
-                    required
-                    value={formData.age}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
-                  >
-                    <option value="">Select Age Range</option>
-                    <option value="18-25">18-25 years</option>
-                    <option value="26-35">26-35 years</option>
-                    <option value="36-45">36-45 years</option>
-                    <option value="46+">46+ years</option>
-                  </select>
-                </div>
-              </div>
-              
-              <div>
-                <Label htmlFor="goal" className="text-sm font-medium text-gray-700 mb-2 block">
-                  Primary Fitness Goal *
-                </Label>
-                <select
-                  id="goal"
-                  name="goal"
-                  required
-                  value={formData.goal}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                <button
+                  type="submit"
+                  className="w-full btn-matte text-lg font-bold py-4"
                 >
-                  <option value="">Select Your Goal</option>
-                  <option value="weight-loss">Weight Loss</option>
-                  <option value="muscle-gain">Muscle Gain</option>
-                  <option value="strength">Strength Building</option>
-                  <option value="endurance">Endurance</option>
-                  <option value="overall-fitness">Overall Fitness</option>
-                </select>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <Label htmlFor="experience" className="text-sm font-medium text-gray-700 mb-2 block">
-                    Fitness Experience *
-                  </Label>
-                  <select
-                    id="experience"
-                    name="experience"
-                    required
-                    value={formData.experience}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
-                  >
-                    <option value="">Select Experience</option>
-                    <option value="beginner">Beginner</option>
-                    <option value="intermediate">Intermediate</option>
-                    <option value="advanced">Advanced</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <Label htmlFor="timeline" className="text-sm font-medium text-gray-700 mb-2 block">
-                    Desired Timeline *
-                  </Label>
-                  <select
-                    id="timeline"
-                    name="timeline"
-                    required
-                    value={formData.timeline}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
-                  >
-                    <option value="">Select Timeline</option>
-                    <option value="3-months">3 Months</option>
-                    <option value="6-months">6 Months</option>
-                    <option value="12-months">12 Months</option>
-                    <option value="long-term">Long Term</option>
-                  </select>
-                </div>
-              </div>
-              
-              <div>
-                <Label htmlFor="commitment" className="text-sm font-medium text-gray-700 mb-2 block">
-                  Weekly Commitment *
-                </Label>
-                <select
-                  id="commitment"
-                  name="commitment"
-                  required
-                  value={formData.commitment}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
-                >
-                  <option value="">Select Commitment</option>
-                  <option value="3-4-hours">3-4 hours per week</option>
-                  <option value="5-6-hours">5-6 hours per week</option>
-                  <option value="7-8-hours">7-8 hours per week</option>
-                  <option value="9+-hours">9+ hours per week</option>
-                </select>
-              </div>
-              
-              <button
-                type="submit"
-                className="w-full btn-matte text-lg font-bold py-4"
-              >
-                Start My Transformation Journey
-              </button>
-            </form>
+                  START MY TRANSFORMATION
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      </>
+    </div>
   );
 };
 

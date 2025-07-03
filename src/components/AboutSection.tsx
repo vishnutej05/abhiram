@@ -96,14 +96,14 @@ const AboutSection = () => {
               </p>
             </div>
             
-            <div className="grid grid-cols-2 gap-8">
-              <div className="bg-white p-8 rounded-2xl shadow-xl border border-orange-100 transform hover:scale-105 transition-transform duration-300">
-                <div className="text-4xl font-bold text-orange-600 mb-3">5+</div>
-                <div className="text-gray-600 font-medium">YEARS EXPERIENCE</div>
+            <div className="grid grid-cols-2 gap-4 sm:gap-8">
+              <div className="bg-white p-4 sm:p-8 rounded-2xl shadow-xl border border-orange-100 transform hover:scale-105 transition-transform duration-300">
+                <div className="text-2xl sm:text-4xl font-bold text-orange-600 mb-2 sm:mb-3">5+</div>
+                <div className="text-gray-600 font-medium text-xs sm:text-base">YEARS EXPERIENCE</div>
               </div>
-              <div className="bg-white p-8 rounded-2xl shadow-xl border border-red-100 transform hover:scale-105 transition-transform duration-300">
-                <div className="text-4xl font-bold text-red-500 mb-3">100+</div>
-                <div className="text-gray-600 font-medium">TRANSFORMED</div>
+              <div className="bg-white p-4 sm:p-8 rounded-2xl shadow-xl border border-red-100 transform hover:scale-105 transition-transform duration-300">
+                <div className="text-2xl sm:text-4xl font-bold text-red-500 mb-2 sm:mb-3">100+</div>
+                <div className="text-gray-600 font-medium text-xs sm:text-base leading-tight">TRANS<br className="sm:hidden" />FORMED</div>
               </div>
             </div>
           </div>
