@@ -47,13 +47,6 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-
-    /* Custom sophisticated palette */
-    --ash-gray: 76 11% 70%;
-    --bone: 40 25% 87%;
-    --burnt-sienna: 15 37% 57%;
-    --battleship-gray: 38 8% 44%;
-    --baby-powder: 60 15% 97%;
   }
 
   .dark {
@@ -93,8 +86,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply text-battleship-gray font-sans;
-    background: hsl(var(--baby-powder));
+    @apply bg-stone-50 text-stone-800 font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
@@ -103,22 +95,21 @@ All colors MUST be HSL.
   }
 }
 
-/* Custom scrollbar - Sophisticated theme */
+/* Custom scrollbar - Earthy theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--bone));
+  @apply bg-stone-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--burnt-sienna));
-  border-radius: 4px;
+  @apply bg-green-600 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(15 45% 50%);
+  @apply bg-green-700;
 }
 
 /* Smooth hover transitions */
@@ -128,10 +119,7 @@ All colors MUST be HSL.
   }
   
   .gradient-text {
-    background: linear-gradient(135deg, hsl(var(--burnt-sienna)), hsl(var(--battleship-gray)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    @apply bg-gradient-to-r from-green-800 to-green-600 bg-clip-text text-transparent;
   }
   
   .section-padding {
@@ -139,51 +127,26 @@ All colors MUST be HSL.
   }
   
   .btn-matte {
-    background: hsl(var(--burnt-sienna));
-    color: hsl(var(--baby-powder));
-    @apply font-medium px-8 py-3 rounded-lg transition-all duration-300 shadow-none border-none;
+    @apply bg-green-700 hover:bg-green-800 text-stone-50 font-medium px-8 py-3 rounded-lg transition-all duration-300 shadow-none border-none;
     box-shadow: none !important;
     background-image: none !important;
   }
   
   .btn-matte:hover {
-    background: hsl(15 45% 50%);
-    @apply transform translate-y-[-1px];
-    box-shadow: 0 4px 12px hsla(var(--burnt-sienna), 0.15) !important;
+    @apply bg-green-800 transform translate-y-[-1px];
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15) !important;
   }
   
   .btn-matte-secondary {
-    background: hsl(var(--battleship-gray));
-    color: hsl(var(--baby-powder));
-    @apply font-medium px-8 py-3 rounded-lg transition-all duration-300 shadow-none border-none;
+    @apply bg-stone-600 hover:bg-stone-700 text-stone-50 font-medium px-8 py-3 rounded-lg transition-all duration-300 shadow-none border-none;
     box-shadow: none !important;
     background-image: none !important;
   }
   
   .btn-matte-secondary:hover {
-    background: hsl(38 8% 38%);
-    @apply transform translate-y-[-1px];
-    box-shadow: 0 4px 12px hsla(var(--battleship-gray), 0.15) !important;
+    @apply bg-stone-700 transform translate-y-[-1px];
+    box-shadow: 0 4px 12px rgba(87, 83, 78, 0.15) !important;
   }
-
-  /* Sophisticated color utilities */
-  .bg-ash-gray { background-color: hsl(var(--ash-gray)); }
-  .bg-bone { background-color: hsl(var(--bone)); }
-  .bg-burnt-sienna { background-color: hsl(var(--burnt-sienna)); }
-  .bg-battleship-gray { background-color: hsl(var(--battleship-gray)); }
-  .bg-baby-powder { background-color: hsl(var(--baby-powder)); }
-  
-  .text-ash-gray { color: hsl(var(--ash-gray)); }
-  .text-bone { color: hsl(var(--bone)); }
-  .text-burnt-sienna { color: hsl(var(--burnt-sienna)); }
-  .text-battleship-gray { color: hsl(var(--battleship-gray)); }
-  .text-baby-powder { color: hsl(var(--baby-powder)); }
-  
-  .border-ash-gray { border-color: hsl(var(--ash-gray)); }
-  .border-bone { border-color: hsl(var(--bone)); }
-  .border-burnt-sienna { border-color: hsl(var(--burnt-sienna)); }
-  .border-battleship-gray { border-color: hsl(var(--battleship-gray)); }
-  .border-baby-powder { border-color: hsl(var(--baby-powder)); }
 }
 
 /* Loading animations */
@@ -206,7 +169,6 @@ All colors MUST be HSL.
   input:focus-visible,
   textarea:focus-visible,
   select:focus-visible {
-    @apply outline-none ring-2 ring-offset-2;
-    ring-color: hsl(var(--burnt-sienna));
+    @apply outline-none ring-2 ring-green-500 ring-offset-2;
   }
 }

@@ -78,16 +78,16 @@ const PricingSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="pricing" className="py-16 bg-gradient-to-br from-bone to-ash-gray/20">
+    <section ref={sectionRef} id="pricing" className="py-16 bg-gradient-to-br from-green-50 to-emerald-50">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-battleship-gray mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
             Choose Your{' '}
-            <span className="text-burnt-sienna">
+            <span className="text-green-700">
               Journey
             </span>
           </h2>
-          <p className="text-xl text-battleship-gray max-w-3xl mx-auto">
+          <p className="text-xl text-stone-600 max-w-3xl mx-auto">
             Personalized workout and nutrition plan programs designed for every fitness transformation journey
           </p>
         </div>
@@ -96,15 +96,15 @@ const PricingSection = () => {
           {plans.map((plan, index) => (
             <div 
               key={index}
-              className={`relative bg-baby-powder rounded-2xl shadow-lg border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl ${
+              className={`relative bg-stone-50 rounded-2xl shadow-lg border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl ${
                 plan.popular 
-                  ? 'border-burnt-sienna/50 shadow-burnt-sienna/20 bg-gradient-to-br from-baby-powder to-bone' 
-                  : 'border-ash-gray/30 hover:border-burnt-sienna/30'
+                  ? 'border-green-400 shadow-green-100 bg-gradient-to-br from-green-50 to-emerald-50' 
+                  : 'border-stone-200 hover:border-green-300'
               }`}
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-burnt-sienna text-baby-powder px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                  <span className="bg-gradient-to-r from-green-700 to-green-600 text-stone-50 px-6 py-2 rounded-full text-sm font-bold shadow-lg">
                     MOST POPULAR
                   </span>
                 </div>
@@ -112,15 +112,15 @@ const PricingSection = () => {
               
               <div className="p-6">
                 <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold text-battleship-gray mb-2">{plan.name}</h3>
-                  <div className="text-burnt-sienna font-semibold text-lg">{plan.duration}</div>
+                  <h3 className="text-xl font-bold text-stone-800 mb-2">{plan.name}</h3>
+                  <div className="text-green-700 font-semibold text-lg">{plan.duration}</div>
                 </div>
                 
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-3">
-                      <span className="text-burnt-sienna font-bold text-sm">✓</span>
-                      <span className="text-battleship-gray text-sm leading-relaxed">{feature}</span>
+                      <span className="text-green-600 font-bold text-sm">✓</span>
+                      <span className="text-stone-700 text-sm leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -130,7 +130,7 @@ const PricingSection = () => {
                   className={`w-full py-3 rounded-xl font-bold transition-all duration-300 ${
                     plan.popular
                       ? 'btn-matte text-base'
-                      : 'bg-ash-gray/20 hover:bg-ash-gray/30 text-battleship-gray hover:text-battleship-gray border-2 border-transparent hover:border-burnt-sienna/30'
+                      : 'bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-800 border-2 border-transparent hover:border-green-300'
                   }`}
                 >
                   Get Started
@@ -141,7 +141,7 @@ const PricingSection = () => {
         </div>
         
         <div className="text-center mt-12">
-          <p className="text-battleship-gray text-lg mb-6">
+          <p className="text-stone-600 text-lg mb-6">
             Not sure which program is right for you?
           </p>
           <button 
