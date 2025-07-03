@@ -22,17 +22,17 @@ const HeroSection = () => {
           backgroundImage: 'url(/lovable-uploads/4d6fcca9-a196-4eea-bec3-0e9f8b7cfa56.png)'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-900 via-stone-800/80 to-stone-700/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-battleship-gray/90 via-battleship-gray/70 to-battleship-gray/40"></div>
       </div>
       
       {/* Content */}
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 pt-20">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="text-white space-y-8 animate-fade-in">
+          <div className="text-baby-powder space-y-8 animate-fade-in">
             <div className="space-y-6">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight uppercase tracking-wide">
                 IT'S EITHER{' '}
-                <span className="text-green-400">
+                <span className="text-burnt-sienna">
                   NOW
                 </span>
                 <br />
@@ -41,7 +41,7 @@ const HeroSection = () => {
                   NEVER
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-stone-200 font-medium leading-relaxed max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-bone font-medium leading-relaxed max-w-3xl mx-auto">
                 Transform your body with India's leading online fitness transformation coach
               </p>
             </div>
@@ -58,16 +58,16 @@ const HeroSection = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
               <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">500+</div>
-                <div className="text-sm text-stone-300 font-medium">TRANSFORMED</div>
+                <div className="text-3xl md:text-4xl font-bold text-burnt-sienna mb-2">500+</div>
+                <div className="text-sm text-ash-gray font-medium">TRANSFORMED</div>
               </div>
               <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-emerald-400 mb-2">95%</div>
-                <div className="text-sm text-stone-300 font-medium">SUCCESS RATE</div>
+                <div className="text-3xl md:text-4xl font-bold text-burnt-sienna mb-2">95%</div>
+                <div className="text-sm text-ash-gray font-medium">SUCCESS RATE</div>
               </div>
               <div className="text-center transform hover:scale-110 transition-transform duration-300">
                 <div className="text-3xl md:text-4xl font-bold text-amber-400 mb-2">24/7</div>
-                <div className="text-sm text-stone-300 font-medium">SUPPORT</div>
+                <div className="text-sm text-ash-gray font-medium">SUPPORT</div>
               </div>
             </div>
           </div>
