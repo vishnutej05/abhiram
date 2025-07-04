@@ -1,275 +1,178 @@
 
-import React, { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
+import { useToast } from '@/hooks/use-toast';
 
 const ContactForm = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    name: '',
     email: '',
-    phone: '',
-    age: '',
-    fitnessGoal: '',
-    fitnessLevel: '',
-    workoutFrequency: '',
-    message: '',
+    phone: ''
+  });
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    phone: ''
   });
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            document.title = "Free Consultation - Online Fitness Coach India";
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
+  const validateForm = () => {
+    const newErrors = {
+      name: '',
+      email: '',
+      phone: ''
+    };
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
     }
 
-    return () => observer.disconnect();
-  }, []);
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email';
+    }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    } else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) {
+      newErrors.phone = 'Please enter a valid 10-digit phone number';
+    }
+
+    setErrors(newErrors);
+    return !Object.values(newErrors).some(error => error !== '');
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+    
+    if (validateForm()) {
+      console.log('Form submitted:', formData);
+      toast({
+        title: "Registration Successful! 🎉",
+        description: "Welcome to your fitness transformation journey. We'll contact you within 24 hours!",
       });
+      
+      // Reset form
+      setFormData({ name: '', email: '', phone: '' });
+      setErrors({ name: '', email: '', phone: '' });
+    }
+  };
 
-      if (response.ok) {
-        alert('Email sent successfully!');
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          age: '',
-          fitnessGoal: '',
-          fitnessLevel: '',
-          workoutFrequency: '',
-          message: '',
-        });
-      } else {
-        alert('Failed to send email. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error sending email:', error);
-      alert('An error occurred. Please try again.');
-    } finally {
-      setIsSubmitting(false);
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+    if (errors[field as keyof typeof errors]) {
+      setErrors(prev => ({ ...prev, [field]: '' }));
     }
   };
 
   return (
-    <section ref={sectionRef} id="contact" className="py-24 bg-gradient-to-br from-amber-50 to-orange-50">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
-            Ready To{' '}
-            <span className="text-green-700">
+    <section id="contact" className="py-20 bg-gradient-to-br from-gray-900 to-black relative overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        style={{
+          backgroundImage: 'url(/lovable-uploads/f33dcdcd-1e3a-474e-9f33-e075851661a6.png)'
+        }}
+      ></div>
+      
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Ready to{' '}
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Transform?
             </span>
           </h2>
-          <p className="text-xl text-stone-600 max-w-3xl mx-auto">
-            Start your fitness transformation journey today with India's leading online fitness coach
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Take the first step towards your dream physique. Fill out the form below and let's start your fitness transformation journey today!
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-0 max-w-6xl mx-auto bg-stone-50 rounded-3xl shadow-2xl overflow-hidden border border-stone-200">
-          {/* Left side - Image */}
-          <div className="relative">
-            <img 
-              src="/lovable-uploads/41b2886b-aeb4-4b4a-9015-82acd652f90d.png"
-              alt="Fitness transformation coach"
-              className="w-full h-full object-cover min-h-[600px]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-stone-900/20 to-transparent"></div>
-          </div>
-          
-          {/* Right side - Form */}
-          <div className="p-12 bg-stone-50">
-            <div className="max-w-md mx-auto">
-              <h3 className="text-2xl font-bold text-stone-800 mb-8 text-center">
-                Start Your Transformation
-              </h3>
+        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  value={formData.name}
+                  onChange={(e) => handleInputChange('name', e.target.value)}
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all ${
+                    errors.name ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                  placeholder="Enter your full name"
+                />
+                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+              </div>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-2">
-                      First Name *
-                    </label>
-                    <input
-                      type="text"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-white"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-stone-700 mb-2">
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-white"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Age *
-                  </label>
-                  <select
-                    name="age"
-                    value={formData.age}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
-                  >
-                    <option value="">Select Age Range</option>
-                    <option value="18-25">18-25 years</option>
-                    <option value="26-35">26-35 years</option>
-                    <option value="36-45">36-45 years</option>
-                    <option value="46-55">46-55 years</option>
-                    <option value="55+">55+ years</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Primary Fitness Goal *
-                  </label>
-                  <select
-                    name="fitnessGoal"
-                    value={formData.fitnessGoal}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
-                  >
-                    <option value="">Select Your Goal</option>
-                    <option value="weight-loss">Weight Loss</option>
-                    <option value="muscle-gain">Muscle Gain</option>
-                    <option value="strength">Build Strength</option>
-                    <option value="endurance">Improve Endurance</option>
-                    <option value="overall-fitness">Overall Fitness</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Current Fitness Level *
-                  </label>
-                  <select
-                    name="fitnessLevel"
-                    value={formData.fitnessLevel}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
-                  >
-                    <option value="">Select Your Level</option>
-                    <option value="beginner">Beginner</option>
-                    <option value="intermediate">Intermediate</option>
-                    <option value="advanced">Advanced</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Workout Frequency *
-                  </label>
-                  <select
-                    name="workoutFrequency"
-                    value={formData.workoutFrequency}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
-                  >
-                    <option value="">How often can you workout?</option>
-                    <option value="2-3">2-3 times per week</option>
-                    <option value="4-5">4-5 times per week</option>
-                    <option value="6-7">6-7 times per week</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Message (Optional)
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300"
-                    placeholder="Tell us about your fitness journey..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full btn-matte text-lg py-4 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
-                >
-                  {isSubmitting ? 'Submitting...' : 'START MY TRANSFORMATION'}
-                </button>
-              </form>
+              <div>
+                <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  value={formData.phone}
+                  onChange={(e) => handleInputChange('phone', e.target.value)}
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all ${
+                    errors.phone ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                  placeholder="Enter your phone number"
+                />
+                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+              </div>
             </div>
+            
+            <div>
+              <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                Email Address *
+              </label>
+              <input
+                type="email"
+                id="email"
+                value={formData.email}
+                onChange={(e) => handleInputChange('email', e.target.value)}
+                className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all ${
+                  errors.email ? 'border-red-500' : 'border-gray-300'
+                }`}
+                placeholder="Enter your email address"
+              />
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+            </div>
+            
+            <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-2xl">
+              <h3 className="font-semibold text-gray-900 mb-3">What happens next?</h3>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                  Personal consultation call within 24 hours
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                  Custom fitness and nutrition plan creation
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                  Begin your transformation journey immediately
+                </li>
+              </ul>
+            </div>
+            
+            <button
+              type="submit"
+              className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl text-lg font-bold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            >
+              🚀 Start My Transformation Now
+            </button>
+          </form>
+          
+          <div className="text-center mt-6">
+            <p className="text-sm text-gray-500">
+              🔒 Your information is secure and will never be shared. We respect your privacy.
+            </p>
           </div>
         </div>
       </div>

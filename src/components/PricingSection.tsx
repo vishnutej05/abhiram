@@ -1,155 +1,100 @@
 
-import { useEffect, useRef } from 'react';
+import { CheckCircle } from 'lucide-react';
 
 const PricingSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            document.title = "Transformation Programs - Online Fitness Coach India";
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const plans = [
-    {
-      name: "Kickstart",
-      duration: "3 Months",
-      features: [
-        "Personalized workout plan",
-        "Basic nutrition guidance", 
-        "Weekly check-ins",
-        "WhatsApp support",
-        "Exercise form videos"
-      ],
-      popular: false
-    },
-    {
-      name: "Transform",
-      duration: "6 Months",
-      features: [
-        "Advanced workout programs",
-        "Detailed meal plans",
-        "Bi-weekly progress reviews",
-        "24/7 chat support",
-        "Supplement guidance",
-        "Body composition tracking"
-      ],
-      popular: true
-    },
-    {
-      name: "Master",
-      duration: "8 Months", 
-      features: [
-        "Elite training protocols",
-        "Custom nutrition coaching",
-        "Weekly video calls",
-        "Priority support access",
-        "Advanced tracking tools",
-        "Mindset coaching sessions"
-      ],
-      popular: false
-    },
-    {
-      name: "Champion",
-      duration: "12 Months",
-      features: [
-        "Complete lifestyle transformation",
-        "1-on-1 monthly consultations",
-        "Holistic fitness approach",
-        "VIP support channel",
-        "Competition prep training",
-        "Long-term maintenance planning"
-      ],
-      popular: false
-    }
-  ];
-
   return (
-    <section ref={sectionRef} id="pricing" className="py-16 bg-gradient-to-br from-green-50 to-emerald-50">
-      <div className="w-full px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-stone-800 mb-6">
-            Choose Your{' '}
-            <span className="text-green-700">
-              Journey
+    <section id="pricing" className="py-20 bg-black relative overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+        style={{
+          backgroundImage: 'url(/lovable-uploads/a795f6ea-7927-4bac-bc1c-5ffcda5ff920.png)'
+        }}
+      ></div>
+      
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">
+            CHOOSE YOUR{' '}
+            <span className="text-red-500">
+              WEAPON
             </span>
           </h2>
-          <p className="text-xl text-stone-600 max-w-3xl mx-auto">
-            Personalized workout and nutrition plan programs designed for every fitness transformation journey
-          </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {plans.map((plan, index) => (
-            <div 
-              key={index}
-              className={`relative bg-stone-50 rounded-2xl shadow-lg border-2 transition-all duration-300 hover:scale-105 hover:shadow-xl ${
-                plan.popular 
-                  ? 'border-green-400 shadow-green-100 bg-gradient-to-br from-green-50 to-emerald-50' 
-                  : 'border-stone-200 hover:border-green-300'
-              }`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-gradient-to-r from-green-700 to-green-600 text-stone-50 px-6 py-2 rounded-full text-sm font-bold shadow-lg">
-                    MOST POPULAR
-                  </span>
+        {/* Pricing Cards */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Basic Package */}
+          <div className="bg-gray-900 p-6 rounded-2xl border border-gray-700 hover:border-red-500/50 transition-all">
+            <h3 className="text-xl font-black text-white mb-4">STARTER</h3>
+            <div className="mb-4">
+              <span className="text-2xl text-gray-500 line-through">₹8,000</span>
+              <span className="text-3xl font-black text-white ml-2">₹4,999</span>
+            </div>
+            <div className="space-y-3 mb-6">
+              {["Basic workout plan", "Nutrition guide", "Email support"].map((item, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <CheckCircle className="text-red-500 w-4 h-4" />
+                  <span className="text-gray-300 text-sm">{item}</span>
                 </div>
-              )}
-              
-              <div className="p-6">
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold text-stone-800 mb-2">{plan.name}</h3>
-                  <div className="text-green-700 font-semibold text-lg">{plan.duration}</div>
-                </div>
-                
-                <ul className="space-y-3 mb-6">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <span className="text-green-600 font-bold text-sm">✓</span>
-                      <span className="text-stone-700 text-sm leading-relaxed">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                
-                <button 
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                  className={`w-full py-3 rounded-xl font-bold transition-all duration-300 ${
-                    plan.popular
-                      ? 'btn-matte text-base'
-                      : 'bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-800 border-2 border-transparent hover:border-green-300'
-                  }`}
-                >
-                  Get Started
-                </button>
+              ))}
+            </div>
+            <button className="w-full bg-gray-800 text-white py-3 font-bold hover:bg-gray-700 transition-colors">
+              CHOOSE STARTER
+            </button>
+          </div>
+
+          {/* Popular Package */}
+          <div className="bg-gradient-to-b from-red-900/50 to-orange-900/50 p-6 rounded-2xl border-2 border-red-500 relative transform scale-105">
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+              <div className="bg-red-600 text-white px-4 py-1 text-sm font-black">
+                MOST POPULAR
               </div>
             </div>
-          ))}
+            
+            <h3 className="text-xl font-black text-white mb-4">BEAST MODE</h3>
+            <div className="mb-4">
+              <span className="text-2xl text-gray-400 line-through">₹15,000</span>
+              <span className="text-4xl font-black text-white ml-2">₹9,999</span>
+            </div>
+            <div className="space-y-3 mb-6">
+              {["Custom workout plan", "Meal plans", "24/7 WhatsApp support", "Progress tracking"].map((item, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <CheckCircle className="text-red-500 w-4 h-4" />
+                  <span className="text-white text-sm font-semibold">{item}</span>
+                </div>
+              ))}
+            </div>
+            <button className="w-full bg-gradient-to-r from-red-600 to-orange-600 text-white py-3 font-black hover:shadow-lg hover:shadow-red-500/25 transition-all">
+              GET BEAST MODE
+            </button>
+          </div>
+
+          {/* Premium Package */}
+          <div className="bg-gray-900 p-6 rounded-2xl border border-gray-700 hover:border-orange-500/50 transition-all">
+            <h3 className="text-xl font-black text-white mb-4">ELITE</h3>
+            <div className="mb-4">
+              <span className="text-2xl text-gray-500 line-through">₹25,000</span>
+              <span className="text-3xl font-black text-white ml-2">₹19,999</span>
+            </div>
+            <div className="space-y-3 mb-6">
+              {["Complete transformation", "1-on-1 coaching", "Supplement plan", "Mindset coaching"].map((item, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <CheckCircle className="text-orange-500 w-4 h-4" />
+                  <span className="text-gray-300 text-sm">{item}</span>
+                </div>
+              ))}
+            </div>
+            <button className="w-full bg-orange-600 text-white py-3 font-bold hover:bg-orange-700 transition-colors">
+              GO ELITE
+            </button>
+          </div>
         </div>
         
         <div className="text-center mt-12">
-          <p className="text-stone-600 text-lg mb-6">
-            Not sure which program is right for you?
+          <p className="text-gray-400 mb-4 font-semibold">
+            🚨 LIMITED SPOTS • ONLY 10 NEW CLIENTS PER MONTH
           </p>
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-matte text-xl"
-          >
-            Get Free Consultation
-          </button>
         </div>
       </div>
     </section>

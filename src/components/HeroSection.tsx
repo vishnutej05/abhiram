@@ -1,6 +1,4 @@
 
-import { useEffect } from 'react';
-
 const HeroSection = () => {
   const scrollToForm = () => {
     const element = document.getElementById('contact');
@@ -9,65 +7,62 @@ const HeroSection = () => {
     }
   };
 
-  useEffect(() => {
-    document.title = "Abhiram Nair - Transform Your Body | Online Fitness Coach India";
-  }, []);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+      {/* Background Image with Dark Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url(/lovable-uploads/4d6fcca9-a196-4eea-bec3-0e9f8b7cfa56.png)'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-900 via-stone-800/80 to-stone-700/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/60"></div>
       </div>
       
       {/* Content */}
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 pt-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="text-white space-y-8 animate-fade-in">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="text-white space-y-8">
             <div className="space-y-6">
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight uppercase tracking-wide">
+              <h1 className="text-5xl md:text-7xl font-black leading-tight tracking-tight">
                 IT'S EITHER{' '}
-                <span className="text-green-400">
+                <span className="text-red-500">
                   NOW
                 </span>
                 <br />
                 OR IT'S{' '}
-                <span className="text-amber-400">
+                <span className="text-orange-500">
                   NEVER
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-stone-200 font-medium leading-relaxed max-w-3xl mx-auto">
-                Transform your body with India's leading online fitness transformation coach
+              <p className="text-xl md:text-2xl text-gray-300 font-medium">
+                GET JACKED. GET STRONG. GET RESULTS.
               </p>
             </div>
             
-            <div className="space-y-8">
+            <div className="space-y-6">
               <button 
                 onClick={scrollToForm}
-                className="btn-matte text-xl"
+                className="bg-gradient-to-r from-red-600 to-orange-600 text-white px-12 py-5 text-xl font-black tracking-wide hover:shadow-2xl hover:shadow-red-500/25 hover:scale-105 transition-all duration-300"
               >
-                START YOUR FITNESS JOURNEY TODAY
+                START NOW
               </button>
             </div>
             
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
-              <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">500+</div>
-                <div className="text-sm text-stone-300 font-medium">TRANSFORMED</div>
+            <div className="grid grid-cols-3 gap-6 pt-8">
+              <div className="text-center">
+                <div className="text-4xl font-black text-red-500">500+</div>
+                <div className="text-sm text-gray-400 font-semibold">TRANSFORMED</div>
               </div>
-              <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-emerald-400 mb-2">95%</div>
-                <div className="text-sm text-stone-300 font-medium">SUCCESS RATE</div>
+              <div className="text-center">
+                <div className="text-4xl font-black text-orange-500">95%</div>
+                <div className="text-sm text-gray-400 font-semibold">SUCCESS</div>
               </div>
-              <div className="text-center transform hover:scale-110 transition-transform duration-300">
-                <div className="text-3xl md:text-4xl font-bold text-amber-400 mb-2">24/7</div>
-                <div className="text-sm text-stone-300 font-medium">SUPPORT</div>
+              <div className="text-center">
+                <div className="text-4xl font-black text-red-500">24/7</div>
+                <div className="text-sm text-gray-400 font-semibold">SUPPORT</div>
               </div>
             </div>
           </div>

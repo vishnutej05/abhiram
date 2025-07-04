@@ -40,32 +40,47 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
+
     --sidebar-foreground: 240 5.3% 26.1%;
+
     --sidebar-primary: 240 5.9% 10%;
+
     --sidebar-primary-foreground: 0 0% 98%;
+
     --sidebar-accent: 240 4.8% 95.9%;
+
     --sidebar-accent-foreground: 240 5.9% 10%;
+
     --sidebar-border: 220 13% 91%;
+
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
+
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
+
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
+
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
+
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
+
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
+
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
+
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
@@ -86,7 +101,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-stone-50 text-stone-800 font-sans;
+    @apply bg-background text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
@@ -95,21 +110,21 @@ All colors MUST be HSL.
   }
 }
 
-/* Custom scrollbar - Earthy theme */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-stone-100;
+  @apply bg-gray-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-green-600 rounded-full;
+  @apply bg-gradient-to-b from-blue-500 to-purple-500 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-green-700;
+  @apply from-blue-600 to-purple-600;
 }
 
 /* Smooth hover transitions */
@@ -119,33 +134,11 @@ All colors MUST be HSL.
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-green-800 to-green-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
   }
   
   .section-padding {
     @apply py-16 md:py-20 lg:py-24;
-  }
-  
-  .btn-matte {
-    @apply bg-green-700 hover:bg-green-800 text-stone-50 font-medium px-8 py-3 rounded-lg transition-all duration-300 shadow-none border-none;
-    box-shadow: none !important;
-    background-image: none !important;
-  }
-  
-  .btn-matte:hover {
-    @apply bg-green-800 transform translate-y-[-1px];
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15) !important;
-  }
-  
-  .btn-matte-secondary {
-    @apply bg-stone-600 hover:bg-stone-700 text-stone-50 font-medium px-8 py-3 rounded-lg transition-all duration-300 shadow-none border-none;
-    box-shadow: none !important;
-    background-image: none !important;
-  }
-  
-  .btn-matte-secondary:hover {
-    @apply bg-stone-700 transform translate-y-[-1px];
-    box-shadow: 0 4px 12px rgba(87, 83, 78, 0.15) !important;
   }
 }
 
@@ -169,6 +162,6 @@ All colors MUST be HSL.
   input:focus-visible,
   textarea:focus-visible,
   select:focus-visible {
-    @apply outline-none ring-2 ring-green-500 ring-offset-2;
+    @apply outline-none ring-2 ring-blue-500 ring-offset-2;
   }
 }
