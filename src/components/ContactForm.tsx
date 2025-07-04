@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useToast } from '@/hooks/use-toast';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,10 @@ const ContactForm = () => {
     workoutFrequency: '',
     message: ''
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const { toast } = useToast();
 
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -37,9 +42,92 @@ const ContactForm = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    
+    // Validate required fields
+    const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'age', 'goal', 'fitnessLevel', 'workoutFrequency'];
+    const missingFields = requiredFields.filter(field => !formData[field as keyof typeof formData]);
+    
+    if (missingFields.length > 0) {
+      alert(`Please fill in all required fields: ${missingFields.join(', ')}`);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Create a form element to submit via hidden iframe
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://script.google.com/macros/s/AKfycbwyQr2m1AjowhaQyT0sANynaU-XnA_qe6lgZ4qXvSwThyZAuNMi7kKuugW-1aGRXagXSQ/exec'; // Replace with your actual script ID
+      form.target = 'hidden-iframe';
+      form.style.display = 'none';
+
+      // Add form fields
+      Object.entries(formData).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value;
+        form.appendChild(input);
+      });
+
+      // Create hidden iframe if it doesn't exist
+      let iframe = document.getElementById('hidden-iframe') as HTMLIFrameElement;
+      if (!iframe) {
+        iframe = document.createElement('iframe');
+        iframe.id = 'hidden-iframe';
+        iframe.name = 'hidden-iframe';
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+      }
+
+      // Submit the form
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+
+      // Set success after a short delay
+      setTimeout(() => {
+        setSubmitStatus('success');
+        setIsSubmitting(false);
+        
+        // Show success toast
+        toast({
+          title: "Success!",
+          description: "Your information has been submitted successfully. We'll get back to you soon!",
+          duration: 5000,
+        });
+        
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          age: '',
+          goal: '',
+          fitnessLevel: '',
+          workoutFrequency: '',
+          message: ''
+        });
+      }, 1000);
+
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      
+      // Show error toast
+      toast({
+        title: "Error",
+        description: "There was an error submitting your form. Please try again.",
+        variant: "destructive",
+        duration: 5000,
+      });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -247,9 +335,10 @@ const ContactForm = () => {
               
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-coral-500 to-orange-500 hover:from-coral-600 hover:to-orange-600 text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-coral-500 to-orange-500 hover:from-coral-600 hover:to-orange-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none"
               >
-                START MY TRANSFORMATION
+                {isSubmitting ? 'SUBMITTING...' : 'START MY TRANSFORMATION'}
               </button>
             </form>
           </div>
@@ -459,9 +548,10 @@ const ContactForm = () => {
                 
                 <button
                   type="submit"
-                  className="w-full btn-matte text-lg font-bold py-4"
+                  disabled={isSubmitting}
+                  className="w-full btn-matte text-lg font-bold py-4 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  START MY TRANSFORMATION
+                  {isSubmitting ? 'SUBMITTING...' : 'START MY TRANSFORMATION'}
                 </button>
               </form>
             </div>
