@@ -61,7 +61,7 @@ const ContactForm = () => {
       // Create a form element to submit via hidden iframe
       const form = document.createElement('form');
       form.method = 'POST';
-      form.action = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'; // Replace with your actual script ID
+      form.action = 'https://script.google.com/macros/s/AKfycbwyQr2m1AjowhaQyT0sANynaU-XnA_qe6lgZ4qXvSwThyZAuNMi7kKuugW-1aGRXagXSQ/exec'; // Replace with your actual script ID
       form.target = 'hidden-iframe';
       form.style.display = 'none';
 
@@ -73,13 +73,6 @@ const ContactForm = () => {
         input.value = value;
         form.appendChild(input);
       });
-
-      // Add timestamp
-      const timestampInput = document.createElement('input');
-      timestampInput.type = 'hidden';
-      timestampInput.name = 'timestamp';
-      timestampInput.value = new Date().toISOString();
-      form.appendChild(timestampInput);
 
       // Create hidden iframe if it doesn't exist
       let iframe = document.getElementById('hidden-iframe') as HTMLIFrameElement;
