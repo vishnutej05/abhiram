@@ -7,19 +7,22 @@ const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    goal: ''
   });
   const [errors, setErrors] = useState({
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    goal: ''
   });
 
   const validateForm = () => {
     const newErrors = {
       name: '',
       email: '',
-      phone: ''
+      phone: '',
+      goal: ''
     };
 
     if (!formData.name.trim()) {
@@ -38,23 +41,104 @@ const ContactForm = () => {
       newErrors.phone = 'Please enter a valid 10-digit phone number';
     }
 
+    if (!formData.goal.trim()) {
+      newErrors.goal = 'Goal is required';
+    }
+
     setErrors(newErrors);
     return !Object.values(newErrors).some(error => error !== '');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (validateForm()) {
-      console.log('Form submitted:', formData);
-      toast({
-        title: "Registration Successful! 🎉",
-        description: "Welcome to your fitness transformation journey. We'll contact you within 24 hours!",
-      });
-      
-      // Reset form
-      setFormData({ name: '', email: '', phone: '' });
-      setErrors({ name: '', email: '', phone: '' });
+      try {
+        // Create a hidden form and submit it to avoid CORS issues
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'https://script.google.com/macros/s/AKfycbz9w6IDFDj88SOF2HKYmOYgTUOzX2MDaBCNvD8YhwgJT8ROgl8uVmyYTKJabt3ANo38/exec';
+        form.target = 'hidden_iframe';
+
+        // Create hidden iframe
+        const iframe = document.createElement('iframe');
+        iframe.name = 'hidden_iframe';
+        iframe.style.display = 'none';
+        
+        // Add event listener to iframe to check for response
+        iframe.onload = () => {
+          try {
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+            if (iframeDoc) {
+              const responseText = iframeDoc.body.innerText;
+              console.log('Response from Google Apps Script:', responseText);
+              
+              // Try to parse the response
+              try {
+                const response = JSON.parse(responseText);
+                if (response.result !== 'success') {
+                  console.error('Script error:', response.error);
+                  toast({
+                    title: "Script Error",
+                    description: `Google Apps Script error: ${response.error || 'Unknown error'}`,
+                    variant: "destructive",
+                  });
+                }
+              } catch (parseError) {
+                console.log('Non-JSON response:', responseText);
+              }
+            }
+          } catch (error) {
+            console.log('Could not read iframe response (expected due to CORS)');
+          }
+        };
+        
+        document.body.appendChild(iframe);
+
+        // Add form fields
+        const fields = [
+          { name: 'name', value: formData.name },
+          { name: 'email', value: formData.email },
+          { name: 'phone', value: formData.phone },
+          { name: 'goal', value: formData.goal }
+        ];
+
+        console.log('Submitting form data:', fields);
+
+        fields.forEach(field => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = field.name;
+          input.value = field.value;
+          form.appendChild(input);
+        });
+
+        document.body.appendChild(form);
+        form.submit();
+
+        // Clean up
+        setTimeout(() => {
+          document.body.removeChild(form);
+          document.body.removeChild(iframe);
+        }, 1000);
+
+        toast({
+          title: "Registration Successful! 🎉",
+          description: "Welcome to your fitness transformation journey. We'll contact you within 24 hours!",
+        });
+        
+        // Reset form
+        setFormData({ name: '', email: '', phone: '', goal: '' });
+        setErrors({ name: '', email: '', phone: '', goal: '' });
+
+      } catch (err) {
+        console.error('Submission error:', err);
+        toast({
+          title: "Submission Error",
+          description: "There was a problem submitting the form. Please try again.",
+          variant: "destructive",
+        });
+      }
     }
   };
 
@@ -143,6 +227,23 @@ const ContactForm = () => {
               {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
             
+             <div>
+                <label htmlFor="goal" className="block text-sm font-semibold text-gray-700 mb-2">
+                  Goal*
+                </label>
+                <input
+                  type="text"
+                  id="goal"
+                  value={formData.goal}
+                  onChange={(e) => handleInputChange('goal', e.target.value)}
+                  className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all ${
+                    errors.goal ? 'border-red-500' : 'border-gray-300'
+                  }`}
+                  placeholder="Enter your goal"
+                />
+                {errors.goal && <p className="text-red-500 text-sm mt-1">{errors.goal}</p>}
+              </div>
+
             <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-2xl">
               <h3 className="font-semibold text-gray-900 mb-3">What happens next?</h3>
               <ul className="space-y-2 text-sm text-gray-700">
