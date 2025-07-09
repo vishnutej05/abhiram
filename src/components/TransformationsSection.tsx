@@ -4,15 +4,14 @@ const TransformationsSection = () => {
   const [activeTransformation, setActiveTransformation] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [mobileCarouselIndex, setMobileCarouselIndex] = useState(0);
-  const [loadedImages, setLoadedImages] = useState(new Set([0])); // Track loaded transformations
 
   const transformations = [
     {
       name: "Ajay",
       age: 28,
       location: "Creator",
-      beforeImg: "https://drive.google.com/file/d/1DjPgYtbvgJGRU2JNfYqDpFmy7WYhXi3g/preview",
-      afterImg: "https://drive.google.com/file/d/1ouBdANK8hrCaPFR3PaWZg6zOAY7cGBN0/preview",
+      beforeImg: "/testimonials/Ajay/a.jpg",
+      afterImg: "/testimonials/Ajay/b.jpg",
       results: "Fittest Food Consultant",
       timeframe: "4 months",
       testimonial: "Being a food consultant, dieting is impossible for me :)) But, Abhiram made it work for me. Now I'm probably the fittest food consultant out there xD",
@@ -21,8 +20,8 @@ const TransformationsSection = () => {
       name: "Akshay",
       age: 32,
       location: "IT Professional", 
-      beforeImg: "https://drive.google.com/file/d/14dXfgc5K8fERsaI8jp9rtZFEk4S-rEV0/preview",
-      afterImg: "https://drive.google.com/file/d/1DLDZ7QwHXh2PvE2tIsoKpGw_JLddtqKx/preview",
+      beforeImg: "/testimonials/Akshay/a.JPG",
+      afterImg: "/testimonials/Akshay/b.JPG",
       results: "Enhanced Athletic Performance",
       timeframe: "5 months",
       testimonial: "I was much better at my sport (cricket), much better functionality; I love to hike, I was way better at it. Best decision I've made.",
@@ -31,8 +30,8 @@ const TransformationsSection = () => {
       name: "Alok",
       age: 24,
       location: "IT Professional",
-      beforeImg: "https://drive.google.com/file/d/1K4Ia-9EHXSOXMFyX54EdN1Y0wAwXwNGt/preview",
-      afterImg: "https://drive.google.com/file/d/1_xvh_N8-BxkUOZYgxVwkQLNatcPFIg_u/preview",
+      beforeImg: "/testimonials/Alok/a.jpg",
+      afterImg: "/testimonials/Alok/b.png",
       results: "Mental & Physical Transformation",
       timeframe: "6 months",
       testimonial: "Abhiram made me mentally stronger and I understand the core values to staying fit. He made me understand that this is a lifestyle choice.",
@@ -41,8 +40,8 @@ const TransformationsSection = () => {
       name: "Ashwath",
       age: 25,
       location: "IT Professional",
-      beforeImg: "https://drive.google.com/file/d/1fY8z2Y_k2f67KBLqH06a5HrWKPLb6kjN/preview",
-      afterImg: "https://drive.google.com/file/d/1jx4MW_gdLyiePWctns1yY3yO91DYNq0k/preview",
+      beforeImg: "/testimonials/Ashwath/a.JPG",
+      afterImg: "/testimonials/Ashwath/b.JPG",
       results: "Strength & Functional Fitness",
       timeframe: "4 months",
       testimonial: "Banger program, helped me get in shape, squat SHIT heavy and do more pull ups which is exactly what I wanted.",
@@ -51,8 +50,8 @@ const TransformationsSection = () => {
       name: "Karavi",
       age: 28,
       location: "Musician",
-      beforeImg: "https://drive.google.com/file/d/1FwC0Ei9v2X3HorZH6Ue0-K0Hyfhaug-U/preview",
-      afterImg: "https://drive.google.com/file/d/1DAP1EZq07ehNfK47ZSaPLs6rnBwuFfvY/preview",
+      beforeImg: "/testimonials/Karavi/a.JPG",
+      afterImg: "/testimonials/Karavi/b.JPG",
       results: "Complete Body Transformation",
       timeframe: "5 months",
       testimonial: "The program perfectly balanced my creative lifestyle with fitness goals. Sustainable approach that actually works long-term.",
@@ -61,8 +60,8 @@ const TransformationsSection = () => {
       name: "Nabeel",
       age: 27,
       location: "IT Professional",
-      beforeImg: "https://drive.google.com/file/d/1qVtiI4m3e5SGF1_H4DDMIuaw28_B6ykC/preview",
-      afterImg: "https://drive.google.com/file/d/1YQPIUdF_I_pfNoZ4nd6_cpGbLJxeG_KX/preview",
+      beforeImg: "/testimonials/Nabeel/a.JPG",
+      afterImg: "/testimonials/Nabeel/b.JPG",
       results: "Lean & Strong Physique",
       timeframe: "4 months",
       testimonial: "Abhiram's program is amazing, best part is the fact that there's no BS, it's straight to the point.",
@@ -71,8 +70,8 @@ const TransformationsSection = () => {
       name: "Rahul",
       age: 29,
       location: "Assistant Professor",
-      beforeImg: "https://drive.google.com/file/d/1CxPakmJ9GI6LKfG3hTbzCvWLVDBWgS1-/preview",
-      afterImg: "https://drive.google.com/file/d/1UgpApNgPWu7qXTauVj_aMoe53t7opf40/preview",
+      beforeImg: "/testimonials/Rahul/a.png",
+      afterImg: "/testimonials/Rahul/b.jpeg",
       results: "7kg Muscle Gain",
       timeframe: "6 months",
       testimonial: "I was always skinny and could never figure out the eating part. This program made it easier and way less complicated, I was able to put on over 7kgs in muscle working with Coach Abhiram.",
@@ -81,57 +80,13 @@ const TransformationsSection = () => {
       name: "Vinod",
       age: 32,
       location: "Professional",
-      beforeImg: "https://drive.google.com/file/d/1it2_Cqv_lK_--zEIDRtiKXhpdGk_eChL/preview",
-      afterImg: "https://drive.google.com/file/d/1Ui1G3M42Nx7iwMgZaC4Dj5S9qS_vBkaa/preview",
+      beforeImg: "/testimonials/Vinod/a.JPG",
+      afterImg: "/testimonials/Vinod/b.JPG",
       results: "Lost 10kg Fat, Gained 5kg Muscle",
       timeframe: "7 months",
       testimonial: "I was overweight in the past. Abhiram's - themight program changed everything for me, I lost over 10kgs in fat and put on over 5kgs of muscle.",
     }
   ];
-
-  // Add custom CSS to hide Google Drive controls in gallery cards
-  useEffect(() => {
-    const style = document.createElement('style');
-    style.textContent = `
-      .gallery-card iframe {
-        pointer-events: none;
-      }
-      .gallery-card iframe::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: transparent;
-        z-index: 10;
-      }
-    `;
-    document.head.appendChild(style);
-    
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, []);
-
-  // Load images when they become active or visible
-  const loadTransformation = (index) => {
-    setLoadedImages(prev => new Set([...prev, index]));
-  };
-
-  // Load current page transformations when page changes
-  useEffect(() => {
-    const startIndex = currentPage * 4;
-    const endIndex = Math.min(startIndex + 4, transformations.length);
-    for (let i = startIndex; i < endIndex; i++) {
-      loadTransformation(i);
-    }
-  }, [currentPage, transformations.length]);
-
-  // Load mobile carousel images
-  useEffect(() => {
-    loadTransformation(mobileCarouselIndex);
-  }, [mobileCarouselIndex]);
 
   // Auto-scroll for mobile carousel
   useEffect(() => {
@@ -195,35 +150,21 @@ const TransformationsSection = () => {
                   {transformations.map((transformation, index) => (
                     <div key={index} className="min-w-full h-full flex">
                       <div className="w-1/2 relative">
-                        {loadedImages.has(index) ? (
-                          <iframe 
-                            src={transformation.beforeImg}
-                            title={`${transformation.name} before`}
-                            className="w-full h-full object-cover border-0"
-                            allow="autoplay"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                            <div className="text-gray-500">Loading...</div>
-                          </div>
-                        )}
+                        <img 
+                          src={transformation.beforeImg}
+                          alt={`${transformation.name} before`}
+                          className="w-full h-full object-contain"
+                        />
                         <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
                           <span className="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">BEFORE</span>
                         </div>
                       </div>
                       <div className="w-1/2 relative">
-                        {loadedImages.has(index) ? (
-                          <iframe 
-                            src={transformation.afterImg}
-                            title={`${transformation.name} after`}
-                            className="w-full h-full object-cover border-0"
-                            allow="autoplay"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                            <div className="text-gray-500">Loading...</div>
-                          </div>
-                        )}
+                        <img 
+                          src={transformation.afterImg}
+                          alt={`${transformation.name} after`}
+                          className="w-full h-full object-contain"
+                        />
                         <div className="absolute top-2 right-2 sm:top-3 sm:right-3">
                           <span className="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">AFTER</span>
                         </div>
@@ -302,35 +243,21 @@ const TransformationsSection = () => {
               {/* Before/After Images */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="relative group">
-                  {loadedImages.has(activeTransformation) ? (
-                    <iframe 
-                      src={transformations[activeTransformation].beforeImg}
-                      title={`${transformations[activeTransformation].name} before transformation`}
-                      className="w-full h-64 object-cover rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-105 border-0"
-                      allow="autoplay"
-                    />
-                  ) : (
-                    <div className="w-full h-64 bg-gray-200 rounded-2xl shadow-xl flex items-center justify-center">
-                      <div className="text-gray-500">Loading...</div>
-                    </div>
-                  )}
+                  <img 
+                    src={transformations[activeTransformation].beforeImg}
+                    alt={`${transformations[activeTransformation].name} before transformation`}
+                    className="w-full h-80 object-contain rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-105"
+                  />
                   <div className="absolute bottom-3 left-3">
                     <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-dm-sans font-bold shadow-lg">BEFORE</span>
                   </div>
                 </div>
                 <div className="relative group">
-                  {loadedImages.has(activeTransformation) ? (
-                    <iframe 
-                      src={transformations[activeTransformation].afterImg}
-                      title={`${transformations[activeTransformation].name} after transformation`}
-                      className="w-full h-64 object-cover rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-105 border-0"
-                      allow="autoplay"
-                    />
-                  ) : (
-                    <div className="w-full h-64 bg-gray-200 rounded-2xl shadow-xl flex items-center justify-center">
-                      <div className="text-gray-500">Loading...</div>
-                    </div>
-                  )}
+                  <img 
+                    src={transformations[activeTransformation].afterImg}
+                    alt={`${transformations[activeTransformation].name} after transformation`}
+                    className="w-full h-80 object-contain rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-105"
+                  />
                   <div className="absolute bottom-3 right-3">
                     <span className="bg-mint-500 text-white px-3 py-1 rounded-full text-sm font-dm-sans font-bold shadow-lg">AFTER</span>
                   </div>
@@ -389,45 +316,28 @@ const TransformationsSection = () => {
                             <div 
                               key={actualIndex}
                               className={`cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-xl 
-                              bg-white rounded-xl shadow-lg flex flex-col h-[240px] group gallery-card
+                              soft-blush rounded-xl shadow-lg flex flex-col h-[240px] group
                               ${activeTransformation === actualIndex ? 'ring-3 ring-coral-400 shadow-xl scale-105' : 'hover:shadow-xl'}`}
-                              onClick={() => {
-                                setActiveTransformation(actualIndex);
-                                loadTransformation(actualIndex);
-                              }}
+                              onClick={() => setActiveTransformation(actualIndex)}
                             >
                               <div className="relative h-[150px] p-2">
-                                <div className="grid grid-cols-2 gap-1 h-full">
-                                  <div className="relative rounded-lg overflow-hidden">
-                                    {loadedImages.has(actualIndex) ? (
-                                      <iframe 
-                                        src={transformation.beforeImg}
-                                        title={`${transformation.name} before`}
-                                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 border-0"
-                                        allow="autoplay"
-                                      />
-                                    ) : (
-                                      <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                                        <div className="text-xs text-gray-500">Loading...</div>
-                                      </div>
-                                    )}
+                                <div className="grid grid-cols-2 gap-2 h-full">
+                                  <div className="relative rounded-lg overflow-hidden border-2 border-gray-200">
+                                    <img 
+                                      src={transformation.beforeImg}
+                                      alt={`${transformation.name} before`}
+                                      className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                                    />
                                     <div className="absolute top-1 left-1">
                                       <span className="bg-red-500 text-white px-1 py-0.5 rounded text-xs font-bold">BEFORE</span>
                                     </div>
                                   </div>
-                                  <div className="relative rounded-lg overflow-hidden">
-                                    {loadedImages.has(actualIndex) ? (
-                                      <iframe 
-                                        src={transformation.afterImg}
-                                        title={`${transformation.name} after`}
-                                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 border-0"
-                                        allow="autoplay"
-                                      />
-                                    ) : (
-                                      <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                                        <div className="text-xs text-gray-500">Loading...</div>
-                                      </div>
-                                    )}
+                                  <div className="relative rounded-lg overflow-hidden border-2 border-gray-200">
+                                    <img 
+                                      src={transformation.afterImg}
+                                      alt={`${transformation.name} after`}
+                                      className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                                    />
                                     <div className="absolute top-1 right-1">
                                       <span className="bg-mint-500 text-white px-1 py-0.5 rounded text-xs font-bold">AFTER</span>
                                     </div>
@@ -476,7 +386,7 @@ const TransformationsSection = () => {
                       className={`h-2 rounded-full transition-all duration-300 ${
                         currentPage === index 
                           ? "w-6 bg-gradient-to-r from-coral-500 to-orange-500 shadow-lg" 
-                          : "w-2 bg-gray-300 hover:bg-gray-400"
+                          : "w-2 bg-gray-600 hover:bg-gray-800"
                       }`}
                       aria-label={`Go to page ${index + 1}`}
                     />
