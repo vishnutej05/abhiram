@@ -153,11 +153,11 @@ const ContactForm = () => {
         <div className="relative z-10 px-4 py-12">
           {/* Mobile Header */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 font-formom">
               Transform Your{' '}
               <span className="text-emerald-700">Body & Mind</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 max-w-lg mx-auto">
+            <p className="text-base sm:text-lg text-gray-600 max-w-lg mx-auto font-helvetica">
               Ready to unlock your full potential? Join thousands who've transformed their lives.
             </p>
           </div>
@@ -349,13 +349,13 @@ const ContactForm = () => {
       <section className="hidden lg:block seamless-section soft-sky">
         <div className="w-full py-20">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-formom">
               Transform Your{' '}
               <span className="text-emerald-700">
                 Body & Mind
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-helvetica">
               Join thousands who've transformed their lives with our proven fitness system.
             </p>
           </div>
@@ -374,10 +374,10 @@ const ContactForm = () => {
             {/* Right side - Form */}
             <div className="p-8 lg:p-12 bg-white-50 flex flex-col justify-center">
               <div className="mb-8 text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 font-helvetica">
                   Start Your Transformation
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 font-helvetica">
                   Fill out the form below and let's begin your journey together.
                 </p>
               </div>

@@ -42,41 +42,40 @@ const HeroSection = () => {
       </div>
 
       {/* Content - Different layouts for mobile and desktop */}
-      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 pt-16 md:pt-20">
+      <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 pt-8 md:pt-20">
         {/* Mobile Content (centered, stacked) */}
-        <div className="md:hidden">
-          <div className="text-white space-y-6 animate-fade-in text-center">
-            <div className="space-y-4">
-              <h1 className="text-3xl font-bold leading-tight uppercase tracking-tight font-formom">
-                Hi, I'm <span className="text-emerald-600 tracking-wide block mt-1">Abhiram</span>
+        <div className="md:hidden min-h-screen flex flex-col justify-center">
+          <div className="text-white space-y-8 animate-fade-in text-center -mt-16">
+            <div className="space-y-6">
+              <h1 className="mt-5 text-3xl font-bold leading-tight uppercase tracking-tight font-formom">
+                Hi, I'm <span className="text-emerald-400 tracking-wide block mt-2">Abhiram</span>
               </h1>
-              <p className="text-base text-gray-200 font-medium leading-relaxed mx-auto px-2 font-helvetica">
-                Founder of themight and your online fitness coach based in Kochi, Kerala.
-                I help real people achieve real, lasting change — using a mix of mental coaching, science-backed strategies, and purpose-driven guidance.
+              <p className="text-lg text-gray-200 font-medium leading-relaxed mx-auto px-2 max-w-sm font-helvetica">
+                Founder of themight and your online fitness coach based in Kochi, Kerala. I help real people achieve real, lasting change.
               </p>
             </div>
             
-            <div className="pt-4">
+            <div className="pt-6">
               <button 
                 onClick={scrollToForm}
-                className="btn-matte text-lg font-bold w-full py-4 rounded-full shadow-lg font-helvetica"
+                className="btn-matte text-lg font-bold w-full max-w-xs mx-auto py-4 rounded-full shadow-lg font-helvetica"
               >
                 Start Your Fitness Journey Today
               </button>
             </div>
             
             {/* Stats - Card Style for Mobile */}
-            <div className="grid grid-cols-3 gap-2 pt-6 mt-6 border-t border-white/10">
-              <div className="bg-black/40 backdrop-blur-sm rounded-xl p-3 transform hover:scale-105 transition-all duration-300">
-                <div className="text-2xl font-bold text-emerald-600 mb-1 font-formom">500+</div>
+            <div className="grid grid-cols-3 gap-3 pt-8 max-w-sm mx-auto">
+              <div className="bg-black/50 backdrop-blur-sm rounded-xl p-4 transform hover:scale-105 transition-all duration-300">
+                <div className="text-2xl font-bold text-emerald-400 mb-1 font-formom">500+</div>
                 <div className="text-xs text-gray-300 font-medium font-helvetica">TRANSFORMED</div>
               </div>
-              <div className="bg-black/40 backdrop-blur-sm rounded-xl p-3 transform hover:scale-105 transition-all duration-300">
+              <div className="bg-black/50 backdrop-blur-sm rounded-xl p-4 transform hover:scale-105 transition-all duration-300">
                 <div className="text-2xl font-bold text-red-400 mb-1 font-formom">95%</div>
                 <div className="text-xs text-gray-300 font-medium font-helvetica">SUCCESS RATE</div>
               </div>
-              <div className="bg-black/40 backdrop-blur-sm rounded-xl p-3 transform hover:scale-105 transition-all duration-300">
-                <div className="text-2xl font-bold text-emerald-600 mb-1 font-formom">24/7</div>
+              <div className="bg-black/50 backdrop-blur-sm rounded-xl p-4 transform hover:scale-105 transition-all duration-300">
+                <div className="text-2xl font-bold text-emerald-400 mb-1 font-formom">24/7</div>
                 <div className="text-xs text-gray-300 font-medium font-helvetica">SUPPORT</div>
               </div>
             </div>
@@ -88,7 +87,7 @@ const HeroSection = () => {
           <div className="text-[#E6D9C4] space-y-8 animate-fade-in">
             <div className="space-y-6">
               <h1 className="text-5xl lg:text-7xl font-black leading-[0.9] uppercase tracking-tight font-formom">
-                Your body deserves<span className="text-[#BACDB0] font-extrabold"> better.</span>
+                Your body deserves<span className="text-[#BACDB0] font-extrabold tracking-wide"> better.</span>
                 <br />
                 So do<span className="text-[#C97C5D] font-extrabold"> you.</span>
               </h1>

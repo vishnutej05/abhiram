@@ -91,13 +91,14 @@ const FeaturesSection = () => {
           <div className="flex flex-col md:flex-row items-center md:items-center animate-fade-in" style={{ minHeight: 0, marginBottom: 0 }}>
             <div className="hidden md:block w-1/2"></div>
             <div className="w-full md:w-1/2 flex flex-col justify-center items-start md:pr-16 md:pl-10 py-8">
-              <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight text-center">
-                What You Get
+              <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight text-center font-formom">
+                What You
+                <span className="text-emerald-600"> Get</span>
               </h2>
 
               <div className="h-2 w-24 bg-emerald-600 rounded-full ml-2"></div>
 
-              <div className="ml-2 text-lg text-gray-700 leading-relaxed font-semibold max-w-3xl text-left space-y-2 mt-4">
+              <div className="ml-2 text-lg text-gray-700 leading-relaxed font-semibold max-w-3xl text-left space-y-2 mt-4 font-helvetica">
                 <p>Unlock your full potential with support tailored to your unique goals. Here's what you'll get:</p>
                 
                 <ul className="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
@@ -112,7 +113,7 @@ const FeaturesSection = () => {
           </div>
           
           {/* Desktop Continuous Scrolling Animation */}
-          <div className="overflow-hidden p-3 pb-5">
+          <div className="overflow-hidden p-3 pb-5 font-helvetica ">
             <div className="flex animate-slide">
               {/* First set of feature cards */}
               {features.map((feature, index) => (

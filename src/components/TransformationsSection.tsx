@@ -12,7 +12,7 @@ const TransformationsSection = () => {
       location: "Creator",
       beforeImg: "/testimonials/Ajay/b.jpg",
       afterImg: "/testimonials/Ajay/a.jpg",
-      results: "Fittest Food Consultant",
+      results: "Complete body transformation",
       timeframe: "4 months",
       testimonial: "Being a food consultant, dieting is impossible for me :)) But, Abhiram made it work for me. Now I'm probably the fittest food consultant out there xD",
     },
@@ -177,19 +177,19 @@ const TransformationsSection = () => {
               {/* Mobile Transformation Info */}
               <div className="p-4 sm:p-6 bg-gradient-to-r from-emerald-50 to-stone-50">
                 <div className="text-center space-y-2 sm:space-y-3">
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 font-formom">
                     {transformations[mobileCarouselIndex].name}
                   </h3>
-                  <div className="flex justify-center space-x-3 text-sm text-gray-600">
+                  <div className="flex justify-center space-x-3 text-sm text-gray-600 font-helvetica">
                     <span className="bg-white px-2 py-1 rounded-full shadow text-xs sm:text-sm">
                       {transformations[mobileCarouselIndex].age} years
                     </span>
                   </div>
                   <div className="space-y-1 sm:space-y-2">
-                    <div className="text-sm sm:text-lg font-bold text-emerald-700">
+                    <div className="text-sm sm:text-lg font-bold text-emerald-700 font-helvetica">
                       {transformations[mobileCarouselIndex].results}
                     </div>
-                    <div className="text-xs sm:text-sm text-gray-700 font-medium">
+                    <div className="text-xs sm:text-sm text-gray-700 font-medium font-helvetica">
                       Timeline: {transformations[mobileCarouselIndex].timeframe}
                     </div>
                   </div>
@@ -228,11 +228,11 @@ const TransformationsSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Desktop Header Section */}
           <div className="text-start mb-12 animate-fade-in">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-3 leading-tight">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-3 leading-tight font-formom">
               Real {' '} <span className="text-emerald-700"> Transformations </span>
             </h2>
             <div className="h-2 w-24 bg-emerald-600 rounded-full"></div>
-            <p className="mt-3 text-gray-700 leading-relaxed font-semibold text-xl max-w-2xl">
+            <p className="mt-3 text-gray-700 leading-relaxed font-semibold text-xl max-w-2xl font-helvetica">
               See how our clients achieved their fitness transformation journey with personalized coaching
             </p>
           </div>
@@ -267,24 +267,24 @@ const TransformationsSection = () => {
               {/* Transformation Details */}
               <div className="space-y-4 animate-fade-in">
                 <div>
-                  <h3 className="text-2xl font-dm-sans font-bold text-gray-900 mb-2">
+                  <h3 className="text-2xl font-dm-sans font-bold text-gray-900 mb-2 font-formom">
                     {transformations[activeTransformation].name}
                   </h3>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p className="text-gray-700 leading-relaxed font-helvetica">
                     {transformations[activeTransformation].age} years • {transformations[activeTransformation].location}
                   </p>
                 </div>
 
                 <div className="space-y-3">
-                  <div className="text-lg font-dm-sans font-bold text-emerald-700">
+                  <div className="text-lg font-bold text-emerald-700 font-helvetica">
                     {transformations[activeTransformation].results}
                   </div>
-                  <div className="text-gray-700 leading-relaxed">
+                  <div className="text-gray-700 leading-relaxed font-helvetica">
                     Timeline: {transformations[activeTransformation].timeframe}
                   </div>
                 </div>
 
-                <blockquote className="text-base italic text-gray-700 leading-relaxed font-light border-l-4 border-emerald-600 pl-4 bg-white/50 p-3 rounded-r-lg shadow-md">
+                <blockquote className="text-base italic text-gray-700 leading-relaxed font-light border-l-4 border-emerald-600 pl-4 bg-white/50 p-3 rounded-r-lg shadow-md font-helvetica">
                   "{transformations[activeTransformation].testimonial}"
                 </blockquote>
                 </div>
@@ -295,7 +295,7 @@ const TransformationsSection = () => {
             <div className="relative max-w-7xl mx-auto">
               {/* Gallery Header */}
               <div className="text-center mb-6">
-                <h3 className="text-2xl font-dm-sans font-bold text-gray-900 mb-2">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2 font-helvetica">
                   More Success Stories
                 </h3>
                 <div className="h-1 w-16 bg-gradient-to-r from-emerald-700 to-emerald-800 rounded-full mx-auto"></div>
@@ -345,13 +345,13 @@ const TransformationsSection = () => {
                                 </div>
                               </div>
                               <div className="text-center p-3 border-t border-gray-100 flex flex-col justify-center h-[90px] space-y-1">
-                                <h4 className="font-dm-sans font-bold text-gray-900 text-base group-hover:text-emerald-700 transition-colors">
+                                <h4 className="font-bold text-gray-900 text-base group-hover:text-emerald-700 transition-colors font-helvetica">
                                   {transformation.name}
                                 </h4>
-                                <p className="text-xs text-emerald-700 font-semibold">
+                                <p className="text-xs text-emerald-700 font-semibold font-helvetica">
                                   {transformation.results}
                                 </p>
-                                <p className="text-xs text-gray-500">
+                                <p className="text-xs text-gray-500 font-helvetica">
                                   {transformation.timeframe}
                                 </p>
                               </div>

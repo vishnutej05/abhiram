@@ -39,14 +39,14 @@ const Footer = () => {
           </div>
           
           {/* Contact Info */}
-          <div className="text-emerald-700 text-sm space-y-1">
+          <div className="text-emerald-700 text-sm space-y-1 font-helvetica">
             <p>coach@themight.com</p>
           </div>
         </div>
         
         {/* Bottom Bar */}
         <div className="border-t border-emerald-200 mt-8 pt-6 text-center">
-          <p className="text-emerald-600 text-sm">
+          <p className="text-emerald-600 text-sm font-helvetica">
             © 2025 themight. All rights reserved.
           </p>
         </div>

@@ -61,7 +61,7 @@ const FAQSection = () => {
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gradient-to-br from-emerald-100 to-stone-150 transition-colors"
               >
-                <h3 className="text-lg font-semibold text-gray-900 pr-4 font-formom">
+                <h3 className="text-lg font-semibold text-gray-900 pr-4 font-formom md:font-helvetica">
                   {faq.question}
                 </h3>
                 <div className="flex-shrink-0">

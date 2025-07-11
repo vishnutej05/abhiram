@@ -57,7 +57,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-white font-bold text-xl md:text-2xl font-formom">
+            <Link to="/" className="text-white font-bold text-xl md:text-2xl font-formom tracking-wider">
               themight
             </Link>
           </div>
