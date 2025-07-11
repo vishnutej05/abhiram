@@ -46,15 +46,15 @@ const Navbar = () => {
     <nav 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-black/25 backdrop-blur-lg shadow-lg' 
-          : 'bg-black/15 backdrop-blur-sm'
+          ? 'bg-#1C1C1C/95 backdrop-blur-lg shadow-lg' 
+          : 'bg-1C1C1C/80 backdrop-blur-sm'
       }`}
     >
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-white font-bold text-xl md:text-2xl">
+            <Link to="/" className="text-white font-bold text-xl md:text-2xl font-formom">
               themight
             </Link>
           </div>
@@ -66,15 +66,15 @@ const Navbar = () => {
                 <div key={item.id} className="relative group">
                   <button 
                     onClick={() => scrollToSection(item.id)}
-                    className="text-gray-300 hover:text-white transition-colors font-medium text-base lg:text-lg py-2 px-2 rounded-md hover:bg-white/10"
+                    className="text-gray-300 hover:text-white transition-colors font-medium text-base lg:text-lg py-2 px-2 rounded-md hover:bg-white/10 font-helvetica"
                   >
                     {item.label}
                   </button>
                   {/* Stylish Tooltip - Bottom positioned with orange background */}
                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <div className="bg-orange-500 text-white text-xs px-2 py-1 rounded-md shadow-lg whitespace-nowrap">
+                    <div className="bg-emerald-600 text-white text-xs px-2 py-1 rounded-md shadow-lg whitespace-nowrap">
                       {item.tooltip}
-                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-l-4 border-r-4 border-b-4 border-transparent border-b-orange-500"></div>
+                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-l-4 border-r-4 border-b-4 border-transparent border-b-emerald-600"></div>
                     </div>
                   </div>
                 </div>

@@ -16,7 +16,7 @@ const AboutSection = () => {
       year: "2019",
       description: "Started with a dream and determination",
       icon: Flame,
-      color: "from-orange-400 to-red-500",
+      color: "from-emerald-600 to-stone-600",
       motivationalText: "The journey of a thousand miles begins with a single step"
     },
     {
@@ -27,7 +27,7 @@ const AboutSection = () => {
       year: "2021",
       description: "Consistency became the foundation",
       icon: Zap,
-      color: "from-blue-400 to-purple-500",
+      color: "from-stone-600 to-emerald-600",
       motivationalText: "Success is the sum of small efforts repeated daily"
     },
     {
@@ -38,7 +38,7 @@ const AboutSection = () => {
       year: "2024",
       description: "Achieved what once seemed impossible",
       icon: Trophy,
-      color: "from-green-400 to-emerald-500",
+      color: "from-emerald-600 to-teal-600",
       motivationalText: "Your body can stand almost anything. It's your mind you have to convince"
     }
   ];
@@ -61,37 +61,17 @@ const AboutSection = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const FloatingElement = ({ children, delay = 0, className = "" }) => (
-    <div 
-      className={`absolute animate-bounce ${className}`}
-      style={{ animationDelay: `${delay}ms`, animationDuration: '3s' }}
-    >
-      {children}
-    </div>
-  );
+  }, [transformationJourney.length]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-purple-50 overflow-hidden">
-      {/* Floating Background Elements */}
-      <FloatingElement delay={0} className="top-20 left-10 text-purple-200">
-        <Star size={24} />
-      </FloatingElement>
-      <FloatingElement delay={1000} className="top-40 right-20 text-blue-200">
-        <Target size={32} />
-      </FloatingElement>
-      <FloatingElement delay={2000} className="bottom-40 left-20 text-green-200">
-        <Heart size={28} />
-      </FloatingElement>
-
+    <section ref={sectionRef} className="relative min-h-screen bg-orange-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Header */}
         <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-6xl lg:text-7xl font-dm-sans font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 mb-6">
+          <h2 className="text-6xl lg:text-7xl font-dm-sans font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-stone-700 mb-6 font-formom">
             The Journey
           </h2>
-          <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto font-helvetica">
             Witness the transformation that inspired thousands to begin their own journey
           </p>
         </div>
@@ -101,7 +81,7 @@ const AboutSection = () => {
           {/* Central Timeline Line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-200 rounded-full">
             <div 
-              className="w-full bg-gradient-to-b from-orange-500 via-purple-500 to-green-500 rounded-full transition-all duration-1000 ease-out"
+              className="w-full bg-gradient-to-b from-emerald-600 via-emerald-700 to-stone-600 rounded-full transition-all duration-1000 ease-out"
               style={{ height: `${scrollProgress * 100}%` }}
             />
           </div>
@@ -174,19 +154,19 @@ const AboutSection = () => {
                           ? 'translate-y-0 opacity-100' 
                           : 'translate-y-8 opacity-50'
                       }`}>
-                        <h3 className="text-3xl font-dm-sans font-bold text-gray-800 mb-2">
+                        <h3 className="text-3xl font-dm-sans font-bold text-gray-800 mb-2 font-formom">
                           {stage.title}
                         </h3>
-                        <h4 className="text-lg font-inter text-gray-600 mb-3">
+                        <h4 className="text-lg font-inter text-gray-600 mb-3 font-helvetica">
                           {stage.subtitle}
                         </h4>
-                        <p className="text-sm text-gray-500 mb-4">
+                        <p className="text-sm text-gray-500 mb-4 font-helvetica">
                           {stage.description}
                         </p>
 
                         {/* Motivational Quote */}
-                        <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-lg border-l-4 border-purple-400">
-                          <p className="text-sm italic text-gray-700 font-inter">
+                        <div className="bg-gradient-to-r from-emerald-50 to-stone-50 p-4 rounded-lg border-l-4 border-emerald-400">
+                          <p className="text-sm italic text-gray-700 font-inter font-helvetica">
                             "{stage.motivationalText}"
                           </p>
                         </div>
@@ -203,19 +183,19 @@ const AboutSection = () => {
                           ? 'translate-y-0 opacity-100' 
                           : 'translate-y-8 opacity-50'
                       }`}>
-                        <h3 className="text-3xl font-dm-sans font-bold text-gray-800 mb-2">
+                        <h3 className="text-3xl font-dm-sans font-bold text-gray-800 mb-2 font-formom">
                           {stage.title}
                         </h3>
-                        <h4 className="text-lg font-inter text-gray-600 mb-3">
+                        <h4 className="text-lg font-inter text-gray-600 mb-3 font-helvetica">
                           {stage.subtitle}
                         </h4>
-                        <p className="text-sm text-gray-500 mb-4">
+                        <p className="text-sm text-gray-500 mb-4 font-helvetica">
                           {stage.description}
                         </p>
 
                         {/* Motivational Quote */}
-                        <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-4 rounded-lg border-l-4 border-purple-400">
-                          <p className="text-sm italic text-gray-700 font-inter">
+                        <div className="bg-gradient-to-r from-emerald-50 to-stone-50 p-4 rounded-lg border-l-4 border-emerald-400">
+                          <p className="text-sm italic text-gray-700 font-inter font-helvetica">
                             "{stage.motivationalText}"
                           </p>
                         </div>
@@ -291,10 +271,10 @@ const AboutSection = () => {
         {/* Final Inspiration */}
         <div className="mt-20 text-center animate-fade-in">
           <div className="max-w-4xl mx-auto rounded-3xl p-12 text-gray-900">
-            <blockquote className="text-3xl font-dm-sans font-light italic leading-relaxed mb-8">
+            <blockquote className="text-3xl font-dm-sans font-light italic leading-relaxed mb-8 font-formom">
               "I wasn't born with a perfect physique. Every muscle, every achievement, every transformation story you see today was built through consistency, discipline, and an unwavering belief in the process."
             </blockquote>
-            <cite className="text-xl font-inter opacity-90">— Abhiram Nair</cite>
+            <cite className="text-xl font-inter opacity-90 font-helvetica">— Abhiram Nair</cite>
             
             {/* <div className="mt-8 flex justify-center">
               <ChevronDown className="w-8 h-8 animate-bounce" />

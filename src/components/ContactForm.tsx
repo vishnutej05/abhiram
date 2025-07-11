@@ -141,7 +141,7 @@ const ContactForm = () => {
     <div id="contact">
       <>
         {/* Mobile Section - Completely Separate */}
-        <section ref={sectionRef} className="block lg:hidden seamless-section soft-peach relative overflow-hidden">
+        <section ref={sectionRef} className="block lg:hidden seamless-section soft-lavender relative overflow-hidden">
         {/* Mobile Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
@@ -155,7 +155,7 @@ const ContactForm = () => {
           <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               Transform Your{' '}
-              <span className="text-orange-600">Body & Mind</span>
+              <span className="text-emerald-700">Body & Mind</span>
             </h2>
             <p className="text-base sm:text-lg text-gray-600 max-w-lg mx-auto">
               Ready to unlock your full potential? Join thousands who've transformed their lives.
@@ -165,10 +165,10 @@ const ContactForm = () => {
           {/* Mobile Form Container */}
           <div className="max-w-md mx-auto bg-white/95 backdrop-blur-sm rounded-3xl shadow-xl p-6">
             <div className="mb-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">
+              <h3 className="text-xl font-bold text-gray-900 mb-2 text-center font-formom">
                 Start Your Transformation
               </h3>
-              <p className="text-gray-600 text-center text-sm">
+              <p className="text-gray-600 text-center text-sm font-helvetica">
                 Fill out the form below and let's begin your journey together.
               </p>
             </div>
@@ -186,7 +186,7 @@ const ContactForm = () => {
                     required
                     value={formData.firstName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
                   />
                 </div>
                 
@@ -201,7 +201,7 @@ const ContactForm = () => {
                     required
                     value={formData.lastName}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
                   />
                 </div>
               </div>
@@ -217,7 +217,7 @@ const ContactForm = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
                 />
               </div>
               
@@ -232,7 +232,7 @@ const ContactForm = () => {
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
                 />
               </div>
               
@@ -246,7 +246,7 @@ const ContactForm = () => {
                   required
                   value={formData.age}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                  className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-400 focus:border-transparent bg-white"
                 >
                   <option value="">Select Age Range</option>
                   <option value="18-25">18-25 years</option>
@@ -267,7 +267,7 @@ const ContactForm = () => {
                   required
                   value={formData.goal}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                  className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-400 focus:border-transparent bg-white"
                 >
                   <option value="">Select Your Goal</option>
                   <option value="weight-loss">Weight Loss</option>
@@ -289,7 +289,7 @@ const ContactForm = () => {
                   required
                   value={formData.fitnessLevel}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                  className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-400 focus:border-transparent bg-white"
                 >
                   <option value="">Select Your Level</option>
                   <option value="beginner">Beginner</option>
@@ -308,7 +308,7 @@ const ContactForm = () => {
                   required
                   value={formData.workoutFrequency}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                  className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-400 focus:border-transparent bg-white"
                 >
                   <option value="">How often can you workout?</option>
                   <option value="2-3-times">2-3 times per week</option>
@@ -329,14 +329,14 @@ const ContactForm = () => {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Tell us about your fitness journey..."
-                  className="w-full px-4 py-3 border border-orange-200 rounded-xl focus:ring-2 focus:ring-orange-400 focus:border-transparent resize-none"
+                  className="w-full px-4 py-3 border border-emerald-200 rounded-xl focus:ring-2 focus:ring-emerald-400 focus:border-transparent resize-none"
                 />
               </div>
               
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-coral-500 to-orange-500 hover:from-coral-600 hover:to-orange-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none"
+                className="w-full bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none"
               >
                 {isSubmitting ? 'SUBMITTING...' : 'START MY TRANSFORMATION'}
               </button>
@@ -346,12 +346,12 @@ const ContactForm = () => {
       </section>
 
       {/* Desktop Section - Completely Separate */}
-      <section className="hidden lg:block seamless-section soft-peach">
+      <section className="hidden lg:block seamless-section soft-sky">
         <div className="w-full py-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Transform Your{' '}
-              <span className="text-orange-600">
+              <span className="text-emerald-700">
                 Body & Mind
               </span>
             </h2>
@@ -395,7 +395,7 @@ const ContactForm = () => {
                       required
                       value={formData.firstName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
                     />
                   </div>
                   
@@ -410,7 +410,7 @@ const ContactForm = () => {
                       required
                       value={formData.lastName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
                     />
                   </div>
                 </div>
@@ -426,7 +426,7 @@ const ContactForm = () => {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
                   />
                 </div>
                 
@@ -442,7 +442,7 @@ const ContactForm = () => {
                       required
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:border-transparent"
                     />
                   </div>
                   
@@ -456,7 +456,7 @@ const ContactForm = () => {
                       required
                       value={formData.age}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                      className="w-full px-4 py-3 border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:border-transparent bg-white"
                     >
                       <option value="">Select Age Range</option>
                       <option value="18-25">18-25 years</option>
@@ -478,7 +478,7 @@ const ContactForm = () => {
                     required
                     value={formData.goal}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                    className="w-full px-4 py-3 border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:border-transparent bg-white"
                   >
                     <option value="">Select Your Goal</option>
                     <option value="weight-loss">Weight Loss</option>
@@ -501,7 +501,7 @@ const ContactForm = () => {
                       required
                       value={formData.fitnessLevel}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                      className="w-full px-4 py-3 border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:border-transparent bg-white"
                     >
                       <option value="">Select Your Level</option>
                       <option value="beginner">Beginner</option>
@@ -520,7 +520,7 @@ const ContactForm = () => {
                       required
                       value={formData.workoutFrequency}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent bg-white"
+                      className="w-full px-4 py-3 border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:border-transparent bg-white"
                     >
                       <option value="">How often can you workout?</option>
                       <option value="2-3-times">2-3 times per week</option>
@@ -542,7 +542,7 @@ const ContactForm = () => {
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell us about your fitness journey..."
-                    className="w-full px-4 py-3 border border-orange-200 rounded-lg focus:ring-2 focus:ring-orange-400 focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 border border-emerald-200 rounded-lg focus:ring-2 focus:ring-emerald-400 focus:border-transparent resize-none"
                   />
                 </div>
                 

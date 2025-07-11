@@ -5,6 +5,7 @@ import type { Config } from "tailwindcss";
 export default {
 	darkMode: ["class"],
 	content: [
+		"./index.html",
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
@@ -21,7 +22,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
+				sans: ['Helvetica', 'Arial', 'sans-serif'],
+				display: ['ZT Formom', 'Helvetica', 'Arial', 'sans-serif'],
+				formom: ['ZT Formom', 'Helvetica', 'Arial', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -68,6 +71,15 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				// Custom fitness brand colors
+				'charcoal': {
+					50: '#f8f9fa',
+					100: '#e9ecef',
+					400: '#6c757d',
+					500: '#495057',
+					600: '#343a40',
+					700: '#212529',
+					900: '#1C1C1C',
+				},
 				'coral': {
 					50: '#fef7f3',
 					100: '#fdeee6',

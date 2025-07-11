@@ -38,7 +38,7 @@ const FeaturesSection = () => {
     <div id="features">
       <>
         {/* Mobile & Tablet Section - Completely Separate */}
-        <section className="lg:hidden seamless-section soft-blush relative pt-2 flex flex-col">
+        <section className="lg:hidden seamless-section soft-lavender relative pt-2 flex flex-col">
         {/* Mobile Background Image */}
         {/* <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
@@ -52,12 +52,12 @@ const FeaturesSection = () => {
         <div className="w-full mx-auto relative z-10 flex flex-col flex-1">
           {/* Mobile Header Section - Simplified */}
           <div className="text-center px-4 sm:px-8 py-6 animate-fade-in">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 leading-tight font-formom">
               What You Get
             </h2>
-            <div className="h-2 w-20 bg-orange-400 rounded-full mx-auto mb-4"></div>
+            <div className="h-2 w-20 bg-emerald-600 rounded-full mx-auto mb-4"></div>
             
-            <p className="text-base sm:text-lg text-gray-700 leading-relaxed font-semibold max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-gray-700 leading-relaxed font-semibold max-w-2xl mx-auto font-helvetica">
               Unlock your full potential with support tailored to your unique goals.
             </p>
           </div>
@@ -67,7 +67,7 @@ const FeaturesSection = () => {
             {features.map((feature, index) => (
               <div key={index} className="bg-white p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105 min-h-[120px] sm:min-h-[140px] flex flex-col justify-center">
                 <div className="text-2xl sm:text-3xl mb-3 text-center">{feature.icon}</div>
-                <h3 className="text-sm sm:text-base font-bold text-gray-900 text-center leading-tight">{feature.title}</h3>
+                <h3 className="text-sm sm:text-base font-bold text-gray-900 text-center leading-tight font-formom">{feature.title}</h3>
               </div>
             ))}
           </div>
@@ -75,7 +75,7 @@ const FeaturesSection = () => {
       </section>
 
       {/* Desktop Section - Completely Separate */}
-      <section className="hidden lg:flex seamless-section soft-blush relative pt-10 flex-col">
+      <section className="hidden lg:flex seamless-section soft-lavender relative pt-10 flex-col">
         {/* Desktop Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
@@ -95,17 +95,17 @@ const FeaturesSection = () => {
                 What You Get
               </h2>
 
-              <div className="h-2 w-24 bg-orange-400 rounded-full ml-2"></div>
+              <div className="h-2 w-24 bg-emerald-600 rounded-full ml-2"></div>
 
               <div className="ml-2 text-lg text-gray-700 leading-relaxed font-semibold max-w-3xl text-left space-y-2 mt-4">
                 <p>Unlock your full potential with support tailored to your unique goals. Here's what you'll get:</p>
                 
                 <ul className="list-disc list-inside text-gray-700 leading-relaxed space-y-2">
-                  <li><span className="text-coral-500 font-bold">Personalized fitness programs</span> based on your goals and lifestyle</li>
-                  <li><span className="text-coral-500 font-bold">Expert nutrition guidance</span> for sustainable health and performance</li>
-                  <li><span className="text-coral-500 font-bold">Proven workout plans</span> designed to drive real, lasting results</li>
-                  <li><span className="text-coral-500 font-bold">Sustainable fat loss</span> and <span className="text-coral-500 font-bold">muscle gain</span> strategies that work</li>
-                  <li>A <span className="text-coral-500 font-bold">healthier lifestyle</span> backed by coaching and science</li>
+                  <li><span className="text-emerald-700 font-bold">Personalized fitness programs</span> based on your goals and lifestyle</li>
+                  <li><span className="text-emerald-700 font-bold">Expert nutrition guidance</span> for sustainable health and performance</li>
+                  <li><span className="text-emerald-700 font-bold">Proven workout plans</span> designed to drive real, lasting results</li>
+                  <li><span className="text-emerald-700 font-bold">Sustainable fat loss</span> and <span className="text-emerald-700 font-bold">muscle gain</span> strategies that work</li>
+                  <li>A <span className="text-emerald-700 font-bold">healthier lifestyle</span> backed by coaching and science</li>
                 </ul>
               </div>
             </div>

@@ -60,7 +60,7 @@ const PricingSection = () => {
   return (
     <div id="pricing">
       {/* Mobile & Tablet Section - Completely Separate */}
-      <section className="block lg:hidden seamless-section soft-peach relative overflow-hidden">
+      <section className="block lg:hidden seamless-section soft-sky relative overflow-hidden">
         {/* Mobile Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
@@ -72,11 +72,11 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Mobile Header */}
           <div className="text-center mb-8 animate-fade-in px-4">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 font-formom">
               Choose your{' '}
-              <span className="text-orange-600">Journey</span>
+              <span className="text-emerald-700">Journey</span>
             </h2>
-            <p className="text-base sm:text-lg text-muted-gray font-inter font-light max-w-xl mx-auto">
+            <p className="text-base sm:text-lg text-muted-gray font-inter font-light max-w-xl mx-auto font-helvetica">
               Select the perfect plan for your transformation
             </p>
           </div>
@@ -87,12 +87,12 @@ const PricingSection = () => {
               <div 
                 key={index}
                 className={`bg-white/95 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-lg transition-all duration-300 hover:shadow-xl relative ${
-                  plan.popular ? 'ring-2 ring-coral-400' : ''
+                  plan.popular ? 'ring-2 ring-emerald-400' : ''
                 }`}
               >
                 {plan.popular && (
                   <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-coral-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                    <div className="bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-bold">
                       ✨ Popular
                     </div>
                   </div>
@@ -101,7 +101,7 @@ const PricingSection = () => {
                 <div className="space-y-4 text-center">
                   <div className="space-y-2">
                     <h3 className="text-lg sm:text-xl font-bold text-soft-gray">{plan.name}</h3>
-                    <div className="text-coral-500 font-bold text-base sm:text-lg">{plan.duration}</div>
+                    <div className="text-emerald-600 font-bold text-base sm:text-lg">{plan.duration}</div>
                     <p className="text-muted-gray text-xs sm:text-sm">{plan.description}</p>
                   </div>
 
@@ -113,7 +113,7 @@ const PricingSection = () => {
                       </div>
                     ))}
                     {plan.features.length > 3 && (
-                      <div className="text-coral-500 text-xs font-medium">
+                      <div className="text-emerald-600 text-xs font-medium">
                         +{plan.features.length - 3} more features
                       </div>
                     )}
@@ -121,7 +121,7 @@ const PricingSection = () => {
 
                   <Button 
                     onClick={scrollToForm}
-                    className="w-full bg-coral-500 hover:bg-coral-600 text-white font-bold py-3 rounded-xl transition-all duration-300 text-sm sm:text-base"
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition-all duration-300 text-sm sm:text-base"
                   >
                     Get Started
                   </Button>
@@ -145,7 +145,7 @@ const PricingSection = () => {
       </section>
 
       {/* Desktop Section - Completely Separate */}
-      <section className="hidden lg:block seamless-section soft-peach relative overflow-hidden">
+      <section className="hidden lg:block seamless-section soft-sky relative overflow-hidden">
         {/* Desktop Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
@@ -159,7 +159,7 @@ const PricingSection = () => {
           <div className="text-center mb-20 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               Choose your{' '}
-              <span className="text-orange-600">
+              <span className="text-emerald-700">
                 Journey
               </span>
             </h2>
@@ -174,12 +174,12 @@ const PricingSection = () => {
               <div 
                 key={index}
                 className={`bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-3xl relative ${
-                  plan.popular ? 'ring-4 ring-coral-400 transform lg:scale-105' : ''
+                  plan.popular ? 'ring-4 ring-emerald-400 transform lg:scale-105' : ''
                 }`}
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-coral-500 text-white px-6 py-2 rounded-full text-sm font-dm-sans font-bold shadow-lg">
+                    <div className="bg-emerald-600 text-white px-6 py-2 rounded-full text-sm font-dm-sans font-bold shadow-lg">
                       ✨ Most Popular
                     </div>
                   </div>
@@ -188,7 +188,7 @@ const PricingSection = () => {
                 <div className="space-y-6 text-center">
                   <div className="space-y-3">
                     <h3 className="text-2xl font-dm-sans font-bold text-soft-gray">{plan.name}</h3>
-                    <div className="text-coral-500 font-dm-sans font-bold text-lg">{plan.duration}</div>
+                    <div className="text-emerald-600 font-dm-sans font-bold text-lg">{plan.duration}</div>
                     <p className="text-muted-gray font-inter font-light text-sm">{plan.description}</p>
                   </div>
 
@@ -203,7 +203,7 @@ const PricingSection = () => {
 
                   <Button 
                     onClick={scrollToForm}
-                    className="w-full bg-coral-500 hover:bg-coral-600 text-white font-dm-sans font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl"
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-dm-sans font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl"
                   >
                     Get Started
                   </Button>

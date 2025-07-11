@@ -1,4 +1,27 @@
 
+/* ZT Formom Local Font Definitions */
+@font-face {
+  font-family: 'ZT Formom';
+  src: url('/fonts/ZT Formom - WEB TT/ZT Formom.woff2') format('woff2'),
+       url('/fonts/ZT Formom - WEB TT/ZT Formom.woff') format('woff'),
+       url('/fonts/ZT Formom - WEB TT/ZT Formom.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'ZT Formom';
+  src: url('/fonts/ZT Formom - WEB TT/ZT Formom Italic.woff2') format('woff2'),
+       url('/fonts/ZT Formom - WEB TT/ZT Formom Italic.woff') format('woff'),
+       url('/fonts/ZT Formom - WEB TT/ZT Formom Italic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -84,41 +107,51 @@ All colors MUST be HSL.
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
 
   body {
-    @apply bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 text-foreground font-sans;
+    @apply bg-gradient-to-br from-stone-50 via-slate-50 to-neutral-50 text-stone-800;
+    font-family: 'Helvetica', Arial, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
   html {
     scroll-behavior: smooth;
   }
+
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    @apply outline-none ring-2 ring-emerald-400 ring-offset-2;
+  }
 }
 
-/* Custom scrollbar - Pastel theme */
+/* Custom scrollbar - Earthy theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-orange-50;
+  @apply bg-stone-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-orange-300 rounded-full;
+  @apply bg-emerald-600 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-orange-400;
+  @apply bg-emerald-700;
 }
 
 @layer components {
+  .font-helvetica {
+    font-family: 'Helvetica', Arial, sans-serif;
+  }
+  
+  .font-formom {
+    font-family: 'ZT Formom', 'Helvetica', Arial, sans-serif;
+  }
+
   .soft-lavender {
     background-color: hsl(250, 60%, 95%);
   }
@@ -147,28 +180,13 @@ All colors MUST be HSL.
     color: hsl(220, 8%, 45%);
   }
 
-  /* .seamless-section {
-    @apply py-20 lg:py-32;
-  }
-
-  .section-padding {
-    @apply px-6 md:px-12 lg:px-20 xl:px-32;
-  }
-
-  .hover-lift {
-    @apply transition-all duration-300 hover:transform hover:-translate-y-1;
-  } */
-}
-
-
-/* Smooth hover transitions */
-@layer components {
+  /* Smooth hover transitions */
   .hover-lift {
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-emerald-700 to-stone-700 bg-clip-text text-transparent;
   }
   
   .section-padding {
@@ -176,14 +194,14 @@ All colors MUST be HSL.
   }
   
   .btn-matte {
-    @apply bg-orange-400 hover:bg-orange-500 text-white font-medium px-8 py-3 rounded-lg transition-all duration-300 shadow-none border-none;
+    @apply bg-emerald-700 hover:bg-emerald-800 text-white font-medium px-8 py-3 rounded-lg transition-all duration-300 shadow-none border-none;
     box-shadow: none !important;
     background-image: none !important;
   }
   
   .btn-matte:hover {
-    @apply bg-orange-500 transform translate-y-[-1px];
-    box-shadow: 0 4px 12px rgba(251, 146, 60, 0.3) !important;
+    @apply bg-emerald-800 -translate-y-px;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3) !important;
   }
 }
 
@@ -199,14 +217,4 @@ All colors MUST be HSL.
 
 .animate-pulse-slow {
   animation: pulse-slow 3s ease-in-out infinite;
-}
-
-/* Enhanced focus states for accessibility */
-@layer base {
-  button:focus-visible,
-  input:focus-visible,
-  textarea:focus-visible,
-  select:focus-visible {
-    @apply outline-none ring-2 ring-orange-400 ring-offset-2;
-  }
 }
