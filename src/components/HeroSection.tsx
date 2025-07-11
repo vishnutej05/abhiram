@@ -47,7 +47,7 @@ const HeroSection = () => {
         <div className="md:hidden min-h-screen flex flex-col justify-center">
           <div className="text-white space-y-8 animate-fade-in text-center -mt-16">
             <div className="space-y-6">
-              <h1 className="mt-5 text-3xl font-bold leading-tight uppercase tracking-tight font-formom">
+              <h1 className="mt-5 text-3xl font-bold leading-tight uppercase tracking-tight font-helvetica">
                 Hi, I'm <span className="text-emerald-400 tracking-wide block mt-2">Abhiram</span>
               </h1>
               <p className="text-lg text-gray-200 font-medium leading-relaxed mx-auto px-2 max-w-sm font-helvetica">
@@ -58,14 +58,14 @@ const HeroSection = () => {
             <div className="pt-6">
               <button 
                 onClick={scrollToForm}
-                className="btn-matte text-lg font-bold w-full max-w-xs mx-auto py-4 rounded-full shadow-lg font-helvetica"
+                className="btn-matte text-lg font-bold w-full max-w-xs mx-auto pt-4 rounded-full shadow-lg font-helvetica"
               >
                 Start Your Fitness Journey Today
               </button>
             </div>
             
             {/* Stats - Card Style for Mobile */}
-            <div className="grid grid-cols-3 gap-3 pt-8 max-w-sm mx-auto">
+            <div className="grid grid-cols-3 gap-3 max-w-sm mx-auto">
               <div className="bg-black/50 backdrop-blur-sm rounded-xl p-4 transform hover:scale-105 transition-all duration-300">
                 <div className="text-2xl font-bold text-emerald-400 mb-1 font-formom">500+</div>
                 <div className="text-xs text-gray-300 font-medium font-helvetica">TRANSFORMED</div>
@@ -86,7 +86,7 @@ const HeroSection = () => {
         <div className="hidden md:block max-w-6xl">
           <div className="text-[#E6D9C4] space-y-8 animate-fade-in">
             <div className="space-y-6">
-              <h1 className="text-5xl lg:text-7xl font-black leading-[0.9] uppercase tracking-tight font-formom">
+              <h1 className="text-5xl lg:text-7xl font-black leading-[0.9] uppercase tracking-tight font-helvetica">
                 Your body deserves<span className="text-[#B0E0E6] font-extrabold tracking-wide"> better.</span>
                 <br />
                 So do<span className="text-[#C97C5D] font-extrabold"> you.</span>

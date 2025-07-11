@@ -75,11 +75,11 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Mobile Header */}
           <div className="text-center mb-8 animate-fade-in px-4">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 font-formom">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 font-formom">
               Choose your{' '}
               <span className="text-emerald-700">Journey</span>
             </h2>
-            <p className="text-base sm:text-lg text-muted-gray font-inter font-light max-w-xl mx-auto font-helvetica">
+            <p className="text-lg sm:text-xl text-muted-gray font-inter font-light max-w-xl mx-auto font-helvetica">
               Select the perfect plan for your transformation
             </p>
           </div>
@@ -95,28 +95,28 @@ const PricingSection = () => {
               >
                 {plan.popular && (
                   <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-bold">
-                      ✨ Popular
+                    <div className="bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-bold">
+                      ✨ Most Popular
                     </div>
                   </div>
                 )}
 
                 <div className="space-y-4 text-center">
                   <div className="space-y-2">
-                    <h3 className="text-lg sm:text-xl font-bold text-soft-gray font-formom">{plan.name}</h3>
-                    <div className="text-emerald-600 font-bold text-base sm:text-lg font-helvetica">{plan.duration}</div>
-                    <p className="text-muted-gray text-xs sm:text-sm font-helvetica">{plan.description}</p>
+                    <h3 className="text-xl sm:text-2xl font-bold text-soft-gray font-formom">{plan.name}</h3>
+                    <div className="text-emerald-600 font-bold text-lg sm:text-xl font-helvetica">{plan.duration}</div>
+                    <p className="text-muted-gray text-sm sm:text-base font-helvetica">{plan.description}</p>
                   </div>
 
                   <div className="space-y-2">
                     {plan.features.slice(0, 3).map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-2">
-                        <span className="text-mint-500 text-sm font-bold">✓</span>
-                        <span className="text-muted-gray text-xs sm:text-sm text-left font-helvetica">{feature}</span>
+                        <span className="text-mint-500 text-base font-bold">✓</span>
+                        <span className="text-muted-gray text-sm sm:text-base text-left font-helvetica">{feature}</span>
                       </div>
                     ))}
                     {plan.features.length > 3 && (
-                      <div className="text-emerald-600 text-xs font-medium font-helvetica">
+                      <div className="text-emerald-600 text-sm font-medium font-helvetica">
                         +{plan.features.length - 3} more features
                       </div>
                     )}
@@ -124,7 +124,7 @@ const PricingSection = () => {
 
                   <Button 
                     onClick={scrollToForm}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition-all duration-300 text-sm sm:text-base"
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition-all duration-300 text-base sm:text-lg"
                   >
                     Get Started
                   </Button>
@@ -135,10 +135,10 @@ const PricingSection = () => {
 
           {/* Mobile Footer */}
           <div className="text-center animate-fade-in">
-            <p className="text-muted-gray text-sm mb-4 font-helvetica">
+            <p className="text-muted-gray text-base mb-4 font-helvetica">
               100% satisfaction guarantee
             </p>
-            <div className="flex justify-center space-x-4 text-xs text-muted-gray font-helvetica">
+            <div className="flex justify-center space-x-4 text-sm text-muted-gray font-helvetica">
               <div>💳 Secure</div>
               <div>📱 Instant</div>
               <div>🎯 Guaranteed</div>
@@ -160,13 +160,13 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Desktop Header */}
           <div className="text-center mb-20 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-formom">
+            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 font-formom">
               Choose your{' '}
               <span className="text-emerald-700">
                 Journey
               </span>
             </h2>
-            <p className="text-lg text-muted-gray font-light max-w-2xl mx-auto font-helvetica">
+            <p className="text-xl text-muted-gray font-light max-w-2xl mx-auto font-helvetica">
               Select the perfect plan for your fitness transformation journey
             </p>
           </div>
@@ -182,7 +182,7 @@ const PricingSection = () => {
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg whitespace-nowrap">
+                    <div className="bg-emerald-600 text-white px-6 py-2 rounded-full text-base font-bold shadow-lg whitespace-nowrap">
                       ✨ Most Popular
                     </div>
                   </div>
@@ -191,22 +191,22 @@ const PricingSection = () => {
                 <div className="space-y-6 text-center">
                   <div className="space-y-3">
                     <h3 className="text-2xl font-bold text-soft-gray font-formom">{plan.name}</h3>
-                    <div className="text-emerald-600 font-bold text-lg font-helvetica">{plan.duration}</div>
-                    <p className="text-muted-gray font-light text-sm font-helvetica">{plan.description}</p>
+                    <div className="text-emerald-600 font-bold text-xl font-helvetica">{plan.duration}</div>
+                    <p className="text-muted-gray font-light text-base font-helvetica">{plan.description}</p>
                   </div>
 
                   <div className="space-y-3">
                     {plan.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-3">
-                        <span className="text-mint-500 text-lg font-bold">✓</span>
-                        <span className="text-muted-gray font-light text-sm text-left font-helvetica">{feature}</span>
+                        <span className="text-mint-500 text-xl font-bold">✓</span>
+                        <span className="text-muted-gray font-light text-base text-left font-helvetica">{feature}</span>
                       </div>
                     ))}
                   </div>
 
                   <Button 
                     onClick={scrollToForm}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-dm-sans font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl"
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-dm-sans font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl text-lg"
                   >
                     Get Started
                   </Button>
@@ -217,10 +217,10 @@ const PricingSection = () => {
 
           {/* Desktop Footer */}
           <div className="text-center animate-fade-in">
-            <p className="text-muted-gray font-inter font-light mb-6">
+            <p className="text-muted-gray font-inter font-light mb-6 text-lg">
               100% satisfaction guarantee - Not satisfied in the first 30 days? Get a full refund.
             </p>
-            <div className="flex justify-center space-x-8 text-sm text-muted-gray font-inter font-light">
+            <div className="flex justify-center space-x-8 text-base text-muted-gray font-inter font-light">
               <div>💳 Secure Payment</div>
               <div>📱 Instant Access</div>
               <div>🎯 Results Guaranteed</div>

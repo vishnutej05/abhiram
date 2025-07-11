@@ -351,9 +351,9 @@ const TransformationsSection = () => {
                                 <p className="text-xs text-emerald-700 font-semibold font-helvetica">
                                   {transformation.results}
                                 </p>
-                                <p className="text-xs text-gray-500 font-helvetica">
+                                {/* <p className="text-xs text-gray-500 font-helvetica">
                                   {transformation.timeframe}
-                                </p>
+                                </p> */}
                               </div>
                             </div>
                           );
