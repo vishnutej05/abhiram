@@ -239,34 +239,6 @@ const AboutSection = () => {
           })}
         </div>
 
-        {/* Results Section */}
-        {/* <div className="mt-20 text-center">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {[
-              { number: "1000+", label: "Lives Transformed", icon: Heart },
-              { number: "5+", label: "Years of Excellence", icon: Star },
-              { number: "100%", label: "Dedication", icon: Trophy }
-            ].map((stat, index) => {
-              const IconComponent = stat.icon;
-              return (
-                <div 
-                  key={index}
-                  className="group p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
-                >
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent size={28} className="text-white" />
-                  </div>
-                  <div className="text-4xl font-dm-sans font-bold text-gray-800 mb-2">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-600 font-inter">
-                    {stat.label}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div> */}
 
         {/* Final Inspiration */}
         <div className="mt-20 text-center animate-fade-in">
