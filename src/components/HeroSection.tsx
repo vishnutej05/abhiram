@@ -87,7 +87,7 @@ const HeroSection = () => {
           <div className="text-[#E6D9C4] space-y-8 animate-fade-in">
             <div className="space-y-6">
               <h1 className="text-5xl lg:text-7xl font-black leading-[0.9] uppercase tracking-tight font-formom">
-                Your body deserves<span className="text-[#BACDB0] font-extrabold tracking-wide"> better.</span>
+                Your body deserves<span className="text-[#B0E0E6] font-extrabold tracking-wide"> better.</span>
                 <br />
                 So do<span className="text-[#C97C5D] font-extrabold"> you.</span>
               </h1>

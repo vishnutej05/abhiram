@@ -68,8 +68,8 @@ const AboutSection = () => {
       <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Header */}
         <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-6xl lg:text-7xl font-dm-sans font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-stone-700 mb-6 font-formom">
-            The Journey
+          <h2 className="text-6xl lg:text-7xl font-dm-sans font-bold text-transparent bg-clip-text mb-6 font-formom text-stone-500">
+            The <span className='text-emerald-700'> Journey</span>
           </h2>
           <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto font-helvetica">
             Witness the transformation that inspired thousands to begin their own journey

@@ -35,7 +35,7 @@ const InstagramSection = () => {
       imageUrl: '/placeholder.svg',
       caption: 'Amazing transformation results from our fitness coaching program!',
       likes: '1.2K',
-      postUrl: 'https://instagram.com/coachpotate'
+      postUrl: 'https://www.instagram.com/coachpotate/'
     },
     { 
       id: 'fallback_2', 
@@ -44,7 +44,7 @@ const InstagramSection = () => {
       imageUrl: '/placeholder.svg',
       caption: 'Daily workout motivation and tips for better fitness results.',
       likes: '856',
-      postUrl: 'https://instagram.com/coachpotate'
+      postUrl: 'https://www.instagram.com/coachpotate/'
     },
     { 
       id: 'fallback_3', 
@@ -53,7 +53,7 @@ const InstagramSection = () => {
       imageUrl: '/placeholder.svg',
       caption: 'Healthy meal prep ideas for sustainable weight loss.',
       likes: '943',
-      postUrl: 'https://instagram.com/coachpotate'
+      postUrl: 'https://www.instagram.com/coachpotate/'
     },
     { 
       id: 'fallback_4', 
@@ -62,7 +62,7 @@ const InstagramSection = () => {
       imageUrl: '/placeholder.svg',
       caption: 'Stay motivated on your fitness journey with daily inspiration.',
       likes: '721',
-      postUrl: 'https://instagram.com/coachpotate'
+      postUrl: 'https://www.instagram.com/coachpotate/'
     }
   ];
 
@@ -70,14 +70,6 @@ const InstagramSection = () => {
 
   const handlePostClick = (postUrl: string) => {
     window.open(postUrl, '_blank', 'noopener,noreferrer');
-  };
-
-  const handleRefresh = async () => {
-    try {
-      await refreshPosts();
-    } catch (err) {
-      console.error('Failed to refresh posts:', err);
-    }
   };
 
   return (
@@ -114,7 +106,7 @@ const InstagramSection = () => {
             {displayPosts.slice(0, 4).map((post, index) => (
               <div 
                 key={post.id}
-                onClick={() => handlePostClick(post.postUrl || 'https://instagram.com/coachpotate')}
+                onClick={() => handlePostClick(post.postUrl || 'https://www.instagram.com/coachpotate/')}
                 className="aspect-[9/16] bg-gradient-to-br from-emerald-100 to-stone-200 rounded-2xl overflow-hidden hover:scale-[1.02] hover:shadow-xl transition-all duration-300 cursor-pointer group relative"
               >
                 {posts.length > 0 && post.imageUrl && post.imageUrl !== '/placeholder.svg' ? (
@@ -152,17 +144,17 @@ const InstagramSection = () => {
           {/* Mobile CTA */}
           <div className="text-center">
             <a 
-              href="https://instagram.com/coachpotate" 
+              href="https://www.instagram.com/coachpotate/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-emerald-700 to-stone-700 text-white px-8 py-4 rounded-full text-lg font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 shadow-lg"
+              className="inline-flex items-center gap-3 bg-stone-800 hover:bg-stone-700 text-white px-8 py-4 rounded-full text-lg font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 shadow-lg font-formom"
             >
               <Instagram className="w-6 h-6" />
               Follow @CoachPotate
             </a>
-            <p className="text-gray-700 mt-4 font-medium text-sm sm:text-base">
+            <p className="text-gray-700 mt-4 font-medium text-sm sm:text-base font-helvetica">
               {posts.length > 0 
-                ? `Latest from ${posts.length} Instagram posts` 
+                ? 'Latest transformation updates and daily motivation' 
                 : 'Join 50K+ transforming their lives'
               }
             </p>
@@ -176,16 +168,16 @@ const InstagramSection = () => {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-4 mb-6">
               <Instagram className="w-12 h-12 text-emerald-700" />
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-formom">
                 Follow The{' '}
                 <span className="text-emerald-700">
                   Journey
                 </span>
               </h2>
             </div>
-            <p className="text-xl text-gray-700 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto font-helvetica">
               {posts.length > 0 
-                ? `Latest fitness transformations and daily motivation from @coachpotate (${posts.length} posts loaded)` 
+                ? 'Latest fitness transformations and daily motivation from @coachpotate' 
                 : 'Daily fitness transformation updates and motivation from India\'s leading online fitness coach'
               }
             </p>
@@ -195,7 +187,7 @@ const InstagramSection = () => {
             {displayPosts.slice(0, 4).map((post, index) => (
               <div 
                 key={post.id}
-                onClick={() => handlePostClick(post.postUrl || 'https://instagram.com/coachpotate')}
+                onClick={() => handlePostClick(post.postUrl || 'https://www.instagram.com/coachpotate/')}
                 className="aspect-[9/16] bg-gradient-to-br from-emerald-100 to-stone-200 rounded-3xl overflow-hidden hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 cursor-pointer group relative"
               >
                 {posts.length > 0 && post.imageUrl && post.imageUrl !== '/placeholder.svg' ? (
@@ -232,17 +224,17 @@ const InstagramSection = () => {
           
           <div className="text-center">
             <a 
-              href="https://instagram.com/coachpotate" 
+              href="https://www.instagram.com/coachpotate/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-4 bg-gradient-to-r from-emerald-700 to-stone-700 text-white px-12 py-5 rounded-full text-2xl font-bold hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
+              className="inline-flex items-center gap-4 bg-stone-800 hover:bg-stone-700 text-white px-12 py-5 rounded-full text-2xl font-bold hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 font-formom"
             >
               <Instagram className="w-8 h-8" />
               Follow @CoachPotate
             </a>
-            <p className="text-gray-700 mt-6 font-medium text-lg">
+            <p className="text-gray-700 mt-6 font-medium text-lg font-helvetica">
               {posts.length > 0 
-                ? `${posts.length} latest posts • Join the fitness transformation community` 
+                ? 'Daily transformation updates • Join the fitness community' 
                 : 'Join 50K+ on their fitness transformation journey'
               }
             </p>
