@@ -46,9 +46,12 @@ const Navbar = () => {
     <nav 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-#1C1C1C/95 backdrop-blur-lg shadow-lg' 
-          : 'bg-1C1C1C/80 backdrop-blur-sm'
+          ? 'backdrop-blur-lg shadow-lg' 
+          : 'backdrop-blur-sm'
       }`}
+      style={{
+        backgroundColor: scrolled ? 'rgba(28, 28, 28, 0.95)' : 'rgba(28, 28, 28, 0.8)'
+      }}
     >
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
