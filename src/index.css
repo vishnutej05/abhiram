@@ -1,57 +1,6 @@
-/* ZT Formom Local Font Definitions */
-@font-face {
-  font-family: 'ZT Formom';
-  src: url('/fonts/ZT Formom - WEB TT/ZT Formom.woff2') format('woff2'),
-       url('/fonts/ZT Formom - WEB TT/ZT Formom.woff') format('woff'),
-       url('/fonts/ZT Formom - WEB TT/ZT Formom.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-family: 'ZT Formom';
-  src: url('/fonts/ZT Formom - WEB TT/ZT Formom Italic.woff2') format('woff2'),
-       url('/fonts/ZT Formom - WEB TT/ZT Formom Italic.woff') format('woff'),
-       url('/fonts/ZT Formom - WEB TT/ZT Formom Italic.ttf') format('truetype');
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  text-rendering: optimizeLegibility;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@font-face {
-  font-family: 'Eyes for Serif1';
-  src: url('/fonts/eyes for serif1/eyesforserifs-regular.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Eyes for Serif1';
-  src: url('/fonts/eyes for serif1/eyesforserifs-light.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Eyes for Serif1';
-  src: url('/fonts/eyes for serif1/eyesforserifs-bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Eyes for Serif1';
-  src: url('/fonts/eyes for serif1/eyesforserifs-book.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-}
 
 /* Fix horizontal scrolling issues */
 html, body {
