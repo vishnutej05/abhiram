@@ -26,7 +26,7 @@ const HeroSection = () => {
           backgroundSize: 'cover'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/70 to-black/30"></div>
       </div>
       
       {/* Mobile Background Image (hidden on desktop) */}
@@ -89,7 +89,7 @@ const HeroSection = () => {
               <h1 className="text-5xl lg:text-7xl font-black leading-[0.9] uppercase tracking-tight font-helvetica">
                 Your body deserves<span className="text-[#B0E0E6] font-extrabold tracking-wide"> better.</span>
                 <br />
-                So do<span className="text-[#C97C5D] font-extrabold"> you.</span>
+                So do<span className="text-[#b0e0e6] font-extrabold"> you.</span>
               </h1>
               <div className="space-y-3">
                 <p className="text-lg text-gray-300 font-medium font-helvetica">

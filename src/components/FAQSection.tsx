@@ -2,35 +2,27 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
+const faqs = [
+  {
+    question: "How long does it take to see results?",
+    answer: "Results vary by individual, but most clients start seeing noticeable changes within 4-6 weeks of consistent training and following the nutrition plan. Significant transformations typically occur within 12 weeks."
+  },
+  {
+    question: "Do I need gym access?",
+    answer: "While gym access can be beneficial, our programs can be adapted for home workouts with minimal equipment. We'll work with whatever resources you have available."
+  },
+  {
+    question: "What support do I get?",
+    answer: "You'll receive personalized workout plans, nutrition guidance, regular check-ins, and access to our support team. Higher tier plans include video calls and more frequent communication."
+  },
+  {
+    question: "How are the workouts customized?",
+    answer: "We assess your current fitness level, goals, available equipment, and schedule to create a program that works for you. Programs are adjusted based on your progress and feedback."
+  }
+];
+
 const FAQSection = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-
-  const faqs = [
-    {
-      question: "How is this different from other online fitness programs?",
-      answer: "My approach combines personalized workout and nutrition plans with ongoing 24/7 support through WhatsApp. Unlike generic programs, every aspect is tailored to your specific goals, lifestyle, and preferences. Plus, you get direct access to me for guidance throughout your transformation journey."
-    },
-    {
-      question: "Can I really see results in 90 days?",
-      answer: "Absolutely! With proper adherence to the personalized plan, most clients see significant changes within the first 4 weeks. The 90-day program is designed for complete body recomposition - whether your goal is muscle gain, fat loss, or overall fitness improvement."
-    },
-    {
-      question: "What if I'm a complete beginner?",
-      answer: "Perfect! I specialize in working with beginners and creating sustainable fitness habits. Your workout plan will start at your current fitness level and progressively advance. I'll guide you through proper form, technique, and help build your confidence every step of the way."
-    },
-    {
-      question: "Do I need expensive equipment or gym membership?",
-      answer: "Not necessarily! I can design effective workout plans for home workouts, gym settings, or minimal equipment setups. During our consultation, we'll discuss your available resources and create a plan that works with your situation."
-    },
-    {
-      question: "How does the nutrition plan work with Indian food?",
-      answer: "As an Indian coach, I understand our food culture completely. Your meal plans will include delicious Indian dishes that support your goals - from dal and sabzi to healthy versions of your favorite foods. No boring, bland meals here!"
-    },
-    {
-      question: "What kind of support do I get during the program?",
-      answer: "You'll have direct WhatsApp access to me for questions, progress updates, and motivation. Plus weekly check-ins, progress reviews, and plan adjustments as needed. Think of me as your personal fitness mentor, not just a program provider."
-    }
-  ];
 
   const toggleFAQ = (index: number) => {
     setOpenFAQ(openFAQ === index ? null : index);
@@ -38,35 +30,30 @@ const FAQSection = () => {
 
   return (
     <section id="faq" className="py-20 soft-lavender">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-formom">
-            Frequently Asked{' '}
-            <span className="bg-gradient-to-r from-emerald-700 to-emerald-800 bg-clip-text text-transparent">
-              Questions
-            </span>
-          </h2>
-          <p className="text-xl text-gray-700 font-helvetica">
-            Get answers to common questions about the fitness transformation program
-          </p>
-        </div>
-        
+      <div className="mx-auto max-w-2xl text-center">
+        <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl">Frequently asked questions</h2>
+        <p className="mt-6 text-lg leading-8 text-muted-foreground">
+          Find answers to common questions about our transformation programs and coaching services.
+        </p>
+      </div>
+      
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-16">
         <div className="space-y-6">
           {faqs.map((faq, index) => (
             <div 
               key={index}
-              className="bg-gradient-to-br from-emerald-50 to-stone-100 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="bg-white/90 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gradient-to-br from-emerald-100 to-stone-150 transition-colors"
+                className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
               >
-                <h3 className="text-lg font-semibold text-gray-900 pr-4 font-formom md:font-helvetica">
+                <h3 className="text-lg font-serif font-bold text-gray-900 pr-4">
                   {faq.question}
                 </h3>
                 <div className="flex-shrink-0">
                   {openFAQ === index ? (
-                    <ChevronUp className="w-5 h-5 text-blue-600" />
+                    <ChevronUp className="w-5 h-5 text-emerald-600" />
                   ) : (
                     <ChevronDown className="w-5 h-5 text-gray-400" />
                   )}
@@ -74,7 +61,7 @@ const FAQSection = () => {
               </button>
               
               {openFAQ === index && (
-                <div className="px-8 pb-6 text-gray-700 leading-relaxed font-helvetica">
+                <div className="px-8 pb-6 text-gray-700 leading-relaxed">
                   {faq.answer}
                 </div>
               )}
@@ -86,7 +73,7 @@ const FAQSection = () => {
           <p className="text-gray-600 mb-6">Still have questions?</p>
           <button 
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="bg-gradient-to-r from-emerald-700 to-emerald-800 text-stone-50 px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300"
           >
             Get Personal Answers
           </button>

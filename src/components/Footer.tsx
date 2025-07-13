@@ -8,8 +8,8 @@ const Footer = () => {
         <div className="text-center space-y-6">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold text-emerald-900 mb-2 font-formom">themight</h3>
-            <p className="text-emerald-700 max-w-md mx-auto font-helvetica">
+            <h3 className="text-2xl font-bold text-emerald-900 mb-2">themight</h3>
+            <p className="text-emerald-700 max-w-md mx-auto font-bold">
               Transform your body, transform your life. India's leading online fitness transformation coach.
             </p>
           </div>
@@ -30,25 +30,12 @@ const Footer = () => {
             >
               <Mail className="w-4 h-4" />
             </a>
-            {/* <a 
-              href="tel:+919876543210"
-              className="w-10 h-10 text-white bg-gradient-to-r from-green-700 to-green-600 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300"
-            >
-              <Phone className="w-4 h-4" />
-            </a> */}
           </div>
           
-          {/* Contact Info */}
-          <div className="text-emerald-700 text-sm space-y-1 font-helvetica">
-            <p>coach@themight.com</p>
+          {/* Copyright */}
+          <div className="text-emerald-700 text-sm font-bold">
+            © {new Date().getFullYear()} themight. All rights reserved.
           </div>
-        </div>
-        
-        {/* Bottom Bar */}
-        <div className="border-t border-emerald-200 mt-8 pt-6 text-center">
-          <p className="text-emerald-600 text-sm font-helvetica">
-            © 2025 themight. All rights reserved.
-          </p>
         </div>
       </div>
     </footer>

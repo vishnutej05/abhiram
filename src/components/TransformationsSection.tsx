@@ -131,7 +131,7 @@ const TransformationsSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Mobile Header Section */}
           <div className="text-center mb-12 animate-fade-in">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 leading-tight font-formom">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 leading-tight font-serif">
               Real <span className="text-emerald-700">Transformations</span>
             </h2>
             <div className="h-2 w-20 bg-emerald-600 rounded-full mx-auto"></div>
@@ -177,7 +177,7 @@ const TransformationsSection = () => {
               {/* Mobile Transformation Info */}
               <div className="p-4 sm:p-6 bg-gradient-to-r from-emerald-50 to-stone-50">
                 <div className="text-center space-y-2 sm:space-y-3">
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 font-formom">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900">
                     {transformations[mobileCarouselIndex].name}
                   </h3>
                   <div className="flex justify-center space-x-3 text-sm text-gray-600 font-helvetica">
@@ -228,7 +228,7 @@ const TransformationsSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Desktop Header Section */}
           <div className="text-start mb-12 animate-fade-in">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-3 leading-tight font-formom">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-3 leading-tight font-serif">
               Real {' '} <span className="text-emerald-700"> Transformations </span>
             </h2>
             <div className="h-2 w-24 bg-emerald-600 rounded-full"></div>

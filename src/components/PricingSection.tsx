@@ -75,11 +75,11 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Mobile Header */}
           <div className="text-center mb-8 animate-fade-in px-4">
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 font-formom">
+            <h2 className="text-4xl sm:text-5xl font-serif font-bold text-gray-900 mb-4">
               Choose your{' '}
               <span className="text-emerald-700">Journey</span>
             </h2>
-            <p className="text-lg sm:text-xl text-muted-gray font-inter font-light max-w-xl mx-auto font-helvetica">
+            <p className="text-lg sm:text-xl text-muted-gray font-light max-w-xl mx-auto">
               Select the perfect plan for your transformation
             </p>
           </div>
@@ -103,9 +103,9 @@ const PricingSection = () => {
 
                 <div className="space-y-4 text-center">
                   <div className="space-y-2">
-                    <h3 className="text-xl sm:text-2xl font-bold text-soft-gray font-formom">{plan.name}</h3>
-                    <div className="text-emerald-600 font-bold text-lg sm:text-xl font-helvetica">{plan.duration}</div>
-                    <p className="text-muted-gray text-sm sm:text-base font-helvetica">{plan.description}</p>
+                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-soft-gray">{plan.name}</h3>
+                    <div className="text-emerald-600 font-bold text-lg sm:text-xl">{plan.duration}</div>
+                    <p className="text-muted-gray text-sm sm:text-base">{plan.description}</p>
                   </div>
 
                   <div className="space-y-2">
@@ -160,13 +160,13 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Desktop Header */}
           <div className="text-center mb-20 animate-fade-in">
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 font-formom">
+            <h2 className="text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-6">
               Choose your{' '}
               <span className="text-emerald-700">
                 Journey
               </span>
             </h2>
-            <p className="text-xl text-muted-gray font-light max-w-2xl mx-auto font-helvetica">
+            <p className="text-xl text-muted-gray font-light max-w-2xl mx-auto">
               Select the perfect plan for your fitness transformation journey
             </p>
           </div>
@@ -190,7 +190,7 @@ const PricingSection = () => {
 
                 <div className="space-y-6 text-center">
                   <div className="space-y-3">
-                    <h3 className="text-2xl font-bold text-soft-gray font-formom">{plan.name}</h3>
+                    <h3 className="text-2xl font-serif font-bold text-soft-gray">{plan.name}</h3>
                     <div className="text-emerald-600 font-bold text-xl font-helvetica">{plan.duration}</div>
                     <p className="text-muted-gray font-light text-base font-helvetica">{plan.description}</p>
                   </div>

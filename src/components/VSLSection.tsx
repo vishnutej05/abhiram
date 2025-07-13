@@ -18,14 +18,9 @@ const VSLSection = () => {
           {/* <div className="inline-block bg-orange-600 text-white px-6 py-2 rounded-full font-semibold text-sm mb-6">
             👀 WATCH THIS FIRST
           </div> */}
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-formom">
-            See How Others Got{' '}
-            <span className="text-emerald-700">
-              Transformed
-            </span>
-          </h2>
-          <p className="text-gray-700 text-xl max-w-3xl mx-auto font-helvetica">
-            Watch real transformation stories from India's leading online fitness coach
+          <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl">Watch my story</h2>
+          <p className="mt-6 text-lg leading-8 text-muted-foreground">
+            Learn how I discovered my passion for fitness and helping others transform their lives.
           </p>
         </div>
         
