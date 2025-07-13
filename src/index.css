@@ -222,3 +222,8 @@ All colors MUST be HSL.
 .animate-pulse-slow {
   animation: pulse-slow 3s ease-in-out infinite;
 }
+
+.fade-in-only {
+  opacity: 1 !important;
+  transition: opacity 1.5s cubic-bezier(0.4,0,0.2,1);
+}
