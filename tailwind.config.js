@@ -11,7 +11,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Helvetica', 'Arial', 'sans-serif'],
-        display: ['ZT Formom', 'Helvetica', 'Arial', 'sans-serif'],
+        display: ['Eyes for Serifs', 'serif'],
       },
     },
   },

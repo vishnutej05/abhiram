@@ -6,10 +6,10 @@ export default {
 	darkMode: ["class"],
 	content: [
 		"./index.html",
-		"./pages/**/*.{ts,tsx}",
-		"./components/**/*.{ts,tsx}",
-		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		"./pages//*.{ts,tsx}",
+		"./components//*.{ts,tsx}",
+		"./app//*.{ts,tsx}",
+		"./src//*.{ts,tsx}",
 	],
 	prefix: "",
 	theme: {
@@ -23,8 +23,8 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ['Helvetica', 'Arial', 'sans-serif'],
-				display: ['ZT Formom', 'Helvetica', 'Arial', 'sans-serif'],
-				formom: ['ZT Formom', 'Helvetica', 'Arial', 'sans-serif'],
+				serif: ['Eyes for Serif1', 'serif'],
+				display: ['Helvetica', 'Arial', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -172,10 +172,10 @@ export default {
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.6s ease-out',
-				'slide-in-left': 'slide-in-left 0.6s ease-out',
-				'slide-in-right': 'slide-in-right 0.6s ease-out',
-				'scale-in': 'scale-in 0.5s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'slide-in-left': 'slide-in-left 0.5s ease-out',
+				'slide-in-right': 'slide-in-right 0.5s ease-out',
+				'scale-in': 'scale-in 0.3s ease-out',
 				'gradient-shift': 'gradient-shift 3s ease-in-out infinite',
 				'slide': 'slide 30s linear infinite'
 			}
