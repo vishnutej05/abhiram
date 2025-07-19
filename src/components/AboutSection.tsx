@@ -10,7 +10,7 @@ const AboutSection = () => {
   const transformationJourney = [
     {
       id: 1,
-      image: "/lovable-uploads/d6cb65c9-c5ed-4d79-a325-366956fdbd1a.png",
+      image: "/lovable-uploads/J1.jpg",
       title: "The Spark",
       subtitle: "Every legend begins with a single decision",
       year: "2019",
@@ -21,7 +21,7 @@ const AboutSection = () => {
     },
     {
       id: 2,
-      image: "/lovable-uploads/a2120b02-0b55-4ff2-ac59-a3ef49df1ed7.png",
+      image: "/lovable-uploads/J2.jpg",
       title: "The Grind",
       subtitle: "Where discipline meets dedication",
       year: "2021",
@@ -32,7 +32,7 @@ const AboutSection = () => {
     },
     {
       id: 3,
-      image: "/lovable-uploads/dd520506-8312-4484-a9fb-754cbb9305cc.png",
+      image: "/lovable-uploads/J3.jpg",
       title: "The Transformation",
       subtitle: "From vision to reality",
       year: "2024",
@@ -64,12 +64,12 @@ const AboutSection = () => {
   }, [transformationJourney.length]);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen bg-orange-50 overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen soft-sage overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Header */}
         <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-6xl lg:text-7xl font-dm-sans font-bold mb-6 font-formom text-stone-500">
-            The <span className='text-emerald-700'> Journey</span>
+          <h2 className="text-6xl lg:text-7xl font-dm-sans font-bold mb-6 font-formom text-grey-900">
+            Here's how my journey <span className='text-emerald-700'>began</span>
           </h2>
           <p className="text-2xl text-gray-600 font-inter max-w-3xl mx-auto font-helvetica">
             Witness the transformation that inspired thousands to begin their own journey

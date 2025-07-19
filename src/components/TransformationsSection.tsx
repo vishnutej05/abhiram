@@ -117,7 +117,7 @@ const TransformationsSection = () => {
   return (
     <div id="transformations">
       {/* Mobile & Tablet Section - Completely Separate */}
-      <section className="block lg:hidden seamless-section soft-blush relative overflow-hidden">
+      <section className="block lg:hidden seamless-section soft-sage relative overflow-hidden">
         {/* Mobile Background Image */}
         {/* <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
@@ -214,7 +214,7 @@ const TransformationsSection = () => {
       </section>
 
       {/* Desktop Section - Original Layout */}
-      <section className="hidden lg:block seamless-section soft-blush relative overflow-hidden">
+      <section className="hidden lg:block seamless-section soft-sage relative overflow-hidden">
         {/* Desktop Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"

@@ -364,7 +364,7 @@ const ContactForm = () => {
             {/* Left side - Image */}
             <div className="relative">
               <img 
-                src="/lovable-uploads/pic 2.png"
+                src="/lovable-uploads/Regis form.png"
                 alt="Abhiram Nair fitness transformation coach"
                 className="w-full h-full object-cover"
               />

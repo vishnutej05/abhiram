@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import VSLSection from '@/components/VSLSection';
 import AboutSection from '@/components/AboutSection';
-import FeaturesSection from '@/components/FeaturesSection';
+// import FeaturesSection from '@/components/FeaturesSection';
 import TransformationsSection from '@/components/TransformationsSection';
 import PricingSection from '@/components/PricingSection';
 import ContactForm from '@/components/ContactForm';
@@ -19,7 +19,7 @@ const Index = () => {
       <VSLSection />
       <AboutSection />
       <TransformationsSection />
-      <FeaturesSection />
+      {/* <FeaturesSection /> */}
       <PricingSection />
       <ContactForm />
       <InstagramSection />
