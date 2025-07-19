@@ -88,7 +88,7 @@ const InstagramSection = () => {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-3 mb-4">
               <Instagram className="w-10 h-10 text-emerald-700" />
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 font-formom">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 font-serif">
                 Join The{' '}
                 <span className="text-emerald-700">Journey</span>
               </h2>
@@ -147,7 +147,7 @@ const InstagramSection = () => {
               href="https://www.instagram.com/coachpotate/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-stone-800 hover:bg-stone-700 text-white px-8 py-4 rounded-full text-lg font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 shadow-lg font-formom"
+              className="inline-flex items-center gap-3 bg-stone-800 hover:bg-stone-700 text-white px-8 py-4 rounded-full text-lg font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 shadow-lg"
             >
               <Instagram className="w-6 h-6" />
               Follow @CoachPotate
@@ -168,7 +168,7 @@ const InstagramSection = () => {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-4 mb-6">
               <Instagram className="w-12 h-12 text-emerald-700" />
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-formom">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 font-serif">
                 Follow The{' '}
                 <span className="text-emerald-700">
                   Journey
@@ -227,7 +227,7 @@ const InstagramSection = () => {
               href="https://www.instagram.com/coachpotate/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-4 bg-stone-800 hover:bg-stone-700 text-white px-12 py-5 rounded-full text-2xl font-bold hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 font-formom"
+              className="inline-flex items-center gap-4 bg-stone-800 hover:bg-stone-700 text-white px-12 py-5 rounded-full text-2xl font-bold hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
             >
               <Instagram className="w-8 h-8" />
               Follow @CoachPotate

@@ -52,13 +52,10 @@ const FeaturesSection = () => {
         <div className="w-full mx-auto relative z-10 flex flex-col flex-1">
           {/* Mobile Header Section - Simplified */}
           <div className="text-center px-4 sm:px-8 py-6 animate-fade-in">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 leading-tight font-formom">
-              What You Get
-            </h2>
-            <div className="h-2 w-20 bg-emerald-600 rounded-full mx-auto mb-4"></div>
-            
-            <p className="text-base sm:text-lg text-gray-700 leading-relaxed font-semibold max-w-2xl mx-auto font-helvetica">
-              Unlock your full potential with support tailored to your unique goals.
+            <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl">Everything you need to transform</h2>
+            <p className="mt-6 text-lg leading-8 text-muted-foreground">
+              Get access to everything you need to transform your body and mind. From personalized workout plans to nutrition
+              guidance, we&apos;ve got you covered.
             </p>
           </div>
           
@@ -67,7 +64,7 @@ const FeaturesSection = () => {
             {features.map((feature, index) => (
               <div key={index} className="bg-white p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105 min-h-[120px] sm:min-h-[140px] flex flex-col justify-center">
                 <div className="text-2xl sm:text-3xl mb-3 text-center">{feature.icon}</div>
-                <h3 className="text-sm sm:text-base font-bold text-gray-900 text-center leading-tight font-formom">{feature.title}</h3>
+                <h3 className="text-sm sm:text-base font-bold text-gray-900 text-center leading-tight font-serif">{feature.title}</h3>
               </div>
             ))}
           </div>
@@ -91,7 +88,7 @@ const FeaturesSection = () => {
           <div className="flex flex-col md:flex-row items-center md:items-center animate-fade-in" style={{ minHeight: 0, marginBottom: 0 }}>
             <div className="hidden md:block w-1/2"></div>
             <div className="w-full md:w-1/2 flex flex-col justify-center items-start md:pr-16 md:pl-10 py-8">
-              <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight text-center font-formom">
+              <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight text-center font-serif">
                 What You
                 <span className="text-emerald-600"> Get</span>
               </h2>

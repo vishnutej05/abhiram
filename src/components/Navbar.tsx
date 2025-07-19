@@ -57,7 +57,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-white font-bold text-xl md:text-2xl font-formom tracking-wider">
+            <Link to="/" className="text-white font-bold text-xl md:text-2xl tracking-wider">
               themight
             </Link>
           </div>
@@ -69,7 +69,7 @@ const Navbar = () => {
                 <div key={item.id} className="relative group">
                   <button 
                     onClick={() => scrollToSection(item.id)}
-                    className="text-gray-300 hover:text-white transition-colors font-medium text-base lg:text-lg py-2 px-2 rounded-md hover:bg-white/10 font-helvetica"
+                    className="text-gray-300 hover:text-white transition-colors font-bold text-base lg:text-lg py-2 px-2 rounded-md hover:bg-white/10"
                   >
                     {item.label}
                   </button>
@@ -84,20 +84,10 @@ const Navbar = () => {
               ))}
             </div>
           </div>
-          
-          {/* Desktop CTA Button */}
-          <div className="hidden md:block">
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="btn-matte px-6 py-3 rounded-lg text-base lg:text-lg font-semibold"
-            >
-              Get Started
-            </button>
-          </div>
-          
-          {/* Mobile menu button */}
+
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button 
+            <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="text-gray-300 hover:text-white"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -121,14 +111,14 @@ const Navbar = () => {
                 <button 
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-gray-300 hover:text-white transition-colors font-medium py-3 px-4 rounded-md hover:bg-white/10 text-left text-base"
+                  className="text-gray-300 hover:text-white transition-colors font-bold py-3 px-4 rounded-md hover:bg-white/10 text-left text-base"
                 >
                   {item.label}
                 </button>
               ))}
               <button 
                 onClick={() => scrollToSection('contact')}
-                className="btn-matte w-full text-center py-4 rounded-md text-base font-semibold mt-4"
+                className="btn-matte w-full text-center py-4 rounded-md text-base font-bold mt-4"
               >
                 Get Started
               </button>

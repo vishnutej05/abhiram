@@ -67,12 +67,11 @@ const AboutSection = () => {
     <section ref={sectionRef} className="relative min-h-screen bg-orange-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Header */}
-        <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-6xl lg:text-7xl font-dm-sans font-bold text-transparent bg-clip-text mb-6 font-formom text-stone-500">
-            The <span className='text-emerald-700'> Journey</span>
-          </h2>
-          <p className="text-xl text-gray-600 font-inter max-w-3xl mx-auto font-helvetica">
-            Witness the transformation that inspired thousands to begin their own journey
+        <div className="mx-auto max-w-2xl lg:text-center">
+          <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl">About Me</h2>
+          <p className="mt-6 text-lg leading-8 text-muted-foreground">
+            With years of experience in fitness and nutrition, I&apos;ve helped hundreds of clients achieve their dream
+            physique and maintain it.
           </p>
         </div>
 
@@ -124,7 +123,7 @@ const AboutSection = () => {
                           : 'translate-y-8 opacity-50'
                       }`}>
                         {/* Year Badge */}
-                        <div className={`inline-block px-4 py-2 rounded-full text-sm font-bold text-white bg-gradient-to-r ${stage.color} mb-4`}>
+                        <div className={`inline-block px-6 py-3 rounded-full text-base font-bold text-white bg-gradient-to-r ${stage.color} mb-4`}>
                           {stage.year}
                         </div>
 
@@ -140,8 +139,8 @@ const AboutSection = () => {
                           </div>
                           
                           {/* Floating Number */}
-                          <div className="absolute -top-4 -right-4 bg-white rounded-full p-3 shadow-lg">
-                            <span className="text-2xl font-bold text-gray-800">
+                          <div className="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-lg">
+                            <span className="text-3xl font-bold text-gray-800">
                               {String(index + 1).padStart(2, '0')}
                             </span>
                           </div>
@@ -154,19 +153,19 @@ const AboutSection = () => {
                           ? 'translate-y-0 opacity-100' 
                           : 'translate-y-8 opacity-50'
                       }`}>
-                        <h3 className="text-3xl font-dm-sans font-bold text-gray-800 mb-2 font-formom">
+                        <h3 className="text-4xl font-serif font-bold text-gray-800 mb-3">
                           {stage.title}
                         </h3>
-                        <h4 className="text-lg font-inter text-gray-600 mb-3 font-helvetica">
+                        <h4 className="text-xl font-inter text-gray-600 mb-4 font-helvetica">
                           {stage.subtitle}
                         </h4>
-                        <p className="text-sm text-gray-500 mb-4 font-helvetica">
+                        <p className="text-lg text-gray-500 mb-6 font-helvetica">
                           {stage.description}
                         </p>
 
                         {/* Motivational Quote */}
-                        <div className="bg-gradient-to-r from-emerald-50 to-stone-50 p-4 rounded-lg border-l-4 border-emerald-400">
-                          <p className="text-sm italic text-gray-700 font-inter font-helvetica">
+                        <div className="bg-gradient-to-r from-emerald-50 to-stone-50 p-6 rounded-lg border-l-4 border-emerald-400">
+                          <p className="text-base italic text-gray-700 font-inter font-helvetica">
                             "{stage.motivationalText}"
                           </p>
                         </div>
@@ -183,19 +182,19 @@ const AboutSection = () => {
                           ? 'translate-y-0 opacity-100' 
                           : 'translate-y-8 opacity-50'
                       }`}>
-                        <h3 className="text-3xl font-dm-sans font-bold text-gray-800 mb-2 font-formom">
+                        <h3 className="text-4xl font-serif font-bold text-gray-800 mb-3">
                           {stage.title}
                         </h3>
-                        <h4 className="text-lg font-inter text-gray-600 mb-3 font-helvetica">
+                        <h4 className="text-xl font-inter text-gray-600 mb-4 font-helvetica">
                           {stage.subtitle}
                         </h4>
-                        <p className="text-sm text-gray-500 mb-4 font-helvetica">
+                        <p className="text-lg text-gray-500 mb-6 font-helvetica">
                           {stage.description}
                         </p>
 
                         {/* Motivational Quote */}
-                        <div className="bg-gradient-to-r from-emerald-50 to-stone-50 p-4 rounded-lg border-l-4 border-emerald-400">
-                          <p className="text-sm italic text-gray-700 font-inter font-helvetica">
+                        <div className="bg-gradient-to-r from-emerald-50 to-stone-50 p-6 rounded-lg border-l-4 border-emerald-400">
+                          <p className="text-base italic text-gray-700 font-inter font-helvetica">
                             "{stage.motivationalText}"
                           </p>
                         </div>
@@ -208,7 +207,7 @@ const AboutSection = () => {
                           : 'translate-y-8 opacity-50'
                       }`}>
                         {/* Year Badge */}
-                        <div className={`inline-block px-4 py-2 rounded-full text-sm font-bold text-white bg-gradient-to-r ${stage.color} mb-4`}>
+                        <div className={`inline-block px-6 py-3 rounded-full text-base font-bold text-white bg-gradient-to-r ${stage.color} mb-4`}>
                           {stage.year}
                         </div>
 
@@ -224,8 +223,8 @@ const AboutSection = () => {
                           </div>
                           
                           {/* Floating Number */}
-                          <div className="absolute -top-4 -right-4 bg-white rounded-full p-3 shadow-lg">
-                            <span className="text-2xl font-bold text-gray-800">
+                          <div className="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-lg">
+                            <span className="text-3xl font-bold text-gray-800">
                               {String(index + 1).padStart(2, '0')}
                             </span>
                           </div>
@@ -241,15 +240,15 @@ const AboutSection = () => {
 
 
         {/* Final Inspiration */}
-        <div className="mt-20 text-center animate-fade-in">
-          <div className="max-w-4xl mx-auto rounded-3xl p-12 text-gray-900">
-            <blockquote className="text-3xl font-dm-sans font-light italic leading-relaxed mb-8 font-formom">
+        <div className="mt-6 text-center animate-fade-in">
+          <div className="max-w-5xl mx-auto rounded-3xl p-12 text-gray-900">
+            <blockquote className="text-5xl font-serif font-light italic leading-relaxed mb-8">
               "I wasn't born with a perfect physique. Every muscle, every achievement, every transformation story you see today was built through consistency, discipline, and an unwavering belief in the process."
             </blockquote>
-            <cite className="text-xl font-inter opacity-90 font-helvetica">— Abhiram Nair</cite>
+            <cite className="text-2xl font-inter opacity-90 font-helvetica">— Abhiram Nair</cite>
             
             {/* <div className="mt-8 flex justify-center">
-              <ChevronDown className="w-8 h-8 animate-bounce" />
+              <ChevronDown className="w-8 h-8 animate-bounnpmce" />
             </div> */}
           </div>
         </div>
