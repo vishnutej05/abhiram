@@ -19,7 +19,7 @@ const Index = () => {
       <VSLSection />
       <AboutSection />
       <TransformationsSection />
-      <FeaturesSection />
+      {/* <FeaturesSection /> */}
       <PricingSection />
       <ContactForm />
       <InstagramSection />

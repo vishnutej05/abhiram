@@ -154,6 +154,27 @@ All colors MUST be HSL.
   }
 }
 
+
+   .soft-lavender {
+    background-color: hsl(250, 60%, 95%);
+  }
+
+  .soft-blush {
+    background-color: hsl(340, 50%, 96%);
+  }
+
+  .soft-sage {
+    background-color: hsl(120, 25%, 95%);
+  }
+
+  .soft-peach {
+    background-color: hsl(20, 60%, 95%);
+  }
+
+  .soft-sky {
+    background-color: hsl(200, 60%, 95%);
+  }
+
 /* Custom scrollbar - Earthy theme */
 ::-webkit-scrollbar {
   width: 8px;

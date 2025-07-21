@@ -10,36 +10,47 @@ const AboutSection = () => {
   const transformationJourney = [
     {
       id: 1,
-      image: "/lovable-uploads/d6cb65c9-c5ed-4d79-a325-366956fdbd1a.png",
-      title: "The Spark",
-      subtitle: "Every legend begins with a single decision",
+      image: "/lovable-uploads/J1.jpg",
+      title: "Day 0",
+      subtitle: "The beginning of everything",
       year: "2019",
-      description: "Started with a dream and determination",
+      description: "Just a scrawny kid, I was tired, I was scared, but ready for change.",
       icon: Flame,
       color: "from-emerald-600 to-stone-600",
-      motivationalText: "The journey of a thousand miles begins with a single step"
+      motivationalText: "One promise: just start."
     },
     {
       id: 2,
-      image: "/lovable-uploads/a2120b02-0b55-4ff2-ac59-a3ef49df1ed7.png",
-      title: "The Grind",
-      subtitle: "Where discipline meets dedication",
+      image: "/lovable-uploads/J2.jpg",
+      title: "The Battle",
+      subtitle: "Where the real work begins",
       year: "2021",
-      description: "Consistency became the foundation",
+      description: "I'm not going to lie, It is hard. But I promised to put myself first in my life.",
       icon: Zap,
       color: "from-stone-600 to-emerald-600",
-      motivationalText: "Success is the sum of small efforts repeated daily"
+      motivationalText: "One day at a time- I said."
     },
     {
       id: 3,
-      image: "/lovable-uploads/dd520506-8312-4484-a9fb-754cbb9305cc.png",
-      title: "The Transformation",
-      subtitle: "From vision to reality",
-      year: "2024",
-      description: "Achieved what once seemed impossible",
-      icon: Trophy,
+      image: "/lovable-uploads/J3.1.jpg",
+      title: "Breakthrough",
+      subtitle: "The moment everything clicked",
+      year: "2023",
+      description: "I had to say 'NO' a lot—good and bad. Truth is, achieving means making sacrifices no one else will see.",
+      icon: Target,
       color: "from-emerald-600 to-teal-600",
-      motivationalText: "Your body can stand almost anything. It's your mind you have to convince"
+      motivationalText: "Its Now or Never"
+    },
+    {
+      id: 4,
+      image: "/lovable-uploads/J5.png",
+      title: "The Result",
+      subtitle: "No regrets, only growth",
+      year: "2024",
+      description: "The transformation complete, the journey continues.",
+      icon: Trophy,
+      color: "from-teal-600 to-emerald-600",
+      motivationalText: "I don't regret any of this"
     }
   ];
 
@@ -67,16 +78,15 @@ const AboutSection = () => {
     <section ref={sectionRef} className="relative min-h-screen bg-orange-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Header */}
-        <div className="mx-auto max-w-2xl lg:text-center">
-          <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl">About Me</h2>
-          <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            With years of experience in fitness and nutrition, I&apos;ve helped hundreds of clients achieve their dream
-            physique and maintain it.
+        <div className="mx-auto max-w-2xl lg:text-center pb-10">
+          <h2 className="font-serif text-4xl font-bold tracking-tight sm:text-5xl">The <span className='text-emerald-700'>Journey</span></h2>
+          <p className="mt-6 text-xl leading-8 text-muted-foreground">
+            Here's how my journey began
           </p>
         </div>
 
         {/* Timeline Container */}
-        <div className="relative">
+        <div className="relative max-w-7xl mx-auto">
           {/* Central Timeline Line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gray-200 rounded-full">
             <div 
@@ -92,17 +102,17 @@ const AboutSection = () => {
             const isActive = activeStage >= index;
             
             return (
-              <div key={stage.id} className="relative mb-32">
+              <div key={stage.id} className="relative mb-24">
                 {/* Timeline Node */}
                 <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 z-10">
-                  <div className={`w-16 h-16 rounded-full border-4 border-white shadow-xl transition-all duration-700 ${
+                  <div className={`w-20 h-20 rounded-full border-4 border-white shadow-xl transition-all duration-700 ${
                     isActive 
                       ? `bg-gradient-to-r ${stage.color} scale-110` 
                       : 'bg-gray-300 scale-90'
                   }`}>
                     <div className="w-full h-full flex items-center justify-center">
                       <IconComponent 
-                        size={24} 
+                        size={28} 
                         className={`transition-all duration-500 ${
                           isActive ? 'text-white' : 'text-gray-500'
                         }`} 
@@ -114,58 +124,51 @@ const AboutSection = () => {
                 {/* Content Layout - Image and Text on opposite sides */}
                 <div className="grid grid-cols-2 gap-16 items-center">
                   {/* Left Side */}
-                  <div className={`${isLeft ? 'flex justify-end' : 'flex justify-start'}`}>
+                  <div className={`${isLeft ? 'flex justify-end pr-4' : 'flex justify-start pl-4'}`}>
                     {isLeft ? (
-                      // Image on left for odd stages (2019, 2024)
-                      <div className={`w-full max-w-md transform transition-all duration-1000 ${
+                      // Image on left for odd stages (2019, 2023)
+                      <div className={`w-full transform transition-all duration-1000 ${
                         isActive 
                           ? 'translate-y-0 opacity-100' 
                           : 'translate-y-8 opacity-50'
                       }`}>
                         {/* Year Badge */}
-                        <div className={`inline-block px-6 py-3 rounded-full text-base font-bold text-white bg-gradient-to-r ${stage.color} mb-4`}>
+                        <div className={`inline-block px-8 py-4 rounded-full text-lg font-bold text-white bg-gradient-to-r ${stage.color} mb-6`}>
                           {stage.year}
                         </div>
 
-                        {/* Image Container */}
+                        {/* Image Container - Rectangular Shape */}
                         <div className="relative group mb-6">
-                          <div className="overflow-hidden rounded-2xl shadow-2xl">
+                          <div className="overflow-hidden rounded-3xl shadow-2xl aspect-[4/5]">
                             <img 
                               src={stage.image}
                               alt={`Abhiram's transformation - ${stage.title}`}
-                              className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                          </div>
-                          
-                          {/* Floating Number */}
-                          <div className="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-lg">
-                            <span className="text-3xl font-bold text-gray-800">
-                              {String(index + 1).padStart(2, '0')}
-                            </span>
                           </div>
                         </div>
                       </div>
                     ) : (
-                      // Content on left for even stages (2021)
-                      <div className={`w-full max-w-md transform transition-all duration-1000 ${
+                      // Content on left for even stages (2021, 2024)
+                      <div className={`w-full transform transition-all duration-1000 ${
                         isActive 
                           ? 'translate-y-0 opacity-100' 
                           : 'translate-y-8 opacity-50'
                       }`}>
-                        <h3 className="text-4xl font-serif font-bold text-gray-800 mb-3">
+                        <h3 className="text-4xl font-serif font-bold text-gray-800 mb-4">
                           {stage.title}
                         </h3>
                         <h4 className="text-xl font-inter text-gray-600 mb-4 font-helvetica">
                           {stage.subtitle}
                         </h4>
-                        <p className="text-lg text-gray-500 mb-6 font-helvetica">
+                        <p className="text-lg text-gray-500 mb-6 font-helvetica leading-relaxed">
                           {stage.description}
                         </p>
 
                         {/* Motivational Quote */}
-                        <div className="bg-gradient-to-r from-emerald-50 to-stone-50 p-6 rounded-lg border-l-4 border-emerald-400">
-                          <p className="text-base italic text-gray-700 font-inter font-helvetica">
+                        <div className="bg-gradient-to-r from-emerald-50 to-stone-50 p-6 rounded-2xl border-l-6 border-emerald-400">
+                          <p className="text-base italic text-gray-700 font-inter font-helvetica leading-relaxed">
                             "{stage.motivationalText}"
                           </p>
                         </div>
@@ -174,60 +177,54 @@ const AboutSection = () => {
                   </div>
 
                   {/* Right Side */}
-                  <div className={`${isLeft ? 'flex justify-start' : 'flex justify-end'}`}>
+                  <div className={`${isLeft ? 'flex justify-start pl-4' : 'flex justify-end pr-4'}`}>
                     {isLeft ? (
-                      // Content on right for odd stages (2019, 2024)
-                      <div className={`w-full max-w-md transform transition-all duration-1000 ${
+                      // Content on right for odd stages (2019, 2023)
+                      <div className={`w-full transform transition-all duration-1000 ${
                         isActive 
                           ? 'translate-y-0 opacity-100' 
                           : 'translate-y-8 opacity-50'
                       }`}>
-                        <h3 className="text-4xl font-serif font-bold text-gray-800 mb-3">
+                        <h3 className="text-4xl font-serif font-bold text-gray-800 mb-4">
                           {stage.title}
                         </h3>
                         <h4 className="text-xl font-inter text-gray-600 mb-4 font-helvetica">
                           {stage.subtitle}
                         </h4>
-                        <p className="text-lg text-gray-500 mb-6 font-helvetica">
+                        <p className="text-lg text-gray-500 mb-6 font-helvetica leading-relaxed">
                           {stage.description}
                         </p>
 
                         {/* Motivational Quote */}
-                        <div className="bg-gradient-to-r from-emerald-50 to-stone-50 p-6 rounded-lg border-l-4 border-emerald-400">
-                          <p className="text-base italic text-gray-700 font-inter font-helvetica">
+                        <div className="bg-gradient-to-r from-emerald-50 to-stone-50 p-6 rounded-2xl border-l-6 border-emerald-400">
+                          <p className="text-base italic text-gray-700 font-inter font-helvetica leading-relaxed">
                             "{stage.motivationalText}"
                           </p>
                         </div>
                       </div>
                     ) : (
-                      // Image on right for even stages (2021)
-                      <div className={`w-full max-w-md transform transition-all duration-1000 ${
+                      // Image on right for even stages (2021, 2024)
+                      <div className={`w-full transform transition-all duration-1000 ${
                         isActive 
                           ? 'translate-y-0 opacity-100' 
                           : 'translate-y-8 opacity-50'
                       }`}>
                         {/* Year Badge */}
-                        <div className={`inline-block px-6 py-3 rounded-full text-base font-bold text-white bg-gradient-to-r ${stage.color} mb-4`}>
+                        <div className={`inline-block px-8 py-4 rounded-full text-lg font-bold text-white bg-gradient-to-r ${stage.color} mb-6`}>
                           {stage.year}
                         </div>
 
-                        {/* Image Container */}
+                        {/* Image Container - Rectangular Shape */}
                         <div className="relative group mb-6">
-                          <div className="overflow-hidden rounded-2xl shadow-2xl">
+                          <div className="overflow-hidden rounded-3xl shadow-2xl aspect-[4/5]">
                             <img 
                               src={stage.image}
                               alt={`Abhiram's transformation - ${stage.title}`}
-                              className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                           </div>
                           
-                          {/* Floating Number */}
-                          <div className="absolute -top-4 -right-4 bg-white rounded-full p-4 shadow-lg">
-                            <span className="text-3xl font-bold text-gray-800">
-                              {String(index + 1).padStart(2, '0')}
-                            </span>
-                          </div>
                         </div>
                       </div>
                     )}
@@ -240,10 +237,11 @@ const AboutSection = () => {
 
 
         {/* Final Inspiration */}
-        <div className="mt-6 text-center animate-fade-in">
-          <div className="max-w-5xl mx-auto rounded-3xl p-12 text-gray-900">
-            <blockquote className="text-5xl font-serif font-light italic leading-relaxed mb-8">
-              "I wasn't born with a perfect physique. Every muscle, every achievement, every transformation story you see today was built through consistency, discipline, and an unwavering belief in the process."
+        <div className="text-center animate-fade-in">
+          <div className="max-w-5xl mx-auto rounded-3xl p-6 text-gray-900">
+            <blockquote className="text-5xl font-serif font-light italic leading-relaxed mb-5">
+              Don't be special, <br/>
+              -Be stubborn.  
             </blockquote>
             <cite className="text-2xl font-inter opacity-90 font-helvetica">— Abhiram Nair</cite>
             

@@ -63,7 +63,7 @@ const PricingSection = () => {
   return (
     <div id="pricing">
       {/* Mobile & Tablet Section - Completely Separate */}
-      <section className="block lg:hidden seamless-section soft-sky relative overflow-hidden">
+      <section className="block lg:hidden seamless-section soft-blush relative overflow-hidden">
         {/* Mobile Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
@@ -103,7 +103,7 @@ const PricingSection = () => {
 
                 <div className="space-y-4 text-center">
                   <div className="space-y-2">
-                    <h3 className="text-xl sm:text-2xl font-serif font-bold text-soft-gray">{plan.name}</h3>
+                    {/* <h3 className="text-xl sm:text-2xl font-serif font-bold text-soft-gray">{plan.name}</h3> */}
                     <div className="text-emerald-600 font-bold text-lg sm:text-xl">{plan.duration}</div>
                     <p className="text-muted-gray text-sm sm:text-base">{plan.description}</p>
                   </div>
@@ -148,7 +148,7 @@ const PricingSection = () => {
       </section>
 
       {/* Desktop Section - Completely Separate */}
-      <section className="hidden lg:block seamless-section soft-sky relative overflow-hidden">
+      <section className="hidden lg:block seamless-section soft-blush relative overflow-hidden">
         {/* Desktop Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
@@ -190,7 +190,7 @@ const PricingSection = () => {
 
                 <div className="space-y-6 text-center">
                   <div className="space-y-3">
-                    <h3 className="text-2xl font-serif font-bold text-soft-gray">{plan.name}</h3>
+                    {/* <h3 className="text-2xl font-serif font-bold text-soft-gray">{plan.name}</h3> */}
                     <div className="text-emerald-600 font-bold text-xl font-helvetica">{plan.duration}</div>
                     <p className="text-muted-gray font-light text-base font-helvetica">{plan.description}</p>
                   </div>

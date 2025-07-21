@@ -233,7 +233,7 @@ const TransformationsSection = () => {
             </h2>
             <div className="h-2 w-24 bg-emerald-600 rounded-full"></div>
             <p className="mt-3 text-gray-700 leading-relaxed font-semibold text-xl max-w-2xl font-helvetica">
-              See how our clients achieved their fitness transformation journey with personalized coaching
+              Meet the people who took a chance to upgrade themselves
             </p>
           </div>
 
@@ -270,17 +270,17 @@ const TransformationsSection = () => {
                   <h3 className="text-2xl font-dm-sans font-bold text-gray-900 mb-2 font-formom">
                     {transformations[activeTransformation].name}
                   </h3>
-                  <p className="text-gray-700 leading-relaxed font-helvetica">
+                  {/* <p className="text-gray-700 leading-relaxed font-helvetica">
                     {transformations[activeTransformation].age} years • {transformations[activeTransformation].location}
-                  </p>
+                  </p> */}
                 </div>
 
                 <div className="space-y-3">
-                  <div className="text-lg font-bold text-emerald-700 font-helvetica">
+                  {/* <div className="text-lg font-bold text-emerald-700 font-helvetica">
                     {transformations[activeTransformation].results}
-                  </div>
+                  </div> */}
                   <div className="text-gray-700 leading-relaxed font-helvetica">
-                    Timeline: {transformations[activeTransformation].timeframe}
+                    Duration: {transformations[activeTransformation].timeframe}
                   </div>
                 </div>
 
@@ -348,12 +348,12 @@ const TransformationsSection = () => {
                                 <h4 className="font-bold text-gray-900 text-base group-hover:text-emerald-700 transition-colors font-helvetica">
                                   {transformation.name}
                                 </h4>
-                                <p className="text-xs text-emerald-700 font-semibold font-helvetica">
+                                {/* <p className="text-xs text-emerald-700 font-semibold font-helvetica">
                                   {transformation.results}
-                                </p>
-                                {/* <p className="text-xs text-gray-500 font-helvetica">
-                                  {transformation.timeframe}
                                 </p> */}
+                                <p className="text-xs text-gray-500 font-helvetica">
+                                  {transformation.timeframe}
+                                </p>
                               </div>
                             </div>
                           );
