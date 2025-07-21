@@ -346,7 +346,7 @@ const ContactForm = () => {
       </section>
 
       {/* Desktop Section - Completely Separate */}
-      <section className="hidden lg:block seamless-section soft-sky">
+      <section className="hidden lg:block seamless-section soft-lavender">
         <div className="w-full py-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-formom">
