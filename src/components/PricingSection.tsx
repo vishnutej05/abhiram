@@ -150,12 +150,12 @@ const PricingSection = () => {
       {/* Desktop Section - Completely Separate */}
       <section className="hidden lg:block seamless-section soft-blush relative overflow-hidden">
         {/* Desktop Background Image */}
-        <div 
+        {/* <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
           style={{
             backgroundImage: `url('/lovable-uploads/06d11a55-82ca-4851-9fa2-88213d67ed1d.png')`,
           }}
-        ></div>
+        ></div> */}
         
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Desktop Header */}

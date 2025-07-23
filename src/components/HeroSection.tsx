@@ -25,10 +25,10 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-start overflow-x-hidden">
       {/* Desktop Background Image (hidden on mobile) */}
       <div 
-        className="absolute inset-0 bg-cover bg-no-repeat hidden md:block"
+        className="absolute inset-0 bg-cover bg-no-repeat hidden md:block mt-8"
         style={{
-          backgroundImage: 'url(/lovable-uploads/heroSec.png)',
-          backgroundPosition: 'center 50%',
+          backgroundImage: 'url(/lovable-uploads/hero1.png)',
+          backgroundPosition: 'right center',
           backgroundSize: 'cover'
         }}
       >

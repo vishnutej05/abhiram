@@ -32,7 +32,7 @@ const AboutSection = () => {
     },
     {
       id: 3,
-      image: "/lovable-uploads/J3.1.jpg",
+      image: "/lovable-uploads/J3.jpg",
       title: "Breakthrough",
       subtitle: "The moment everything clicked",
       year: "2023",
@@ -43,7 +43,7 @@ const AboutSection = () => {
     },
     {
       id: 4,
-      image: "/lovable-uploads/J5.png",
+      image: "/lovable-uploads/J4.jpg",
       title: "The Result",
       subtitle: "No regrets, only growth",
       year: "2024",
@@ -137,9 +137,9 @@ const AboutSection = () => {
                           {stage.year}
                         </div>
 
-                        {/* Image Container - Rectangular Shape */}
+                        {/* Image Container - More Square Shape */}
                         <div className="relative group mb-6">
-                          <div className="overflow-hidden rounded-3xl shadow-2xl aspect-[4/5]">
+                          <div className="overflow-hidden rounded-3xl shadow-2xl h-96 w-full">
                             <img 
                               src={stage.image}
                               alt={`Abhiram's transformation - ${stage.title}`}
@@ -214,9 +214,9 @@ const AboutSection = () => {
                           {stage.year}
                         </div>
 
-                        {/* Image Container - Rectangular Shape */}
+                        {/* Image Container - More Square Shape */}
                         <div className="relative group mb-6">
-                          <div className="overflow-hidden rounded-3xl shadow-2xl aspect-[4/5]">
+                          <div className="overflow-hidden rounded-3xl shadow-2xl h-96 w-full">
                             <img 
                               src={stage.image}
                               alt={`Abhiram's transformation - ${stage.title}`}
