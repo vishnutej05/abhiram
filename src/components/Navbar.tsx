@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { ThemeToggle } from './ThemeToggle';
+import { useTheme } from '../hooks/use-theme';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme } = useTheme();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -36,9 +39,9 @@ const Navbar = () => {
     { id: 'about', label: 'About', tooltip: 'Learn about Coach Abhiram' },
     { id: 'transformations', label: 'Results', tooltip: 'See real transformations' },
     { id: 'features', label: 'Programs', tooltip: 'Discover our fitness programs' },
-    { id: 'pricing', label: 'Pricing', tooltip: 'Choose your journey' },
+    { id: 'pricing', label: 'Pricing', tooltip: 'Find your path' },
     { id: 'contact', label: 'Contact', tooltip: 'Start your transformation' },
-    { id: 'instagram', label: 'Instagram', tooltip: 'Follow the fitness journey' },
+    { id: 'instagram', label: 'Instagram', tooltip: 'Follow the journey' },
     { id: 'faq', label: 'FAQ', tooltip: 'Get answers to common questions' },
   ];
 
@@ -47,10 +50,16 @@ const Navbar = () => {
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled 
           ? 'backdrop-blur-lg shadow-lg' 
-          : 'bg-black'
+          : theme === 'dark' ? 'bg-zinc-900/95' : 'bg-black/50'
       }`}
       style={{
-        backgroundColor: scrolled ? 'rgba(28, 28, 28, 0.95)' : 'rgb(0, 0, 0)'
+        backgroundColor: scrolled 
+          ? theme === 'dark' 
+            ? 'rgba(39, 39, 42, 0.95)' 
+            : 'rgba(28, 28, 28, 0.95)' 
+          : theme === 'dark' 
+            ? 'rgba(31, 41, 55, 0.98)'
+            : 'rgb(0, 0, 0)'
       }}
     >
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,11 +94,17 @@ const Navbar = () => {
             </div>
           </div>
 
+          {/* Theme Toggle */}
+          <div className="hidden md:flex items-center ml-4">
+            <ThemeToggle />
+          </div>
+          
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center">
+            <ThemeToggle />
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-gray-300 hover:text-white"
+              className="text-gray-300 hover:text-white ml-2"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
             >
               <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">

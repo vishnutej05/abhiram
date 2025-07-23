@@ -3,8 +3,10 @@ import { useState, useEffect, useRef } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
+import { useTheme } from '../hooks/use-theme';
 
 const ContactForm = () => {
+  const { theme } = useTheme();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -141,7 +143,7 @@ const ContactForm = () => {
     <div id="contact">
       <>
         {/* Mobile Section - Completely Separate */}
-        <section ref={sectionRef} className="block lg:hidden seamless-section soft-lavender relative overflow-hidden">
+        <section ref={sectionRef} className={`block lg:hidden seamless-section ${theme === 'dark' ? 'soft-blush' : 'soft-lavender'} relative overflow-hidden`}>
         {/* Mobile Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
@@ -153,11 +155,11 @@ const ContactForm = () => {
         <div className="relative z-10 px-4 py-12">
           {/* Mobile Header */}
           <div className="text-center mb-8">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 font-formom">
-              Transform Your{' '}
-              <span className="text-emerald-700">Body & Mind</span>
+            <h2 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-stone-100' : 'text-gray-900'} mb-4 font-formom`}>
+              Build Your{' '}
+              <span className={theme === 'dark' ? 'text-emerald-500' : 'text-emerald-700'}>Legacy</span>
             </h2>
-            <p className="text-base sm:text-lg text-gray-600 max-w-lg mx-auto font-helvetica">
+            <p className={`text-base sm:text-lg ${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'} max-w-lg mx-auto font-helvetica`}>
               Ready to unlock your full potential? Join thousands who've transformed their lives.
             </p>
           </div>
@@ -168,7 +170,7 @@ const ContactForm = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-2 text-center font-formom">
                 Start Your Transformation
               </h3>
-              <p className="text-gray-600 text-center text-sm font-helvetica">
+              <p className={`${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'} text-center text-sm font-helvetica`}>
                 Fill out the form below and let's begin your journey together.
               </p>
             </div>
@@ -346,16 +348,16 @@ const ContactForm = () => {
       </section>
 
       {/* Desktop Section - Completely Separate */}
-      <section className="hidden lg:block seamless-section soft-lavender">
+      <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'soft-blush' : 'soft-lavender'}`}>
         <div className="w-full py-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-formom">
-              Transform Your{' '}
+              Build Your{' '}
               <span className="text-emerald-700">
-                Body & Mind
+                Legacy
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-helvetica">
+            <p className={`text-xl ${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'} max-w-2xl mx-auto font-helvetica`}>
               Join thousands who've transformed their lives with our proven fitness system.
             </p>
           </div>
@@ -377,7 +379,7 @@ const ContactForm = () => {
                 <h3 className="text-2xl font-bold text-gray-900 mb-3 font-helvetica">
                   Start Your Transformation
                 </h3>
-                <p className="text-gray-600 font-helvetica">
+                <p className={`${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'} font-helvetica`}>
                   Fill out the form below and let's begin your journey together.
                 </p>
               </div>

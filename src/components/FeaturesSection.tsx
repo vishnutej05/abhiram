@@ -1,6 +1,8 @@
 import '../styles/features-animation.css';
+import { useTheme } from '../hooks/use-theme';
 
 const FeaturesSection = () => {
+  const { theme } = useTheme();
   const features = [
     {
       title: "Personalized Workout Plan",
@@ -118,7 +120,7 @@ const FeaturesSection = () => {
                   <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full">
                     <div className="text-4xl mb-4">{feature.icon}</div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <p className={`${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'}`}>{feature.description}</p>
                   </div>
                 </div>
               ))}
@@ -128,7 +130,7 @@ const FeaturesSection = () => {
                   <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-full">
                     <div className="text-4xl mb-4">{feature.icon}</div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <p className={`${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'}`}>{feature.description}</p>
                   </div>
                 </div>
               ))}

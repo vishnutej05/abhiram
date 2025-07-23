@@ -2,10 +2,12 @@
 import { Instagram, ExternalLink, Heart, RefreshCw } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { useInstagramPosts } from '../hooks/useInstagramPosts';
+import { useTheme } from '../hooks/use-theme';
 
 const InstagramSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const { posts, loading, error, refreshPosts, isConfigured } = useInstagramPosts();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -75,7 +77,7 @@ const InstagramSection = () => {
   return (
     <div id="instagram">
       {/* Mobile Section - Completely Separate */}
-      <section ref={sectionRef} className="block lg:hidden seamless-section soft-lavender relative overflow-hidden">
+      <section ref={sectionRef} className={`block lg:hidden seamless-section ${theme === 'dark' ? 'soft-peach' : 'soft-lavender'} relative overflow-hidden`}>
         {/* Mobile Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-20 h-20 bg-gradient-to-br from-emerald-300 to-stone-300 rounded-full blur-xl"></div>
@@ -87,13 +89,13 @@ const InstagramSection = () => {
           {/* Mobile Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-3 mb-4">
-              <Instagram className="w-10 h-10 text-emerald-700" />
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 font-formom">
+              <Instagram className={`w-10 h-10 ${theme === 'dark' ? 'text-emerald-500' : 'text-emerald-700'}`} />
+              <h2 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-stone-100' : 'text-gray-900'} font-formom`}>
                 Join The{' '}
-                <span className="text-emerald-700">Journey</span>
+                <span className={theme === 'dark' ? 'text-emerald-500' : 'text-emerald-700'}>Journey</span>
               </h2>
             </div>
-            <p className="text-base sm:text-lg text-gray-700 max-w-sm mx-auto leading-relaxed font-helvetica">
+            <p className={`text-base sm:text-lg ${theme === 'dark' ? 'text-stone-300' : 'text-gray-700'} max-w-sm mx-auto leading-relaxed font-helvetica`}>
               {posts.length > 0 
                 ? `Latest posts from @coachpotate on Instagram (${posts.length} posts)` 
                 : 'Daily transformation updates & motivation from your fitness coach'
@@ -163,7 +165,7 @@ const InstagramSection = () => {
       </section>
 
       {/* Desktop Section - Completely Separate */}
-      <section className="hidden lg:block seamless-section soft-lavender">
+      <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'soft-peach' : 'soft-lavender'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-4 mb-6">

@@ -1,7 +1,9 @@
 
 import { Button } from "@/components/ui/button";
+import { useTheme } from '../hooks/use-theme';
 
 const PricingSection = () => {
+  const { theme } = useTheme();
   const plans = [
     {
       name: "The Kickstart",
@@ -63,7 +65,7 @@ const PricingSection = () => {
   return (
     <div id="pricing">
       {/* Mobile & Tablet Section - Completely Separate */}
-      <section className="block lg:hidden seamless-section soft-blush relative overflow-hidden">
+      <section className={`block lg:hidden seamless-section ${theme === 'dark' ? 'soft-sky' : 'soft-blush'} relative overflow-hidden`}>
         {/* Mobile Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
@@ -75,11 +77,11 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Mobile Header */}
           <div className="text-center mb-8 animate-fade-in px-4">
-            <h2 className="text-4xl sm:text-5xl font-serif font-bold text-gray-900 mb-4">
-              Choose your{' '}
-              <span className="text-emerald-700">Journey</span>
+            <h2 className={`text-4xl sm:text-5xl font-serif font-bold ${theme === 'dark' ? 'text-stone-100' : 'text-gray-900'} mb-4`}>
+              Find your{' '}
+              <span className={theme === 'dark' ? 'text-emerald-500' : 'text-emerald-700'}>Path</span>
             </h2>
-            <p className="text-lg sm:text-xl text-muted-gray font-light max-w-xl mx-auto">
+            <p className={`text-lg sm:text-xl ${theme === 'dark' ? 'text-stone-300' : 'text-muted-gray'} font-light max-w-xl mx-auto`}>
               Select the perfect plan for your transformation
             </p>
           </div>
@@ -148,7 +150,7 @@ const PricingSection = () => {
       </section>
 
       {/* Desktop Section - Completely Separate */}
-      <section className="hidden lg:block seamless-section soft-blush relative overflow-hidden">
+      <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'soft-sky' : 'soft-blush'} relative overflow-hidden`}>
         {/* Desktop Background Image */}
         {/* <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
@@ -161,9 +163,9 @@ const PricingSection = () => {
           {/* Desktop Header */}
           <div className="text-center mb-20 animate-fade-in">
             <h2 className="text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-6">
-              Choose your{' '}
+              Find your{' '}
               <span className="text-emerald-700">
-                Journey
+                Path
               </span>
             </h2>
             <p className="text-xl text-muted-gray font-light max-w-2xl mx-auto">

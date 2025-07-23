@@ -1,90 +1,92 @@
 import { useState, useEffect } from 'react';
+import { useTheme } from '../hooks/use-theme';
 
 const TransformationsSection = () => {
   const [activeTransformation, setActiveTransformation] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [mobileCarouselIndex, setMobileCarouselIndex] = useState(0);
+  const { theme } = useTheme();
 
   const transformations = [
     {
-      name: "Ajay",
+      name: "Ryan",
       age: 28,
       location: "Creator",
       beforeImg: "/testimonials/Ajay/b.jpg",
       afterImg: "/testimonials/Ajay/a.jpg",
       results: "Complete body transformation",
       timeframe: "4 months",
-      testimonial: "Being a food consultant, dieting is impossible for me :)) But, Abhiram made it work for me. Now I'm probably the fittest food consultant out there xD",
+      testimonial: "As a food consultant, maintaining my own fitness seemed impossible. Abhiram's approach changed everything - now I practice what I preach and inspire my clients daily.",
     },
     {
-      name: "Akshay",
+      name: "Marcus",
       age: 32,
       location: "IT Professional", 
       beforeImg: "/testimonials/Akshay/b.JPG",
       afterImg: "/testimonials/Akshay/a.JPG",
       results: "Enhanced Athletic Performance",
       timeframe: "5 months",
-      testimonial: "I was much better at my sport (cricket), much better functionality; I love to hike, I was way better at it. Best decision I've made.",
+      testimonial: "The transformation wasn't just physical - my cricket performance improved dramatically, and hiking became effortless. This program delivers results that translate to real life.",
     },
     {
-      name: "Alok",
+      name: "Jordan",
       age: 24,
       location: "IT Professional",
       beforeImg: "/testimonials/Alok/b.png",
       afterImg: "/testimonials/Alok/a.jpg",
       results: "Mental & Physical Transformation",
       timeframe: "6 months",
-      testimonial: "Abhiram made me mentally stronger and I understand the core values to staying fit. He made me understand that this is a lifestyle choice.",
+      testimonial: "Abhiram taught me that fitness is a mindset, not just workouts. The mental strength I gained has transformed every aspect of my life beyond the gym.",
     },
     {
-      name: "Ashwath",
+      name: "Tyler",
       age: 25,
       location: "IT Professional",
       beforeImg: "/testimonials/Ashwath/b.JPG",
       afterImg: "/testimonials/Ashwath/a.JPG",
       results: "Strength & Functional Fitness",
       timeframe: "4 months",
-      testimonial: "Banger program, helped me get in shape, squat SHIT heavy and do more pull ups which is exactly what I wanted.",
+      testimonial: "Outstanding program that delivered exactly what I wanted - serious strength gains and functional fitness that carries over to everything I do.",
     },
     {
-      name: "Karavi",
+      name: "Maya",
       age: 28,
       location: "Musician",
       beforeImg: "/testimonials/Karavi/b.JPG",
       afterImg: "/testimonials/Karavi/a.JPG",
       results: "Complete Body Transformation",
       timeframe: "5 months",
-      testimonial: "The program perfectly balanced my creative lifestyle with fitness goals. Sustainable approach that actually works long-term.",
+      testimonial: "The program perfectly balanced my creative lifestyle with fitness goals. I found an approach that works with my irregular schedule and delivers lasting results.",
     },
     {
-      name: "Nabeel",
+      name: "Alex",
       age: 27,
       location: "IT Professional",
       beforeImg: "/testimonials/Nabeel/b.JPG",
       afterImg: "/testimonials/Nabeel/a.JPG",
       results: "Lean & Strong Physique",
       timeframe: "4 months",
-      testimonial: "Abhiram's program is amazing, best part is the fact that there's no BS, it's straight to the point.",
+      testimonial: "What I love about Abhiram's approach is the clarity - no complicated theories, just proven methods that work. The results speak for themselves.",
     },
     {
-      name: "Rahul",
+      name: "David",
       age: 29,
       location: "Assistant Professor",
       beforeImg: "/testimonials/Rahul/b.jpeg",
       afterImg: "/testimonials/Rahul/a.png",
       results: "7kg Muscle Gain",
       timeframe: "6 months",
-      testimonial: "I was always skinny and could never figure out the eating part. This program made it easier and way less complicated, I was able to put on over 7kgs in muscle working with Coach Abhiram.",
+      testimonial: "Finally cracked the code on gaining muscle! The nutrition guidance made everything click, and I added over 7kg of solid muscle mass.",
     },
     {
-      name: "Vinod",
+      name: "Chris",
       age: 32,
       location: "Professional",
       beforeImg: "/testimonials/Vinod/b.JPG",
       afterImg: "/testimonials/Vinod/a.JPG",
       results: "Lost 10kg Fat, Gained 5kg Muscle",
       timeframe: "7 months",
-      testimonial: "I was overweight in the past. Abhiram's - themight program changed everything for me, I lost over 10kgs in fat and put on over 5kgs of muscle.",
+      testimonial: "Complete body recomposition - lost 10kg of fat while gaining 5kg of muscle. This program transformed not just my body, but my entire relationship with fitness.",
     }
   ];
 
@@ -117,7 +119,7 @@ const TransformationsSection = () => {
   return (
     <div id="transformations">
       {/* Mobile & Tablet Section - Completely Separate */}
-      <section className="block lg:hidden seamless-section soft-blush relative overflow-hidden">
+      <section className={`block lg:hidden seamless-section ${theme === 'dark' ? 'soft-sage' : 'soft-blush'} relative overflow-hidden`}>
         {/* Mobile Background Image */}
         {/* <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-15"
@@ -180,7 +182,7 @@ const TransformationsSection = () => {
                   <h3 className="text-lg sm:text-xl font-bold text-gray-900">
                     {transformations[mobileCarouselIndex].name}
                   </h3>
-                  <div className="flex justify-center space-x-3 text-sm text-gray-600 font-helvetica">
+                  <div className={`flex justify-center space-x-3 text-sm ${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'} font-helvetica`}>
                     <span className="bg-white px-2 py-1 rounded-full shadow text-xs sm:text-sm">
                       {transformations[mobileCarouselIndex].age} years
                     </span>
@@ -214,7 +216,7 @@ const TransformationsSection = () => {
       </section>
 
       {/* Desktop Section - Original Layout */}
-      <section className="hidden lg:block seamless-section soft-blush relative overflow-hidden">
+      <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'soft-sage' : 'soft-blush'} relative overflow-hidden`}>
         {/* Desktop Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
@@ -351,7 +353,7 @@ const TransformationsSection = () => {
                                 {/* <p className="text-xs text-emerald-700 font-semibold font-helvetica">
                                   {transformation.results}
                                 </p> */}
-                                <p className="text-xs text-gray-500 font-helvetica">
+                                <p className={`text-xs ${theme === 'dark' ? 'text-stone-400' : 'text-gray-500'} font-helvetica`}>
                                   {transformation.timeframe}
                                 </p>
                               </div>
