@@ -101,6 +101,7 @@ All colors MUST be HSL.
     --strong-green: 142 71% 30%; /* #11864B equivalent */
     --electric-blue: 200 100% 50%; /* Strong blue */
     --warm-orange: 25 95% 60%; /* Strong orange accent */
+    --amber-gold: 43 96% 58%; /* New warm gold accent */
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 8%;
@@ -147,7 +148,8 @@ All colors MUST be HSL.
     --strong-green: 142 71% 45%; /* Brighter green for dark mode */
     --electric-blue: 200 100% 70%; /* Electric blue */
     --warm-orange: 25 95% 70%; /* Bright orange */
-
+    --amber-gold: 43 96% 65%; /* Brighter gold for dark mode */
+    
     --sidebar-background: 0 0% 5%;
     --sidebar-foreground: 0 0% 95%;
     --sidebar-primary: 0 0% 95%;
@@ -158,15 +160,21 @@ All colors MUST be HSL.
     --sidebar-ring: 0 0% 95%;
   }
 
+  /* Add transition to all color properties for smooth theme switching */
+  .transition-colors {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   body {
-    @apply bg-gradient-to-br from-white via-slate-50 to-stone-50;
+    background: linear-gradient(to bottom right, #f9fafb, #f1f5f9, #f8fafc);
     color: hsl(var(--foreground));
     font-family: 'Helvetica', Arial, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   
   .dark body {
-    @apply bg-gradient-to-br from-black via-zinc-900 to-neutral-900;
+    background: linear-gradient(to bottom right, #000000, #18181b, #171717);
     color: hsl(var(--foreground));
   }
 
@@ -223,21 +231,29 @@ All colors MUST be HSL.
     background: linear-gradient(135deg, hsl(200, 20%, 8%) 0%, hsl(200, 15%, 10%) 100%);
   }
 
-/* Custom scrollbar - Earthy theme */
+/* Custom scrollbar with theme-matching colors */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-stone-100 dark:bg-zinc-800;
+  @apply bg-slate-100 dark:bg-zinc-800;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-emerald-600 dark:bg-emerald-700 rounded-full;
+  background-color: hsl(142, 71%, 30%); /* strong-green in light mode */
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: hsl(200, 100%, 70%); /* electric-blue in dark mode */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-emerald-700 dark:bg-emerald-800;
+  background-color: hsl(142, 71%, 25%); /* darker strong-green on hover */
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(200, 100%, 60%); /* slightly darker electric-blue on hover */
 }
 
 @layer components {
@@ -277,6 +293,15 @@ All colors MUST be HSL.
   
   .dark .text-strong-green {
     color: hsl(142, 71%, 45%); /* Dark mode strong green */
+  }
+
+  /* Replace amber-gold with strong-green in light theme for better visibility */
+  .text-amber-gold {
+    color: hsl(142, 71%, 30%); /* Using strong-green in light mode instead */
+  }
+  
+  .dark .text-amber-gold {
+    color: hsl(43, 96%, 65%); /* Keep amber-gold in dark mode */
   }
 
   /* Smooth hover transitions */
@@ -321,8 +346,8 @@ All colors MUST be HSL.
   }
   
   .dark .btn-primary:hover {
-    background: hsl(var(--strong-green));
-    box-shadow: 0 8px 25px hsla(var(--strong-green), 0.4);
+    background: hsl(var(--amber-gold));
+    box-shadow: 0 8px 25px hsla(var(--amber-gold), 0.4);
   }
   
   .btn-secondary {

@@ -19,4 +19,16 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  css: {
+    // Enable CSS modules if you're using them
+    modules: {
+      localsConvention: 'camelCase',
+    },
+    // Enable preprocessors if needed
+    preprocessorOptions: {
+      // Add preprocessor options if needed
+    },
+  },
+  // Ensure static assets are properly served
+  publicDir: 'public',
 }));

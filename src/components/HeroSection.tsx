@@ -26,22 +26,25 @@ const HeroSection = () => {
   return (
     <section className={`relative min-h-screen flex items-center justify-start overflow-x-hidden ${
       theme === 'dark' 
-        ? 'bg-gradient-to-br from-black via-charcoal-900 to-black' 
+        ? 'bg-gradient-to-br from-black via-charcoal-900 to-black/70' 
         : 'bg-gradient-to-br from-white via-slate-50 to-stone-50'
     }`}>
       {/* Desktop Background Image (hidden on mobile) */}
       <div 
         className="absolute inset-0 bg-cover bg-no-repeat hidden md:block mt-8"
         style={{
-          backgroundImage: 'url(/lovable-uploads/hero1.png)',
+          backgroundImage: theme === 'dark' 
+            ? 'url(/lovable-uploads/hero1.png)' 
+            : 'url(/lovable-uploads/heroSec.png)',
           backgroundPosition: 'right center',
-          backgroundSize: 'cover'
+          backgroundSize: 'cover',
+          transition: 'opacity 0.5s ease-in-out'
         }}
       >
         <div className={`absolute inset-0 ${
           theme === 'dark' 
             ? 'bg-gradient-to-r from-black/95 via-charcoal/90 to-black/70' 
-            : 'bg-gradient-to-r from-white/50 via-white/40 to-transparent'
+            : 'bg-gradient-to-r from-white/60 via-white/40 to-transparent'
         }`}></div>
       </div>
       
@@ -57,7 +60,7 @@ const HeroSection = () => {
         <div className={`absolute inset-0 ${
           theme === 'dark' 
             ? 'bg-gradient-to-b from-black/95 via-charcoal/85 to-black/70' 
-            : 'bg-gradient-to-b from-white/70 via-white/60 to-white/40'
+            : 'bg-gradient-to-b from-white/50 via-white/40 to-white/20'
         }`}></div>
       </div>
 
@@ -73,11 +76,12 @@ const HeroSection = () => {
               </h1>
             </div>
             
+            {/* Mobile Content (centered, stacked) */}
             <div className="space-y-3 mt-12 mb-4">
-              <p className={`opacity-0 font-medium text-lg ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`} style={{animation: "fadeIn 1.5s ease-in-out 1.0s forwards"}}>
+              <p className={`opacity-0 font-medium text-2xl ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`} style={{animation: "fadeIn 1.5s ease-in-out 1.0s forwards"}}>
                 Hi, I'm <span className={`font-semibold ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>Abhiram,</span> Founder of themight
               </p>
-              <p className={`opacity-0 text-base ${theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}`} style={{animation: "fadeIn 1.5s ease-in-out 1.3s forwards"}}>
+              <p className={`opacity-0 text-lg ${theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}`} style={{animation: "fadeIn 1.5s ease-in-out 1.3s forwards"}}>
                 Transform your body with India's leading<br/>online fitness transformation coach
               </p>
             </div>
@@ -111,20 +115,22 @@ const HeroSection = () => {
         {/* Desktop Content (left-aligned) */}
         <div className="hidden md:block max-w-6xl">
           <div className={`space-y-12`}>
-            <h1 className="text-5xl lg:text-7xl font-black leading-[0.9] tracking-tight font-serif uppercase opacity-0" style={{animation: "fadeIn 1.5s ease-in-out 0.3s forwards"}}>
-              IT'S TIME FOR YOU TO <span className="text-electric-blue font-black">
+            <h1 className={`text-5xl lg:text-7xl font-black leading-[0.9] tracking-tight font-serif uppercase opacity-0 ${
+              theme === 'dark' ? 'text-white' : 'text-zinc-800'
+            }`} style={{animation: "fadeIn 1.5s ease-in-out 0.3s forwards"}}>
+              IT'S TIME FOR YOU TO <span className={`${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'} font-black`}>
                 UPGRADE
               </span> YOURSELF.
             </h1>
             <div className="space-y-3">
-                <p className={`text-2xl font-bold font-helvetica opacity-0 ${
+                <p className={`text-3xl font-bold font-helvetica opacity-0 ${
                   theme === 'dark' ? 'text-white' : 'text-gray-800'
                 }`} style={{animation: "fadeIn 1.5s ease-in-out 1.0s forwards"}}>
                   Hi, I'm <span className={`font-semibold ${
                     theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'
                   }`}>Abhiram,</span> Founder of themight
                 </p>
-                <p className={`text-lg lg:text-xl font-light leading-tight max-w-3xl font-helvetica opacity-0 ${
+                <p className={`text-xl lg:text-2xl font-light leading-tight max-w-3xl font-helvetica opacity-0 ${
                   theme === 'dark' ? 'text-slate-300' : 'text-gray-700'
                 }`} style={{animation: "fadeIn 1.5s ease-in-out 1.5s forwards"}}>
                   Transform your body with India's leading <br /> online fitness transformation coach
