@@ -47,26 +47,19 @@ const Navbar = () => {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md ${
         scrolled 
-          ? 'backdrop-blur-lg shadow-lg' 
-          : theme === 'dark' ? 'bg-zinc-900/95' : 'bg-black/50'
-      }`}
-      style={{
-        backgroundColor: scrolled 
-          ? theme === 'dark' 
-            ? 'rgba(39, 39, 42, 0.95)' 
-            : 'rgba(28, 28, 28, 0.95)' 
-          : theme === 'dark' 
-            ? 'rgba(31, 41, 55, 0.98)'
-            : 'rgb(0, 0, 0)'
-      }}
+          ? 'shadow-lg' 
+          : ''
+      } ${theme === 'dark' 
+          ? 'bg-zinc-900/75' 
+          : 'bg-white/75'}`}
     >
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-white font-bold text-xl md:text-2xl tracking-wider">
+            <Link to="/" className={`${theme === 'dark' ? 'text-white' : 'text-gray-900'} font-bold text-xl md:text-2xl tracking-wider`}>
               themight
             </Link>
           </div>
@@ -78,15 +71,15 @@ const Navbar = () => {
                 <div key={item.id} className="relative group">
                   <button 
                     onClick={() => scrollToSection(item.id)}
-                    className="text-gray-300 hover:text-white transition-colors font-bold text-base lg:text-lg py-2 px-2 rounded-md hover:bg-white/10"
+                    className={`${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'} transition-colors font-bold text-base lg:text-lg py-2 px-2 rounded-md hover:bg-white/10`}
                   >
                     {item.label}
                   </button>
-                  {/* Stylish Tooltip - Bottom positioned with orange background */}
+                  {/* Stylish Tooltip */}
                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                    <div className="bg-emerald-600 text-white text-xs px-2 py-1 rounded-md shadow-lg whitespace-nowrap">
+                    <div className={`${theme === 'dark' ? 'bg-electric-blue-600' : 'bg-strong-green'} text-white text-xs px-2 py-1 rounded-md shadow-lg whitespace-nowrap`}>
                       {item.tooltip}
-                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-l-4 border-r-4 border-b-4 border-transparent border-b-emerald-600"></div>
+                      <div className={`absolute bottom-full left-1/2 transform -translate-x-1/2 border-l-4 border-r-4 border-b-4 border-transparent ${theme === 'dark' ? 'border-b-electric-blue-600' : 'border-b-strong-green'}`}></div>
                     </div>
                   </div>
                 </div>
@@ -104,7 +97,7 @@ const Navbar = () => {
             <ThemeToggle />
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="text-gray-300 hover:text-white ml-2"
+              className={`${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'} ml-2`}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
             >
               <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -120,13 +113,13 @@ const Navbar = () => {
 
         {/* Mobile menu, toggle based on menu state */}
         {menuOpen && (
-          <div className="md:hidden py-4 px-2 rounded-b-lg animate-fade-in bg-black/20 backdrop-blur-md">
+          <div className={`md:hidden py-4 px-2 rounded-b-lg animate-fade-in ${theme === 'dark' ? 'bg-black/20' : 'bg-white/90'} backdrop-blur-md`}>
             <div className="flex flex-col space-y-4">
               {navigationItems.map((item) => (
                 <button 
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-gray-300 hover:text-white transition-colors font-bold py-3 px-4 rounded-md hover:bg-white/10 text-left text-base"
+                  className={`${theme === 'dark' ? 'text-gray-300 hover:text-white hover:bg-white/10' : 'text-gray-800 hover:text-black hover:bg-black/5'} transition-colors font-bold py-3 px-4 rounded-md text-left text-base`}
                 >
                   {item.label}
                 </button>

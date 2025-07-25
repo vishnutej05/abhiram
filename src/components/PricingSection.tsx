@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { useTheme } from '../hooks/use-theme';
 
@@ -65,7 +64,7 @@ const PricingSection = () => {
   return (
     <div id="pricing">
       {/* Mobile & Tablet Section - Completely Separate */}
-      <section className={`block lg:hidden seamless-section ${theme === 'dark' ? 'soft-sky' : 'soft-blush'} relative overflow-hidden`}>
+      <section className={`block lg:hidden seamless-section ${theme === 'dark' ? 'bg-gradient-to-b from-soft-sky to-soft-sage' : 'bg-gradient-to-b from-soft-blush to-soft-lavender'} relative overflow-hidden pb-0`}>
         {/* Mobile Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
@@ -79,7 +78,7 @@ const PricingSection = () => {
           <div className="text-center mb-8 animate-fade-in px-4">
             <h2 className={`text-4xl sm:text-5xl font-serif font-bold ${theme === 'dark' ? 'text-stone-100' : 'text-gray-900'} mb-4`}>
               Find your{' '}
-              <span className={theme === 'dark' ? 'text-emerald-500' : 'text-emerald-700'}>Path</span>
+              <span className={theme === 'dark' ? 'text-electric-blue-500' : 'text-emerald-700'}>Path</span>
             </h2>
             <p className={`text-lg sm:text-xl ${theme === 'dark' ? 'text-stone-300' : 'text-muted-gray'} font-light max-w-xl mx-auto`}>
               Select the perfect plan for your transformation
@@ -150,7 +149,7 @@ const PricingSection = () => {
       </section>
 
       {/* Desktop Section - Completely Separate */}
-      <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'soft-sky' : 'soft-blush'} relative overflow-hidden`}>
+      <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'bg-gradient-to-b from-soft-sky to-soft-sage' : 'bg-gradient-to-b from-soft-blush to-soft-lavender'} relative overflow-hidden pb-0`}>
         {/* Desktop Background Image */}
         {/* <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
@@ -235,3 +234,4 @@ const PricingSection = () => {
 };
 
 export default PricingSection;
+// export default PricingSection;

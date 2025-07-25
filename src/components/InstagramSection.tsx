@@ -89,10 +89,10 @@ const InstagramSection = () => {
           {/* Mobile Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-3 mb-4">
-              <Instagram className={`w-10 h-10 ${theme === 'dark' ? 'text-emerald-500' : 'text-emerald-700'}`} />
+              <Instagram className={`w-10 h-10 ${theme === 'dark' ? 'text-electric-blue-500' : 'text-emerald-700'}`} />
               <h2 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-stone-100' : 'text-gray-900'} font-formom`}>
                 Join The{' '}
-                <span className={theme === 'dark' ? 'text-emerald-500' : 'text-emerald-700'}>Journey</span>
+                <span className={theme === 'dark' ? 'text-warm-orange-500' : 'text-emerald-700'}>Journey</span>
               </h2>
             </div>
             <p className={`text-base sm:text-lg ${theme === 'dark' ? 'text-stone-300' : 'text-gray-700'} max-w-sm mx-auto leading-relaxed font-helvetica`}>

@@ -54,8 +54,10 @@ const FeaturesSection = () => {
         <div className="w-full mx-auto relative z-10 flex flex-col flex-1">
           {/* Mobile Header Section - Simplified */}
           <div className="text-center px-4 sm:px-8 py-6 animate-fade-in">
-            <h2 className="font-serif text-3xl font-bold tracking-tight sm:text-4xl">Everything you need to transform</h2>
-            <p className="mt-6 text-lg leading-8 text-muted-foreground">
+            <h2 className={`font-serif text-3xl font-bold tracking-tight sm:text-4xl ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+              Everything you need to <span className="text-electric-blue-500">transform</span>
+            </h2>
+            <p className={`mt-6 text-lg leading-8 ${theme === 'dark' ? 'text-white' : 'text-muted-foreground'}`}>
               Get access to everything you need to transform your body and mind. From personalized workout plans to nutrition
               guidance, we&apos;ve got you covered.
             </p>
@@ -90,12 +92,12 @@ const FeaturesSection = () => {
           <div className="flex flex-col md:flex-row items-center md:items-center animate-fade-in" style={{ minHeight: 0, marginBottom: 0 }}>
             <div className="hidden md:block w-1/2"></div>
             <div className="w-full md:w-1/2 flex flex-col justify-center items-start md:pr-16 md:pl-10 py-8">
-              <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight text-center font-serif">
+              <h2 className="text-4xl lg:text-6xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-4 leading-tight text-center font-serif">
                 What You
-                <span className="text-emerald-600"> Get</span>
+                <span className="text-electric-blue-600"> Get</span>
               </h2>
 
-              <div className="h-2 w-24 bg-emerald-600 rounded-full ml-2"></div>
+              <div className="h-2 w-24 bg-electric-blue-600 rounded-full ml-2"></div>
 
               <div className="ml-2 text-lg text-gray-700 leading-relaxed font-semibold max-w-3xl text-left space-y-2 mt-4 font-helvetica">
                 <p>Unlock your full potential with support tailored to your unique goals. Here's what you'll get:</p>

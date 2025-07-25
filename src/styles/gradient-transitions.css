@@ -1,0 +1,37 @@
+/* Light mode gradients */
+.soft-blush {
+  background-color: #f9f4f0;
+}
+
+.soft-lavender {
+  background-color: #f5f3fa;
+}
+
+/* Dark mode gradients */
+.soft-sky {
+  background-color: #1a2b38;
+}
+
+.soft-sage {
+  background-color: #1d2a28;
+}
+
+/* Gradient transitions */
+.gradient-pricing-to-faq-light {
+  background: linear-gradient(to bottom, #f9f4f0, #f5f3fa);
+}
+
+.gradient-pricing-to-faq-dark {
+  background: linear-gradient(to bottom, #1a2b38, #1d2a28);
+}
+
+/* Remove any section breaks */
+.seamless-flow {
+  margin: 0;
+  padding-top: 5rem;
+  padding-bottom: 0;
+}
+
+.seamless-flow + section {
+  padding-top: 0;
+}

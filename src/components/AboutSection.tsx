@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from 'react';
 import { ChevronDown, Star, Zap, Target, Trophy, Heart, Flame } from 'lucide-react';
 import { useTheme } from '../hooks/use-theme';
@@ -18,7 +17,7 @@ const AboutSection = () => {
       year: "2019",
       description: "Just a scrawny kid, tired and scared, but something inside me knew it was time. No more excuses.",
       icon: Flame,
-      color: "from-emerald-600 to-stone-600",
+      color: "from-electric-blue-600 to-stone-600",
       motivationalText: "One promise: just start."
     },
     {
@@ -29,7 +28,7 @@ const AboutSection = () => {
       year: "2021",
       description: "Every rep hurt. Every meal mattered. I chose myself over comfort, discipline over instant gratification.",
       icon: Zap,
-      color: "from-stone-600 to-emerald-600",
+      color: "from-stone-600 to-electric-blue-600",
       motivationalText: "One day at a time—that's all it takes."
     },
     {
@@ -40,7 +39,7 @@ const AboutSection = () => {
       year: "2023",
       description: "Saying 'NO' became my superpower. To junk food, to excuses, to settling for less. Growth demands sacrifice.",
       icon: Target,
-      color: "from-emerald-600 to-teal-600",
+      color: "from-electric-blue-600 to-electric-blue-700",
       motivationalText: "It's now or never—choose greatness."
     },
     {
@@ -51,7 +50,7 @@ const AboutSection = () => {
       year: "2024",
       description: "Not just transformed—evolved. The body changed, but the mind became unbreakable. This is just the beginning.",
       icon: Trophy,
-      color: "from-teal-600 to-emerald-600",
+      color: "from-electric-blue-700 to-electric-blue-600",
       motivationalText: "I don't regret any of this—and neither will you."
     }
   ];
@@ -81,8 +80,8 @@ const AboutSection = () => {
       <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Header */}
         <div className="mx-auto max-w-2xl lg:text-center pb-10">
-          <h2 className={`font-serif text-4xl font-bold tracking-tight sm:text-5xl ${theme === 'dark' ? 'text-stone-100' : 'text-gray-900'}`}>The <span className={theme === 'dark' ? 'text-emerald-500' : 'text-emerald-700'}>Journey</span></h2>
-          <p className={`mt-6 text-xl leading-8 ${theme === 'dark' ? 'text-stone-300' : 'text-muted-foreground'}`}>
+          <h2 className={`font-serif text-4xl font-bold tracking-tight sm:text-5xl ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>The <span className="text-electric-blue-500">Journey</span></h2>
+          <p className={`mt-6 text-xl leading-8 ${theme === 'dark' ? 'text-white' : 'text-muted-foreground'}`}>
             Here's how my journey began
           </p>
         </div>
@@ -92,7 +91,7 @@ const AboutSection = () => {
           {/* Central Timeline Line */}
           <div className={`absolute left-1/2 transform -translate-x-1/2 w-1 h-full ${theme === 'dark' ? 'bg-zinc-700' : 'bg-gray-200'} rounded-full`}>
             <div 
-              className={`w-full ${theme === 'dark' ? 'bg-gradient-to-b from-emerald-500 via-emerald-600 to-amber-600' : 'bg-gradient-to-b from-emerald-600 via-emerald-700 to-stone-600'} rounded-full transition-all duration-1000 ease-out`}
+              className={`w-full ${theme === 'dark' ? 'bg-gradient-to-b from-electric-blue-500 via-electric-blue-600 to-warm-orange-600' : 'bg-gradient-to-b from-electric-blue-600 via-electric-blue-700 to-stone-600'} rounded-full transition-all duration-1000 ease-out`}
               style={{ height: `${scrollProgress * 100}%` }}
             />
           </div>
@@ -169,8 +168,8 @@ const AboutSection = () => {
                         </p>
 
                         {/* Motivational Quote */}
-                        <div className={`${theme === 'dark' ? 'bg-gradient-to-r from-zinc-800 to-stone-800' : 'bg-gradient-to-r from-emerald-50 to-stone-50'} p-6 rounded-2xl border-l-6 border-emerald-400`}>
-                          <p className={`text-base italic ${theme === 'dark' ? 'text-stone-300' : 'text-gray-700'} font-inter font-helvetica leading-relaxed`}>
+                        <div className={`${theme === 'dark' ? 'bg-gradient-to-r from-zinc-800 to-stone-800' : 'bg-gradient-to-r from-electric-blue-50 to-stone-50'} p-6 rounded-2xl border-l-6 ${theme === 'dark' ? 'border-electric-blue-400' : 'border-electric-blue-400'}`}>
+                          <p className={`text-base italic ${theme === 'dark' ? 'text-white' : 'text-gray-700'} font-inter font-helvetica leading-relaxed`}>
                             "{stage.motivationalText}"
                           </p>
                         </div>
@@ -198,8 +197,8 @@ const AboutSection = () => {
                         </p>
 
                         {/* Motivational Quote */}
-                        <div className={`${theme === 'dark' ? 'bg-gradient-to-r from-zinc-800 to-stone-800' : 'bg-gradient-to-r from-emerald-50 to-stone-50'} p-6 rounded-2xl border-l-6 border-emerald-400`}>
-                          <p className={`text-base italic ${theme === 'dark' ? 'text-stone-300' : 'text-gray-700'} font-inter font-helvetica leading-relaxed`}>
+                        <div className={`${theme === 'dark' ? 'bg-gradient-to-r from-zinc-800 to-stone-800' : 'bg-gradient-to-r from-electric-blue-50 to-stone-50'} p-6 rounded-2xl border-l-6 ${theme === 'dark' ? 'border-electric-blue-400' : 'border-electric-blue-400'}`}>
+                          <p className={`text-base italic ${theme === 'dark' ? 'text-white' : 'text-gray-700'} font-inter font-helvetica leading-relaxed`}>
                             "{stage.motivationalText}"
                           </p>
                         </div>
@@ -241,20 +240,17 @@ const AboutSection = () => {
         {/* Final Inspiration */}
         <div className="text-center animate-fade-in">
           <div className="max-w-5xl mx-auto rounded-3xl p-6 text-gray-900">
-            <blockquote className="text-5xl font-serif font-light italic leading-relaxed mb-5">
+            <blockquote className={`text-5xl font-serif font-light italic leading-relaxed mb-5 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Don't be special, <br/>
               -Be stubborn.  
             </blockquote>
-            <cite className="text-2xl font-inter opacity-90 font-helvetica">— Abhiram Nair</cite>
-            
-            {/* <div className="mt-8 flex justify-center">
-              <ChevronDown className="w-8 h-8 animate-bounnpmce" />
-            </div> */}
+            <cite className={`text-2xl font-inter opacity-90 font-helvetica ${theme === 'dark' ? 'text-white' : ''}`}>— Abhiram Nair</cite>
           </div>
         </div>
       </div>
     </section>
   );
 };
+
 
 export default AboutSection;

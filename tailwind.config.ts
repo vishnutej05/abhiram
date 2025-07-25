@@ -70,8 +70,9 @@
 						border: 'hsl(var(--sidebar-border))',
 						ring: 'hsl(var(--sidebar-ring))'
 					},
-					// Custom fitness brand colors
+					// Strong, bold color palette
 					'charcoal': {
+						DEFAULT: 'hsl(var(--charcoal))',
 						50: '#f8f9fa',
 						100: '#e9ecef',
 						400: '#6c757d',
@@ -80,26 +81,38 @@
 						700: '#212529',
 						900: '#1C1C1C',
 					},
-					'coral': {
-						50: '#fef7f3',
-						100: '#fdeee6',
-						400: '#fb8b5e',
-						500: '#f97316',
-						600: '#ea580c',
-					},
-					'mint': {
-						50: '#f0fdf9',
+					'strong-green': {
+						DEFAULT: 'hsl(var(--strong-green))',
+						50: '#f0fdf4',
 						100: '#dcfce7',
 						400: '#4ade80',
-						500: '#22c55e',
+						500: '#11864B',
 						600: '#16a34a',
+						700: '#15803d',
+						800: '#166534',
+						900: '#14532d',
 					},
-					'lavender': {
-						50: '#faf7ff',
-						100: '#f3edff',
-						400: '#a855f7',
-						500: '#9333ea',
-						600: '#7c3aed',
+					'electric-blue': {
+						DEFAULT: 'hsl(var(--electric-blue))',
+						50: '#eff6ff',
+						100: '#dbeafe',
+						400: '#60a5fa',
+						500: '#3b82f6',
+						600: '#2563eb',
+						700: '#1d4ed8',
+						800: '#1e40af',
+						900: '#1e3a8a',
+					},
+					'warm-orange': {
+						DEFAULT: 'hsl(var(--warm-orange))',
+						50: '#fff7ed',
+						100: '#ffedd5',
+						400: '#fb923c',
+						500: '#f97316',
+						600: '#ea580c',
+						700: '#c2410c',
+						800: '#9a3412',
+						900: '#7c2d12',
 					}
 				},
 				borderRadius: {
