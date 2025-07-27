@@ -24,16 +24,10 @@ export function ThemeProvider({
   storageKey = 'vite-ui-theme',
   ...props
 }: ThemeProviderProps) {
-  // Synchronously determine initial theme before first render
-  const getInitialTheme = () => {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem(storageKey);
-      if (stored) return stored;
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
-    }
-    return defaultTheme;
-  };
-  const [theme, setTheme] = useState(getInitialTheme);
+
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem(storageKey) || defaultTheme
+  );
 
   useEffect(() => {
     const root = window.document.documentElement;
