@@ -36,23 +36,30 @@ const FAQSection = () => {
 	return (
 		<section
 			id="faq"
-			className={`pt-20 pb-24 ${
+			className={`pt-16 pb-20 ${
 				theme === 'dark'
-					? 'bg-gradient-to-b from-soft-sage to-zinc-900'
-					: 'bg-gradient-to-b from-soft-lavender to-gray-50'
+					? 'bg-gradient-to-b from-zinc-800 to-zinc-900'
+					: 'bg-gradient-to-b from-slate-50 to-white'
 			}`}
 		>
 			<div className="mx-auto max-w-2xl text-center">
 				<h2
-					className={`font-serif text-3xl font-bold tracking-tight sm:text-4xl ${
-						theme === 'dark' ? 'text-stone-100' : 'text-gray-900'
+					className={`font-formom text-3xl font-bold tracking-tight sm:text-4xl ${
+						theme === 'dark' ? 'text-white' : 'text-gray-900'
 					}`}
 				>
-					Frequently asked questions
+					Frequently Asked{' '}
+					<span
+						className={
+							theme === 'dark' ? 'text-electric-blue' : 'text-amber-gold'
+						}
+					>
+						Questions
+					</span>
 				</h2>
 				<p
-					className={`mt-6 text-lg leading-8 ${
-						theme === 'dark' ? 'text-stone-300' : 'text-muted-foreground'
+					className={`mt-4 text-lg leading-7 font-helvetica ${
+						theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
 					}`}
 				>
 					Find answers to common questions about our transformation programs and
@@ -60,49 +67,65 @@ const FAQSection = () => {
 				</p>
 			</div>
 
-			<div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-16">
-				<div className="space-y-6">
+			<div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-12">
+				<div className="space-y-4">
 					{faqs.map((faq, index) => (
 						<div
 							key={index}
-							className="bg-white/90 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+							className={`rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 ${
+								theme === 'dark'
+									? 'bg-zinc-800/90 hover:bg-zinc-800'
+									: 'bg-white/90 hover:bg-white shadow-md'
+							}`}
 						>
-							<button
-								onClick={() => toggleFAQ(index)}
-								className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
-							>
-								<h3 className="text-lg font-serif font-bold text-gray-900 pr-4">
-									{faq.question}
-								</h3>
-								<div className="flex-shrink-0">
-									{openFAQ === index ? (
-										<ChevronUp
-											className={`w-5 h-5 ${
-												theme === 'dark'
-													? 'text-electric-blue-600'
-													: 'text-emerald-600'
-											}`}
-										/>
-									) : (
-										<ChevronDown className="w-5 h-5 text-gray-400" />
-									)}
-								</div>
-							</button>
-
+							<div className="space-y-6">
+								<button
+									onClick={() => toggleFAQ(index)}
+									className={`w-full px-6 py-5 text-left flex justify-between items-center transition-colors ${
+										theme === 'dark'
+											? openFAQ === index ? 'bg-zinc-700/50' : ''
+											: openFAQ === index ? 'bg-gray-50/80' : ''
+									}`}
+								>
+									<h3
+										className={`text-lg font-formom font-medium pr-4 ${
+											theme === 'dark' ? 'text-white' : 'text-gray-900'
+										}`}
+									>
+										{faq.question}
+									</h3>
+									<div className="flex-shrink-0">
+										{openFAQ === index ? (
+											<ChevronUp
+												className={`w-5 h-5 ${
+													theme === 'dark'
+														? 'text-electric-blue-600'
+														: 'text-strong-green'
+												}`}
+											/>
+										) : (
+											<ChevronDown className="w-5 h-5 text-gray-400" />
+										)}
+									</div>
+								</button>
+							</div>
 							{openFAQ === index && (
-								<div className="px-8 pb-6 text-gray-700 leading-relaxed">
+								<div
+									className={`px-6 pb-5 font-helvetica leading-relaxed ${
+										theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+									}`}
+								>
 									{faq.answer}
 								</div>
 							)}
 						</div>
 					))}
 				</div>
-
 				<div className="text-center mt-12">
 					<p
-						className={`${
-							theme === 'dark' ? 'text-stone-300' : 'text-gray-600'
-						} mb-6`}
+						className={`font-helvetica ${
+							theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+						} mb-4`}
 					>
 						Still have questions?
 					</p>
@@ -112,11 +135,7 @@ const FAQSection = () => {
 								behavior: 'smooth',
 							})
 						}
-						className={`${
-							theme === 'dark'
-								? 'bg-electric-blue-700 hover:bg-electric-blue-800'
-								: 'bg-emerald-600 hover:bg-emerald-700'
-						} text-white px-8 py-4 rounded-full text-lg font-bold transition-all duration-300`}
+						className="btn-primary text-lg rounded-full"
 					>
 						Get Personal Answers
 					</button>

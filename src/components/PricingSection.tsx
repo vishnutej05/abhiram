@@ -149,7 +149,7 @@ const PricingSection = () => {
       </section>
 
       {/* Desktop Section - Completely Separate */}
-      <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'bg-gradient-to-b from-soft-sky to-soft-sage' : 'bg-gradient-to-b from-soft-blush to-soft-lavender'} relative overflow-hidden pb-0`}>
+      <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'bg-gradient-to-b from-zinc-950/40 to-zinc-800/30' : 'bg-gradient-to-b from-soft-blush to-soft-lavender'} relative overflow-hidden pb-0`}>
         {/* Desktop Background Image */}
         {/* <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
@@ -161,13 +161,19 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Desktop Header */}
           <div className="text-center mb-20 animate-fade-in">
-            <h2 className="text-5xl md:text-6xl font-serif font-bold text-gray-900 mb-6">
+            <h2 className={`text-5xl md:text-6xl font-serif font-bold mb-6 ${
+              theme === 'dark' ? 'text-white' : 'text-gray-900'
+            }`}>
               Find your{' '}
-              <span className="text-emerald-700">
+              <span className={
+                theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'
+              }>
                 Path
               </span>
             </h2>
-            <p className="text-xl text-muted-gray font-light max-w-2xl mx-auto">
+            <p className={`text-xl font-light max-w-2xl mx-auto ${
+              theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
+            }`}>
               Select the perfect plan for your fitness transformation journey
             </p>
           </div>
@@ -177,13 +183,19 @@ const PricingSection = () => {
             {plans.map((plan, index) => (
               <div 
                 key={index}
-                className={`bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-3xl relative ${
-                  plan.popular ? 'ring-4 ring-emerald-400 transform lg:scale-105' : ''
+                className={`${
+                  theme === 'dark' 
+                    ? 'bg-zinc-800/90 text-white' 
+                    : 'bg-white/90 text-gray-900'
+                } backdrop-blur-sm rounded-3xl p-8 shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-3xl relative ${
+                  plan.popular ? `ring-4 ${theme === 'dark' ? 'ring-electric-blue' : 'ring-emerald-400'} transform lg:scale-105` : ''
                 }`}
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-emerald-600 text-white px-6 py-2 rounded-full text-base font-bold shadow-lg whitespace-nowrap">
+                    <div className={`${
+                      theme === 'dark' ? 'bg-electric-blue text-black' : 'bg-emerald-600 text-white'
+                    } px-6 py-2 rounded-full text-base font-bold shadow-lg whitespace-nowrap`}>
                       ✨ Most Popular
                     </div>
                   </div>
@@ -191,23 +203,34 @@ const PricingSection = () => {
 
                 <div className="space-y-6 text-center">
                   <div className="space-y-3">
-                    {/* <h3 className="text-2xl font-serif font-bold text-soft-gray">{plan.name}</h3> */}
-                    <div className="text-emerald-600 font-bold text-xl font-helvetica">{plan.duration}</div>
-                    <p className="text-muted-gray font-light text-base font-helvetica">{plan.description}</p>
+                    <div className={`font-bold text-xl font-helvetica ${
+                      theme === 'dark' ? 'text-amber-gold' : 'text-emerald-600'
+                    }`}>{plan.duration}</div>
+                    <p className={`font-light text-base font-helvetica ${
+                      theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
+                    }`}>{plan.description}</p>
                   </div>
 
                   <div className="space-y-3">
                     {plan.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-3">
-                        <span className="text-mint-500 text-xl font-bold">✓</span>
-                        <span className="text-muted-gray font-light text-base text-left font-helvetica">{feature}</span>
+                        <span className={`text-xl font-bold ${
+                          theme === 'dark' ? 'text-electric-blue' : 'text-mint-500'
+                        }`}>✓</span>
+                        <span className={`font-light text-base text-left font-helvetica ${
+                          theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
+                        }`}>{feature}</span>
                       </div>
                     ))}
                   </div>
 
                   <Button 
                     onClick={scrollToForm}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-dm-sans font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl text-lg"
+                    className={`w-full font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl text-lg ${
+                      theme === 'dark' 
+                        ? 'bg-gradient-electric-to-amber text-black hover:bg-gradient-amber-to-electric' 
+                        : 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                    }`}
                   >
                     Get Started
                   </Button>
@@ -217,7 +240,7 @@ const PricingSection = () => {
           </div>
 
           {/* Desktop Footer */}
-          <div className="text-center animate-fade-in">
+          {/* <div className="text-center animate-fade-in">
             <p className="text-muted-gray font-inter font-light mb-6 text-lg">
               100% satisfaction guarantee - Not satisfied in the first 30 days? Get a full refund.
             </p>
@@ -226,7 +249,7 @@ const PricingSection = () => {
               <div>📱 Instant Access</div>
               <div>🎯 Results Guaranteed</div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

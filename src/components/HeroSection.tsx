@@ -137,7 +137,9 @@ const HeroSection = () => {
                 </p>
             </div>
             <div className="flex flex-col items-start space-y-6">
-              <div className="flex flex-row justify-start items-center space-x-6 text-2xl font-extrabold font-helvetica">
+              <div className={`flex flex-row justify-start items-center space-x-6 text-2xl font-extrabold font-helvetica ${
+                theme === 'dark' ? 'text-white' : 'text-zinc-800'
+              }`}>
                 <span className="opacity-0" style={{animation: "fadeIn 0.8s ease-in-out 1.8s forwards"}}> <span className='opacity-80'>RESPECT</span></span>
                 <span className="text-3xl font-extrabold mx-4 opacity-0" style={{animation: "fadeIn 0.8s ease-in-out 1.9s forwards"}}>&bull;</span>
                 <span className="opacity-0" style={{animation: "fadeIn 0.8s ease-in-out 2.0s forwards"}}><span className='opacity-80'>CONFIDENCE</span></span>

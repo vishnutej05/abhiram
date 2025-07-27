@@ -142,358 +142,412 @@ const ContactForm = () => {
     <div id="contact">
       <>
         {/* Mobile Section - Completely Separate */}
-        <section ref={sectionRef} className={`block lg:hidden seamless-section ${theme === 'dark' ? 'soft-blush' : 'soft-lavender'} relative overflow-hidden`}>
-        {/* Mobile Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
-          style={{
-            backgroundImage: `url('/lovable-uploads/pic 2.png')`,
-          }}
-        ></div>
-        
-        <div className="relative z-10 px-4 py-12">
-          {/* Mobile Header */}
-          <div className="text-center mb-8">
-            <h2 className={`text-3xl sm:text-4xl font-bold ${theme === 'dark' ? 'text-stone-100' : 'text-gray-900'} mb-4 font-formom`}>
-              Build Your{' '}
-              <span className={theme === 'dark' ? 'text-electric-blue-500' : 'text-emerald-700'}>Legacy</span>
-            </h2>
-            <p className={`text-base sm:text-lg ${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'} max-w-lg mx-auto font-helvetica`}>
-              Ready to unlock your full potential? Join thousands who've transformed their lives.
-            </p>
-          </div>
-          
-          {/* Mobile Form Container */}
-          <div className="max-w-md mx-auto bg-white/95 backdrop-blur-sm rounded-3xl shadow-xl p-6">
-            <div className="mb-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-2 text-center font-formom">
-                Start Your Transformation
-              </h3>
-              <p className={`${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'} text-center text-sm font-helvetica`}>
-                Fill out the form below and let's begin your journey together.
-              </p>
-            </div>
-            
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="mobile-firstName" className={`text-sm font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-700'} mb-2 block`}>
-                    First Name *
-                  </Label>
-                  <Input
-                    id="mobile-firstName"
-                    name="firstName"
-                    type="text"
-                    required
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-electric-blue-200 rounded-xl focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent"
-                  />
-                </div>
-                
-                <div>
-                  <Label htmlFor="mobile-lastName" className={`text-sm font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-700'} mb-2 block`}>
-                    Last Name *
-                  </Label>
-                  <Input
-                    id="mobile-lastName"
-                    name="lastName"
-                    type="text"
-                    required
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-electric-blue-200 rounded-xl focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent"
-                  />
-                </div>
-              </div>
-              
-              <div>
-                <Label htmlFor="mobile-email" className={`text-sm font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-700'} mb-2 block`}>
-                  Email Address *
-                </Label>
-                <Input
-                  id="mobile-email"
-                  name="email"
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-electric-blue-200 rounded-xl focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent"
-                />
-              </div>
-              
-              <div>
-                <Label htmlFor="mobile-phone" className={`text-sm font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-700'} mb-2 block`}>
-                  Phone Number *
-                </Label>
-                <Input
-                  id="mobile-phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-electric-blue-200 rounded-xl focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent"
-                />
-              </div>
-              
-              <div>
-                <Label htmlFor="mobile-age" className={`text-sm font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-700'} mb-2 block`}>
-                  Age *
-                </Label>
-                <select
-                  id="mobile-age"
-                  name="age"
-                  required
-                  value={formData.age}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-electric-blue-200 rounded-xl focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent bg-white"
-                >
-                  <option value="">Select Age Range</option>
-                  <option value="18-25">18-25 years</option>
-                  <option value="26-35">26-35 years</option>
-                  <option value="36-45">36-45 years</option>
-                  <option value="46-55">46-55 years</option>
-                  <option value="56+">56+ years</option>
-                </select>
-              </div>
-              
-              <div>
-                <Label htmlFor="mobile-goal" className={`text-sm font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-700'} mb-2 block`}>
-                  Primary Fitness Goal *
-                </Label>
-                <select
-                  id="mobile-goal"
-                  name="goal"
-                  required
-                  value={formData.goal}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-electric-blue-200 rounded-xl focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent bg-white"
-                >
-                  <option value="">Select Your Goal</option>
-                  <option value="weight-loss">Weight Loss</option>
-                  <option value="muscle-gain">Muscle Gain</option>
-                  <option value="strength">Strength Building</option>
-                  <option value="endurance">Endurance</option>
-                  <option value="overall-fitness">Overall Fitness</option>
-                  <option value="body-toning">Body Toning</option>
-                </select>
-              </div>
-              
-              <div>
-                <Label htmlFor="mobile-fitnessLevel" className={`text-sm font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-700'} mb-2 block`}>
-                  Current Fitness Level *
-                </Label>
-                <select
-                  id="mobile-fitnessLevel"
-                  name="fitnessLevel"
-                  required
-                  value={formData.fitnessLevel}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-electric-blue-200 rounded-xl focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent bg-white"
-                >
-                  <option value="">Select Your Level</option>
-                  <option value="beginner">Beginner</option>
-                  <option value="intermediate">Intermediate</option>
-                  <option value="advanced">Advanced</option>
-                </select>
-              </div>
-              
-              <div>
-                <Label htmlFor="mobile-workoutFrequency" className={`text-sm font-medium ${theme === 'dark' ? 'text-white' : 'text-gray-700'} mb-2 block`}>
-                  Workout Frequency *
-                </Label>
-                <select
-                  id="mobile-workoutFrequency"
-                  name="workoutFrequency"
-                  required
-                  value={formData.workoutFrequency}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 border border-electric-blue-200 rounded-xl focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent bg-white"
-                >
-                  <option value="">How often can you workout?</option>
-                  <option value="2-3-times">2-3 times per week</option>
-                  <option value="4-5-times">4-5 times per week</option>
-                  <option value="6-7-times">6-7 times per week</option>
-                  <option value="daily">Daily</option>
-                </select>
-              </div>
-              
-              <div>
-                <Label htmlFor="mobile-message" className="text-sm font-medium text-gray-700 mb-2 block">
-                  Message (Optional)
-                </Label>
-                <textarea
-                  id="mobile-message"
-                  name="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell us about your fitness journey..."
-                  className="w-full px-4 py-3 border border-electric-blue-200 rounded-xl focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent resize-none"
-                />
-              </div>
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 disabled:transform-none"
-              >
-                {isSubmitting ? 'SUBMITTING...' : 'START MY TRANSFORMATION'}
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
+        <section
+          ref={sectionRef}
+          className={`block lg:hidden seamless-section min-h-[90vh] max-h-[120vh] flex items-center justify-center ${
+            theme === 'dark'
+              ? 'bg-gradient-to-br from-zinc-900 via-zinc-800 to-black'
+              : 'bg-gradient-to-br from-slate-50 via-white to-emerald-50'
+          } relative overflow-hidden`}
+        >
+          {/* Mobile Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+            style={{
+              backgroundImage: `url('/lovable-uploads/pic 2.png')`,
+            }}
+          ></div>
 
-      {/* Desktop Section - Completely Separate */}
-      <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'soft-blush' : 'soft-lavender'}`}>
-        <div className="w-full py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-formom">
-              Build Your{' '}
-              <span className="text-emerald-700">
-                Legacy
-              </span>
-            </h2>
-            <p className={`text-xl ${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'} max-w-2xl mx-auto font-helvetica`}>
-              Join thousands who've transformed their lives with our proven fitness system.
-            </p>
-          </div>
-          
-          <div className="grid lg:grid-cols-2 min-h-[600px] max-w-7xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
-            {/* Left side - Image */}
-            <div className="relative">
-              <img 
-                src="/lovable-uploads/Regis form.png"
-                alt="Abhiram Nair fitness transformation coach"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-            </div>
-            
-            {/* Right side - Form */}
-            <div className="p-8 lg:p-12 bg-white-50 flex flex-col justify-center">
-              <div className="mb-8 text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3 font-helvetica">
-                  Start Your Transformation
+          <div className="relative z-10 w-full flex justify-center items-center">
+            {/* Mobile Form Container - Compact and themed */}
+            <div
+              className={`max-w-xs w-full mx-auto ${
+                theme === 'dark'
+                  ? 'bg-zinc-900/95 border border-zinc-700'
+                  : 'bg-white/95 border border-emerald-100'
+              } rounded-xl shadow-xl p-4`}
+            >
+              <div className="mb-2 text-center">
+                <h3
+                  className={`text-lg font-bold font-formom ${
+                    theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'
+                  }`}
+                >
+                  Start Your <span className={theme === 'dark' ? 'text-amber-gold' : 'text-amber-gold'}>Transformation</span>
                 </h3>
-                <p className={`${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'} font-helvetica`}>
-                  Fill out the form below and let's begin your journey together.
+                <p
+                  className={`text-xs font-helvetica mt-1 ${
+                    theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                  }`}
+                >
+                  Unlock your best self with Abhiram's proven coaching system.
                 </p>
               </div>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-2">
+                {/* First & Last Name */}
+                <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <Label htmlFor="firstName" className="text-sm font-medium text-gray-700 mb-2 block">
-                      First Name *
-                    </Label>
+                    <Label htmlFor="mobile-firstName" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>First Name *</Label>
                     <Input
-                      id="firstName"
+                      id="mobile-firstName"
                       name="firstName"
                       type="text"
                       required
                       value={formData.firstName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-electric-blue-200 rounded-lg focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent"
+                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                        theme === 'dark'
+                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
+                          : 'bg-white border-emerald-200 focus:ring-strong-green'
+                      }`}
                     />
                   </div>
-                  
                   <div>
-                    <Label htmlFor="lastName" className="text-sm font-medium text-gray-700 mb-2 block">
-                      Last Name *
-                    </Label>
+                    <Label htmlFor="mobile-lastName" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Last Name *</Label>
                     <Input
-                      id="lastName"
+                      id="mobile-lastName"
                       name="lastName"
                       type="text"
                       required
                       value={formData.lastName}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-electric-blue-200 rounded-lg focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent"
+                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                        theme === 'dark'
+                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
+                          : 'bg-white border-emerald-200 focus:ring-strong-green'
+                      }`}
                     />
                   </div>
                 </div>
-                
-                <div>
-                  <Label htmlFor="email" className="text-sm font-medium text-gray-700 mb-2 block">
-                    Email Address *
-                  </Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-electric-blue-200 rounded-lg focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent"
-                  />
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Email & Phone */}
+                <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <Label htmlFor="phone" className="text-sm font-medium text-gray-700 mb-2 block">
-                      Phone Number *
-                    </Label>
+                    <Label htmlFor="mobile-email" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Email *</Label>
                     <Input
-                      id="phone"
+                      id="mobile-email"
+                      name="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                        theme === 'dark'
+                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
+                          : 'bg-white border-emerald-200 focus:ring-strong-green'
+                      }`}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="mobile-phone" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Phone *</Label>
+                    <Input
+                      id="mobile-phone"
                       name="phone"
                       type="tel"
                       required
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-electric-blue-200 rounded-lg focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent"
+                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                        theme === 'dark'
+                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
+                          : 'bg-white border-emerald-200 focus:ring-strong-green'
+                      }`}
                     />
                   </div>
-                  
+                </div>
+                {/* Age & Goal */}
+                <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <Label htmlFor="age" className="text-sm font-medium text-gray-700 mb-2 block">
-                      Age *
-                    </Label>
+                    <Label htmlFor="mobile-age" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Age *</Label>
                     <select
-                      id="age"
+                      id="mobile-age"
                       name="age"
                       required
                       value={formData.age}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-electric-blue-200 rounded-lg focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent bg-white"
+                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                        theme === 'dark'
+                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
+                          : 'bg-white border-emerald-200 focus:ring-strong-green'
+                      }`}
                     >
-                      <option value="">Select Age Range</option>
-                      <option value="18-25">18-25 years</option>
-                      <option value="26-35">26-35 years</option>
-                      <option value="36-45">36-45 years</option>
-                      <option value="46-55">46-55 years</option>
-                      <option value="56+">56+ years</option>
+                      <option value="">Select</option>
+                      <option value="18-25">18-25</option>
+                      <option value="26-35">26-35</option>
+                      <option value="36-45">36-45</option>
+                      <option value="46-55">46-55</option>
+                      <option value="56+">56+</option>
+                    </select>
+                  </div>
+                  <div>
+                    <Label htmlFor="mobile-goal" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Goal *</Label>
+                    <select
+                      id="mobile-goal"
+                      name="goal"
+                      required
+                      value={formData.goal}
+                      onChange={handleChange}
+                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                        theme === 'dark'
+                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
+                          : 'bg-white border-emerald-200 focus:ring-strong-green'
+                      }`}
+                    >
+                      <option value="">Select</option>
+                      <option value="weight-loss">Weight Loss</option>
+                      <option value="muscle-gain">Muscle Gain</option>
+                      <option value="strength">Strength</option>
+                      <option value="endurance">Endurance</option>
+                      <option value="overall-fitness">Overall Fitness</option>
+                      <option value="body-toning">Body Toning</option>
                     </select>
                   </div>
                 </div>
-                
+                {/* Fitness Level & Frequency */}
+                <div className="grid grid-cols-2 gap-2">
+                  <div>
+                    <Label htmlFor="mobile-fitnessLevel" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Level *</Label>
+                    <select
+                      id="mobile-fitnessLevel"
+                      name="fitnessLevel"
+                      required
+                      value={formData.fitnessLevel}
+                      onChange={handleChange}
+                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                        theme === 'dark'
+                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
+                          : 'bg-white border-emerald-200 focus:ring-strong-green'
+                      }`}
+                    >
+                      <option value="">Select</option>
+                      <option value="beginner">Beginner</option>
+                      <option value="intermediate">Intermediate</option>
+                      <option value="advanced">Advanced</option>
+                    </select>
+                  </div>
+                  <div>
+                    <Label htmlFor="mobile-workoutFrequency" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Frequency *</Label>
+                    <select
+                      id="mobile-workoutFrequency"
+                      name="workoutFrequency"
+                      required
+                      value={formData.workoutFrequency}
+                      onChange={handleChange}
+                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                        theme === 'dark'
+                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
+                          : 'bg-white border-emerald-200 focus:ring-strong-green'
+                      }`}
+                    >
+                      <option value="">Select</option>
+                      <option value="2-3-times">2-3/week</option>
+                      <option value="4-5-times">4-5/week</option>
+                      <option value="6-7-times">6-7/week</option>
+                      <option value="daily">Daily</option>
+                    </select>
+                  </div>
+                </div>
+                {/* Message */}
                 <div>
-                  <Label htmlFor="goal" className="text-sm font-medium text-gray-700 mb-2 block">
-                    Primary Fitness Goal *
-                  </Label>
-                  <select
-                    id="goal"
-                    name="goal"
-                    required
-                    value={formData.goal}
+                  <Label htmlFor="mobile-message" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Message</Label>
+                  <textarea
+                    id="mobile-message"
+                    name="message"
+                    rows={2}
+                    value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-electric-blue-200 rounded-lg focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent bg-white"
-                  >
-                    <option value="">Select Your Goal</option>
-                    <option value="weight-loss">Weight Loss</option>
-                    <option value="muscle-gain">Muscle Gain</option>
-                    <option value="strength">Strength Building</option>
-                    <option value="endurance">Endurance</option>
-                    <option value="overall-fitness">Overall Fitness</option>
-                    <option value="body-toning">Body Toning</option>
-                  </select>
+                    placeholder="Your fitness journey..."
+                    className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent resize-none ${
+                      theme === 'dark'
+                        ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue placeholder:text-gray-400'
+                        : 'bg-white border-emerald-200 focus:ring-strong-green'
+                    }`}
+                  />
+                </div>
+                {/* Submit */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full text-xs font-bold py-2 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
+                    theme === 'dark'
+                      ? 'bg-gradient-electric-to-amber text-black hover:bg-gradient-amber-to-electric'
+                      : 'bg-gradient-to-r from-strong-green to-amber-gold hover:from-amber-gold hover:to-strong-green text-white'
+                  }`}
+                >
+                  {isSubmitting ? 'SUBMITTING...' : 'START TRANSFORMATION'}
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>  
+        
+        {/* Desktop Section - Completely Separate */}
+        <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'soft-blush' : 'soft-lavender'}`}>
+          <div className="w-full py-12">
+            <div className="text-center mb-10">
+              <h2 className={`text-3xl md:text-4xl font-bold mb-4 font-formom ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                Build Your{' '}
+                <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>Legacy: </span>
+              </h2>
+              <p className={`text-lg max-w-2xl mx-auto font-helvetica ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                Join thousands who've transformed their lives with our proven fitness system.
+              </p>
+            </div>
+            <div className={`grid lg:grid-cols-2 min-h-[500px] max-h-[90%] max-w-6xl mx-auto ${theme === 'dark' ? 'bg-zinc-800' : 'bg-white'} rounded-3xl shadow-2xl overflow-hidden`}>
+              {/* Left side - Image */}
+              <div className="relative">
+                <img
+                  src="/lovable-uploads/Regis form.png"
+                  alt="Abhiram Nair fitness transformation coach"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+              </div>
+              
+              {/* Right side - Form */}
+              <div className={`p-6 lg:p-8 ${theme === 'dark' ? 'bg-zinc-800' : 'bg-white'} flex flex-col justify-center`}>
+                <div className="mb-6 text-center">
+                  <h3 className={`text-xl font-bold mb-2 font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    Start Your <span className="text-electric-blue">Transformation</span>
+                  </h3>
+                  <p className={`text-sm font-helvetica ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                    Fill out the form below and let's begin your journey together.
+                  </p>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="firstName" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                        First Name *
+                      </Label>
+                      <Input
+                        id="firstName"
+                        name="firstName"
+                        type="text"
+                        required
+                        value={formData.firstName}
+                        onChange={handleChange}
+                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                          theme === 'dark' 
+                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
+                            : 'border border-electric-blue-200 focus:ring-electric-blue-400'
+                        }`}
+                      />
+                    </div>
+                    
+                    <div>
+                      <Label htmlFor="lastName" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                        Last Name *
+                      </Label>
+                      <Input
+                        id="lastName"
+                        name="lastName"
+                        type="text"
+                        required
+                        value={formData.lastName}
+                        onChange={handleChange}
+                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                          theme === 'dark' 
+                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
+                            : 'border border-electric-blue-200 focus:ring-electric-blue-400'
+                        }`}
+                      />
+                    </div>
+                  </div>
+                  
                   <div>
-                    <Label htmlFor="fitnessLevel" className="text-sm font-medium text-gray-700 mb-2 block">
+                    <Label htmlFor="email" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+                      Email Address *
+                    </Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                        theme === 'dark' 
+                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
+                          : 'border border-electric-blue-200 focus:ring-electric-blue-400'
+                      }`}
+                    />
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="phone" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+                        Phone Number *
+                      </Label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        required
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                          theme === 'dark' 
+                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
+                            : 'border border-electric-blue-200 focus:ring-electric-blue-400'
+                        }`}
+                      />
+                    </div>
+                    
+                    <div>
+                      <Label htmlFor="age" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+                        Age *
+                      </Label>
+                      <select
+                        id="age"
+                        name="age"
+                        required
+                        value={formData.age}
+                        onChange={handleChange}
+                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                          theme === 'dark' 
+                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
+                            : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
+                        }`}
+                      >
+                        <option value="">Select Age Range</option>
+                        <option value="18-25">18-25 years</option>
+                        <option value="26-35">26-35 years</option>
+                        <option value="36-45">36-45 years</option>
+                        <option value="46-55">46-55 years</option>
+                        <option value="56+">56+ years</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="goal" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+                      Primary Fitness Goal *
+                    </Label>
+                    <select
+                      id="goal"
+                      name="goal"
+                      required
+                      value={formData.goal}
+                      onChange={handleChange}
+                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                        theme === 'dark' 
+                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
+                          : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
+                      }`}
+                    >
+                      <option value="">Select Your Goal</option>
+                      <option value="weight-loss">Weight Loss</option>
+                      <option value="muscle-gain">Muscle Gain</option>
+                      <option value="strength">Strength Building</option>
+                      <option value="endurance">Endurance</option>
+                      <option value="overall-fitness">Overall Fitness</option>
+                      <option value="body-toning">Body Toning</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <Label htmlFor="fitnessLevel" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
                       Current Fitness Level *
                     </Label>
                     <select
@@ -502,7 +556,11 @@ const ContactForm = () => {
                       required
                       value={formData.fitnessLevel}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-electric-blue-200 rounded-lg focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent bg-white"
+                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                        theme === 'dark' 
+                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
+                          : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
+                      }`}
                     >
                       <option value="">Select Your Level</option>
                       <option value="beginner">Beginner</option>
@@ -512,7 +570,7 @@ const ContactForm = () => {
                   </div>
                   
                   <div>
-                    <Label htmlFor="workoutFrequency" className="text-sm font-medium text-gray-700 mb-2 block">
+                    <Label htmlFor="workoutFrequency" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
                       Workout Frequency *
                     </Label>
                     <select
@@ -521,7 +579,11 @@ const ContactForm = () => {
                       required
                       value={formData.workoutFrequency}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-electric-blue-200 rounded-lg focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent bg-white"
+                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                        theme === 'dark' 
+                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
+                          : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
+                      }`}
                     >
                       <option value="">How often can you workout?</option>
                       <option value="2-3-times">2-3 times per week</option>
@@ -530,38 +592,42 @@ const ContactForm = () => {
                       <option value="daily">Daily</option>
                     </select>
                   </div>
-                </div>
-                
-                <div>
-                  <Label htmlFor="message" className="text-sm font-medium text-gray-700 mb-2 block">
-                    Message (Optional)
-                  </Label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Tell us about your fitness journey..."
-                    className="w-full px-4 py-3 border border-electric-blue-200 rounded-lg focus:ring-2 focus:ring-electric-blue-400 focus:border-transparent resize-none"
-                  />
-                </div>
-                
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full btn-matte text-lg font-bold py-4 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? 'SUBMITTING...' : 'START MY TRANSFORMATION'}
-                </button>
-              </form>
+                  
+                  <div>
+                    <Label htmlFor="message" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+                      Message (Optional)
+                    </Label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={3}
+                      value={formData.message}
+                      onChange={handleChange}
+                      placeholder="Tell us about your fitness journey..."
+                      className={`w-full px-4 py-2 rounded-lg focus:ring-2 focus:border-transparent resize-none ${
+                        theme === 'dark' 
+                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
+                          : 'border border-electric-blue-200 focus:ring-electric-blue-400'
+                      }`}
+                    />
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? 'SUBMITTING...' : 'START MY TRANSFORMATION'}
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
       </>
     </div>
   );
 };
 
 export default ContactForm;
+

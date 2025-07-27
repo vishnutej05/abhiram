@@ -304,6 +304,64 @@ All colors MUST be HSL.
     color: hsl(43, 96%, 65%); /* Keep amber-gold in dark mode */
   }
 
+  /* Add explicit background color classes for badges */
+  .bg-electric-blue {
+    background-color: hsl(200, 100%, 50%); /* Light mode electric blue */
+  }
+  
+  .dark .bg-electric-blue {
+    background-color: hsl(200, 100%, 70%); /* Dark mode electric blue */
+  }
+
+  .bg-amber-gold {
+    background-color: hsl(43, 96%, 58%); /* Light mode amber gold */
+  }
+  
+  .dark .bg-amber-gold {
+    background-color: hsl(43, 96%, 65%); /* Dark mode amber gold */
+  }
+
+  .bg-strong-green {
+    background-color: hsl(142, 71%, 30%); /* Light mode strong green */
+  }
+  
+  .dark .bg-strong-green {
+    background-color: hsl(142, 71%, 45%); /* Dark mode strong green */
+  }
+
+  /* Gradient utility classes for brand colors */
+  .bg-gradient-electric-to-amber {
+    background: linear-gradient(to right, hsl(200, 100%, 50%), hsl(43, 96%, 58%));
+  }
+  
+  .dark .bg-gradient-electric-to-amber {
+    background: linear-gradient(to right, hsl(200, 100%, 70%), hsl(43, 96%, 65%));
+  }
+
+  .bg-gradient-amber-to-electric {
+    background: linear-gradient(to right, hsl(43, 96%, 58%), hsl(200, 100%, 50%));
+  }
+  
+  .dark .bg-gradient-amber-to-electric {
+    background: linear-gradient(to right, hsl(43, 96%, 65%), hsl(200, 100%, 70%));
+  }
+
+  .bg-gradient-amber-to-strong {
+    background: linear-gradient(to right, hsl(43, 96%, 58%), hsl(142, 71%, 30%));
+  }
+  
+  .dark .bg-gradient-amber-to-strong {
+    background: linear-gradient(to right, hsl(43, 96%, 65%), hsl(142, 71%, 45%));
+  }
+
+  .bg-gradient-electric-to-strong {
+    background: linear-gradient(to right, hsl(200, 100%, 50%), hsl(142, 71%, 30%));
+  }
+  
+  .dark .bg-gradient-electric-to-strong {
+    background: linear-gradient(to right, hsl(200, 100%, 70%), hsl(142, 71%, 45%));
+  }
+
   /* Smooth hover transitions */
   .hover-lift {
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
@@ -328,26 +386,27 @@ All colors MUST be HSL.
   }
   
   .btn-primary {
-    background: hsl(var(--charcoal));
-    color: hsl(var(--background));
+    background: hsl(0, 0%, 11%); /* Direct charcoal value */
+    color: white;
     @apply font-bold px-8 py-3 rounded-lg transition-all duration-300 border-none;
-    box-shadow: 0 4px 20px hsla(var(--charcoal), 0.3);
+    box-shadow: 0 4px 20px rgba(28, 28, 28, 0.3);
   }
   
   .btn-primary:hover {
-    background: hsl(var(--strong-green));
+    background: hsl(142, 71%, 30%); /* Direct strong-green value */
     @apply -translate-y-1;
-    box-shadow: 0 8px 25px hsla(var(--strong-green), 0.4);
+    box-shadow: 0 8px 25px rgba(17, 134, 75, 0.4);
   }
   
-  .dark .btn-primary {
-    background: hsl(var(--electric-blue));
-    color: hsl(var(--background));
+  /* Use :root selector to ensure styles apply immediately on page load */
+  :root.dark .btn-primary {
+    background: hsl(200, 100%, 70%); /* Direct electric-blue value */
+    color: hsl(0, 0%, 5%); /* Dark background for better contrast */
   }
   
-  .dark .btn-primary:hover {
-    background: hsl(var(--amber-gold));
-    box-shadow: 0 8px 25px hsla(var(--amber-gold), 0.4);
+  :root.dark .btn-primary:hover {
+    background: hsl(43, 96%, 65%); /* Direct amber-gold value */
+    box-shadow: 0 8px 25px rgba(240, 187, 31, 0.4);
   }
   
   .btn-secondary {
