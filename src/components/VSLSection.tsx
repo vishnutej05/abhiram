@@ -2,6 +2,13 @@ import { useTheme } from '../hooks/use-theme';
 
 const VSLSection = () => {
   const { theme } = useTheme();
+
+  const scrollToForm = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   
   return (
     <section id="vsl" className={`py-20 relative overflow-hidden ${theme === 'dark' ? 'bg-zinc-900' : 'bg-gradient-to-br from-slate-50 to-stone-100'}`}>
@@ -43,14 +50,14 @@ const VSLSection = () => {
           </div>
         </div>
         
-        <div className="text-center">
-          <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-primary text-xl px-10 py-4 rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 font-helvetica"
-          >
-            Start Your Fitness Journey Today
-          </button>
-        </div>
+        <div className="pt-2">
+              <button 
+                onClick={scrollToForm}
+                className={`btn-primary text-base font-bold w-full max-w-xs mx-auto py-3 px-4 rounded-full shadow-lg font-helvetica transition-all duration-300 hover:scale-105 active:scale-95 group`}
+              >
+                <span className="relative z-10">Start Your Fitness Journey Today</span>
+              </button>
+            </div>
       </div>
     </section>
   );

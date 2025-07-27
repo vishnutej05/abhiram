@@ -144,7 +144,7 @@ const ContactForm = () => {
         {/* Mobile Section - Completely Separate */}
         <section
           ref={sectionRef}
-          className={`block lg:hidden seamless-section min-h-[90vh] max-h-[120vh] flex items-center justify-center ${
+          className={`lg:hidden seamless-section min-h-[100vh] py-12 flex flex-col ${
             theme === 'dark'
               ? 'bg-gradient-to-br from-zinc-900 via-zinc-800 to-black'
               : 'bg-gradient-to-br from-slate-50 via-white to-emerald-50'
@@ -157,33 +157,40 @@ const ContactForm = () => {
               backgroundImage: `url('/lovable-uploads/pic 2.png')`,
             }}
           ></div>
-
-          <div className="relative z-10 w-full flex justify-center items-center">
-            {/* Mobile Form Container - Compact and themed */}
+          
+          {/* Header Section - Larger and prominent */}
+          <div className="text-center w-full px-4 mb-8 relative z-10">
+            <h2 className={`text-4xl sm:text-5xl font-bold font-formom font-serif ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+              Build Your <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>Legacy</span><span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}></span>
+            </h2>
+            <p className={`mt-3 text-lg sm:text-xl font-helvetica mx-auto ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-xs sm:max-w-lg`}>
+              Join thousands who've transformed their lives with our proven fitness system.
+            </p>
+          </div>
+        
+          {/* Form Card - Positioned at bottom */}
+          <div className="relative z-10 w-full px-4 mt-auto flex-1 flex justify-center items-center">
+            {/* Mobile Form Container */}
             <div
-              className={`max-w-xs w-full mx-auto ${
+              className={`w-full max-w-sm mx-auto ${
                 theme === 'dark'
                   ? 'bg-zinc-900/95 border border-zinc-700'
                   : 'bg-white/95 border border-emerald-100'
-              } rounded-xl shadow-xl p-4`}
+              } rounded-xl shadow-xl p-5 sm:p-6 mb-6`}
             >
-              <div className="mb-2 text-center">
+              <div className="mb-4 text-center">
                 <h3
-                  className={`text-lg font-bold font-formom ${
+                  className={`text-xl font-bold font-formom ${
                     theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'
                   }`}
                 >
                   Start Your <span className={theme === 'dark' ? 'text-amber-gold' : 'text-amber-gold'}>Transformation</span>
                 </h3>
-                <p
-                  className={`text-xs font-helvetica mt-1 ${
-                    theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
-                  }`}
-                >
-                  Unlock your best self with Abhiram's proven coaching system.
-                </p>
+               
               </div>
-              <form onSubmit={handleSubmit} className="space-y-2">
+              
+              {/* Form stays the same */}
+              <form onSubmit={handleSubmit} className="space-y-3">
                 {/* First & Last Name */}
                 <div className="grid grid-cols-2 gap-2">
                   <div>
@@ -195,7 +202,7 @@ const ContactForm = () => {
                       required
                       value={formData.firstName}
                       onChange={handleChange}
-                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-2 py-1 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
                         theme === 'dark'
                           ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
                           : 'bg-white border-emerald-200 focus:ring-strong-green'
@@ -211,7 +218,7 @@ const ContactForm = () => {
                       required
                       value={formData.lastName}
                       onChange={handleChange}
-                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-2 py-1 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
                         theme === 'dark'
                           ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
                           : 'bg-white border-emerald-200 focus:ring-strong-green'
@@ -230,7 +237,7 @@ const ContactForm = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-2 py-1 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
                         theme === 'dark'
                           ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
                           : 'bg-white border-emerald-200 focus:ring-strong-green'
@@ -246,7 +253,7 @@ const ContactForm = () => {
                       required
                       value={formData.phone}
                       onChange={handleChange}
-                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-2 py-1 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
                         theme === 'dark'
                           ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
                           : 'bg-white border-emerald-200 focus:ring-strong-green'
@@ -368,9 +375,9 @@ const ContactForm = () => {
                   type="submit"
                   disabled={isSubmitting}
                   className={`w-full text-xs font-bold py-2 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
-                    theme === 'dark'
-                      ? 'bg-gradient-electric-to-amber text-black hover:bg-gradient-amber-to-electric'
-                      : 'bg-gradient-to-r from-strong-green to-amber-gold hover:from-amber-gold hover:to-strong-green text-white'
+                    theme === 'dark' 
+                      ? 'bg-gradient-electric-to-amber text-black hover:bg-gradient-amber-to-electric hover:scale-[1.02]' 
+                      : 'btn-primary'
                   }`}
                 >
                   {isSubmitting ? 'SUBMITTING...' : 'START TRANSFORMATION'}
@@ -383,38 +390,42 @@ const ContactForm = () => {
         {/* Desktop Section - Completely Separate */}
         <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'soft-blush' : 'soft-lavender'}`}>
           <div className="w-full py-12">
-            <div className="text-center mb-10">
-              <h2 className={`text-3xl md:text-4xl font-bold mb-4 font-formom ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+            <div className="text-center mb-12">
+              <h2 className={`text-4xl md:text-5xl font-bold mb-4 font-formom font-serif ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                 Build Your{' '}
-                <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>Legacy: </span>
+                <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>Legacy</span>
               </h2>
-              <p className={`text-lg max-w-2xl mx-auto font-helvetica ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+              <p className={`text-xl max-w-2xl mx-auto font-helvetica ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
                 Join thousands who've transformed their lives with our proven fitness system.
               </p>
             </div>
-            <div className={`grid lg:grid-cols-2 min-h-[500px] max-h-[90%] max-w-6xl mx-auto ${theme === 'dark' ? 'bg-zinc-800' : 'bg-white'} rounded-3xl shadow-2xl overflow-hidden`}>
+            <div className={`grid lg:grid-cols-2 h-[750px] max-w-6xl mx-auto ${theme === 'dark' ? 'bg-zinc-800' : 'bg-white'} rounded-3xl shadow-2xl overflow-hidden`}>
               {/* Left side - Image */}
-              <div className="relative">
-                <img
-                  src="/lovable-uploads/Regis form.png"
-                  alt="Abhiram Nair fitness transformation coach"
-                  className="w-full h-full object-cover"
-                />
+              <div
+                className="relative h-full w-full"
+                style={{
+                  backgroundImage: "url('/lovable-uploads/Regis form.png')",
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                  minHeight: '100%',
+                  height: '100%',
+                  width: '100%',
+                }}
+              >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
-              
               {/* Right side - Form */}
-              <div className={`p-6 lg:p-8 ${theme === 'dark' ? 'bg-zinc-800' : 'bg-white'} flex flex-col justify-center`}>
-                <div className="mb-6 text-center">
-                  <h3 className={`text-xl font-bold mb-2 font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                    Start Your <span className="text-electric-blue">Transformation</span>
+              <div className={`p-3 lg:p-4 ${theme === 'dark' ? 'bg-zinc-800' : 'bg-white'} flex flex-col`}>
+                <div className="mb-2 text-center">
+                  <h3 className={`text-2xl font-bold mb-1 font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+                    Start Your <span className={`${theme === 'dark' ? 'text-electric-blue' : 'text-amber-gold'}`}>Transformation</span>
                   </h3>
-                  <p className={`text-sm font-helvetica ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                  {/* <p className={`text-sm font-helvetica ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
                     Fill out the form below and let's begin your journey together.
-                  </p>
+                  </p> */}
                 </div>
-                
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-2">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="firstName" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
@@ -615,7 +626,7 @@ const ContactForm = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed mt-1 mb-0"
                   >
                     {isSubmitting ? 'SUBMITTING...' : 'START MY TRANSFORMATION'}
                   </button>

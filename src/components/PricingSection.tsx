@@ -78,7 +78,7 @@ const PricingSection = () => {
           <div className="text-center mb-8 animate-fade-in px-4">
             <h2 className={`text-4xl sm:text-5xl font-serif font-bold ${theme === 'dark' ? 'text-stone-100' : 'text-gray-900'} mb-4`}>
               Find your{' '}
-              <span className={theme === 'dark' ? 'text-electric-blue-500' : 'text-emerald-700'}>Path</span>
+              <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>Path</span>
             </h2>
             <p className={`text-lg sm:text-xl ${theme === 'dark' ? 'text-stone-300' : 'text-muted-gray'} font-light max-w-xl mx-auto`}>
               Select the perfect plan for your transformation
@@ -86,17 +86,28 @@ const PricingSection = () => {
           </div>
 
           {/* Mobile Plans Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-10 px-4 sm:px-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-6 mb-10 px-4 sm:px-6">
             {plans.map((plan, index) => (
               <div 
                 key={index}
-                className={`bg-white/95 backdrop-blur-sm rounded-2xl p-4 sm:p-6 shadow-lg transition-all duration-300 hover:shadow-xl relative ${
-                  plan.popular ? 'ring-2 ring-emerald-400' : ''
+                className={`${
+                  theme === 'dark' 
+                    ? 'bg-zinc-800/90 backdrop-blur-sm' 
+                    : 'bg-white/95 backdrop-blur-sm'
+                } rounded-2xl p-4 sm:p-6 shadow-lg transition-all duration-300 hover:shadow-xl relative ${
+                  plan.popular ? theme === 'dark' 
+                    ? 'ring-2 ring-electric-blue' 
+                    : 'ring-2 ring-emerald-400' 
+                  : ''
                 }`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-bold">
+                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2">
+                    <div className={`${
+                      theme === 'dark' 
+                        ? 'bg-electric-blue text-black' 
+                        : 'bg-emerald-600 text-white'
+                    } px-4 py-2 rounded-full text-sm font-bold`}>
                       ✨ Most Popular
                     </div>
                   </div>
@@ -104,38 +115,51 @@ const PricingSection = () => {
 
                 <div className="space-y-4 text-center">
                   <div className="space-y-2">
-                    {/* <h3 className="text-xl sm:text-2xl font-serif font-bold text-soft-gray">{plan.name}</h3> */}
-                    <div className="text-emerald-600 font-bold text-lg sm:text-xl">{plan.duration}</div>
-                    <p className="text-muted-gray text-sm sm:text-base">{plan.description}</p>
+                    <div className={`font-bold text-lg sm:text-xl ${
+                      theme === 'dark' ? 'text-electric-blue' : 'text-emerald-600'
+                    }`}>{plan.duration}</div>
+                    <p className={`text-sm sm:text-base ${
+                      theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
+                    }`}>{plan.description}</p>
                   </div>
 
                   <div className="space-y-2">
                     {plan.features.slice(0, 3).map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-2">
-                        <span className="text-mint-500 text-base font-bold">✓</span>
-                        <span className="text-muted-gray text-sm sm:text-base text-left font-helvetica">{feature}</span>
+                        <span className={`text-base font-bold ${
+                          theme === 'dark' ? 'text-electric-blue' : 'text-mint-500'
+                        }`}>✓</span>
+                        <span className={`text-sm sm:text-base text-left font-helvetica ${
+                          theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
+                        }`}>{feature}</span>
                       </div>
                     ))}
                     {plan.features.length > 3 && (
-                      <div className="text-emerald-600 text-sm font-medium font-helvetica">
+                      <div className={`text-sm font-medium font-helvetica ${
+                        theme === 'dark' ? 'text-amber-gold' : 'text-emerald-600'
+                      }`}>
                         +{plan.features.length - 3} more features
                       </div>
                     )}
                   </div>
 
-                  <Button 
+                  <button 
                     onClick={scrollToForm}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl transition-all duration-300 text-base sm:text-lg"
+                    className={`w-full font-bold py-3 rounded-xl transition-all duration-300 text-base sm:text-lg ${
+                      theme === 'dark'
+                        ? 'bg-gradient-electric-to-amber text-black hover:bg-gradient-amber-to-electric' 
+                        : 'bg-emerald-600 hover:bg-emerald-700 text-white'
+                    }`}
                   >
                     Get Started
-                  </Button>
+                  </button>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Mobile Footer */}
-          <div className="text-center animate-fade-in">
+          {/* <div className="text-center animate-fade-in">
             <p className="text-muted-gray text-base mb-4 font-helvetica">
               100% satisfaction guarantee
             </p>
@@ -144,7 +168,7 @@ const PricingSection = () => {
               <div>📱 Instant</div>
               <div>🎯 Guaranteed</div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 

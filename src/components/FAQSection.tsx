@@ -44,7 +44,7 @@ const FAQSection = () => {
 		>
 			<div className="mx-auto max-w-2xl text-center">
 				<h2
-					className={`font-formom text-3xl font-bold tracking-tight sm:text-4xl ${
+					className={`font-serif text-3xl font-bold tracking-tight sm:text-4xl ${
 						theme === 'dark' ? 'text-white' : 'text-gray-900'
 					}`}
 				>
@@ -58,7 +58,7 @@ const FAQSection = () => {
 					</span>
 				</h2>
 				<p
-					className={`mt-4 text-lg leading-7 font-helvetica ${
+					className={`mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-4 ${
 						theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
 					}`}
 				>
@@ -67,7 +67,7 @@ const FAQSection = () => {
 				</p>
 			</div>
 
-			<div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-12">
+			<div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 mt-8">
 				<div className="space-y-4">
 					{faqs.map((faq, index) => (
 						<div

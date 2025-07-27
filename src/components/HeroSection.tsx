@@ -70,7 +70,7 @@ const HeroSection = () => {
         <div className="md:hidden min-h-screen flex flex-col justify-center">
           <div className={`space-y-8 text-center mt-4`}>
             <div className="space-y-1">
-              <h1 className={`text-4xl font-bold leading-[1.1] tracking-tight font-serif uppercase opacity-0 text-white`} style={{animation: "fadeIn 1.5s ease-in-out 0.3s forwards"}}>
+              <h1 className={`text-4xl font-bold leading-[1.1] tracking-tight font-serif uppercase opacity-0 ${theme === 'dark' ? 'text-white' : 'text-zinc-900'}`} style={{animation: "fadeIn 1.5s ease-in-out 0.3s forwards"}}>
                 IT'S TIME FOR<br/>YOU TO <span className={`mt-1 ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'} opacity-0`} style={{animation: "fadeIn 1.5s ease-in-out 0.6s forwards"}}>UPGRADE</span>
                 <span className="block mt-1 opacity-0" style={{animation: "fadeIn 1.5s ease-in-out 0.9s forwards"}}>YOURSELF</span>
               </h1>
@@ -78,10 +78,10 @@ const HeroSection = () => {
             
             {/* Mobile Content (centered, stacked) */}
             <div className="space-y-3 mt-12 mb-4">
-              <p className={`opacity-0 font-medium text-2xl ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`} style={{animation: "fadeIn 1.5s ease-in-out 1.0s forwards"}}>
+              <p className={`opacity-0 font-medium text-2xl ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`} style={{animation: "fadeIn 1.5s ease-in-out 1.0s forwards"}}>
                 Hi, I'm <span className={`font-semibold ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>Abhiram,</span> Founder of themight
               </p>
-              <p className={`opacity-0 text-lg ${theme === 'dark' ? 'text-slate-200' : 'text-gray-700'}`} style={{animation: "fadeIn 1.5s ease-in-out 1.3s forwards"}}>
+              <p className={`opacity-0 text-lg ${theme === 'dark' ? 'text-slate-200' : 'text-gray-900'}`} style={{animation: "fadeIn 1.5s ease-in-out 1.3s forwards"}}>
                 Transform your body with India's leading<br/>online fitness transformation coach
               </p>
             </div>

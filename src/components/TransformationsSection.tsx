@@ -298,7 +298,7 @@ const TransformationsSection = () => {
                   />
                   <div className="absolute bottom-3 right-3">
                     <span className={`text-gray-700 px-3 py-1 rounded-full text-sm font-dm-sans font-bold shadow-lg ${
-                      theme === 'dark' ? 'bg-electric-blue' : 'bg-strong-green'
+                      theme === 'dark' ? 'bg-electric-blue' : 'text-white bg-strong-green'
                     }`}>AFTER</span>
                   </div>
                 </div>
@@ -405,7 +405,7 @@ const TransformationsSection = () => {
                                     />
                                     <div className="absolute top-1 right-1">
                                       <span className={`text-black px-1 py-0.5 rounded text-xs font-bold ${
-                                        theme === 'dark' ? 'bg-electric-blue' : 'bg-amber-gold'
+                                        theme === 'dark' ? 'bg-electric-blue' : 'text-white bg-strong-green'
                                       }`}>AFTER</span>
                                     </div>
                                   </div>
@@ -441,7 +441,7 @@ const TransformationsSection = () => {
                   className={`text-gray-700 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 ${
                     theme === 'dark'
                       ? 'bg-gradient-electric-to-amber hover:bg-gradient-amber-to-electric'
-                      : 'bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900'
+                      : 'text-white bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900'
                   }`}
                   onClick={goToPrevPage}
                   aria-label="Previous transformations"
@@ -461,7 +461,7 @@ const TransformationsSection = () => {
                         currentPage === index 
                           ? theme === 'dark'
                             ? "w-6 bg-gradient-electric-to-amber shadow-lg" 
-                            : "w-6 bg-gradient-to-r from-emerald-700 to-emerald-800 shadow-lg"
+                            : "w-6 bg-gradient-to-r from-emerald-700 to-emerald-800 shadow-lg "
                           : "w-2 bg-gray-600 hover:bg-gray-800"
                       }`}
                       aria-label={`Go to page ${index + 1}`}
@@ -474,7 +474,7 @@ const TransformationsSection = () => {
                   className={`text-gray-700 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 ${
                     theme === 'dark'
                       ? 'bg-gradient-electric-to-amber hover:bg-gradient-amber-to-electric'
-                      : 'bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900'
+                      : 'bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900 text-white'
                   }`}
                   onClick={goToNextPage}
                   aria-label="Next transformations"
