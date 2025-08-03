@@ -132,7 +132,7 @@ const TransformationsSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Mobile Header Section */}
           <div className="text-center mb-12 animate-fade-in">
-            <h2 className={`text-3xl sm:text-4xl font-bold mb-4 leading-tight font-serif ${
+            <h2 className={`text-3xl sm:text-4xl font-bold mb-4 leading-tight font-helvetica ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
               Real <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>Transformations</span>
@@ -256,7 +256,7 @@ const TransformationsSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Desktop Header Section */}
           <div className="text-start mb-12 animate-fade-in">
-            <h2 className={`text-4xl lg:text-5xl font-bold mb-3 leading-tight font-serif ${
+            <h2 className={`text-4xl lg:text-5xl font-bold mb-3 leading-tight font-helvetica ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
               Real {' '} <span className={

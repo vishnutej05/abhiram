@@ -86,7 +86,7 @@ const AboutSection = () => {
       <div className="max-w-7xl mx-auto px-6 py-20">
         {/* Header */}
         <div className="mx-auto max-w-2xl lg:text-center pb-10">
-          <h2 className={`font-serif text-4xl font-bold tracking-tight sm:text-5xl ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+          <h2 className={`font-helvetica text-4xl font-bold tracking-tight sm:text-5xl ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
             The <span className={theme === 'dark' ? "text-electric-blue" : "text-strong-green"}>Journey</span>
           </h2>
           <p className={`mt-6 text-xl leading-8 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
@@ -317,7 +317,7 @@ const AboutSection = () => {
                             ? 'translate-y-0 opacity-100' 
                             : 'translate-y-8 opacity-50'
                         }`}>
-                          <h3 className={`text-4xl font-serif font-bold mb-4 ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>
+                          <h3 className={`text-4xl font-helvetica font-bold mb-4 ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>
                             {stage.title}
                           </h3>
                           <h4 className={`text-xl font-inter ${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'} mb-4 font-helvetica`}>
@@ -350,7 +350,7 @@ const AboutSection = () => {
                             ? 'translate-y-0 opacity-100' 
                             : 'translate-y-8 opacity-50'
                         }`}>
-                          <h3 className={`text-4xl font-serif font-bold mb-4 ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>
+                          <h3 className={`text-4xl font-helvetica font-bold mb-4 ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>
                             {stage.title}
                           </h3>
                           <h4 className={`text-xl font-inter ${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'} mb-4 font-helvetica`}>
@@ -420,9 +420,9 @@ const AboutSection = () => {
               ? 'bg-gradient-to-r from-black to-zinc-900/90 shadow-xl border border-amber-gold/20' 
               : 'bg-gradient-to-r from-white to-slate-100 shadow-lg border border-strong-green/20'
           }`}>
-            <blockquote className={`text-5xl font-serif font-light italic leading-relaxed mb-5 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+            <blockquote className={`text-5xl font-helvetica font-light leading-relaxed mb-5 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Don't be special, <br/>
-              <span className={theme === 'dark' ? 'text-amber-gold' : 'text-strong-green'}>-Be stubborn.</span>
+              <span className={theme === 'dark' ? 'italic text-amber-gold' : 'italic text-strong-green' }>-Be stubborn.</span>
             </blockquote>
             <cite className={`text-2xl font-inter opacity-90 font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>— Abhiram Nair</cite>
           </div>

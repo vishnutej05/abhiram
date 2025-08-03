@@ -70,7 +70,7 @@ const HeroSection = () => {
         <div className="md:hidden min-h-screen flex flex-col justify-center">
           <div className={`space-y-8 text-center mt-4`}>
             <div className="space-y-1">
-              <h1 className={`text-4xl font-bold leading-[1.1] tracking-tight font-serif uppercase opacity-0 ${theme === 'dark' ? 'text-white' : 'text-zinc-900'}`} style={{animation: "fadeIn 1.5s ease-in-out 0.3s forwards"}}>
+              <h1 className={`text-4xl font-bold leading-[1.1] tracking-tight font-helvetica uppercase opacity-0 ${theme === 'dark' ? 'text-white' : 'text-zinc-900'}`} style={{animation: "fadeIn 1.5s ease-in-out 0.3s forwards"}}>
                 IT'S TIME FOR<br/>YOU TO <span className={`mt-1 ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'} opacity-0`} style={{animation: "fadeIn 1.5s ease-in-out 0.6s forwards"}}>UPGRADE</span>
                 <span className="block mt-1 opacity-0" style={{animation: "fadeIn 1.5s ease-in-out 0.9s forwards"}}>YOURSELF</span>
               </h1>
@@ -115,7 +115,7 @@ const HeroSection = () => {
         {/* Desktop Content (left-aligned) */}
         <div className="hidden md:block max-w-6xl">
           <div className={`space-y-12`}>
-            <h1 className={`text-5xl lg:text-7xl font-black leading-[0.9] tracking-tight font-serif uppercase opacity-0 ${
+            <h1 className={`text-5xl lg:text-7xl font-black leading-[0.9] tracking-tight font-helvetica uppercase opacity-0 ${
               theme === 'dark' ? 'text-white' : 'text-zinc-800'
             }`} style={{animation: "fadeIn 1.5s ease-in-out 0.3s forwards"}}>
               IT'S TIME FOR YOU TO <span className={`${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'} font-black`}>

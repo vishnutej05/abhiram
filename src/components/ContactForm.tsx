@@ -160,7 +160,7 @@ const ContactForm = () => {
           
           {/* Header Section - Larger and prominent */}
           <div className="text-center w-full px-4 mb-8 relative z-10">
-            <h2 className={`text-4xl sm:text-5xl font-bold font-formom font-serif ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+            <h2 className={`text-4xl sm:text-5xl font-bold font-formom font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Build Your <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>Legacy</span><span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}></span>
             </h2>
             <p className={`mt-3 text-lg sm:text-xl font-helvetica mx-auto ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-xs sm:max-w-lg`}>
@@ -391,7 +391,7 @@ const ContactForm = () => {
         <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'soft-blush' : 'soft-lavender'}`}>
           <div className="w-full py-12">
             <div className="text-center mb-12">
-              <h2 className={`text-4xl md:text-5xl font-bold mb-4 font-formom font-serif ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+              <h2 className={`text-4xl md:text-5xl font-bold mb-4 font-formom font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
                 Build Your{' '}
                 <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>Legacy</span>
               </h2>

@@ -76,7 +76,7 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Mobile Header */}
           <div className="text-center mb-8 animate-fade-in px-4">
-            <h2 className={`text-4xl sm:text-5xl font-serif font-bold ${theme === 'dark' ? 'text-stone-100' : 'text-gray-900'} mb-4`}>
+            <h2 className={`text-4xl sm:text-5xl font-helvetica font-bold ${theme === 'dark' ? 'text-stone-100' : 'text-gray-900'} mb-4`}>
               Find your{' '}
               <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>Path</span>
             </h2>
@@ -185,7 +185,7 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Desktop Header */}
           <div className="text-center mb-20 animate-fade-in">
-            <h2 className={`text-5xl md:text-6xl font-serif font-bold mb-6 ${
+            <h2 className={`text-5xl md:text-6xl font-helvetica font-bold mb-6 ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
               Find your{' '}

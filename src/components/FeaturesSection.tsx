@@ -54,7 +54,7 @@ const FeaturesSection = () => {
         <div className="w-full mx-auto relative z-10 flex flex-col flex-1">
           {/* Mobile Header Section - Simplified */}
           <div className="text-center px-4 sm:px-8 py-6 animate-fade-in">
-            <h2 className={`font-serif text-3xl font-bold tracking-tight sm:text-4xl ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+            <h2 className={`font-helvetica text-3xl font-bold tracking-tight sm:text-4xl ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Everything you need to <span className="text-electric-blue-500">transform</span>
             </h2>
             <p className={`mt-6 text-lg leading-8 ${theme === 'dark' ? 'text-white' : 'text-muted-foreground'}`}>
@@ -68,7 +68,7 @@ const FeaturesSection = () => {
             {features.map((feature, index) => (
               <div key={index} className="bg-white p-4 sm:p-6 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105 min-h-[120px] sm:min-h-[140px] flex flex-col justify-center">
                 <div className="text-2xl sm:text-3xl mb-3 text-center">{feature.icon}</div>
-                <h3 className="text-sm sm:text-base font-bold text-gray-900 text-center leading-tight font-serif">{feature.title}</h3>
+                <h3 className="text-sm sm:text-base font-bold text-gray-900 text-center leading-tight font-helvetica">{feature.title}</h3>
               </div>
             ))}
           </div>
@@ -92,7 +92,7 @@ const FeaturesSection = () => {
           <div className="flex flex-col md:flex-row items-center md:items-center animate-fade-in" style={{ minHeight: 0, marginBottom: 0 }}>
             <div className="hidden md:block w-1/2"></div>
             <div className="w-full md:w-1/2 flex flex-col justify-center items-start md:pr-16 md:pl-10 py-8">
-              <h2 className="text-4xl lg:text-6xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-4 leading-tight text-center font-serif">
+              <h2 className="text-4xl lg:text-6xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-4 leading-tight text-center font-helvetica">
                 What You
                 <span className="text-electric-blue-600"> Get</span>
               </h2>

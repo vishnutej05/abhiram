@@ -108,7 +108,7 @@ const InstagramSection = () => {
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-3 mb-3">
               <Instagram className={theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'} size={28} />
-              <h2 className={`text-2xl sm:text-3xl font-bold font-serif ${
+              <h2 className={`text-2xl sm:text-3xl font-bold font-helvetica ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
                 Join The{' '}
@@ -208,7 +208,7 @@ const InstagramSection = () => {
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-4 mb-4">
               <Instagram size={36} className={theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'} />
-              <h2 className={`text-3xl md:text-4xl font-bold font-serif ${
+              <h2 className={`text-3xl md:text-4xl font-bold font-helvetica ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
                 Follow The{' '}

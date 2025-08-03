@@ -59,8 +59,12 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link to="/" className={`${theme === 'dark' ? 'text-electric-blue' : 'text-amber-gold'} font-bold text-xl md:text-2xl tracking-wider`}>
-              themight
+            <Link to="/" className="flex items-center">
+              <img 
+                src="/lovable-uploads/themight MAIN LOGO SVG.png" 
+                alt="themight logo" 
+                className="h-7 md:h-10 w-auto" 
+              />
             </Link>
           </div>
           

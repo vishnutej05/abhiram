@@ -44,7 +44,7 @@ const FAQSection = () => {
 		>
 			<div className="mx-auto max-w-2xl text-center">
 				<h2
-					className={`font-serif text-3xl font-bold tracking-tight sm:text-4xl ${
+					className={`font-helvetica text-3xl font-bold tracking-tight sm:text-4xl ${
 						theme === 'dark' ? 'text-white' : 'text-gray-900'
 					}`}
 				>

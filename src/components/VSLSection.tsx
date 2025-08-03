@@ -26,7 +26,7 @@ const VSLSection = () => {
       
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mb-12"> 
-          <h1 className={`font-serif text-3xl font-bold tracking-tight sm:text-4xl ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'} opacity-0`} style={{animation: "fadeIn 1.5s ease-in-out 0.8s forwards"}}>
+          <h1 className={`font-helvetica text-3xl font-bold tracking-tight sm:text-4xl ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'} opacity-0`} style={{animation: "fadeIn 1.5s ease-in-out 0.8s forwards"}}>
             👀 Watch my story
           </h1>
           <p className={`mt-6 text-lg leading-8 ${theme === 'dark' ? 'text-stone-300' : 'text-gray-800'} opacity-0`} style={{animation: "fadeIn 1.5s ease-in-out 1.1s forwards"}}>
