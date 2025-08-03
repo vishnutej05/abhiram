@@ -1,22 +1,12 @@
-import { useEffect, useState, ReactNode, createContext } from 'react';
+import { useEffect, useState, ReactNode } from 'react';
+// import { ThemeContext } from './theme-context';
+import { ThemeContext } from './theme-context.tsx';
 
 type ThemeProviderProps = {
   children: ReactNode;
   defaultTheme?: string;
   storageKey?: string;
 };
-
-type ThemeContextType = {
-  theme: string;
-  setTheme: (theme: string) => void;
-};
-
-const initialState: ThemeContextType = {
-  theme: 'light',
-  setTheme: () => null,
-};
-
-export const ThemeContext = createContext<ThemeContextType>(initialState);
 
 export function ThemeProvider({
   children,
@@ -31,15 +21,26 @@ export function ThemeProvider({
 
   useEffect(() => {
     const root = window.document.documentElement;
-
+    
+    // Remove the old theme class
     root.classList.remove('light', 'dark');
+    
+    // Add the new theme class
     root.classList.add(theme);
-  }, [theme]);
+    
+    // Update localStorage
+    localStorage.setItem(storageKey, theme);
+  }, [theme, storageKey]);
+
+  // Force light theme on page reload
+  useEffect(() => {
+    // This will run only on component mount (page load)
+    setTheme('light');
+  }, []);
 
   const value = {
     theme,
     setTheme: (theme: string) => {
-      localStorage.setItem(storageKey, theme);
       setTheme(theme);
     },
   };

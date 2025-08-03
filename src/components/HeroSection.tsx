@@ -74,7 +74,7 @@ const HeroSection = () => {
       <div className={`relative z-10 w-full px-4 sm:px-6 lg:px-8 pt-3 md:pt-20 ${theme !== 'dark' ? 'text-shadow-md' : ''}`}>
         {/* Mobile Content (centered, stacked) */}
         <div className="md:hidden min-h-screen flex flex-col justify-center">
-          <div className={`space-y-8 text-start mt-4`}>
+          <div className={`space-y-8 text-start`}>
             <div className="space-y-1">
               <h1 className={`text-4xl font-bold leading-[1.1] tracking-tight font-helvetica uppercase opacity-0 ${theme === 'dark' ? 'text-white' : 'text-white'}`} style={{animation: "fadeIn 1.5s ease-in-out 0.3s forwards"}}>
                 IT'S TIME TO <br/><span className={`mt-1 ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'} opacity-0`} style={{
@@ -139,21 +139,37 @@ const HeroSection = () => {
                 UPGRADE
               </span> YOURSELF.
             </h1>
-            <div className="space-y-3">
-                <p className={`text-3xl font-bold font-helvetica opacity-0 ${
-                  theme === 'dark' ? 'text-white' : 'text-white'
-                }`} style={{animation: "fadeIn 1.5s ease-in-out 1.0s forwards"}}>
-                  This is <span className={`font-semibold ${
-                    theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'
-                  }`} style={{
-                    color: theme === 'dark' ? 'hsl(142, 71%, 50%)' : 'hsl(142, 71%, 60%)'
-                  }}>Abhiram,</span> Founder of themight
-                </p>
-                <p className={`text-xl lg:text-2xl font-light leading-tight max-w-3xl font-helvetica opacity-0 ${
-                  theme === 'dark' ? 'text-slate-300' : 'text-white'
-                }`} style={{animation: "fadeIn 1.5s ease-in-out 1.5s forwards"}}>
-                  Transform your body with India's leading <br /> online fitness transformation coach
-                </p>
+            <div className="space-y-3 pt-2">
+              <p
+                className={`text-3xl font-bold font-helvetica opacity-0 text-white`}
+                style={{ animation: "fadeIn 1.5s ease-in-out 1.0s forwards" }}
+              >
+                This is{" "}
+                <span
+                  className={`font-semibold ${
+                    theme === "dark" ? "text-electric-blue" : "text-strong-green"
+                  }`}
+                  style={{
+                    color:
+                      theme === "dark"
+                        ? "hsl(142, 71%, 50%)"
+                        : "hsl(142, 71%, 60%)",
+                  }}
+                >
+                  Abhiram,
+                </span>{" "}
+                Founder of themight
+              </p>
+              <p
+                className={`pt-2 text-xl lg:text-2xl font-light leading-tight max-w-3xl font-helvetica opacity-0 ${
+                  theme === "dark" ? "text-slate-300" : "text-white"
+                }`}
+                style={{ animation: "fadeIn 1.5s ease-in-out 1.5s forwards" }}
+              >
+                Transform your body with India's leading
+                <br />
+                online fitness transformation coach
+              </p>
             </div>
             <div className="flex flex-col items-start space-y-6">
               <div className={`flex flex-row justify-start items-center space-x-6 text-2xl font-extrabold font-helvetica ${

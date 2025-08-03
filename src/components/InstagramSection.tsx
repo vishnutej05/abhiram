@@ -108,11 +108,11 @@ const InstagramSection = () => {
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-3 mb-3">
               <Instagram className={theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'} size={28} />
-              <h2 className={`text-2xl sm:text-3xl font-bold font-helvetica ${
+              <h2 className={`text-2xl sm:text-3xl font-bold uppercase font-helvetica ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
-                Join The{' '}
-                <span className={theme === 'dark' ? 'text-electric-blue' : 'text-amber-gold'}>Journey</span>
+                JOIN THE{' '}
+                <span className={theme === 'dark' ? 'text-electric-blue' : 'text-amber-gold'}>JOURNEY</span>
               </h2>
             </div>
             <p className={`text-sm sm:text-base max-w-sm mx-auto leading-relaxed font-helvetica ${

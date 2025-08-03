@@ -185,14 +185,14 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Desktop Header */}
           <div className="text-center mb-20 animate-fade-in">
-            <h2 className={`text-5xl md:text-6xl font-helvetica font-bold uppercase mb-6 ${
+            <h2 className={`text-5xl md:text-6xl font-helvetica font-bold capitalize mb-6 ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              SELECT THE PERFECT{' '}
+              select the perfect{' '}
               <span className={
                 theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'
               }>
-                PLAN
+                Plan
               </span>
             </h2>
             {/* <p className={`text-xl font-light max-w-2xl mx-auto ${

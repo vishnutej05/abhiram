@@ -48,13 +48,13 @@ const FAQSection = () => {
 						theme === 'dark' ? 'text-white' : 'text-gray-900'
 					}`}
 				>
-					Frequently Asked{' '}
+					FREQUENTLY ASKED{' '}
 					<span
 						className={
 							theme === 'dark' ? 'text-electric-blue' : 'text-amber-gold'
 						}
 					>
-						Questions
+						QUESTIONS
 					</span>
 				</h2>
 				<p

@@ -5,8 +5,6 @@ const TransformationsSection = () => {
   const [activeTransformation, setActiveTransformation] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [mobileCarouselIndex, setMobileCarouselIndex] = useState(0);
-  const [touchStartX, setTouchStartX] = useState(0);
-  const [touchEndX, setTouchEndX] = useState(0);
   const mobileCarouselRef = useRef(null);
   const { theme } = useTheme();
 
@@ -110,43 +108,6 @@ const TransformationsSection = () => {
     setCurrentPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
   };
 
-  // Handle swipe for mobile carousel
-  const handleTouchStart = (e) => {
-    setTouchStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e) => {
-    setTouchEndX(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    const swipeThreshold = 50; // Minimum distance required to register a swipe
-    if (touchStartX - touchEndX > swipeThreshold) {
-      // Swipe left - go to next
-      setMobileCarouselIndex((prev) => (prev + 1) % transformations.length);
-    } else if (touchEndX - touchStartX > swipeThreshold) {
-      // Swipe right - go to previous
-      setMobileCarouselIndex((prev) => (prev === 0 ? transformations.length - 1 : prev - 1));
-    }
-    // Reset touch positions
-    setTouchStartX(0);
-    setTouchEndX(0);
-  };
-  
-  // Visual indicator for swipe direction
-  const getSwipeIndicatorStyle = () => {
-    if (touchStartX === 0 || touchEndX === 0) return {};
-    
-    const diff = touchEndX - touchStartX;
-    // Only apply transform if the swipe is significant enough
-    if (Math.abs(diff) < 20) return {};
-    
-    return {
-      transform: `translateX(${diff * 0.1}px)`,
-      transition: 'transform 0.1s ease-out'
-    };
-  };
-
   return (
     <div id="transformations">
       {/* Mobile & Tablet Section - Completely Separate */}
@@ -162,7 +123,7 @@ const TransformationsSection = () => {
         
         <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 relative z-10">
           {/* Mobile Header Section */}
-          <div className="text-center mb-16 animate-fade-in">
+          <div className="text-center mb-10 animate-fade-in">
             <h2 className={`text-3xl sm:text-4xl font-bold mb-4 leading-tight font-helvetica ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
@@ -176,7 +137,7 @@ const TransformationsSection = () => {
           </div>
 
           {/* Mobile Carousel */}
-          <div className="mb-10">
+          <div className="mb-2">
             <div className={`relative overflow-hidden rounded-2xl shadow-xl mx-4 sm:mx-8 ${
               theme === 'dark' ? 'bg-zinc-800' : 'bg-white'
             }`}>
@@ -186,12 +147,8 @@ const TransformationsSection = () => {
                   ref={mobileCarouselRef}
                   className="flex transition-transform duration-500 ease-in-out h-full"
                   style={{ 
-                    transform: `translateX(-${mobileCarouselIndex * 100}%)`,
-                    ...getSwipeIndicatorStyle()
+                    transform: `translateX(-${mobileCarouselIndex * 100}%)`
                   }}
-                  onTouchStart={handleTouchStart}
-                  onTouchMove={handleTouchMove}
-                  onTouchEnd={handleTouchEnd}
                 >
                   {transformations.map((transformation, index) => (
                     <div key={index} className="min-w-full h-full flex">
@@ -217,6 +174,36 @@ const TransformationsSection = () => {
                       </div>
                     </div>
                   ))}
+                </div>
+                
+                {/* Navigation Buttons */}
+                <div className="absolute inset-x-0 top-1/2 transform -translate-y-1/2 flex justify-between px-2 sm:px-4">
+                  <button
+                    className={`rounded-full p-2 shadow-xl z-10 transition-all duration-300 hover:scale-110 ${
+                      theme === 'dark'
+                        ? 'bg-zinc-700 hover:bg-zinc-600 text-white'
+                        : 'bg-white hover:bg-gray-100 text-gray-800'
+                    }`}
+                    onClick={() => setMobileCarouselIndex((prev) => (prev === 0 ? transformations.length - 1 : prev - 1))}
+                    aria-label="Previous transformation"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    className={`rounded-full p-2 shadow-xl z-10 transition-all duration-300 hover:scale-110 ${
+                      theme === 'dark'
+                        ? 'bg-zinc-700 hover:bg-zinc-600 text-white'
+                        : 'bg-white hover:bg-gray-100 text-gray-800'
+                    }`}
+                    onClick={() => setMobileCarouselIndex((prev) => (prev + 1) % transformations.length)}
+                    aria-label="Next transformation"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
                 </div>
               </div>
               
@@ -245,7 +232,7 @@ const TransformationsSection = () => {
                     <div className={`text-sm sm:text-lg font-bold font-helvetica ${
                       theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'
                     }`}>
-                      {transformations[mobileCarouselIndex].results}
+                      {transformations[mobileCarouselIndex].testimonial}
                     </div>
                     <div className={`text-xs sm:text-sm font-medium font-helvetica ${
                       theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
@@ -257,18 +244,23 @@ const TransformationsSection = () => {
               </div>
               
               {/* Mobile Carousel Indicators */}
-              <div className="absolute bottom-1 sm:bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1 sm:space-x-2">
-                {transformations.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setMobileCarouselIndex(index)}
-                    className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${
-                      mobileCarouselIndex === index 
-                        ? theme === 'dark' ? 'bg-white w-4 sm:w-6' : 'bg-white w-4 sm:w-6' 
-                        : 'bg-white/50'
-                    }`}
-                  />
-                ))}
+              <div className="py-3 flex justify-center">
+                <div className="flex space-x-2">
+                  {transformations.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setMobileCarouselIndex(index)}
+                      className={`h-2.5 rounded-full transition-all duration-300 ${
+                        mobileCarouselIndex === index 
+                          ? theme === 'dark'
+                            ? "w-8 bg-electric-blue"
+                            : "w-8 bg-emerald-600"
+                          : "w-2.5 bg-gray-400 hover:bg-gray-600"
+                      }`}
+                      aria-label={`Go to transformation ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -289,16 +281,16 @@ const TransformationsSection = () => {
         <div className="max-w-7xl mx-auto pt-20 pb-10 px-8 relative z-10 capitalize">
           {/* Desktop Header Section */}
           <div className="text-start mb-12 animate-fade-in">
-            <h2 className={`text-4xl lg:text-5xl font-bold mb-3 leading-tight font-helvetica uppercase ${
+            <h2 className={`text-4xl lg:text-5xl font-bold mb-3 leading-tight font-helvetica ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              MEET THE PEOPLE WHO TOOK A CHANCE TO <br/> {' '} <span className={
+              Meet the people who took a chance to <br/> {' '} <span className={
                 theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'
-              }> UPGRADE THEMSELVES </span>
+              }> Upgrade Themselves </span>
             </h2>
-            <div className={`h-2 w-24 rounded-full ${
+            {/* <div className={`h-2 w-24 rounded-full ${
               theme === 'dark' ? 'bg-electric-blue' : 'bg-emerald-600'
-            }`}></div>
+            }`}></div> */}
             {/* <p className={`mt-3 leading-relaxed font-semibold text-xl max-w-2xl font-helvetica ${
               theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
             }`}>
@@ -413,20 +405,7 @@ const TransformationsSection = () => {
                 <div 
                   className="flex transition-transform duration-700 ease-in-out"
                   style={{ 
-                    transform: `translateX(-${currentPage * 100}%)`,
-                    ...getSwipeIndicatorStyle()
-                  }}
-                  onTouchStart={handleTouchStart}
-                  onTouchMove={handleTouchMove}
-                  onTouchEnd={() => {
-                    const swipeThreshold = 50;
-                    if (touchStartX - touchEndX > swipeThreshold) {
-                      goToNextPage();
-                    } else if (touchEndX - touchStartX > swipeThreshold) {
-                      goToPrevPage();
-                    }
-                    setTouchStartX(0);
-                    setTouchEndX(0);
+                    transform: `translateX(-${currentPage * 100}%)`
                   }}
                 >
                   {Array.from({ length: totalPages }).map((_, pageIndex) => (

@@ -202,11 +202,12 @@ const ContactForm = () => {
                       required
                       value={formData.firstName}
                       onChange={handleChange}
-                      className={`w-full px-2 py-1 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-3 py-2 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent ${
                         theme === 'dark'
-                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
-                          : 'bg-white border-emerald-200 focus:ring-strong-green'
+                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue hover:border-electric-blue/70'
+                          : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
                       }`}
+                      placeholder="Your first name"
                     />
                   </div>
                   <div>
@@ -218,11 +219,12 @@ const ContactForm = () => {
                       required
                       value={formData.lastName}
                       onChange={handleChange}
-                      className={`w-full px-2 py-1 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-3 py-2 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent ${
                         theme === 'dark'
-                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
-                          : 'bg-white border-emerald-200 focus:ring-strong-green'
+                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue hover:border-electric-blue/70'
+                          : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
                       }`}
+                      placeholder="Your last name"
                     />
                   </div>
                 </div>
@@ -230,19 +232,28 @@ const ContactForm = () => {
                 <div className="grid grid-cols-2 gap-2">
                   <div>
                     <Label htmlFor="mobile-email" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Email *</Label>
-                    <Input
-                      id="mobile-email"
-                      name="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className={`w-full px-2 py-1 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
-                        theme === 'dark'
-                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
-                          : 'bg-white border-emerald-200 focus:ring-strong-green'
-                      }`}
-                    />
+                    <div className="relative">
+                      <Input
+                        id="mobile-email"
+                        name="email"
+                        type="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        className={`w-full pl-8 pr-3 py-2 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent ${
+                          theme === 'dark'
+                            ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue hover:border-electric-blue/70'
+                            : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
+                        }`}
+                        placeholder="Your email address"
+                      />
+                      <div className="absolute left-2 top-1/2 transform -translate-y-1/2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={theme === 'dark' ? '#aaa' : '#666'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                          <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                      </div>
+                    </div>
                   </div>
                   <div>
                     <Label htmlFor="mobile-phone" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Phone *</Label>
@@ -271,11 +282,16 @@ const ContactForm = () => {
                       required
                       value={formData.age}
                       onChange={handleChange}
-                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
                         theme === 'dark'
                           ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
                           : 'bg-white border-emerald-200 focus:ring-strong-green'
                       }`}
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                        backgroundSize: '1.25em',
+                        paddingRight: '2.5rem',
+                      }}
                     >
                       <option value="">Select</option>
                       <option value="18-25">18-25</option>
@@ -293,11 +309,16 @@ const ContactForm = () => {
                       required
                       value={formData.goal}
                       onChange={handleChange}
-                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
                         theme === 'dark'
                           ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
                           : 'bg-white border-emerald-200 focus:ring-strong-green'
                       }`}
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                        backgroundSize: '1.25em',
+                        paddingRight: '2.5rem',
+                      }}
                     >
                       <option value="">Select</option>
                       <option value="weight-loss">Weight Loss</option>
@@ -319,11 +340,16 @@ const ContactForm = () => {
                       required
                       value={formData.fitnessLevel}
                       onChange={handleChange}
-                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
                         theme === 'dark'
                           ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
                           : 'bg-white border-emerald-200 focus:ring-strong-green'
                       }`}
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                        backgroundSize: '1.25em',
+                        paddingRight: '2.5rem',
+                      }}
                     >
                       <option value="">Select</option>
                       <option value="beginner">Beginner</option>
@@ -339,11 +365,16 @@ const ContactForm = () => {
                       required
                       value={formData.workoutFrequency}
                       onChange={handleChange}
-                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
                         theme === 'dark'
                           ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
                           : 'bg-white border-emerald-200 focus:ring-strong-green'
                       }`}
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                        backgroundSize: '1.25em',
+                        paddingRight: '2.5rem',
+                      }}
                     >
                       <option value="">Select</option>
                       <option value="2-3-times">2-3/week</option>
@@ -438,11 +469,12 @@ const ContactForm = () => {
                         required
                         value={formData.firstName}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent border-2 transition-all duration-200 ${
                           theme === 'dark' 
-                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
-                            : 'border border-electric-blue-200 focus:ring-electric-blue-400'
+                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue hover:border-electric-blue/50' 
+                            : 'border-electric-blue-100 focus:ring-electric-blue-400 hover:border-electric-blue-300'
                         }`}
+                        placeholder="Your first name"
                       />
                     </div>
                     
@@ -457,11 +489,12 @@ const ContactForm = () => {
                         required
                         value={formData.lastName}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent border-2 transition-all duration-200 ${
                           theme === 'dark' 
-                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
-                            : 'border border-electric-blue-200 focus:ring-electric-blue-400'
+                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue hover:border-electric-blue/50' 
+                            : 'border-electric-blue-100 focus:ring-electric-blue-400 hover:border-electric-blue-300'
                         }`}
+                        placeholder="Your last name"
                       />
                     </div>
                   </div>
@@ -477,11 +510,12 @@ const ContactForm = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent border-2 transition-all duration-200 ${
                         theme === 'dark' 
-                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
-                          : 'border border-electric-blue-200 focus:ring-electric-blue-400'
+                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue hover:border-electric-blue/50' 
+                          : 'border-electric-blue-100 focus:ring-electric-blue-400 hover:border-electric-blue-300'
                       }`}
+                      placeholder="Your email address"
                     />
                   </div>
                   
@@ -497,11 +531,12 @@ const ContactForm = () => {
                         required
                         value={formData.phone}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent border-2 transition-all duration-200 ${
                           theme === 'dark' 
-                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
-                            : 'border border-electric-blue-200 focus:ring-electric-blue-400'
+                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue hover:border-electric-blue/50' 
+                            : 'border-electric-blue-100 focus:ring-electric-blue-400 hover:border-electric-blue-300'
                         }`}
+                        placeholder="Your phone number"
                       />
                     </div>
                     
@@ -515,11 +550,16 @@ const ContactForm = () => {
                         required
                         value={formData.age}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
                           theme === 'dark' 
                             ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
                             : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
                         }`}
+                        style={{
+                          backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                          backgroundSize: '1.5em',
+                          paddingRight: '2.5rem',
+                        }}
                       >
                         <option value="">Select Age Range</option>
                         <option value="18-25">18-25 years</option>
@@ -541,11 +581,16 @@ const ContactForm = () => {
                       required
                       value={formData.goal}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
                         theme === 'dark' 
                           ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
                           : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
                       }`}
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                        backgroundSize: '1.5em',
+                        paddingRight: '2.5rem',
+                      }}
                     >
                       <option value="">Select Your Goal</option>
                       <option value="weight-loss">Weight Loss</option>
@@ -567,11 +612,16 @@ const ContactForm = () => {
                       required
                       value={formData.fitnessLevel}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
                         theme === 'dark' 
                           ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
                           : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
                       }`}
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                        backgroundSize: '1.5em',
+                        paddingRight: '2.5rem',
+                      }}
                     >
                       <option value="">Select Your Level</option>
                       <option value="beginner">Beginner</option>
@@ -590,11 +640,16 @@ const ContactForm = () => {
                       required
                       value={formData.workoutFrequency}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
                         theme === 'dark' 
                           ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
                           : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
                       }`}
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                        backgroundSize: '1.5em',
+                        paddingRight: '2.5rem',
+                      }}
                     >
                       <option value="">How often can you workout?</option>
                       <option value="2-3-times">2-3 times per week</option>
@@ -615,10 +670,10 @@ const ContactForm = () => {
                       value={formData.message}
                       onChange={handleChange}
                       placeholder="Tell us about your fitness journey..."
-                      className={`w-full px-4 py-2 rounded-lg focus:ring-2 focus:border-transparent resize-none ${
+                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent resize-none border-2 transition-all duration-200 ${
                         theme === 'dark' 
-                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
-                          : 'border border-electric-blue-200 focus:ring-electric-blue-400'
+                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue hover:border-electric-blue/50' 
+                          : 'border-electric-blue-100 focus:ring-electric-blue-400 hover:border-electric-blue-300'
                       }`}
                     />
                   </div>

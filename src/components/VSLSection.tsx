@@ -11,46 +11,33 @@ const VSLSection = () => {
   };
   
   return (
-    <section id="vsl" className={`pt-10 pb-20 relative overflow-hidden ${
+    <section id="vsl" className={`pt-6 pb-16 md:pt-8 md:pb-20 relative overflow-hidden ${
       theme === 'dark' 
-        ? 'bg-gradient-to-br from-black via-charcoal-900 to-black/70' 
-        : 'bg-gradient-to-br from-slate-900 via-black to-zinc-900'
+        ? 'bg-zinc-800 border border-zinc-700' 
+        : 'bg-white'
     }`}>
-      {/* Background with backdrop filter */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=80')`,
-        }}
-      >
-        <div className={`absolute inset-0 ${
-          theme === 'dark' 
-            ? 'bg-black/90 backdrop-blur-sm' 
-            : 'bg-black/80 backdrop-blur-sm'
-        }`}></div>
-      </div>
       {/* Top gradient for seamless transition - enhanced height */}
       <div className={`absolute top-0 left-0 right-0 h-40 ${
         theme === 'dark' 
-          ? 'bg-gradient-to-b from-black to-transparent' 
-          : 'bg-gradient-to-b from-slate-900 to-transparent'
+          ? 'bg-gradient-to-b from-zinc-900 to-transparent' 
+          : 'bg-gradient-to-b from-white to-transparent'
       } z-[1]`}></div>
       
       {/* Subtle divider that fades at edges */}
       <div className="absolute top-0 left-0 right-0 z-[2]">
         <div className="max-w-5xl mx-auto px-4">
-          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-zinc-700/30 to-transparent"></div>
+          <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-zinc-300/30 to-transparent"></div>
         </div>
       </div>
       
       {/* Bottom gradient for seamless transition */}
       <div className={`absolute bottom-0 left-0 right-0 h-24 ${
         theme === 'dark' 
-          ? 'bg-gradient-to-t from-black via-charcoal-900/90 to-transparent' 
-          : 'bg-gradient-to-t from-slate-900 to-transparent'
+          ? 'bg-gradient-to-t from-zinc-900 to-transparent' 
+          : 'bg-gradient-to-t from-slate-50 to-transparent'
       } z-[1]`}></div>
       
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-12">
+      <div className="relative z-10 w-full mx-auto px-0 sm:px-2 lg:px-4 text-center pt-8">
         {/* <div className="mb-12"> 
           <h1 
             className={`font-helvetica text-3xl font-bold tracking-tight sm:text-4xl ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'} opacity-0`} 
@@ -67,11 +54,11 @@ const VSLSection = () => {
         </div>
          */}
         {/* YouTube Video */}
-        <div className="relative max-w-4xl mx-auto mb-12">
-          <div className={`aspect-video rounded-3xl overflow-hidden shadow-2xl ${
+        <div className="relative w-full px-2 md:px-4 lg:px-0 lg:max-w-[95%] xl:max-w-[90%] mx-auto mb-12">
+          <div className={`aspect-video rounded-xl md:rounded-3xl overflow-hidden shadow-2xl ${
             theme === 'dark' 
-              ? 'border-4 border-zinc-700/50' 
-              : 'border-4 border-zinc-800/30'
+              ? 'border-2 md:border-4 border-zinc-700/50' 
+              : 'border-2 md:border-4 border-slate-200'
           }`}>
             <iframe
               width="100%"
@@ -86,10 +73,12 @@ const VSLSection = () => {
           </div>
         </div>
         
-        <div className="pt-2">
+        <div className="pt-8 md:pt-10">
           <button 
             onClick={scrollToForm}
-            className={`btn-primary text-base font-bold w-full max-w-xs mx-auto py-3 px-4 rounded-full shadow-lg font-helvetica transition-all duration-300 hover:scale-105 active:scale-95 group`}
+            className={`btn-primary text-base font-bold w-full max-w-xs mx-auto py-3 px-6 rounded-full shadow-lg font-helvetica transition-all duration-300 hover:scale-105 active:scale-95 group ${
+              theme === 'dark' ? '' : 'text-white'
+            }`}
           >
             <span className="relative z-10">Start Your Fitness Journey Today</span>
           </button>
