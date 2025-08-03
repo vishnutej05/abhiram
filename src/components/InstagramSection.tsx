@@ -80,7 +80,7 @@ const InstagramSection = () => {
         ref={sectionRef} 
         className={`block lg:hidden seamless-section ${
           theme === 'dark' 
-            ? 'bg-gradient-to-br from-zinc-900 to-zinc-800' 
+            ? 'bg-zinc-900 bg-opacity-95' 
             : 'bg-gradient-to-br from-slate-50 to-slate-100'
         } relative overflow-hidden`}
       >
@@ -201,7 +201,7 @@ const InstagramSection = () => {
       {/* Desktop Section - Completely Separate */}
       <section className={`hidden lg:block seamless-section ${
         theme === 'dark' 
-          ? 'bg-gradient-to-br from-zinc-900 to-zinc-800' 
+          ? 'bg-zinc-900 bg-opacity-95' 
           : 'bg-gradient-to-br from-slate-50 to-slate-100'
       }`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">

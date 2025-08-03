@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown, Star, Zap, Target, Trophy, Heart, Flame } from 'lucide-react';
 import { useTheme } from '../hooks/use-theme';
 import { useIsMobile } from '../hooks/use-mobile';
@@ -15,45 +15,37 @@ const AboutSection = () => {
       id: 1,
       image: "/lovable-uploads/J1.jpg",
       title: "Day Zero",
-      subtitle: "The moment everything changed",
       year: "2017",
       description: "Just a scrawny kid, tired and scared, but something inside me knew it was time. No more excuses.",
       icon: Flame,
-      color: theme === 'dark' ? "from-amber-gold to-electric-blue" : "from-amber-gold to-strong-green",
-      motivationalText: "One promise: just start."
+      color: theme === 'dark' ? "from-amber-gold to-electric-blue" : "from-amber-gold to-strong-green"
     },
     {
       id: 2,
       image: "/lovable-uploads/J3.jpg",
       title: "The Grind",
-      subtitle: "Where legends are forged",
       year: "2019",
       description: "Every rep hurt. Every meal mattered. I chose myself over comfort, discipline over instant gratification.",
       icon: Zap,
-      color: theme === 'dark' ? "from-electric-blue to-amber-gold" : "from-strong-green to-amber-gold",
-      motivationalText: "One day at a time—that's all it takes."
+      color: theme === 'dark' ? "from-electric-blue to-amber-gold" : "from-strong-green to-amber-gold"
     },
-    {
-      id: 3,
-      image: "/lovable-uploads/J2.jpg",
-      title: "The Breakthrough", 
-      subtitle: "When everything clicks",
-      year: "2021",
-      description: "Saying 'NO' became my superpower. To junk food, to excuses, to settling for less. Growth demands sacrifice.",
-      icon: Target,
-      color: theme === 'dark' ? "from-amber-gold to-electric-blue" : "from-amber-gold to-strong-green",
-      motivationalText: "It's now or never—choose greatness."
-    },
+    // {
+    //   id: 3,
+    //   image: "/lovable-uploads/J2.jpg",
+    //   title: "The Breakthrough", 
+    //   year: "2021",
+    //   description: "Saying 'NO' became my superpower. To junk food, to excuses, to settling for less. Growth demands sacrifice.",
+    //   icon: Target,
+    //   color: theme === 'dark' ? "from-amber-gold to-electric-blue" : "from-amber-gold to-strong-green"
+    // },
     {
       id: 4,
       image: "/lovable-uploads/J4.jpg",
       title: "The Evolution",
-      subtitle: "Becoming who I was meant to be",
       year: "2025",
       description: "Not just transformed—evolved. The body changed, but the mind became unbreakable. This is just the beginning.",
       icon: Trophy,
-      color: theme === 'dark' ? "from-electric-blue to-amber-gold" : "from-strong-green to-amber-gold",
-      motivationalText: "I don't regret any of this—and neither will you."
+      color: theme === 'dark' ? "from-electric-blue to-amber-gold" : "from-strong-green to-amber-gold"
     }
   ];
 
@@ -80,32 +72,31 @@ const AboutSection = () => {
   return (
     <section ref={sectionRef} className={`relative min-h-screen overflow-hidden ${
       theme === 'dark' 
-        ? 'bg-gradient-to-br from-black/95 via-zinc-900 to-zinc-900/95' 
+        ? 'bg-zinc-900 bg-opacity-95' 
         : 'bg-gradient-to-br from-slate-50 via-white to-stone-100'
     }`}>
-      <div className="max-w-7xl mx-auto px-6 py-20">
+      <div className="max-w-7xl mx-auto px-6 pt-20 pb-10">
         {/* Header */}
         <div className="mx-auto max-w-2xl lg:text-center pb-10">
-          <h2 className={`font-helvetica text-4xl font-bold tracking-tight sm:text-5xl ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-            The <span className={theme === 'dark' ? "text-electric-blue" : "text-strong-green"}>Journey</span>
+          <h2 className={`capitalize font-helvetica text-4xl font-bold tracking-tight sm:text-5xl ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+            Here's how my journey<span className={theme === 'dark' ? "text-electric-blue" : "text-strong-green"}> began</span>
           </h2>
-          <p className={`mt-6 text-xl leading-8 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+          {/* <p className={`mt-6 text-xl leading-8 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
             Here's how my journey began
-          </p>
+          </p> */}
         </div>
 
         {/* Timeline Container */}
         {isMobile ? (
           // Mobile Layout - Vertical Card Stack
-          <div className="space-y-8">
+          <div className="space-y-6">
             {transformationJourney.map((stage, index) => {
               const IconComponent = stage.icon;
               const isActive = activeStage >= index;
               
               return (
-                <>
+                <React.Fragment key={stage.id}>
                   <div 
-                    key={stage.id} 
                     className={`${
                       theme === 'dark' 
                         ? 'bg-zinc-800 border border-zinc-700' 
@@ -138,14 +129,14 @@ const AboutSection = () => {
                         {/* Title overlay */}
                         <div className="absolute bottom-0 left-0 right-0 p-3">
                           <div className="flex items-center">
-                            <IconComponent className={`w-4 h-4 mr-2 ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`} />
+                            <IconComponent 
+                              className={`w-4 h-4 mr-2 ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}
+                              style={{ color: theme === 'dark' ? 'hsl(142, 71%, 50%)' : '' }}
+                            />
                             <h3 className="text-lg font-formom font-bold text-white">
                               {stage.title}
                             </h3>
                           </div>
-                          <p className="text-xs font-helvetica text-gray-200 mt-1">
-                            {stage.subtitle}
-                          </p>
                         </div>
                       </div>
                     </div>
@@ -157,26 +148,11 @@ const AboutSection = () => {
                       } mb-3 font-helvetica leading-relaxed font-medium`}>
                         {stage.description}
                       </p>
-
-                      {/* Quote - Simplified */}
-                      <div className={`${
-                        theme === 'dark' 
-                          ? 'bg-zinc-700/50 border-l-2 border-electric-blue' 
-                          : 'bg-gray-100 border-l-2 border-strong-green'
-                      } p-2 rounded-md`}>
-                        <p className={`text-xs italic ${
-                          theme === 'dark' ? 'text-white' : 'text-gray-900'
-                        } font-helvetica font-medium`}>
-                          <span className={`${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>"</span>
-                          {stage.motivationalText}
-                          <span className={`${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>"</span>
-                        </p>
-                      </div>
                     </div>
                   </div>
 
                   {/* Add journey scroll indicator after first card with improved styling */}
-                  {index === 0 && (
+                  {/* {index === 0 && (
                     <div className="flex flex-col items-center py-3 my-0">
                       <div className={`flex items-center gap-2 px-5 py-2 rounded-full ${
                         theme === 'dark'
@@ -189,7 +165,7 @@ const AboutSection = () => {
                         <ChevronDown className="text-electric-blue w-4 h-4 animate-bounce" />
                       </div>
                     </div>
-                  )}
+                  )} */}
                   
                   {/* Reduced spacing and added a thin line divider between cards */}
                   {index < transformationJourney.length - 1 && (
@@ -201,7 +177,7 @@ const AboutSection = () => {
                       } rounded-full`} />
                     </div>
                   )}
-                </>
+                </React.Fragment>
               );
             })}
           </div>
@@ -228,10 +204,10 @@ const AboutSection = () => {
               const isActive = activeStage >= index;
               
               return (
-                <div key={stage.id} className="relative mb-24">
+                <div key={stage.id} className="relative mb-5">
                   {/* Timeline Node */}
                   <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 z-10">
-                    <div className={`w-20 h-20 rounded-full 
+                    <div className={`w-16 h-16 rounded-full 
                       ${theme === 'dark' 
                         ? 'border-4 border-zinc-800/80' 
                         : 'border-4 border-gray-400/90'
@@ -275,7 +251,7 @@ const AboutSection = () => {
                   </div>
 
                   {/* Content Layout - Image and Text on opposite sides */}
-                  <div className="grid grid-cols-2 gap-16 items-center">
+                  <div className="grid grid-cols-2 gap-16 items-center mb-3">
                     {/* Left Side */}
                     <div className={`${isLeft ? 'flex justify-end pr-4' : 'flex justify-start pl-4'}`}>
                       {isLeft ? (
@@ -320,23 +296,9 @@ const AboutSection = () => {
                           <h3 className={`text-4xl font-helvetica font-bold mb-4 ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>
                             {stage.title}
                           </h3>
-                          <h4 className={`text-xl font-inter ${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'} mb-4 font-helvetica`}>
-                            {stage.subtitle}
-                          </h4>
                           <p className={`text-lg ${theme === 'dark' ? 'text-stone-400' : 'text-gray-500'} mb-6 font-helvetica leading-relaxed`}>
                             {stage.description}
                           </p>
-
-                          {/* Motivational Quote */}
-                          <div className={`${
-                            theme === 'dark' 
-                              ? 'bg-gradient-to-r from-zinc-800 to-zinc-800/90 border-l-4 border-electric-blue' 
-                              : 'bg-gradient-to-r from-white to-slate-100 border-l-4 border-strong-green/80 shadow-md'
-                          } p-6 rounded-2xl`}>
-                            <p className={`text-base italic ${theme === 'dark' ? 'text-white' : 'text-gray-700'} font-helvetica leading-relaxed`}>
-                              <span className="text-electric-blue font-bold">"</span>{stage.motivationalText}<span className="text-electric-blue font-bold">"</span>
-                            </p>
-                          </div>
                         </div>
                       )}
                     </div>
@@ -353,23 +315,9 @@ const AboutSection = () => {
                           <h3 className={`text-4xl font-helvetica font-bold mb-4 ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>
                             {stage.title}
                           </h3>
-                          <h4 className={`text-xl font-inter ${theme === 'dark' ? 'text-stone-300' : 'text-gray-600'} mb-4 font-helvetica`}>
-                            {stage.subtitle}
-                          </h4>
                           <p className={`text-lg ${theme === 'dark' ? 'text-stone-400' : 'text-gray-500'} mb-6 font-helvetica leading-relaxed`}>
                             {stage.description}
                           </p>
-
-                          {/* Motivational Quote */}
-                          <div className={`${
-                            theme === 'dark' 
-                              ? 'bg-gradient-to-r from-zinc-800 to-zinc-800/90 border-l-4 border-electric-blue' 
-                              : 'bg-gradient-to-r from-white to-slate-100 border-l-4 border-strong-green/80 shadow-md'
-                          } p-6 rounded-2xl`}>
-                            <p className={`text-base italic ${theme === 'dark' ? 'text-white' : 'text-gray-700'} font-helvetica leading-relaxed`}>
-                              <span className="text-electric-blue font-bold">"</span>{stage.motivationalText}<span className="text-electric-blue font-bold">"</span>
-                            </p>
-                          </div>
                         </div>
                       ) : (
                         // Image on right for even stages
@@ -414,18 +362,12 @@ const AboutSection = () => {
 
 
         {/* Final Inspiration */}
-        <div className="text-center animate-fade-in mt-16">
-          <div className={`max-w-5xl mx-auto rounded-3xl p-8 ${
-            theme === 'dark' 
-              ? 'bg-gradient-to-r from-black to-zinc-900/90 shadow-xl border border-amber-gold/20' 
-              : 'bg-gradient-to-r from-white to-slate-100 shadow-lg border border-strong-green/20'
-          }`}>
-            <blockquote className={`text-5xl font-helvetica font-light leading-relaxed mb-5 ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-              Don't be special, <br/>
-              <span className={theme === 'dark' ? 'italic text-amber-gold' : 'italic text-strong-green' }>-Be stubborn.</span>
+        <div className="text-center animate-fade-in pt-20 max-w-5xl mx-auto">
+            <blockquote className={`text-4xl font-helvetica font-light leading-tight ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+              Don't be special,
+              <span className={theme === 'dark' ? 'block italic text-electric-blue mt-0' : 'block italic text-strong-green mt-0' }>-Be stubborn.</span>
             </blockquote>
-            <cite className={`text-2xl font-inter opacity-90 font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>— Abhiram Nair</cite>
-          </div>
+            <cite className={`text-xl opacity-90 font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>— Abhiram Nair</cite>
         </div>
       </div>
     </section>

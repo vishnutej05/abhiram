@@ -4,7 +4,19 @@
   src: url('/fonts/ZT Formom - WEB TT/ZT Formom.woff2') format('woff2'),
        url('/fonts/ZT Formom - WEB TT/ZT Formom.woff') format('woff'),
        url('/fonts/ZT Formom - WEB TT/ZT Formom.ttf') format('truetype');
-  font-style: normal;
+   /* Replace amber-gold with strong-green in light theme for better visibility */
+  .text-amber-gold {
+    color: hsl(142, 71%, 30%); /* Using strong-green in light mode instead */
+  }
+  
+  .dark .text-amber-gold {
+    color: hsl(43, 96%, 58%); /* Original amber-gold in dark mode */
+  }
+  
+  /* Ensure dark theme styles apply immediately on page load */
+  :root.dark .text-amber-gold {
+    color: hsl(43, 96%, 58%) !important; /* Original amber-gold in dark mode */
+  }yle: normal;
   font-weight: 400;
   font-display: swap;
   text-rendering: optimizeLegibility;
@@ -99,7 +111,6 @@ All colors MUST be HSL.
     /* Custom strong colors */
     --charcoal: 0 0% 11%; /* #1C1C1C equivalent */
     --strong-green: 142 71% 30%; /* #11864B equivalent */
-    --electric-blue: 200 100% 50%; /* Strong blue */
     --warm-orange: 25 95% 60%; /* Strong orange accent */
     --amber-gold: 43 96% 58%; /* New warm gold accent */
 
@@ -133,7 +144,7 @@ All colors MUST be HSL.
     --muted: 220 8% 12%;
     --muted-foreground: 220 8% 70%;
 
-    --accent: 200 100% 70%; /* Bright electric blue */
+    --accent: 142 71% 50%; /* Using lighter green instead of electric blue */
     --accent-foreground: 0 0% 5%;
 
     --destructive: 0 85% 65%;
@@ -145,8 +156,7 @@ All colors MUST be HSL.
 
     /* Custom bold colors */
     --charcoal: 0 0% 11%; /* #1C1C1C */
-    --strong-green: 142 71% 45%; /* Brighter green for dark mode */
-    --electric-blue: 200 100% 70%; /* Electric blue */
+    --strong-green: 142 71% 50%; /* Lighter green for dark mode */
     --warm-orange: 25 95% 70%; /* Bright orange */
     --amber-gold: 43 96% 65%; /* Brighter gold for dark mode */
     
@@ -245,7 +255,7 @@ All colors MUST be HSL.
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background-color: hsl(200, 100%, 70%); /* electric-blue in dark mode */
+  background-color: hsl(142, 71%, 50%); /* lighter green in dark mode */
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -253,7 +263,7 @@ All colors MUST be HSL.
 }
 
 .dark ::-webkit-scrollbar-thumb:hover {
-  background-color: hsl(200, 100%, 60%); /* slightly darker electric-blue on hover */
+  background-color: hsl(142, 71%, 40%); /* slightly darker green on hover */
 }
 
 @layer components {
@@ -277,13 +287,18 @@ All colors MUST be HSL.
     color: hsl(220, 8%, 70%);
   }
 
-  /* Add explicit text-electric-blue class */
+  /* Green accent color for text that previously used electric-blue */
   .text-electric-blue {
-    color: hsl(200, 100%, 50%); /* Light mode electric blue */
+    color: hsl(142, 71%, 30%); /* Using strong-green in light mode */
   }
   
   .dark .text-electric-blue {
-    color: hsl(200, 100%, 70%); /* Dark mode electric blue */
+    color: hsl(142, 71%, 50%); /* Lighter green in dark mode */
+  }
+  
+  /* Ensure dark theme styles apply immediately on page load */
+  :root.dark .text-electric-blue {
+    color: hsl(142, 71%, 50%) !important; /* Lighter green in dark mode */
   }
 
   /* Add explicit text-strong-green class */
@@ -293,6 +308,11 @@ All colors MUST be HSL.
   
   .dark .text-strong-green {
     color: hsl(142, 71%, 45%); /* Dark mode strong green */
+  }
+  
+  /* Ensure dark theme styles apply immediately on page load */
+  :root.dark .text-strong-green {
+    color: hsl(142, 71%, 45%) !important; /* Dark mode strong green */
   }
 
   /* Replace amber-gold with strong-green in light theme for better visibility */
@@ -304,13 +324,18 @@ All colors MUST be HSL.
     color: hsl(43, 96%, 65%); /* Keep amber-gold in dark mode */
   }
 
-  /* Add explicit background color classes for badges */
+  /* Background color for elements that previously used electric-blue */
   .bg-electric-blue {
-    background-color: hsl(200, 100%, 50%); /* Light mode electric blue */
+    background-color: hsl(142, 71%, 30%); /* Using strong-green in light mode */
   }
   
   .dark .bg-electric-blue {
-    background-color: hsl(200, 100%, 70%); /* Dark mode electric blue */
+    background-color: hsl(142, 71%, 50%); /* Lighter green in dark mode */
+  }
+  
+  /* Ensure dark theme styles apply immediately on page load */
+  :root.dark .bg-electric-blue {
+    background-color: hsl(142, 71%, 50%) !important; /* Lighter green in dark mode */
   }
 
   .bg-amber-gold {
@@ -328,22 +353,37 @@ All colors MUST be HSL.
   .dark .bg-strong-green {
     background-color: hsl(142, 71%, 45%); /* Dark mode strong green */
   }
+  
+  /* Ensure dark theme styles apply immediately on page load */
+  :root.dark .bg-strong-green {
+    background-color: hsl(142, 71%, 45%) !important; /* Dark mode strong green */
+  }
 
   /* Gradient utility classes for brand colors */
   .bg-gradient-electric-to-amber {
-    background: linear-gradient(to right, hsl(200, 100%, 50%), hsl(43, 96%, 58%));
+    background: linear-gradient(to right, hsl(142, 71%, 30%), hsl(43, 96%, 58%));
   }
   
   .dark .bg-gradient-electric-to-amber {
-    background: linear-gradient(to right, hsl(200, 100%, 70%), hsl(43, 96%, 65%));
+    background: linear-gradient(to right, hsl(142, 71%, 50%), hsl(43, 96%, 65%));
+  }
+  
+  /* Ensure dark theme styles apply immediately on page load */
+  :root.dark .bg-gradient-electric-to-amber {
+    background: linear-gradient(to right, hsl(142, 71%, 50%), hsl(43, 96%, 65%)) !important;
   }
 
   .bg-gradient-amber-to-electric {
-    background: linear-gradient(to right, hsl(43, 96%, 58%), hsl(200, 100%, 50%));
+    background: linear-gradient(to right, hsl(43, 96%, 58%), hsl(142, 71%, 30%));
   }
   
   .dark .bg-gradient-amber-to-electric {
-    background: linear-gradient(to right, hsl(43, 96%, 65%), hsl(200, 100%, 70%));
+    background: linear-gradient(to right, hsl(43, 96%, 65%), hsl(142, 71%, 50%));
+  }
+  
+  /* Ensure dark theme styles apply immediately on page load */
+  :root.dark .bg-gradient-amber-to-electric {
+    background: linear-gradient(to right, hsl(43, 96%, 65%), hsl(142, 71%, 50%)) !important;
   }
 
   .bg-gradient-amber-to-strong {
@@ -353,13 +393,23 @@ All colors MUST be HSL.
   .dark .bg-gradient-amber-to-strong {
     background: linear-gradient(to right, hsl(43, 96%, 65%), hsl(142, 71%, 45%));
   }
+  
+  /* Ensure dark theme styles apply immediately on page load */
+  :root.dark .bg-gradient-amber-to-strong {
+    background: linear-gradient(to right, hsl(43, 96%, 65%), hsl(142, 71%, 45%)) !important;
+  }
 
   .bg-gradient-electric-to-strong {
-    background: linear-gradient(to right, hsl(200, 100%, 50%), hsl(142, 71%, 30%));
+    background: linear-gradient(to right, hsl(142, 71%, 30%), hsl(142, 71%, 20%));
   }
   
   .dark .bg-gradient-electric-to-strong {
-    background: linear-gradient(to right, hsl(200, 100%, 70%), hsl(142, 71%, 45%));
+    background: linear-gradient(to right, hsl(142, 71%, 50%), hsl(142, 71%, 35%));
+  }
+  
+  /* Ensure dark theme styles apply immediately on page load */
+  :root.dark .bg-gradient-electric-to-strong {
+    background: linear-gradient(to right, hsl(142, 71%, 50%), hsl(142, 71%, 35%)) !important;
   }
 
   /* Smooth hover transitions */
@@ -375,38 +425,55 @@ All colors MUST be HSL.
   }
   
   .dark .gradient-text {
-    background: linear-gradient(135deg, hsl(var(--electric-blue)) 0%, hsl(var(--strong-green)) 100%);
+    background: linear-gradient(135deg, hsl(142, 71%, 55%) 0%, hsl(142, 71%, 40%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+  
+  /* Ensure dark theme styles apply immediately on page load */
+  :root.dark .gradient-text {
+    background: linear-gradient(135deg, hsl(142, 71%, 55%) 0%, hsl(142, 71%, 40%) 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
   }
   
   .section-padding {
     @apply py-16 md:py-20 lg:py-24;
   }
   
+  .text-shadow-sm {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+  
+  .text-shadow-md {
+    text-shadow: 0 4px 8px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.5);
+  }
+  
   .btn-primary {
-    background: hsl(0, 0%, 11%); /* Direct charcoal value */
+    background: hsl(142, 71%, 30%); /* Direct charcoal value */
     color: white;
     @apply font-bold px-8 py-3 rounded-lg transition-all duration-300 border-none;
     box-shadow: 0 4px 20px rgba(28, 28, 28, 0.3);
   }
   
   .btn-primary:hover {
-    background: hsl(142, 71%, 30%); /* Direct strong-green value */
+    background: hsl(120, 8%, 97%); /* Direct strong-green value */
+    color: black;
     @apply -translate-y-1;
     box-shadow: 0 8px 25px rgba(17, 134, 75, 0.4);
   }
   
   /* Use :root selector to ensure styles apply immediately on page load */
   :root.dark .btn-primary {
-    background: hsl(200, 100%, 70%); /* Direct electric-blue value */
+    background: hsl(142, 71%, 50%); /* Using lighter green instead of electric-blue */
     color: hsl(0, 0%, 5%); /* Dark background for better contrast */
   }
   
   :root.dark .btn-primary:hover {
-    background: hsl(43, 96%, 65%); /* Direct amber-gold value */
-    box-shadow: 0 8px 25px rgba(240, 187, 31, 0.4);
+    background: hsl(0, 0%, 100%); /* Direct amber-gold value */
+    box-shadow: 0 3px 5px rgba(209, 225, 208, 0.4);
   }
   
   .btn-secondary {

@@ -38,7 +38,7 @@ const Navbar = () => {
     { id: 'vsl', label: 'Video', tooltip: 'Watch transformation stories' },
     { id: 'about', label: 'About', tooltip: 'Learn about Coach Abhiram' },
     { id: 'transformations', label: 'Results', tooltip: 'See real transformations' },
-    { id: 'features', label: 'Programs', tooltip: 'Discover our fitness programs' },
+    // { id: 'features', label: 'Programs', tooltip: 'Discover our fitness programs' },
     { id: 'pricing', label: 'Pricing', tooltip: 'Find your path' },
     { id: 'contact', label: 'Contact', tooltip: 'Start your transformation' },
     { id: 'instagram', label: 'Instagram', tooltip: 'Follow the journey' },
@@ -63,7 +63,9 @@ const Navbar = () => {
               <img 
                 src="/lovable-uploads/themight MAIN LOGO SVG.png" 
                 alt="themight logo" 
-                className="h-7 md:h-10 w-auto" 
+                className={`h-7 md:h-10 w-auto ${
+                  theme === 'dark' ? 'invert brightness-200' : ''
+                }`}
               />
             </Link>
           </div>
@@ -161,7 +163,7 @@ const Navbar = () => {
                 className={`w-full text-center py-4 rounded-md text-base font-bold mt-4 ${
                   theme === 'dark'
                     ? 'bg-electric-blue text-zinc-900 hover:bg-electric-blue/90'
-                    : 'bg-amber-gold text-slate-900 hover:bg-amber-gold/90'
+                    : 'bg-electric-blue text-slate-900 hover:bg-amber-gold/90'
                 }`}
               >
                 Get Started

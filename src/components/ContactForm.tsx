@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@/components/ui/use-toast';
 import { useTheme } from '../hooks/use-theme';
 
 const ContactForm = () => {
@@ -146,7 +146,7 @@ const ContactForm = () => {
           ref={sectionRef}
           className={`lg:hidden seamless-section min-h-[100vh] py-12 flex flex-col ${
             theme === 'dark'
-              ? 'bg-gradient-to-br from-zinc-900 via-zinc-800 to-black'
+              ? 'bg-zinc-900 bg-opacity-95'
               : 'bg-gradient-to-br from-slate-50 via-white to-emerald-50'
           } relative overflow-hidden`}
         >
@@ -160,8 +160,8 @@ const ContactForm = () => {
           
           {/* Header Section - Larger and prominent */}
           <div className="text-center w-full px-4 mb-8 relative z-10">
-            <h2 className={`text-4xl sm:text-5xl font-bold font-formom font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-              Build Your <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>Legacy</span><span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}></span>
+            <h2 className={`text-4xl sm:text-5xl font-bold font-formom font-helvetica uppercase ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+              BUILD YOUR <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>LEGACY</span><span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}></span>
             </h2>
             <p className={`mt-3 text-lg sm:text-xl font-helvetica mx-auto ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-xs sm:max-w-lg`}>
               Join thousands who've transformed their lives with our proven fitness system.
@@ -388,7 +388,7 @@ const ContactForm = () => {
         </section>  
         
         {/* Desktop Section - Completely Separate */}
-        <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'soft-blush' : 'soft-lavender'}`}>
+        <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'bg-zinc-900 bg-opacity-95' : 'soft-lavender'}`}>
           <div className="w-full py-12">
             <div className="text-center mb-12">
               <h2 className={`text-4xl md:text-5xl font-bold mb-4 font-formom font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
@@ -641,4 +641,3 @@ const ContactForm = () => {
 };
 
 export default ContactForm;
-

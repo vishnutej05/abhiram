@@ -18,15 +18,14 @@ const PricingSection = () => {
     {
       name: "The Glow Up", 
       duration: "3 Months",
-      description: "Most popular - Where the magic happens",
+      description: "Where the magic begins to happen",
       features: [
         "Everything in The Kickstart",
         "Complete meal plans",
         "Bi-weekly video calls",
         "Progress analysis",
         "24/7 support"
-      ],
-      popular: true
+      ]
     },
     {
       name: "The Beast Mode",
@@ -38,7 +37,8 @@ const PricingSection = () => {
         "Custom macro cycling",
         "Monthly body analysis",
         "Mindset coaching"
-      ]
+      ],
+      popular: true
     },
     {
       name: "The Ultimate Flex",
@@ -64,7 +64,7 @@ const PricingSection = () => {
   return (
     <div id="pricing">
       {/* Mobile & Tablet Section - Completely Separate */}
-      <section className={`block lg:hidden seamless-section ${theme === 'dark' ? 'bg-gradient-to-b from-soft-sky to-soft-sage' : 'bg-gradient-to-b from-soft-blush to-soft-lavender'} relative overflow-hidden pb-0`}>
+      <section className={`block lg:hidden seamless-section ${theme === 'dark' ? 'bg-zinc-900/90' : 'bg-gradient-to-b from-soft-blush to-soft-lavender'} relative overflow-hidden pb-0`}>
         {/* Mobile Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
@@ -76,13 +76,13 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Mobile Header */}
           <div className="text-center mb-8 animate-fade-in px-4">
-            <h2 className={`text-4xl sm:text-5xl font-helvetica font-bold ${theme === 'dark' ? 'text-stone-100' : 'text-gray-900'} mb-4`}>
-              Find your{' '}
-              <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>Path</span>
+            <h2 className={`text-4xl sm:text-5xl font-helvetica font-bold uppercase ${theme === 'dark' ? 'text-stone-100' : 'text-gray-900'} mb-4`}>
+              SELECT THE PERFECT{' '}
+              <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>PLAN</span>
             </h2>
-            <p className={`text-lg sm:text-xl ${theme === 'dark' ? 'text-stone-300' : 'text-muted-gray'} font-light max-w-xl mx-auto`}>
-              Select the perfect plan for your transformation
-            </p>
+            {/* <p className={`text-lg sm:text-xl ${theme === 'dark' ? 'text-stone-300' : 'text-muted-gray'} font-light max-w-xl mx-auto`}>>
+              For your fitness transformation journey
+            </p> */}
           </div>
 
           {/* Mobile Plans Grid */}
@@ -147,7 +147,7 @@ const PricingSection = () => {
                     onClick={scrollToForm}
                     className={`w-full font-bold py-3 rounded-xl transition-all duration-300 text-base sm:text-lg ${
                       theme === 'dark'
-                        ? 'bg-gradient-electric-to-amber text-black hover:bg-gradient-amber-to-electric' 
+                        ? 'bg-electric-blue text-black hover:bg-amber-gold' 
                         : 'bg-emerald-600 hover:bg-emerald-700 text-white'
                     }`}
                   >
@@ -173,7 +173,7 @@ const PricingSection = () => {
       </section>
 
       {/* Desktop Section - Completely Separate */}
-      <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'bg-gradient-to-b from-zinc-950/40 to-zinc-800/30' : 'bg-gradient-to-b from-soft-blush to-soft-lavender'} relative overflow-hidden pb-0`}>
+      <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'bg-zinc-900/90' : 'bg-gradient-to-b from-soft-blush to-soft-lavender'} relative overflow-hidden pb-0`}>
         {/* Desktop Background Image */}
         {/* <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
@@ -185,21 +185,21 @@ const PricingSection = () => {
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Desktop Header */}
           <div className="text-center mb-20 animate-fade-in">
-            <h2 className={`text-5xl md:text-6xl font-helvetica font-bold mb-6 ${
+            <h2 className={`text-5xl md:text-6xl font-helvetica font-bold uppercase mb-6 ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              Find your{' '}
+              SELECT THE PERFECT{' '}
               <span className={
                 theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'
               }>
-                Path
+                PLAN
               </span>
             </h2>
-            <p className={`text-xl font-light max-w-2xl mx-auto ${
+            {/* <p className={`text-xl font-light max-w-2xl mx-auto ${
               theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
             }`}>
-              Select the perfect plan for your fitness transformation journey
-            </p>
+              For your fitness transformation journey
+            </p> */}
           </div>
 
           {/* Desktop Plans Grid */}
@@ -252,7 +252,7 @@ const PricingSection = () => {
                     onClick={scrollToForm}
                     className={`w-full font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl text-lg ${
                       theme === 'dark' 
-                        ? 'bg-gradient-electric-to-amber text-black hover:bg-gradient-amber-to-electric' 
+                        ? 'bg-electric-blue text-black hover:bg-amber-gold' 
                         : 'bg-emerald-600 hover:bg-emerald-700 text-white'
                     }`}
                   >

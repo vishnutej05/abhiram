@@ -1,10 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTheme } from '../hooks/use-theme';
 
 const TransformationsSection = () => {
   const [activeTransformation, setActiveTransformation] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [mobileCarouselIndex, setMobileCarouselIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
+  const mobileCarouselRef = useRef(null);
   const { theme } = useTheme();
 
   const transformations = [
@@ -90,17 +93,8 @@ const TransformationsSection = () => {
     }
   ];
 
-  // Auto-scroll for mobile carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setMobileCarouselIndex((prev) => (prev + 1) % transformations.length);
-    }, 4000); // Change slide every 3 seconds
-
-    return () => clearInterval(interval);
-  }, [transformations.length]);
-
   // Calculate pagination
-  const cardsPerPage = 4; // Changed from 5 to 4 cards per page
+  const cardsPerPage = 3; // Changed to show 3 cards per page with navigation in 4th position
   const totalPages = Math.ceil(transformations.length / cardsPerPage);
   const displayedTransformations = transformations.slice(
     currentPage * cardsPerPage, 
@@ -116,12 +110,49 @@ const TransformationsSection = () => {
     setCurrentPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
   };
 
+  // Handle swipe for mobile carousel
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    const swipeThreshold = 50; // Minimum distance required to register a swipe
+    if (touchStartX - touchEndX > swipeThreshold) {
+      // Swipe left - go to next
+      setMobileCarouselIndex((prev) => (prev + 1) % transformations.length);
+    } else if (touchEndX - touchStartX > swipeThreshold) {
+      // Swipe right - go to previous
+      setMobileCarouselIndex((prev) => (prev === 0 ? transformations.length - 1 : prev - 1));
+    }
+    // Reset touch positions
+    setTouchStartX(0);
+    setTouchEndX(0);
+  };
+  
+  // Visual indicator for swipe direction
+  const getSwipeIndicatorStyle = () => {
+    if (touchStartX === 0 || touchEndX === 0) return {};
+    
+    const diff = touchEndX - touchStartX;
+    // Only apply transform if the swipe is significant enough
+    if (Math.abs(diff) < 20) return {};
+    
+    return {
+      transform: `translateX(${diff * 0.1}px)`,
+      transition: 'transform 0.1s ease-out'
+    };
+  };
+
   return (
     <div id="transformations">
       {/* Mobile & Tablet Section - Completely Separate */}
       <section className={`block lg:hidden seamless-section ${
         theme === 'dark' 
-          ? 'bg-zinc-900' // Replace gradient with solid color to eliminate diagonal lines
+          ? 'bg-zinc-800 border border-zinc-700' // Replace gradient with solid color to eliminate diagonal lines
           : 'soft-blush'
       } relative overflow-hidden`}>
         {/* Background overlay for dark theme - create subtle gradient effect here instead */}
@@ -129,22 +160,19 @@ const TransformationsSection = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/30 to-zinc-800/20 backdrop-blur-[1px]"></div>
         )}
         
-        <div className="max-w-7xl mx-auto section-padding relative z-10">
+        <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 relative z-10">
           {/* Mobile Header Section */}
-          <div className="text-center mb-12 animate-fade-in">
+          <div className="text-center mb-16 animate-fade-in">
             <h2 className={`text-3xl sm:text-4xl font-bold mb-4 leading-tight font-helvetica ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              Real <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>Transformations</span>
+              Meet the people who took a chance to {' '} <span className={
+                theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'
+              }> upgrade themselves </span>
             </h2>
             <div className={`h-2 w-20 mx-auto rounded-full ${
               theme === 'dark' ? 'bg-electric-blue' : 'bg-emerald-600'
             }`}></div>
-            <p className={`mt-4 leading-relaxed font-semibold text-lg sm:text-xl mx-4 sm:mx-8 font-helvetica ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
-            }`}>
-              See how our clients achieved amazing results with personalized coaching
-            </p>
           </div>
 
           {/* Mobile Carousel */}
@@ -154,8 +182,17 @@ const TransformationsSection = () => {
             }`}>
               <div className="relative h-64 sm:h-80">
                 {/* Carousel Images */}
-                <div className="flex transition-transform duration-500 ease-in-out h-full"
-                     style={{ transform: `translateX(-${mobileCarouselIndex * 100}%)` }}>
+                <div 
+                  ref={mobileCarouselRef}
+                  className="flex transition-transform duration-500 ease-in-out h-full"
+                  style={{ 
+                    transform: `translateX(-${mobileCarouselIndex * 100}%)`,
+                    ...getSwipeIndicatorStyle()
+                  }}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                >
                   {transformations.map((transformation, index) => (
                     <div key={index} className="min-w-full h-full flex">
                       <div className="w-1/2 relative">
@@ -165,9 +202,7 @@ const TransformationsSection = () => {
                           className="w-full h-full object-contain"
                         />
                         <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
-                          <span className={`text-white px-2 py-1 rounded-full text-xs font-bold ${
-                            theme === 'dark' ? 'bg-amber-gold' : 'bg-amber-gold'
-                          }`}>BEFORE</span>
+                          <span className="text-black px-2 py-1 rounded-full text-xs font-bold bg-white shadow-md">BEFORE</span>
                         </div>
                       </div>
                       <div className="w-1/2 relative">
@@ -177,9 +212,7 @@ const TransformationsSection = () => {
                           className="w-full h-full object-contain"
                         />
                         <div className="absolute top-2 right-2 sm:top-3 sm:right-3">
-                          <span className={`text-white px-2 py-1 rounded-full text-xs font-bold ${
-                            theme === 'dark' ? 'bg-electric-blue' : 'bg-strong-green'
-                          }`}>AFTER</span>
+                          <span className="text-black px-2 py-1 rounded-full text-xs font-bold bg-white shadow-md">AFTER</span>
                         </div>
                       </div>
                     </div>
@@ -231,7 +264,7 @@ const TransformationsSection = () => {
                     onClick={() => setMobileCarouselIndex(index)}
                     className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${
                       mobileCarouselIndex === index 
-                        ? theme === 'dark' ? 'bg-electric-blue w-4 sm:w-6' : 'bg-emerald-600 w-4 sm:w-6' 
+                        ? theme === 'dark' ? 'bg-white w-4 sm:w-6' : 'bg-white w-4 sm:w-6' 
                         : 'bg-white/50'
                     }`}
                   />
@@ -243,34 +276,34 @@ const TransformationsSection = () => {
       </section>
 
       {/* Desktop Section - Original Layout */}
-      <section className={`hidden lg:block relative min-h-screen overflow-hidden ${
+      <section className={`hidden lg:block relative overflow-hidden ${
         theme === 'dark'
-          ? 'bg-zinc-900' // Replace gradient with solid color to eliminate diagonal lines
+          ? 'bg-zinc-900 bg-opacity-95'
           : 'soft-blush'
       }`}>
         {/* Desktop Background Image with overlay for dark theme */}
         {theme === 'dark' && (
-          <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/40 to-zinc-800/30 backdrop-blur-[1px]"></div>
+          <div className="bg-zinc-900 bg-opacity-95"></div>
         )}
         
-        <div className="max-w-7xl mx-auto section-padding relative z-10">
+        <div className="max-w-7xl mx-auto pt-20 pb-10 px-8 relative z-10 capitalize">
           {/* Desktop Header Section */}
           <div className="text-start mb-12 animate-fade-in">
-            <h2 className={`text-4xl lg:text-5xl font-bold mb-3 leading-tight font-helvetica ${
+            <h2 className={`text-4xl lg:text-5xl font-bold mb-3 leading-tight font-helvetica uppercase ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              Real {' '} <span className={
+              MEET THE PEOPLE WHO TOOK A CHANCE TO <br/> {' '} <span className={
                 theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'
-              }> Transformations </span>
+              }> UPGRADE THEMSELVES </span>
             </h2>
             <div className={`h-2 w-24 rounded-full ${
               theme === 'dark' ? 'bg-electric-blue' : 'bg-emerald-600'
             }`}></div>
-            <p className={`mt-3 leading-relaxed font-semibold text-xl max-w-2xl font-helvetica ${
+            {/* <p className={`mt-3 leading-relaxed font-semibold text-xl max-w-2xl font-helvetica ${
               theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
             }`}>
               Meet the people who took a chance to upgrade themselves
-            </p>
+            </p> */}
           </div>
 
           {/* Desktop Featured Transformation */}
@@ -282,24 +315,20 @@ const TransformationsSection = () => {
                   <img 
                     src={transformations[activeTransformation].beforeImg}
                     alt={`${transformations[activeTransformation].name} before transformation`}
-                    className="w-full h-80 object-contain rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-64 object-contain rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute bottom-3 left-3">
-                    <span className={`text-gray-700 px-3 py-1 rounded-full text-sm font-dm-sans font-bold shadow-lg ${
-                      theme === 'dark' ? 'bg-amber-gold' : 'bg-amber-gold'
-                    }`}>BEFORE</span>
+                    <span className={`${theme === 'dark' ? 'text-white' : 'text-black'} px-3 py-1 rounded-full text-sm font-dm-sans font-bold shadow-lg bg-white`}>BEFORE</span>
                   </div>
                 </div>
                 <div className="relative group">
                   <img 
                     src={transformations[activeTransformation].afterImg}
                     alt={`${transformations[activeTransformation].name} after transformation`}
-                    className="w-full h-80 object-contain rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-64 object-contain rounded-2xl shadow-xl transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute bottom-3 right-3">
-                    <span className={`text-gray-700 px-3 py-1 rounded-full text-sm font-dm-sans font-bold shadow-lg ${
-                      theme === 'dark' ? 'bg-electric-blue' : 'text-white bg-strong-green'
-                    }`}>AFTER</span>
+                    <span className={`${theme === 'dark' ? 'text-white' : 'text-black'} px-3 py-1 rounded-full text-sm font-dm-sans font-bold shadow-lg bg-white`}>AFTER</span>
                   </div>
                 </div>
               </div>
@@ -308,7 +337,7 @@ const TransformationsSection = () => {
               <div className="space-y-4 animate-fade-in">
                 <div>
                   <h3 className={`text-2xl font-dm-sans font-bold mb-2 font-formom ${
-                    theme === 'dark' ? 'text-amber-gold' : 'text-gray-900'
+                    theme === 'dark' ? 'text-white' : 'text-gray-900'
                   }`}>
                     {transformations[activeTransformation].name}
                   </h3>
@@ -337,10 +366,10 @@ const TransformationsSection = () => {
             <div className="relative max-w-7xl mx-auto">
               {/* Gallery Header */}
               <div className="text-center mb-6">
-                <h3 className={`text-2xl font-bold mb-2 font-helvetica ${
+                <h3 className={`text-2xl font-bold mb-2 font-helvetica uppercase ${
                   theme === 'dark' ? 'text-white' : 'text-gray-900'
                 }`}>
-                  More Success Stories
+                  MORE SUCCESS STORIES
                 </h3>
                 <div className={`h-1 w-16 rounded-full mx-auto ${
                   theme === 'dark'
@@ -350,23 +379,69 @@ const TransformationsSection = () => {
               </div>
 
               {/* Compact Sliding Gallery Container */}
-              <div className="relative overflow-hidden rounded-2xl shadow-xl">
+              <div className="relative overflow-hidden rounded-2xl shadow-xl px-10">
+                {/* Left Arrow - Positioned at extreme left */}
+                <button
+                  className={`absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-700 rounded-full p-2 shadow-xl z-10 transition-all duration-300 hover:scale-110 ${
+                    theme === 'dark'
+                      ? 'bg-gradient-electric-to-amber hover:bg-gradient-amber-to-electric'
+                      : 'text-white bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900'
+                  }`}
+                  onClick={goToPrevPage}
+                  aria-label="Previous transformations"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                {/* Right Arrow - Positioned at extreme right */}
+                <button
+                  className={`absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-700 rounded-full p-2 shadow-xl z-10 transition-all duration-300 hover:scale-110 ${
+                    theme === 'dark'
+                      ? 'bg-gradient-electric-to-amber hover:bg-gradient-amber-to-electric'
+                      : 'bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900 text-white'
+                  }`}
+                  onClick={goToNextPage}
+                  aria-label="Next transformations"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+                
                 <div 
                   className="flex transition-transform duration-700 ease-in-out"
-                  style={{ transform: `translateX(-${currentPage * 100}%)` }}
+                  style={{ 
+                    transform: `translateX(-${currentPage * 100}%)`,
+                    ...getSwipeIndicatorStyle()
+                  }}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={() => {
+                    const swipeThreshold = 50;
+                    if (touchStartX - touchEndX > swipeThreshold) {
+                      goToNextPage();
+                    } else if (touchEndX - touchStartX > swipeThreshold) {
+                      goToPrevPage();
+                    }
+                    setTouchStartX(0);
+                    setTouchEndX(0);
+                  }}
                 >
                   {Array.from({ length: totalPages }).map((_, pageIndex) => (
                     <div key={pageIndex} className={`min-w-full py-6 px-4 ${
                       theme === 'dark' ? 'bg-zinc-900/80' : 'bg-white/70'
                     }`}>
-                      <div className="grid grid-cols-4 gap-4">
+                      <div className="grid grid-cols-3 gap-6">
+                        {/* Show 3 transformation cards */}
                         {transformations.slice(pageIndex * cardsPerPage, (pageIndex * cardsPerPage) + cardsPerPage).map((transformation, index) => {
                           const actualIndex = pageIndex * cardsPerPage + index;
                           return (
                             <div 
                               key={actualIndex}
                               className={`cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-xl 
-                              rounded-xl shadow-lg flex flex-col h-[240px] group ${
+                              rounded-xl shadow-lg flex flex-col h-[200px] group ${
                                 theme === 'dark' 
                                   ? 'bg-gradient-to-br from-zinc-800 to-zinc-900 hover:from-zinc-900 hover:to-zinc-800'
                                   : 'soft-blush'
@@ -379,7 +454,7 @@ const TransformationsSection = () => {
                               }`}
                               onClick={() => setActiveTransformation(actualIndex)}
                             >
-                              <div className="relative h-[150px] p-2">
+                              <div className="relative h-[120px] p-2">
                                 <div className="grid grid-cols-2 gap-2 h-full">
                                   <div className={`relative rounded-lg overflow-hidden border-2 ${
                                     theme === 'dark' ? 'border-zinc-700' : 'border-gray-200'
@@ -389,11 +464,6 @@ const TransformationsSection = () => {
                                       alt={`${transformation.name} before`}
                                       className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
                                     />
-                                    <div className="absolute top-1 left-1">
-                                      <span className={`text-black px-1 py-0.5 rounded text-xs font-bold ${
-                                        theme === 'dark' ? 'bg-amber-gold' : 'bg-amber-gold'
-                                      }`}>BEFORE</span>
-                                    </div>
                                   </div>
                                   <div className={`relative rounded-lg overflow-hidden border-2 ${
                                     theme === 'dark' ? 'border-zinc-700' : 'border-gray-200'
@@ -403,11 +473,6 @@ const TransformationsSection = () => {
                                       alt={`${transformation.name} after`}
                                       className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
                                     />
-                                    <div className="absolute top-1 right-1">
-                                      <span className={`text-black px-1 py-0.5 rounded text-xs font-bold ${
-                                        theme === 'dark' ? 'bg-electric-blue' : 'text-white bg-strong-green'
-                                      }`}>AFTER</span>
-                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -429,60 +494,29 @@ const TransformationsSection = () => {
                           );
                         })}
                       </div>
+
+                      {/* Page Indicators - Centered below the cards */}
+                      <div className="flex justify-center mt-6">
+                        <div className="flex space-x-2">
+                          {Array.from({ length: totalPages }).map((_, index) => (
+                            <button
+                              key={index}
+                              onClick={() => setCurrentPage(index)}
+                              className={`h-2 rounded-full transition-all duration-300 ${
+                                currentPage === index 
+                                  ? theme === 'dark'
+                                    ? "w-6 bg-gradient-electric-to-amber shadow-lg" 
+                                    : "w-6 bg-gradient-to-r from-emerald-700 to-emerald-800 shadow-lg "
+                                    : "w-2 bg-gray-600 hover:bg-gray-800"
+                                }`}
+                                aria-label={`Go to page ${index + 1}`}
+                              />
+                            ))}
+                          </div>
+                        </div>
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Compact Navigation Controls */}
-              <div className="flex justify-center items-center mt-6 space-x-4">
-                {/* Left Arrow */}
-                <button 
-                  className={`text-gray-700 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 ${
-                    theme === 'dark'
-                      ? 'bg-gradient-electric-to-amber hover:bg-gradient-amber-to-electric'
-                      : 'text-white bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900'
-                  }`}
-                  onClick={goToPrevPage}
-                  aria-label="Previous transformations"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-
-                {/* Page Indicators */}
-                <div className="flex space-x-2">
-                  {Array.from({ length: totalPages }).map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentPage(index)}
-                      className={`h-2 rounded-full transition-all duration-300 ${
-                        currentPage === index 
-                          ? theme === 'dark'
-                            ? "w-6 bg-gradient-electric-to-amber shadow-lg" 
-                            : "w-6 bg-gradient-to-r from-emerald-700 to-emerald-800 shadow-lg "
-                          : "w-2 bg-gray-600 hover:bg-gray-800"
-                      }`}
-                      aria-label={`Go to page ${index + 1}`}
-                    />
-                  ))}
-                </div>
-
-                {/* Right Arrow */}
-                <button 
-                  className={`text-gray-700 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 ${
-                    theme === 'dark'
-                      ? 'bg-gradient-electric-to-amber hover:bg-gradient-amber-to-electric'
-                      : 'bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900 text-white'
-                  }`}
-                  onClick={goToNextPage}
-                  aria-label="Next transformations"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
               </div>
             </div>
           </div>
