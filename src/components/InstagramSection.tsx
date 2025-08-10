@@ -180,11 +180,11 @@ const InstagramSection = () => {
               href="https://www.instagram.com/coachpotate/" 
               target="_blank" 
               rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 shadow-lg font-formom ${
+              className={`inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 shadow-lg font-formom ${
                 theme === 'dark'
-                  ? 'bg-gradient-electric-to-amber text-black hover:bg-gradient-amber-to-electric'
-                  : 'btn-primary'
-              }`}
+                  ? 'bg-[hsl(142,71%,50%)] text-black'
+                  : 'bg-[hsl(142,71%,30%)] text-white'
+              } hover:opacity-90`}
             >
               <Instagram size={16} />
               Follow @CoachPotate
@@ -211,9 +211,9 @@ const InstagramSection = () => {
               <h2 className={`text-3xl md:text-4xl font-bold font-helvetica ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
-                Follow The{' '}
+                FOLLOW THE{' '}
                 <span className={theme === 'dark' ? 'text-electric-blue' : 'text-amber-gold'}>
-                  Journey
+                  JOURNEY
                 </span>
               </h2>
             </div>

@@ -1,78 +1,80 @@
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from '../hooks/use-theme';
 
 const PricingSection = () => {
+  // State                     className="w-full font-bold py-2 mt-auto rounded-xl transition-all duration-300 text-sm bg-[hsl(142,71%,50%)] hover:opacity-90 text-black"ack expanded cards
+  const [expanded, setExpanded] = React.useState<number | null>(null);
+
+  // Max features to show before collapsing
+  const MAX_FEATURES = 4;
+
+  // Toggle expand/collapse for a card
+  const handleExpand = (index: number) => {
+    setExpanded(expanded === index ? null : index);
+  };
+  // Scroll to contact form handler
+  const scrollToForm = () => {
+    const form = document.getElementById('contact');
+    if (form) {
+      form.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   const { theme } = useTheme();
   const plans = [
     {
-      name: "The Kickstart",
+      name: "1 Month",
       duration: "1 Month",
-      description: "Perfect for testing the waters and getting started",
+      description: "Initial fitness consultation",
       features: [
         "Personalized workout plan",
-        "Basic nutrition guidance", 
-        "Weekly check-ins",
-        "App access"
+        "Tailored nutrition plan",
+        "Bi-weekly progress check-ins"
       ]
     },
     {
-      name: "The Glow Up", 
+      name: "3 Months",
       duration: "3 Months",
-      description: "Where the magic begins to happen",
+      description: "Includes all 1-Month perks",
       features: [
-        "Everything in The Kickstart",
-        "Complete meal plans",
-        "Bi-weekly video calls",
-        "Progress analysis",
-        "24/7 support"
+        "Weekly text support for guidance",
+        "Workout video tutorials & form guidance"
       ]
     },
     {
-      name: "The Beast Mode",
-      duration: "6 Months", 
-      description: "Complete body recomposition and lifestyle change",
+      name: "6 Months",
+      duration: "6 Months",
+      description: "Includes all 3-Month perks",
       features: [
-        "Everything in The Glow Up",
-        "Advanced training protocols",
-        "Custom macro cycling",
-        "Monthly body analysis",
-        "Mindset coaching"
+        "Unlimited personalized workout iterations",
+        "Advanced macro assessment & daily nutrition logs",
+        "Weekly + priority progress check-ins",
+        "Unlimited daily communication support (on-the-go texting)",
+        "Habit tracking & accountability system",
+        "In-app workout videos + custom form correction videos"
       ],
       popular: true
     },
     {
-      name: "The Ultimate Flex",
-      duration: "12 Months", 
-      description: "The complete transformation journey for serious results",
+      name: "12 Months",
+      duration: "12 Months",
+      description: "Includes all 6-Month perks",
       features: [
-        "Everything in The Beast Mode",
-        "VIP priority support",
-        "Quarterly goal reassessment",
-        "Lifestyle maintenance plan",
-        "Exclusive community access"
+        "Advanced behavioral-based habit coaching",
+        "In-app workout videos + custom form correction videos",
+        "Sleep optimization guide",
+        "Exclusive e-book with basic recipes"
       ]
     }
   ];
-
-  const scrollToForm = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div id="pricing">
       {/* Mobile & Tablet Section - Completely Separate */}
-      <section className={`block lg:hidden seamless-section ${theme === 'dark' ? 'bg-zinc-900/90' : 'bg-gradient-to-b from-soft-blush to-soft-lavender'} relative overflow-hidden pb-0`}>
-        {/* Mobile Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-5"
-          style={{
-            backgroundImage: `url('/lovable-uploads/06d11a55-82ca-4851-9fa2-88213d67ed1d.png')`,
-          }}
-        ></div>
-        
+      <section className={`block lg:hidden seamless-section relative overflow-hidden pb-0 ${
+        theme === 'dark' 
+          ? 'bg-gradient-to-br from-black via-zinc-900 to-neutral-900' 
+          : 'bg-white'
+      }`}>
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Mobile Header */}
           <div className="text-center mb-8 animate-fade-in px-4">
@@ -80,205 +82,224 @@ const PricingSection = () => {
               SELECT THE PERFECT{' '}
               <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>PLAN</span>
             </h2>
-            {/* <p className={`text-lg sm:text-xl ${theme === 'dark' ? 'text-stone-300' : 'text-muted-gray'} font-light max-w-xl mx-auto`}>>
-              For your fitness transformation journey
-            </p> */}
           </div>
-
           {/* Mobile Plans Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-6 mb-10 px-4 sm:px-6">
-            {plans.map((plan, index) => (
-              <div 
-                key={index}
-                className={`${
-                  theme === 'dark' 
-                    ? 'bg-zinc-800/90 backdrop-blur-sm' 
-                    : 'bg-white/95 backdrop-blur-sm'
-                } rounded-2xl p-4 sm:p-6 shadow-lg transition-all duration-300 hover:shadow-xl relative ${
-                  plan.popular ? theme === 'dark' 
-                    ? 'ring-2 ring-electric-blue' 
-                    : 'ring-2 ring-emerald-400' 
-                  : ''
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-5 left-1/2 transform -translate-x-1/2">
-                    <div className={`${
-                      theme === 'dark' 
-                        ? 'bg-electric-blue text-black' 
-                        : 'bg-emerald-600 text-white'
-                    } px-4 py-2 rounded-full text-sm font-bold`}>
-                      ✨ Most Popular
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6 px-4">
+            {plans.map((plan, index) => {
+              const isExpanded = expanded === index;
+              const showMore = plan.features.length > MAX_FEATURES && !isExpanded;
+              const featuresToShow = showMore ? plan.features.slice(0, MAX_FEATURES) : plan.features;
+              return (
+                <div
+                  key={index}
+                  className={`flex flex-col ${
+                    theme === 'dark'
+                      ? 'bg-zinc-800/90 backdrop-blur-sm'
+                      : 'bg-white/95 backdrop-blur-sm'
+                  } rounded-2xl p-3 sm:p-5 shadow-lg transition-all duration-300 hover:shadow-xl relative ${
+                    plan.popular
+                      ? theme === 'dark'
+                        ? 'ring-2 ring-electric-blue'
+                        : 'ring-2 ring-emerald-400'
+                      : ''
+                  }`}
+                >
+                  {plan.popular && (
+                    <div className="absolute -top-5 left-1/2 transform -translate-x-1/2">
+                      <div className={`${
+                        theme === 'dark'
+                          ? 'bg-[hsl(142,71%,50%)] text-black'
+                          : 'bg-[hsl(142,71%,30%)] text-white'
+                      } px-4 py-2 rounded-full text-sm font-bold`}>
+                        Most Popular
+                      </div>
+                    </div>
+                  )}
+                  <div className="flex flex-col">
+                    <div className="text-center mb-2">
+                      <div className={`font-bold text-base sm:text-lg ${
+                        theme === 'dark' ? 'text-electric-blue' : 'text-emerald-600'
+                      }`}>{plan.duration}</div>
+                      <p className={`text-xs sm:text-sm mt-0.5 ${
+                        theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
+                      }`}>{plan.description}</p>
+                    </div>
+                    <div className={`space-y-1 mb-3 ${plan.duration === "6 Months" && isExpanded ? "max-h-[200px] overflow-y-auto pr-2 custom-scrollbar" : ""}`}>
+                      {featuresToShow.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-start gap-1.5">
+                          <span className={`text-sm font-bold ${
+                            theme === 'dark' ? 'text-electric-blue' : 'text-mint-500'
+                          }`}>✓</span>
+                          <span className={`text-xs sm:text-sm text-left font-helvetica leading-normal ${
+                            theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
+                          }`}>{feature}</span>
+                        </div>
+                      ))}
+                      {showMore && (
+                        <button
+                          className={`text-xs underline font-semibold mt-1 ${theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}`}
+                          onClick={() => handleExpand(index)}
+                        >
+                          More Perks
+                        </button>
+                      )}
+                      {isExpanded && plan.features.length > MAX_FEATURES && (
+                        <>
+                          {plan.features.slice(MAX_FEATURES).map((feature, featureIndex) => (
+                            <div key={featureIndex + MAX_FEATURES} className="flex items-center gap-2">
+                              <span className={`text-base font-bold ${
+                                theme === 'dark' ? 'text-electric-blue' : 'text-mint-500'
+                              }`}>✓</span>
+                              <span className={`text-sm sm:text-base text-left font-helvetica ${
+                                theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
+                              }`}>{feature}</span>
+                            </div>
+                          ))}
+                          <button
+                            className={`mt-2 text-xs underline font-semibold ${theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}`}
+                            onClick={() => handleExpand(index)}
+                          >
+                            Show Less
+                          </button>
+                        </>
+                      )}
                     </div>
                   </div>
-                )}
-
-                <div className="space-y-4 text-center">
-                  <div className="space-y-2">
-                    <div className={`font-bold text-lg sm:text-xl ${
-                      theme === 'dark' ? 'text-electric-blue' : 'text-emerald-600'
-                    }`}>{plan.duration}</div>
-                    <p className={`text-sm sm:text-base ${
-                      theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
-                    }`}>{plan.description}</p>
+                  <div className="flex justify-center">
+                    <button
+                      onClick={scrollToForm}
+                      className={`w-4/5 font-bold py-2 mt-auto rounded-xl transition-all duration-300 text-sm ${
+                        theme === 'dark'
+                          ? 'bg-[hsl(142,71%,50%)] text-black hover:opacity-90'
+                          : 'bg-[hsl(142,71%,30%)] hover:opacity-90 text-white'
+                      }`}
+                    >
+                      Get Started
+                    </button>
                   </div>
-
-                  <div className="space-y-2">
-                    {plan.features.slice(0, 3).map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center gap-2">
-                        <span className={`text-base font-bold ${
-                          theme === 'dark' ? 'text-electric-blue' : 'text-mint-500'
-                        }`}>✓</span>
-                        <span className={`text-sm sm:text-base text-left font-helvetica ${
-                          theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
-                        }`}>{feature}</span>
-                      </div>
-                    ))}
-                    {plan.features.length > 3 && (
-                      <div className={`text-sm font-medium font-helvetica ${
-                        theme === 'dark' ? 'text-amber-gold' : 'text-emerald-600'
-                      }`}>
-                        +{plan.features.length - 3} more features
-                      </div>
-                    )}
-                  </div>
-
-                  <button 
-                    onClick={scrollToForm}
-                    className={`w-full font-bold py-3 rounded-xl transition-all duration-300 text-base sm:text-lg ${
-                      theme === 'dark'
-                        ? 'bg-electric-blue text-black hover:bg-amber-gold' 
-                        : 'bg-emerald-600 hover:bg-emerald-700 text-white'
-                    }`}
-                  >
-                    Get Started
-                  </button>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
-
-          {/* Mobile Footer */}
-          {/* <div className="text-center animate-fade-in">
-            <p className="text-muted-gray text-base mb-4 font-helvetica">
-              100% satisfaction guarantee
-            </p>
-            <div className="flex justify-center space-x-4 text-sm text-muted-gray font-helvetica">
-              <div>💳 Secure</div>
-              <div>📱 Instant</div>
-              <div>🎯 Guaranteed</div>
-            </div>
-          </div> */}
         </div>
       </section>
-
       {/* Desktop Section - Completely Separate */}
-      <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'bg-zinc-900/90' : 'bg-gradient-to-b from-soft-blush to-soft-lavender'} relative overflow-hidden pb-0`}>
-        {/* Desktop Background Image */}
-        {/* <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
-          style={{
-            backgroundImage: `url('/lovable-uploads/06d11a55-82ca-4851-9fa2-88213d67ed1d.png')`,
-          }}
-        ></div> */}
-        
+      <section className={`hidden lg:block seamless-section relative overflow-hidden pb-0 ${
+        theme === 'dark' 
+          ? 'bg-gradient-to-br from-black via-zinc-900 to-neutral-900' 
+          : 'bg-white'
+      }`}>
         <div className="max-w-7xl mx-auto section-padding relative z-10">
           {/* Desktop Header */}
           <div className="text-center mb-20 animate-fade-in">
             <h2 className={`text-5xl md:text-6xl font-helvetica font-bold capitalize mb-6 ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              select the perfect{' '}
+              SELECT THE PERFECT{' '}
               <span className={
                 theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'
               }>
-                Plan
+                PLAN
               </span>
             </h2>
-            {/* <p className={`text-xl font-light max-w-2xl mx-auto ${
-              theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
-            }`}>
-              For your fitness transformation journey
-            </p> */}
           </div>
-
           {/* Desktop Plans Grid */}
           <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
-            {plans.map((plan, index) => (
-              <div 
-                key={index}
-                className={`${
-                  theme === 'dark' 
-                    ? 'bg-zinc-800/90 text-white' 
-                    : 'bg-white/90 text-gray-900'
-                } backdrop-blur-sm rounded-3xl p-8 shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-3xl relative ${
-                  plan.popular ? `ring-4 ${theme === 'dark' ? 'ring-electric-blue' : 'ring-emerald-400'} transform lg:scale-105` : ''
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className={`${
-                      theme === 'dark' ? 'bg-electric-blue text-black' : 'bg-emerald-600 text-white'
-                    } px-6 py-2 rounded-full text-base font-bold shadow-lg whitespace-nowrap`}>
-                      ✨ Most Popular
+            {plans.map((plan, index) => {
+              const isExpanded = expanded === index;
+              const showMore = plan.features.length > MAX_FEATURES && !isExpanded;
+              const featuresToShow = showMore ? plan.features.slice(0, MAX_FEATURES) : plan.features;
+              return (
+                <div
+                  key={index}
+                  className={`flex flex-col justify-between h-[500px] ${
+                    theme === 'dark'
+                      ? 'bg-zinc-800/90 text-white'
+                      : 'bg-white text-gray-900'
+                  } backdrop-blur-sm rounded-3xl p-8 shadow-xl transition-all duration-300 hover:scale-105 relative ${
+                    plan.popular ? `ring-2 ${theme === 'dark' ? 'ring-electric-blue' : 'ring-emerald-400'} transform lg:scale-105` : ''
+                  }`}
+                >
+                  {plan.popular && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                      <div className={`${
+                        theme === 'dark' ? 'bg-[hsl(142,71%,50%)] text-black' : 'bg-emerald-600 text-white'
+                      } px-6 py-2 rounded-full text-base font-bold shadow-lg whitespace-nowrap`}>
+                        Most Popular
+                      </div>
+                    </div>
+                  )}
+                                      <div className="space-y-6 text-center flex-1 flex flex-col">
+                    <div className="space-y-2">
+                      <div className={`font-bold text-2xl font-helvetica ${
+                        theme === 'dark' ? 'text-amber-gold' : 'text-emerald-600'
+                      }`}>{plan.duration}</div>
+                      <p className={`text-sm font-helvetica ${
+                        theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                      }`}>{plan.description}</p>
+                    </div>
+                    <div className={`space-y-4 flex-1 ${plan.duration === "6 Months" ? "max-h-[300px] overflow-y-auto pr-2 six-month-scrollbar" : ""}`}>
+                      {plan.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-start gap-2">
+                          <span className={`text-lg mt-0.5 ${
+                            theme === 'dark' ? 'text-electric-blue' : 'text-emerald-600'
+                          }`}>✓</span>
+                          <span className={`text-sm text-left font-helvetica ${
+                            theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                          }`}>{feature}</span>
+                        </div>
+                      ))}
+                      {showMore && (
+                        <button
+                          className={`mt-2 text-xs underline font-semibold ${theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}`}
+                          onClick={() => handleExpand(index)}
+                        >
+                          More Perks
+                        </button>
+                      )}
+                      {isExpanded && plan.features.length > MAX_FEATURES && (
+                        <>
+                          {plan.features.slice(MAX_FEATURES).map((feature, featureIndex) => (
+                            <div key={featureIndex + MAX_FEATURES} className="flex items-center gap-3">
+                              <span className={`text-xl font-bold ${
+                                theme === 'dark' ? 'text-electric-blue' : 'text-mint-500'
+                              }`}>✓</span>
+                              <span className={`font-light text-base text-left font-helvetica ${
+                                theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
+                              }`}>{feature}</span>
+                            </div>
+                          ))}
+                          <button
+                            className={`mt-2 text-xs underline font-semibold ${theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}`}
+                            onClick={() => handleExpand(index)}
+                          >
+                            Show Less
+                          </button>
+                        </>
+                      )}
                     </div>
                   </div>
-                )}
-
-                <div className="space-y-6 text-center">
-                  <div className="space-y-3">
-                    <div className={`font-bold text-xl font-helvetica ${
-                      theme === 'dark' ? 'text-amber-gold' : 'text-emerald-600'
-                    }`}>{plan.duration}</div>
-                    <p className={`font-light text-base font-helvetica ${
-                      theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
-                    }`}>{plan.description}</p>
+                  <div className="flex justify-center">
+                    <Button
+                      onClick={scrollToForm}
+                      className={`w-4/5 font-bold py-3 rounded-xl transition-all duration-300 hover:scale-105 text-base ${
+                        theme === 'dark' 
+                          ? 'bg-[hsl(142,71%,50%)] text-black'
+                          : 'bg-[hsl(142,71%,30%)] text-white'
+                      } hover:opacity-90`}
+                    >
+                      Get Started
+                    </Button>
                   </div>
-
-                  <div className="space-y-3">
-                    {plan.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center gap-3">
-                        <span className={`text-xl font-bold ${
-                          theme === 'dark' ? 'text-electric-blue' : 'text-mint-500'
-                        }`}>✓</span>
-                        <span className={`font-light text-base text-left font-helvetica ${
-                          theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
-                        }`}>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Button 
-                    onClick={scrollToForm}
-                    className={`w-full font-bold py-4 rounded-2xl transition-all duration-300 hover:scale-105 shadow-xl text-lg ${
-                      theme === 'dark' 
-                        ? 'bg-electric-blue text-black hover:bg-amber-gold' 
-                        : 'bg-emerald-600 hover:bg-emerald-700 text-white'
-                    }`}
-                  >
-                    Get Started
-                  </Button>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
-
-          {/* Desktop Footer */}
-          {/* <div className="text-center animate-fade-in">
-            <p className="text-muted-gray font-inter font-light mb-6 text-lg">
-              100% satisfaction guarantee - Not satisfied in the first 30 days? Get a full refund.
-            </p>
-            <div className="flex justify-center space-x-8 text-base text-muted-gray font-inter font-light">
-              <div>💳 Secure Payment</div>
-              <div>📱 Instant Access</div>
-              <div>🎯 Results Guaranteed</div>
-            </div>
-          </div> */}
         </div>
       </section>
     </div>
   );
 };
 
+
 export default PricingSection;
-// export default PricingSection;

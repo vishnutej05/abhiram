@@ -113,13 +113,9 @@ const TransformationsSection = () => {
       {/* Mobile & Tablet Section - Completely Separate */}
       <section className={`block lg:hidden seamless-section ${
         theme === 'dark' 
-          ? 'bg-zinc-800 border border-zinc-700' // Replace gradient with solid color to eliminate diagonal lines
+          ? 'bg-[rgb(24,24,27)]'
           : 'soft-blush'
       } relative overflow-hidden`}>
-        {/* Background overlay for dark theme - create subtle gradient effect here instead */}
-        {theme === 'dark' && (
-          <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/30 to-zinc-800/20 backdrop-blur-[1px]"></div>
-        )}
         
         <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 relative z-10">
           {/* Mobile Header Section */}
@@ -127,12 +123,12 @@ const TransformationsSection = () => {
             <h2 className={`text-3xl sm:text-4xl font-bold mb-4 leading-tight font-helvetica ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              Meet the people who took a chance to {' '} <span className={
+              MEET THE PEOPLE WHO TOOK A CHANCE TO {' '} <span className={
                 theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'
-              }> upgrade themselves </span>
+              }> UPGRADE THEMSELVES </span>
             </h2>
             <div className={`h-2 w-20 mx-auto rounded-full ${
-              theme === 'dark' ? 'bg-electric-blue' : 'bg-emerald-600'
+              theme === 'dark' ? 'bg-electric-blue' : 'bg-[hsl(142,71%,30%)]'
             }`}></div>
           </div>
 
@@ -230,7 +226,7 @@ const TransformationsSection = () => {
                   </div>
                   <div className="space-y-1 sm:space-y-2">
                     <div className={`text-sm sm:text-lg font-bold font-helvetica ${
-                      theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'
+                      theme === 'dark' ? 'text-electric-blue' : 'text-black'
                     }`}>
                       {transformations[mobileCarouselIndex].testimonial}
                     </div>
@@ -254,7 +250,7 @@ const TransformationsSection = () => {
                         mobileCarouselIndex === index 
                           ? theme === 'dark'
                             ? "w-8 bg-electric-blue"
-                            : "w-8 bg-emerald-600"
+                            : "w-8 bg-[hsl(142,71%,30%)]"
                           : "w-2.5 bg-gray-400 hover:bg-gray-600"
                       }`}
                       aria-label={`Go to transformation ${index + 1}`}
@@ -271,7 +267,7 @@ const TransformationsSection = () => {
       <section className={`hidden lg:block relative overflow-hidden ${
         theme === 'dark'
           ? 'bg-zinc-900 bg-opacity-95'
-          : 'soft-blush'
+          : 'bg-white'
       }`}>
         {/* Desktop Background Image with overlay for dark theme */}
         {theme === 'dark' && (
@@ -284,9 +280,9 @@ const TransformationsSection = () => {
             <h2 className={`text-4xl lg:text-5xl font-bold mb-3 leading-tight font-helvetica ${
               theme === 'dark' ? 'text-white' : 'text-gray-900'
             }`}>
-              Meet the people who took a chance to <br/> {' '} <span className={
+              MEET THE PEOPLE WHO TOOK A CHANCE TO <br/> {' '} <span className={
                 theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'
-              }> Upgrade Themselves </span>
+              }> UPGRADE THEMSELVES </span>
             </h2>
             {/* <div className={`h-2 w-24 rounded-full ${
               theme === 'dark' ? 'bg-electric-blue' : 'bg-emerald-600'
@@ -361,7 +357,7 @@ const TransformationsSection = () => {
                 <h3 className={`text-2xl font-bold mb-2 font-helvetica uppercase ${
                   theme === 'dark' ? 'text-white' : 'text-gray-900'
                 }`}>
-                  MORE SUCCESS STORIES
+                  {/* MORE SUCCESS STORIES */}
                 </h3>
                 <div className={`h-1 w-16 rounded-full mx-auto ${
                   theme === 'dark'
@@ -410,7 +406,7 @@ const TransformationsSection = () => {
                 >
                   {Array.from({ length: totalPages }).map((_, pageIndex) => (
                     <div key={pageIndex} className={`min-w-full py-6 px-4 ${
-                      theme === 'dark' ? 'bg-zinc-900/80' : 'bg-white/70'
+                      theme === 'dark' ? 'bg-zinc-900/80' : 'bg-white'
                     }`}>
                       <div className="grid grid-cols-3 gap-6">
                         {/* Show 3 transformation cards */}
@@ -423,7 +419,7 @@ const TransformationsSection = () => {
                               rounded-xl shadow-lg flex flex-col h-[200px] group ${
                                 theme === 'dark' 
                                   ? 'bg-gradient-to-br from-zinc-800 to-zinc-900 hover:from-zinc-900 hover:to-zinc-800'
-                                  : 'soft-blush'
+                                  : 'bg-white'
                               } ${
                                 activeTransformation === actualIndex 
                                   ? theme === 'dark'
@@ -455,19 +451,17 @@ const TransformationsSection = () => {
                                   </div>
                                 </div>
                               </div>
-                              <div className={`text-center p-3 flex flex-col justify-center h-[90px] space-y-1 ${
+                              <div className={`text-center p-3 flex flex-col justify-center h-[60px] space-y-1 ${
                                 theme === 'dark' ? 'border-t border-zinc-700' : 'border-t border-gray-100'
                               }`}>
-                                <h4 className={`font-bold text-base transition-colors font-helvetica ${
+                                <h4 className={`font-bold text-base transition-colors font-helvetica flex items-center justify-center gap-2 ${
                                   theme === 'dark'
                                     ? 'text-white group-hover:text-electric-blue'
                                     : 'text-gray-900 group-hover:text-emerald-700'
                                 }`}>
                                   {transformation.name}
+                                  <span className={`text-xs font-normal ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>({transformation.timeframe})</span>
                                 </h4>
-                                <p className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'} font-helvetica`}>
-                                  {transformation.timeframe}
-                                </p>
                               </div>
                             </div>
                           );

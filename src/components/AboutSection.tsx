@@ -2,13 +2,37 @@ import React, { useState, useEffect, useRef } from 'react';
 import { ChevronDown, Star, Zap, Target, Trophy, Heart, Flame } from 'lucide-react';
 import { useTheme } from '../hooks/use-theme';
 import { useIsMobile } from '../hooks/use-mobile';
+import '../styles/animations.css';
 
 const AboutSection = () => {
   const [activeStage, setActiveStage] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [quoteVisible, setQuoteVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const quoteRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
   const isMobile = useIsMobile();
+
+  // Set up intersection observer for quote
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setQuoteVisible(true);
+          observer.disconnect(); // Stop observing once triggered
+        }
+      },
+      {
+        threshold: 0.2 // Trigger when 20% of the element is visible
+      }
+    );
+
+    if (quoteRef.current) {
+      observer.observe(quoteRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const transformationJourney = [
     {
@@ -73,13 +97,13 @@ const AboutSection = () => {
     <section ref={sectionRef} className={`relative min-h-screen overflow-hidden ${
       theme === 'dark' 
         ? 'bg-zinc-900 bg-opacity-95' 
-        : 'bg-gradient-to-br from-slate-50 via-white to-stone-100'
+        : 'bg-white'
     }`}>
       <div className="max-w-7xl mx-auto px-6 pt-20 pb-10">
         {/* Header */}
-        <div className="mx-auto max-w-2xl lg:text-center pb-10">
+        <div className="mx-auto max-w-xl lg:text-center pb-10">
           <h2 className={`capitalize font-helvetica text-4xl font-bold tracking-tight sm:text-5xl ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-            Here's how my journey<span className={theme === 'dark' ? "text-electric-blue" : "text-strong-green"}> began</span>
+            HERE'S HOW MY JOURNEY<span className={theme === 'dark' ? "text-electric-blue" : "text-strong-green"}> BEGAN</span>
           </h2>
           {/* <p className={`mt-6 text-xl leading-8 ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
             Here's how my journey began
@@ -101,9 +125,15 @@ const AboutSection = () => {
                       theme === 'dark' 
                         ? 'bg-zinc-800 border border-zinc-700' 
                         : 'bg-white border border-gray-200 shadow-md'
-                    } rounded-xl overflow-hidden transition-all duration-700 ${
-                      isActive ? 'scale-[1.02] shadow-lg' : 'scale-100'
+                    } rounded-xl overflow-hidden opacity-0 ${
+                      isActive 
+                        ? 'animate-simpleFade shadow-lg' 
+                        : ''
                     }`}
+                    style={{
+                      animationDelay: `${index * 150}ms`,
+                      animationFillMode: 'forwards'
+                    }}
                   >
                     <div className="relative">
                       {/* Full-size Image */}
@@ -131,7 +161,9 @@ const AboutSection = () => {
                           <div className="flex items-center">
                             <IconComponent 
                               className={`w-4 h-4 mr-2 ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}
-                              style={{ color: theme === 'dark' ? 'hsl(142, 71%, 50%)' : '' }}
+                              style={{ 
+                                color: theme === 'dark' ? 'hsl(142, 71%, 50%)' : ''
+                              }}
                             />
                             <h3 className="text-lg font-formom font-bold text-white">
                               {stage.title}
@@ -251,7 +283,13 @@ const AboutSection = () => {
                   </div>
 
                   {/* Content Layout - Image and Text on opposite sides */}
-                  <div className="grid grid-cols-2 gap-16 items-center mb-3">
+                  <div className={`grid grid-cols-2 gap-16 items-center mb-3 opacity-0 ${
+                    isActive ? 'animate-simpleFade' : ''
+                  }`}
+                    style={{
+                      animationDelay: `${index * 150}ms`,
+                      animationFillMode: 'forwards'
+                    }}>
                     {/* Left Side */}
                     <div className={`${isLeft ? 'flex justify-end pr-4' : 'flex justify-start pl-4'}`}>
                       {isLeft ? (
@@ -362,12 +400,20 @@ const AboutSection = () => {
 
 
         {/* Final Inspiration */}
-        <div className="text-center animate-fade-in pt-20 max-w-5xl mx-auto">
-            <blockquote className={`text-4xl font-helvetica font-light leading-tight ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+        <div ref={quoteRef} 
+             className={`text-center pt-20 max-w-5xl mx-auto opacity-0 ${quoteVisible ? 'animate-quoteReveal' : ''}`}
+             style={{ animationFillMode: 'forwards', animationDelay: '300ms' }}>
+            <blockquote className={`text-5xl font-helvetica font-light leading-tight ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
               Don't be special,
-              <span className={theme === 'dark' ? 'block italic text-electric-blue mt-0' : 'block italic text-strong-green mt-0' }>-Be stubborn.</span>
+              <span className={`block mt-0 opacity-0 ${quoteVisible ? 'animate-quoteReveal' : ''} ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}
+                    style={{ animationFillMode: 'forwards', animationDelay: '800ms' }}>
+                Be stubborn.
+              </span>
             </blockquote>
-            <cite className={`text-xl opacity-90 font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>— Abhiram Nair</cite>
+            <cite className={`text-xl opacity-0 ${quoteVisible ? 'animate-quoteReveal' : ''} inline-block font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}
+                  style={{ animationFillMode: 'forwards', animationDelay: '1200ms' }}>
+              - Abhiram Nair
+            </cite>
         </div>
       </div>
     </section>

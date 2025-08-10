@@ -180,11 +180,11 @@ const ContactForm = () => {
             >
               <div className="mb-4 text-center">
                 <h3
-                  className={`text-xl font-bold font-formom ${
-                    theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'
-                  }`}
+                  className={`text-xl font-bold font-formom`}
                 >
-                  Start Your <span className={theme === 'dark' ? 'text-amber-gold' : 'text-amber-gold'}>Transformation</span>
+                  <span className={`${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>
+                    Start Your
+                  </span> <span className={`${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>Transformation</span>
                 </h3>
                
               </div>
@@ -405,11 +405,11 @@ const ContactForm = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full text-xs font-bold py-2 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
+                  className={`w-full text-xs font-bold py-2 rounded-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
                     theme === 'dark' 
-                      ? 'bg-gradient-electric-to-amber text-black hover:bg-gradient-amber-to-electric hover:scale-[1.02]' 
-                      : 'btn-primary'
-                  }`}
+                      ? 'bg-[hsl(142,71%,50%)] text-black' 
+                      : 'bg-[hsl(142,71%,30%)] text-white'
+                  } hover:opacity-90`}
                 >
                   {isSubmitting ? 'SUBMITTING...' : 'START TRANSFORMATION'}
                 </button>
@@ -419,14 +419,14 @@ const ContactForm = () => {
         </section>  
         
         {/* Desktop Section - Completely Separate */}
-        <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'bg-zinc-900 bg-opacity-95' : 'soft-lavender'}`}>
+        <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'bg-zinc-900 bg-opacity-95' : 'bg-white'}`}>
           <div className="w-full py-12">
             <div className="text-center mb-12">
               <h2 className={`text-4xl md:text-5xl font-bold mb-4 font-formom font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                Build Your{' '}
-                <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>Legacy</span>
+                BUILD YOUR{' '}
+                <span className={theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}>LEGACY</span>
               </h2>
-              <p className={`text-xl max-w-2xl mx-auto font-helvetica ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+              <p className={`text-xl font-helvetica ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
                 Join thousands who've transformed their lives with our proven fitness system.
               </p>
             </div>
@@ -449,8 +449,10 @@ const ContactForm = () => {
               {/* Right side - Form */}
               <div className={`p-3 lg:p-4 ${theme === 'dark' ? 'bg-zinc-800' : 'bg-white'} flex flex-col`}>
                 <div className="mb-2 text-center">
-                  <h3 className={`text-2xl font-bold mb-1 font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                    Start Your <span className={`${theme === 'dark' ? 'text-electric-blue' : 'text-amber-gold'}`}>Transformation</span>
+                  <h3 className={`text-2xl font-bold mb-1 font-helvetica`}>
+                    <span className={`${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>
+                      Start Your
+                    </span> <span className={`${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>Transformation</span>
                   </h3>
                   {/* <p className={`text-sm font-helvetica ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
                     Fill out the form below and let's begin your journey together.

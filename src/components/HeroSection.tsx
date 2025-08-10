@@ -89,7 +89,7 @@ const HeroSection = () => {
             <div className="space-y-3 mt-12 mb-4">
               <p className={`opacity-0 font-medium text-lg ${theme === 'dark' ? 'text-white' : 'text-white'}`} style={{animation: "fadeIn 1.5s ease-in-out 1.0s forwards"}}>
                 This is <span className={`font-semibold ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`} style={{
-                  color: theme === 'dark' ? 'hsl(142, 71%, 50%)' : 'hsl(142, 71%, 60%)'
+                  color: theme === 'dark' ? 'hsl(142, 71%, 50%)' : 'hsl(142, 71%, 30%)'
                 }}>Abhiram,</span> <br/>Founder of themight
               </p>
               <p className={`opacity-0 text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-white'}`} style={{animation: "fadeIn 1.5s ease-in-out 1.3s forwards"}}>
@@ -153,7 +153,7 @@ const HeroSection = () => {
                     color:
                       theme === "dark"
                         ? "hsl(142, 71%, 50%)"
-                        : "hsl(142, 71%, 60%)",
+                        : "hsl(142, 71%, 30%)",
                   }}
                 >
                   Abhiram,

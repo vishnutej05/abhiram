@@ -4,25 +4,41 @@ import { useTheme } from '../hooks/use-theme';
 
 const faqs = [
 	{
-		question: 'How quickly will I see real progress?',
+		question: 'How long does it take to see results?',
 		answer:
-			'Every transformation is unique, but most clients notice positive changes within 3-4 weeks. The real magic happens around week 8-12 when everything clicks together - your strength, confidence, and mindset align.',
+			' Results can typically be seen within 8-12 weeks, depending on your effort, consistency, and specific goals. However, this timeline varies significantly based on individual factors such as starting fitness level, program adherence, and the nature of your objectives.',
 	},
 	{
-		question: 'Can I train effectively without a gym?',
+		question: '  What if I stop in between?',
 		answer:
-			'Absolutely! Some of our most impressive transformations happened with home setups. We design programs around your available space and equipment - what matters most is consistency and the right guidance.',
+			' You can pause your program once and resume within 1 month tenure.',
 	},
 	{
 		question: 'What level of support can I expect?',
 		answer:
-			"You're never alone in this journey. From detailed workout plans and nutrition strategies to regular progress reviews and motivational support - we're here to guide you every step of the way.",
+			" From detailed workout plans and nutrition strategies to regular progress reviews and motivational support - we're here to guide you every step of the way, support is extended to primarily 6 month and 12 month plans if that’s what you want.",
 	},
 	{
-		question: 'How do you create my personal program?',
+		question: ' How do you track progress in a virtual setting?',
 		answer:
-			'We start with a deep dive into your goals, lifestyle, and current fitness level. Your program evolves with you - adjusting as you get stronger, as your schedule changes, and as your confidence grows.',
+			' Progress tracking involves multiple methods including regular weight logs, progress photos, fitness assessments, and workout performance data recorded in training apps. All of this is communicated directly to your trainer for ongoing adjustments.',
 	},
+	{
+		question: '  What if I have injuries or medical conditions?',
+		answer:
+			' Professional online trainers can work with clients who have specific health conditions or injuries, provided you have medical clearance to exercise. Programs can be modified to accommodate limitations and ensure safe, effective training within your capabilities.',
+	},
+	{
+		question: ' Do you provide nutrition advice?',
+		answer:
+			'  Yes! Everything is covered in detail',
+	},
+	{
+		question: ' How will we communicate during the program?',
+		answer:
+			'  Communication typically occurs through messaging systems, video calls, and sometimes phone consultations. We will primarily use WhatsApp to get through all communication related procedures.',
+	},
+
 ];
 
 const FAQSection = () => {
