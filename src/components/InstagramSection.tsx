@@ -81,7 +81,7 @@ const InstagramSection = () => {
         className={`block lg:hidden seamless-section ${
           theme === 'dark' 
             ? 'bg-zinc-900 bg-opacity-95' 
-            : 'bg-gradient-to-br from-slate-50 to-slate-100'
+            : 'bg-gradient-to-b from-slate-50 to-white'
         } relative overflow-hidden`}
       >
         {/* Mobile Background Pattern */}
@@ -202,7 +202,7 @@ const InstagramSection = () => {
       <section className={`hidden lg:block seamless-section ${
         theme === 'dark' 
           ? 'bg-zinc-900 bg-opacity-95' 
-          : 'bg-gradient-to-br from-slate-50 to-slate-100'
+          : 'bg-gradient-to-b from-slate-50 to-white'
       }`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
           <div className="text-center mb-12">

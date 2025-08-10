@@ -186,7 +186,7 @@ const PricingSection = () => {
       {/* Desktop Section - Completely Separate */}
       <section className={`hidden lg:block seamless-section relative overflow-hidden pb-0 ${
         theme === 'dark' 
-          ? 'bg-gradient-to-br from-black via-zinc-900 to-neutral-900' 
+          ? 'bg-zinc-900 bg-opacity-95' 
           : 'bg-white'
       }`}>
         <div className="max-w-7xl mx-auto section-padding relative z-10">
@@ -232,7 +232,7 @@ const PricingSection = () => {
                                       <div className="space-y-6 text-center flex-1 flex flex-col">
                     <div className="space-y-2">
                       <div className={`font-bold text-2xl font-helvetica ${
-                        theme === 'dark' ? 'text-amber-gold' : 'text-emerald-600'
+                        theme === 'dark' ? 'text-white' : 'text-emerald-600'
                       }`}>{plan.duration}</div>
                       <p className={`text-sm font-helvetica ${
                         theme === 'dark' ? 'text-gray-300' : 'text-gray-600'

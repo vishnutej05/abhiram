@@ -372,7 +372,7 @@ const TransformationsSection = () => {
                 <button
                   className={`absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-700 rounded-full p-2 shadow-xl z-10 transition-all duration-300 hover:scale-110 ${
                     theme === 'dark'
-                      ? 'bg-gradient-electric-to-amber hover:bg-gradient-amber-to-electric'
+                      ? 'text-white bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900'
                       : 'text-white bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900'
                   }`}
                   onClick={goToPrevPage}
@@ -387,7 +387,7 @@ const TransformationsSection = () => {
                 <button
                   className={`absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-700 rounded-full p-2 shadow-xl z-10 transition-all duration-300 hover:scale-110 ${
                     theme === 'dark'
-                      ? 'bg-gradient-electric-to-amber hover:bg-gradient-amber-to-electric'
+                      ? 'text-white bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900'
                       : 'bg-gradient-to-r from-emerald-700 to-emerald-800 hover:from-emerald-800 hover:to-emerald-900 text-white'
                   }`}
                   onClick={goToNextPage}

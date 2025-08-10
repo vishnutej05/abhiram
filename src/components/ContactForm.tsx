@@ -7,15 +7,14 @@ import { useTheme } from '../hooks/use-theme';
 const ContactForm = () => {
   const { theme } = useTheme();
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
+    name: '',
     email: '',
     phone: '',
     age: '',
-    goal: '',
-    fitnessLevel: '',
-    workoutFrequency: '',
-    message: ''
+    struggle: '',
+    previousCoaching: '',
+    investmentLevel: '',
+    referralSource: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,7 +46,7 @@ const ContactForm = () => {
     e.preventDefault();
     
     // Validate required fields
-    const requiredFields = ['firstName', 'lastName', 'email', 'phone', 'age', 'goal', 'fitnessLevel', 'workoutFrequency'];
+    const requiredFields = ['name', 'email', 'phone', 'age', 'struggle', 'previousCoaching', 'investmentLevel', 'referralSource'];
     const missingFields = requiredFields.filter(field => !formData[field as keyof typeof formData]);
     
     if (missingFields.length > 0) {
@@ -62,7 +61,7 @@ const ContactForm = () => {
       // Create a form element to submit via hidden iframe
       const form = document.createElement('form');
       form.method = 'POST';
-      form.action = 'https://script.google.com/macros/s/AKfycbwyQr2m1AjowhaQyT0sANynaU-XnA_qe6lgZ4qXvSwThyZAuNMi7kKuugW-1aGRXagXSQ/exec'; // Replace with your actual script ID
+      form.action = 'https://script.google.com/macros/s/AKfycbzfrJdQFZ8GFIXl0_YdfSHfEMlJ3majThjcpBd3IQzjCxWHRy9I7f25NFA4G4B9lSTlpQ/exec'; // Replace with your actual script ID
       form.target = 'hidden-iframe';
       form.style.display = 'none';
 
@@ -85,36 +84,59 @@ const ContactForm = () => {
         document.body.appendChild(iframe);
       }
 
+      // Listen for iframe load to determine success/failure
+      iframe.onload = () => {
+        try {
+          setSubmitStatus('success');
+          setIsSubmitting(false);
+          
+          // Show success toast
+          toast({
+            title: "Success!",
+            description: "Your information has been submitted successfully. We'll get back to you soon!",
+            duration: 5000,
+            className: `${
+              theme === 'dark'
+                ? 'bg-zinc-800 text-white border-electric-blue'
+                : 'bg-white text-gray-900 border-strong-green'
+            }`,
+          });
+          
+          // Reset form
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            age: '',
+            struggle: '',
+            previousCoaching: '',
+            investmentLevel: '',
+            referralSource: ''
+          });
+        } catch (error) {
+          console.error('Error processing form submission:', error);
+          setSubmitStatus('error');
+          setIsSubmitting(false);
+          
+          // Show error toast
+          toast({
+            title: "Error",
+            description: "There was an error submitting your form. Please try again.",
+            variant: "destructive",
+            duration: 5000,
+            className: `${
+              theme === 'dark'
+                ? 'bg-zinc-800 text-white border-red-500'
+                : 'bg-white text-gray-900 border-red-500'
+            }`,
+          });
+        }
+      };
+
       // Submit the form
       document.body.appendChild(form);
       form.submit();
       document.body.removeChild(form);
-
-      // Set success after a short delay
-      setTimeout(() => {
-        setSubmitStatus('success');
-        setIsSubmitting(false);
-        
-        // Show success toast
-        toast({
-          title: "Success!",
-          description: "Your information has been submitted successfully. We'll get back to you soon!",
-          duration: 5000,
-        });
-        
-        // Reset form
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          phone: '',
-          age: '',
-          goal: '',
-          fitnessLevel: '',
-          workoutFrequency: '',
-          message: ''
-        });
-      }, 1000);
 
     } catch (error) {
       console.error('Error submitting form:', error);
@@ -127,6 +149,11 @@ const ContactForm = () => {
         description: "There was an error submitting your form. Please try again.",
         variant: "destructive",
         duration: 5000,
+        className: `${
+          theme === 'dark'
+            ? 'bg-zinc-800 text-white border-red-500'
+            : 'bg-white text-gray-900 border-red-500'
+        }`,
       });
     }
   };
@@ -186,48 +213,29 @@ const ContactForm = () => {
                     Start Your
                   </span> <span className={`${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>Transformation</span>
                 </h3>
-               
               </div>
               
-              {/* Form stays the same */}
+              {/* Updated Mobile Form */}
               <form onSubmit={handleSubmit} className="space-y-3">
-                {/* First & Last Name */}
-                <div className="grid grid-cols-2 gap-2">
-                  <div>
-                    <Label htmlFor="mobile-firstName" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>First Name *</Label>
-                    <Input
-                      id="mobile-firstName"
-                      name="firstName"
-                      type="text"
-                      required
-                      value={formData.firstName}
-                      onChange={handleChange}
-                      className={`w-full px-3 py-2 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent ${
-                        theme === 'dark'
-                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue hover:border-electric-blue/70'
-                          : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
-                      }`}
-                      placeholder="Your first name"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="mobile-lastName" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Last Name *</Label>
-                    <Input
-                      id="mobile-lastName"
-                      name="lastName"
-                      type="text"
-                      required
-                      value={formData.lastName}
-                      onChange={handleChange}
-                      className={`w-full px-3 py-2 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent ${
-                        theme === 'dark'
-                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue hover:border-electric-blue/70'
-                          : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
-                      }`}
-                      placeholder="Your last name"
-                    />
-                  </div>
+                {/* Name */}
+                <div>
+                  <Label htmlFor="mobile-name" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Name *</Label>
+                  <Input
+                    id="mobile-name"
+                    name="name"
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    className={`w-full px-3 py-2 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent ${
+                      theme === 'dark'
+                        ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue hover:border-electric-blue/70'
+                        : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
+                    }`}
+                    placeholder="Your full name"
+                  />
                 </div>
+
                 {/* Email & Phone */}
                 <div className="grid grid-cols-2 gap-2">
                   <div>
@@ -264,143 +272,153 @@ const ContactForm = () => {
                       required
                       value={formData.phone}
                       onChange={handleChange}
-                      className={`w-full px-2 py-1 text-xs rounded-lg focus:ring-2 focus:border-transparent ${
+                      className={`w-full px-2 py-1 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent ${
                         theme === 'dark'
-                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
-                          : 'bg-white border-emerald-200 focus:ring-strong-green'
+                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue hover:border-electric-blue/70'
+                          : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
                       }`}
+                      placeholder="Your phone number"
                     />
                   </div>
                 </div>
-                {/* Age & Goal */}
-                <div className="grid grid-cols-2 gap-2">
-                  <div>
-                    <Label htmlFor="mobile-age" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Age *</Label>
-                    <select
-                      id="mobile-age"
-                      name="age"
-                      required
-                      value={formData.age}
-                      onChange={handleChange}
-                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
-                        theme === 'dark'
-                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
-                          : 'bg-white border-emerald-200 focus:ring-strong-green'
-                      }`}
-                      style={{
-                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
-                        backgroundSize: '1.25em',
-                        paddingRight: '2.5rem',
-                      }}
-                    >
-                      <option value="">Select</option>
-                      <option value="18-25">18-25</option>
-                      <option value="26-35">26-35</option>
-                      <option value="36-45">36-45</option>
-                      <option value="46-55">46-55</option>
-                      <option value="56+">56+</option>
-                    </select>
-                  </div>
-                  <div>
-                    <Label htmlFor="mobile-goal" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Goal *</Label>
-                    <select
-                      id="mobile-goal"
-                      name="goal"
-                      required
-                      value={formData.goal}
-                      onChange={handleChange}
-                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
-                        theme === 'dark'
-                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
-                          : 'bg-white border-emerald-200 focus:ring-strong-green'
-                      }`}
-                      style={{
-                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
-                        backgroundSize: '1.25em',
-                        paddingRight: '2.5rem',
-                      }}
-                    >
-                      <option value="">Select</option>
-                      <option value="weight-loss">Weight Loss</option>
-                      <option value="muscle-gain">Muscle Gain</option>
-                      <option value="strength">Strength</option>
-                      <option value="endurance">Endurance</option>
-                      <option value="overall-fitness">Overall Fitness</option>
-                      <option value="body-toning">Body Toning</option>
-                    </select>
-                  </div>
-                </div>
-                {/* Fitness Level & Frequency */}
-                <div className="grid grid-cols-2 gap-2">
-                  <div>
-                    <Label htmlFor="mobile-fitnessLevel" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Level *</Label>
-                    <select
-                      id="mobile-fitnessLevel"
-                      name="fitnessLevel"
-                      required
-                      value={formData.fitnessLevel}
-                      onChange={handleChange}
-                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
-                        theme === 'dark'
-                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
-                          : 'bg-white border-emerald-200 focus:ring-strong-green'
-                      }`}
-                      style={{
-                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
-                        backgroundSize: '1.25em',
-                        paddingRight: '2.5rem',
-                      }}
-                    >
-                      <option value="">Select</option>
-                      <option value="beginner">Beginner</option>
-                      <option value="intermediate">Intermediate</option>
-                      <option value="advanced">Advanced</option>
-                    </select>
-                  </div>
-                  <div>
-                    <Label htmlFor="mobile-workoutFrequency" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Frequency *</Label>
-                    <select
-                      id="mobile-workoutFrequency"
-                      name="workoutFrequency"
-                      required
-                      value={formData.workoutFrequency}
-                      onChange={handleChange}
-                      className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
-                        theme === 'dark'
-                          ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue'
-                          : 'bg-white border-emerald-200 focus:ring-strong-green'
-                      }`}
-                      style={{
-                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
-                        backgroundSize: '1.25em',
-                        paddingRight: '2.5rem',
-                      }}
-                    >
-                      <option value="">Select</option>
-                      <option value="2-3-times">2-3/week</option>
-                      <option value="4-5-times">4-5/week</option>
-                      <option value="6-7-times">6-7/week</option>
-                      <option value="daily">Daily</option>
-                    </select>
-                  </div>
-                </div>
-                {/* Message */}
+
+                {/* Age */}
                 <div>
-                  <Label htmlFor="mobile-message" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Message</Label>
-                  <textarea
-                    id="mobile-message"
-                    name="message"
-                    rows={2}
-                    value={formData.message}
+                  <Label htmlFor="mobile-age" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Age *</Label>
+                  <Input
+                    id="mobile-age"
+                    name="age"
+                    type="number"
+                    required
+                    min="18"
+                    max="99"
+                    value={formData.age}
                     onChange={handleChange}
-                    placeholder="Your fitness journey..."
-                    className={`w-full px-2 py-2 text-xs rounded-lg focus:ring-2 focus:border-transparent resize-none ${
+                    className={`w-full px-3 py-2 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent ${
                       theme === 'dark'
-                        ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue placeholder:text-gray-400'
-                        : 'bg-white border-emerald-200 focus:ring-strong-green'
+                        ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue hover:border-electric-blue/70'
+                        : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
+                    }`}
+                    placeholder="Your age"
+                  />
+                </div>
+
+                {/* Struggle */}
+                <div>
+                  <Label htmlFor="mobile-struggle" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>What do you struggle the most with in fitness? *</Label>
+                  <textarea
+                    id="mobile-struggle"
+                    name="struggle"
+                    rows={3}
+                    required
+                    value={formData.struggle}
+                    onChange={handleChange}
+                    placeholder="Please share your fitness challenges..."
+                    className={`w-full px-3 py-2 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent resize-none ${
+                      theme === 'dark'
+                        ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue hover:border-electric-blue/70'
+                        : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
                     }`}
                   />
                 </div>
+
+                {/* Previous Coaching */}
+                <div>
+                  <Label htmlFor="mobile-previousCoaching" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>Have you worked with coaches and paid programs before? *</Label>
+                  <div className="flex space-x-4 mt-1">
+                    <label className={`flex items-center space-x-2 cursor-pointer ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                      <input
+                        type="radio"
+                        name="previousCoaching"
+                        value="Yes"
+                        checked={formData.previousCoaching === "Yes"}
+                        onChange={handleChange}
+                        className={`form-radio h-4 w-4 ${
+                          theme === 'dark'
+                            ? 'text-electric-blue focus:ring-electric-blue'
+                            : 'text-strong-green focus:ring-strong-green'
+                        }`}
+                      />
+                      <span className="text-xs">Yes</span>
+                    </label>
+                    <label className={`flex items-center space-x-2 cursor-pointer ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                      <input
+                        type="radio"
+                        name="previousCoaching"
+                        value="No"
+                        checked={formData.previousCoaching === "No"}
+                        onChange={handleChange}
+                        className={`form-radio h-4 w-4 ${
+                          theme === 'dark'
+                            ? 'text-electric-blue focus:ring-electric-blue'
+                            : 'text-strong-green focus:ring-strong-green'
+                        }`}
+                      />
+                      <span className="text-xs">No</span>
+                    </label>
+                  </div>
+                </div>
+
+                {/* Investment Level */}
+                <div>
+                  <Label htmlFor="mobile-investmentLevel" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+                    How committed are you to invest in yourself to transform your life? *
+                  </Label>
+                  <select
+                    id="mobile-investmentLevel"
+                    name="investmentLevel"
+                    required
+                    value={formData.investmentLevel}
+                    onChange={handleChange}
+                    className={`w-full px-2 py-2 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
+                      theme === 'dark'
+                        ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue hover:border-electric-blue/70'
+                        : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
+                    }`}
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                      backgroundSize: '1.25em',
+                      paddingRight: '2.5rem',
+                    }}
+                  >
+                    <option value="">Select your investment level</option>
+                    <option value="₹0 - Just exploring, I'm not ready.">₹0 - Just exploring, I'm not ready.</option>
+                    <option value="₹15,000 - Ready Looking for DIY/low cost programs.">₹15,000 - Ready Looking for DIY/low cost programs.</option>
+                    <option value="₹50,000 - I'm serious, just need some clarity.">₹50,000 - I'm serious, just need some clarity.</option>
+                    <option value="₹80,000+ - I'm ready to transform all out.">₹80,000+ - I'm ready to transform all out.</option>
+                  </select>
+                </div>
+
+                {/* Referral Source */}
+                <div>
+                  <Label htmlFor="mobile-referralSource" className={`text-xs font-medium mb-1 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+                    How did you come across my service? *
+                  </Label>
+                  <select
+                    id="mobile-referralSource"
+                    name="referralSource"
+                    required
+                    value={formData.referralSource}
+                    onChange={handleChange}
+                    className={`w-full px-2 py-2 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
+                      theme === 'dark'
+                        ? 'bg-zinc-800 border-zinc-700 text-white focus:ring-electric-blue hover:border-electric-blue/70'
+                        : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
+                    }`}
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                      backgroundSize: '1.25em',
+                      paddingRight: '2.5rem',
+                    }}
+                  >
+                    <option value="">Select referral source</option>
+                    <option value="Friend/Family">Friend/Family</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Email">Email</option>
+                    <option value="YouTube">YouTube</option>
+                  </select>
+                </div>
+
                 {/* Submit */}
                 <button
                   type="submit"
@@ -454,53 +472,32 @@ const ContactForm = () => {
                       Start Your
                     </span> <span className={`${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`}>Transformation</span>
                   </h3>
-                  {/* <p className={`text-sm font-helvetica ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-                    Fill out the form below and let's begin your journey together.
-                  </p> */}
                 </div>
-                <form onSubmit={handleSubmit} className="space-y-2">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="firstName" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                        First Name *
-                      </Label>
-                      <Input
-                        id="firstName"
-                        name="firstName"
-                        type="text"
-                        required
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent border-2 transition-all duration-200 ${
-                          theme === 'dark' 
-                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue hover:border-electric-blue/50' 
-                            : 'border-electric-blue-100 focus:ring-electric-blue-400 hover:border-electric-blue-300'
-                        }`}
-                        placeholder="Your first name"
-                      />
-                    </div>
-                    
-                    <div>
-                      <Label htmlFor="lastName" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
-                        Last Name *
-                      </Label>
-                      <Input
-                        id="lastName"
-                        name="lastName"
-                        type="text"
-                        required
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent border-2 transition-all duration-200 ${
-                          theme === 'dark' 
-                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue hover:border-electric-blue/50' 
-                            : 'border-electric-blue-100 focus:ring-electric-blue-400 hover:border-electric-blue-300'
-                        }`}
-                        placeholder="Your last name"
-                      />
-                    </div>
+                
+                {/* Updated Desktop Form */}
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Name */}
+                  <div>
+                    <Label htmlFor="name" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                      Name *
+                    </Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent border-2 transition-all duration-200 ${
+                        theme === 'dark' 
+                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue hover:border-electric-blue/50' 
+                          : 'border-electric-blue-100 focus:ring-electric-blue-400 hover:border-electric-blue-300'
+                      }`}
+                      placeholder="Your full name"
+                    />
                   </div>
                   
+                  {/* Email */}
                   <div>
                     <Label htmlFor="email" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
                       Email Address *
@@ -521,6 +518,7 @@ const ContactForm = () => {
                     />
                   </div>
                   
+                  {/* Phone & Age */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="phone" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
@@ -546,132 +544,38 @@ const ContactForm = () => {
                       <Label htmlFor="age" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
                         Age *
                       </Label>
-                      <select
+                      <Input
                         id="age"
                         name="age"
+                        type="number"
+                        min="18"
+                        max="99"
                         required
                         value={formData.age}
                         onChange={handleChange}
-                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
+                        className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent border-2 transition-all duration-200 ${
                           theme === 'dark' 
-                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
-                            : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
+                            ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue hover:border-electric-blue/50' 
+                            : 'border-electric-blue-100 focus:ring-electric-blue-400 hover:border-electric-blue-300'
                         }`}
-                        style={{
-                          backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
-                          backgroundSize: '1.5em',
-                          paddingRight: '2.5rem',
-                        }}
-                      >
-                        <option value="">Select Age Range</option>
-                        <option value="18-25">18-25 years</option>
-                        <option value="26-35">26-35 years</option>
-                        <option value="36-45">36-45 years</option>
-                        <option value="46-55">46-55 years</option>
-                        <option value="56+">56+ years</option>
-                      </select>
+                        placeholder="Your age"
+                      />
                     </div>
                   </div>
                   
+                  {/* Struggle */}
                   <div>
-                    <Label htmlFor="goal" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
-                      Primary Fitness Goal *
-                    </Label>
-                    <select
-                      id="goal"
-                      name="goal"
-                      required
-                      value={formData.goal}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
-                        theme === 'dark' 
-                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
-                          : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
-                      }`}
-                      style={{
-                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
-                        backgroundSize: '1.5em',
-                        paddingRight: '2.5rem',
-                      }}
-                    >
-                      <option value="">Select Your Goal</option>
-                      <option value="weight-loss">Weight Loss</option>
-                      <option value="muscle-gain">Muscle Gain</option>
-                      <option value="strength">Strength Building</option>
-                      <option value="endurance">Endurance</option>
-                      <option value="overall-fitness">Overall Fitness</option>
-                      <option value="body-toning">Body Toning</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="fitnessLevel" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
-                      Current Fitness Level *
-                    </Label>
-                    <select
-                      id="fitnessLevel"
-                      name="fitnessLevel"
-                      required
-                      value={formData.fitnessLevel}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
-                        theme === 'dark' 
-                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
-                          : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
-                      }`}
-                      style={{
-                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
-                        backgroundSize: '1.5em',
-                        paddingRight: '2.5rem',
-                      }}
-                    >
-                      <option value="">Select Your Level</option>
-                      <option value="beginner">Beginner</option>
-                      <option value="intermediate">Intermediate</option>
-                      <option value="advanced">Advanced</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="workoutFrequency" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
-                      Workout Frequency *
-                    </Label>
-                    <select
-                      id="workoutFrequency"
-                      name="workoutFrequency"
-                      required
-                      value={formData.workoutFrequency}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
-                        theme === 'dark' 
-                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
-                          : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
-                      }`}
-                      style={{
-                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
-                        backgroundSize: '1.5em',
-                        paddingRight: '2.5rem',
-                      }}
-                    >
-                      <option value="">How often can you workout?</option>
-                      <option value="2-3-times">2-3 times per week</option>
-                      <option value="4-5-times">4-5 times per week</option>
-                      <option value="6-7-times">6-7 times per week</option>
-                      <option value="daily">Daily</option>
-                    </select>
-                  </div>
-                  
-                  <div>
-                    <Label htmlFor="message" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
-                      Message (Optional)
+                    <Label htmlFor="struggle" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+                      What do you struggle the most with in fitness? *
                     </Label>
                     <textarea
-                      id="message"
-                      name="message"
-                      rows={3}
-                      value={formData.message}
+                      id="struggle"
+                      name="struggle"
+                      rows={2}
+                      required
+                      value={formData.struggle}
                       onChange={handleChange}
-                      placeholder="Tell us about your fitness journey..."
+                      placeholder="Please share your fitness challenges in detail..."
                       className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent resize-none border-2 transition-all duration-200 ${
                         theme === 'dark' 
                           ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue hover:border-electric-blue/50' 
@@ -680,10 +584,110 @@ const ContactForm = () => {
                     />
                   </div>
                   
+                  {/* Previous Coaching */}
+                  <div>
+                    <Label className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+                      Have you worked with coaches and paid programs before? *
+                    </Label>
+                    <div className="flex space-x-6 mt-1">
+                      <label className={`flex items-center space-x-2 cursor-pointer ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                        <input
+                          type="radio"
+                          name="previousCoaching"
+                          value="Yes"
+                          checked={formData.previousCoaching === "Yes"}
+                          onChange={handleChange}
+                          className={`form-radio h-5 w-5 ${
+                            theme === 'dark'
+                              ? 'text-electric-blue focus:ring-electric-blue'
+                              : 'text-strong-green focus:ring-strong-green'
+                          }`}
+                          required
+                        />
+                        <span className="text-sm">Yes</span>
+                      </label>
+                      <label className={`flex items-center space-x-2 cursor-pointer ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
+                        <input
+                          type="radio"
+                          name="previousCoaching"
+                          value="No"
+                          checked={formData.previousCoaching === "No"}
+                          onChange={handleChange}
+                          className={`form-radio h-5 w-5 ${
+                            theme === 'dark'
+                              ? 'text-electric-blue focus:ring-electric-blue'
+                              : 'text-strong-green focus:ring-strong-green'
+                          }`}
+                        />
+                        <span className="text-sm">No</span>
+                      </label>
+                    </div>
+                  </div>
+                  
+                  {/* Investment Level */}
+                  <div>
+                    <Label htmlFor="investmentLevel" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+                      How committed are you to invest in yourself to transform your life? *
+                    </Label>
+                    <select
+                      id="investmentLevel"
+                      name="investmentLevel"
+                      required
+                      value={formData.investmentLevel}
+                      onChange={handleChange}
+                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
+                        theme === 'dark' 
+                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
+                          : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
+                      }`}
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                        backgroundSize: '1.5em',
+                        paddingRight: '2.5rem',
+                      }}
+                    >
+                      <option value="">Select your investment level</option>
+                      <option value="₹0 - Just exploring, I'm not ready.">₹0 - Just exploring, I'm not ready.</option>
+                      <option value="₹15,000 - Ready Looking for DIY/low cost programs.">₹15,000 - Ready Looking for DIY/low cost programs.</option>
+                      <option value="₹50,000 - I'm serious, just need some clarity.">₹50,000 - I'm serious, just need some clarity.</option>
+                      <option value="₹80,000+ - I'm ready to transform all out.">₹80,000+ - I'm ready to transform all out.</option>
+                    </select>
+                  </div>
+                  
+                  {/* Referral Source */}
+                  <div>
+                    <Label htmlFor="referralSource" className={`text-sm font-medium mb-2 block ${theme === 'dark' ? 'text-white' : 'text-gray-700'}`}>
+                      How did you come across my service? *
+                    </Label>
+                    <select
+                      id="referralSource"
+                      name="referralSource"
+                      required
+                      value={formData.referralSource}
+                      onChange={handleChange}
+                      className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent appearance-none bg-no-repeat bg-right ${
+                        theme === 'dark' 
+                          ? 'bg-zinc-700 border-zinc-600 text-white focus:ring-electric-blue' 
+                          : 'border border-electric-blue-200 bg-white focus:ring-electric-blue-400'
+                      }`}
+                      style={{
+                        backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${theme === 'dark' ? 'white' : 'gray'}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+                        backgroundSize: '1.5em',
+                        paddingRight: '2.5rem',
+                      }}
+                    >
+                      <option value="">Select referral source</option>
+                      <option value="Friend/Family">Friend/Family</option>
+                      <option value="Instagram">Instagram</option>
+                      <option value="Email">Email</option>
+                      <option value="YouTube">YouTube</option>
+                    </select>
+                  </div>
+                  
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed mt-1 mb-0"
+                    className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed mt-2 mb-0"
                   >
                     {isSubmitting ? 'SUBMITTING...' : 'START MY TRANSFORMATION'}
                   </button>

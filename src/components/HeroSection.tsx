@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useIsMobile } from '../hooks/use-mobile';
 import { useTheme } from '../hooks/use-theme';
+import AnimatedHeroText from './AnimatedHeroText'; // Import the new animated component
 
 const HeroSection = () => {
   const isMobile = useIsMobile();
@@ -98,22 +99,7 @@ const HeroSection = () => {
             </div>
             
             <div className="text-white mt-4 opacity-0" style={{animation: "fadeIn 1.5s ease-in-out 1.6s forwards"}}>
-              <div className="flex flex-col items-start space-y-2">
-                <div className="flex items-center justify-center">
-                  <span className="text-sm font-bold">RESPECT</span>
-                  <span className="text-lg font-bold mx-2">+</span>
-                  <span className="text-sm font-bold">CONFIDENCE</span>
-                </div>
-                <div className="flex items-center justify-center">
-                  <span className="text-sm font-bold">HEALTH</span>
-                  <span className="text-lg font-bold mx-2">+</span>
-                  <span className="text-sm font-bold">RELATIONSHIPS</span>
-                  <span className="text-lg font-bold mx-2">=</span>
-                  <span className={`text-sm font-bold ${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'}`} style={{
-                    color: theme === 'dark' ? 'hsl(142, 71%, 50%)' : 'hsl(142, 71%, 60%)'
-                  }}>BETTER YOU</span>
-                </div>
-              </div>
+              <AnimatedHeroText />
             </div>
             
             <div className="pt-2 opacity-0" style={{animation: "fadeIn 1.5s ease-in-out 1.9s forwards"}}>
@@ -172,22 +158,8 @@ const HeroSection = () => {
               </p>
             </div>
             <div className="flex flex-col items-start space-y-6">
-              <div className={`flex flex-row justify-start items-center space-x-6 text-2xl font-extrabold font-helvetica ${
-                theme === 'dark' ? 'text-white' : 'text-white'
-              }`}>
-                <span className="opacity-0" style={{animation: "fadeIn 0.8s ease-in-out 1.8s forwards"}}> <span className='opacity-80'>RESPECT</span></span>
-                <span className="text-3xl font-extrabold mx-4 opacity-0" style={{animation: "fadeIn 0.8s ease-in-out 1.9s forwards"}}>+</span>
-                <span className="opacity-0" style={{animation: "fadeIn 0.8s ease-in-out 2.0s forwards"}}><span className='opacity-80'>CONFIDENCE</span></span>
-                <span className="text-3xl font-extrabold mx-4 opacity-0" style={{animation: "fadeIn 0.8s ease-in-out 2.1s forwards"}}>+</span>
-                <span className="opacity-0" style={{animation: "fadeIn 0.8s ease-in-out 2.2s forwards"}}><span className='opacity-80'>HEALTH</span></span>
-                <span className="text-3xl font-extrabold mx-4 opacity-0" style={{animation: "fadeIn 0.8s ease-in-out 2.3s forwards"}}>+</span>
-                <span className="opacity-0" style={{animation: "fadeIn 0.8s ease-in-out 2.4s forwards"}}><span className='opacity-80'>RELATIONSHIPS</span></span>
-                <span className="text-3xl font-extrabold mx-4 opacity-0" style={{animation: "fadeIn 0.8s ease-in-out 2.5s forwards"}}>=</span>
-                <span className="opacity-0" style={{animation: "fadeIn 0.8s ease-in-out 2.6s forwards"}}>
-                  <span className={`${theme === 'dark' ? 'text-electric-blue' : 'text-strong-green'} font-bold`} style={{
-                    color: theme === 'dark' ? 'hsl(142, 71%, 50%)' : 'hsl(142, 71%, 60%)'
-                  }}>BETTER YOU</span>
-                </span>
+              <div className="opacity-0" style={{animation: "fadeIn 0.8s ease-in-out 1.8s forwards"}}>
+                <AnimatedHeroText />
               </div>
               <div className="opacity-0" style={{animation: "fadeIn 1.5s ease-in-out 2.7s forwards"}}>
                 <button 
