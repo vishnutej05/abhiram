@@ -98,7 +98,7 @@ const HeroSection = () => {
               </p>
             </div>
             
-            <div className="text-white mt-4 opacity-0" style={{animation: "fadeIn 1.5s ease-in-out 1.6s forwards"}}>
+            <div className="text-left w-full mt-4 opacity-0" style={{animation: "fadeIn 1.5s ease-in-out 1.6s forwards"}}>
               <AnimatedHeroText />
             </div>
             

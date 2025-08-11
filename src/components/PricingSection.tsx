@@ -72,7 +72,7 @@ const PricingSection = () => {
       {/* Mobile & Tablet Section - Completely Separate */}
       <section className={`block lg:hidden seamless-section relative overflow-hidden pb-0 ${
         theme === 'dark' 
-          ? 'bg-gradient-to-br from-black via-zinc-900 to-neutral-900' 
+          ? 'bg-zinc-900 bg-opacity-95' 
           : 'bg-white'
       }`}>
         <div className="max-w-7xl mx-auto section-padding relative z-10">
