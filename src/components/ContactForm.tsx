@@ -58,10 +58,14 @@ const ContactForm = () => {
     setSubmitStatus('idle');
 
     try {
-      // Create a form element to submit via hidden iframe
+      // New Google Sheets App Script deployment URL
+      // You'll need to replace this with your new deployment URL after setting up the script
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzo1aYOXY5coarz5tlDytrwfCtfhIE9rtjuIFtdd_eCtfK3_uS6ejD8l3DNYjbTLBLRRA/exec';
+      
+      // Create a form element to submit via hidden iframe - this method avoids CORS issues
       const form = document.createElement('form');
       form.method = 'POST';
-      form.action = 'https://script.google.com/macros/s/AKfycbzfrJdQFZ8GFIXl0_YdfSHfEMlJ3majThjcpBd3IQzjCxWHRy9I7f25NFA4G4B9lSTlpQ/exec'; // Replace with your actual script ID
+      form.action = scriptURL;
       form.target = 'hidden-iframe';
       form.style.display = 'none';
 
