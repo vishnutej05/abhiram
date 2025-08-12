@@ -113,7 +113,7 @@ const TransformationsSection = () => {
       {/* Mobile & Tablet Section - Completely Separate */}
       <section className={`block lg:hidden seamless-section ${
         theme === 'dark' 
-          ? 'bg-[rgb(24,24,27)]'
+          ? 'bg-black/60 bg-opacity-90'
           : 'soft-blush'
       } relative overflow-hidden`}>
         
@@ -155,7 +155,7 @@ const TransformationsSection = () => {
                           className="w-full h-full object-contain"
                         />
                         <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
-                          <span className="text-black px-2 py-1 rounded-full text-xs font-bold bg-white shadow-md">BEFORE</span>
+                          <span className={`theme === 'dark' ? 'text-white' : 'text-black'} px-2 py-1 rounded-full text-xs font-bold bg-white shadow-md`}>BEFORE</span>
                         </div>
                       </div>
                       <div className="w-1/2 relative">
@@ -165,7 +165,7 @@ const TransformationsSection = () => {
                           className="w-full h-full object-contain"
                         />
                         <div className="absolute top-2 right-2 sm:top-3 sm:right-3">
-                          <span className="text-black px-2 py-1 rounded-full text-xs font-bold bg-white shadow-md">AFTER</span>
+                          <span className={`theme === 'dark' ? 'text-white' : 'text-black'} px-2 py-1 rounded-full text-xs font-bold bg-white shadow-md`}>AFTER</span>
                         </div>
                       </div>
                     </div>
@@ -226,7 +226,7 @@ const TransformationsSection = () => {
                   </div>
                   <div className="space-y-1 sm:space-y-2">
                     <div className={`text-sm sm:text-lg font-bold font-helvetica ${
-                      theme === 'dark' ? 'text-electric-blue' : 'text-black'
+                      theme === 'dark' ? 'text-white' : 'text-black'
                     }`}>
                       {transformations[mobileCarouselIndex].testimonial}
                     </div>
@@ -266,12 +266,12 @@ const TransformationsSection = () => {
       {/* Desktop Section - Original Layout */}
       <section className={`hidden lg:block relative overflow-hidden ${
         theme === 'dark'
-          ? 'bg-zinc-900 bg-opacity-95'
+          ? 'bg-black/60 bg-opacity-90'
           : 'bg-white'
       }`}>
         {/* Desktop Background Image with overlay for dark theme */}
         {theme === 'dark' && (
-          <div className="bg-zinc-900 bg-opacity-95"></div>
+          <div className="bg-black/60 bg-opacity-90"></div>
         )}
         
         <div className="max-w-7xl mx-auto pt-20 pb-10 px-8 relative z-10 capitalize">

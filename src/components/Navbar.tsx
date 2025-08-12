@@ -11,7 +11,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       // Change navbar background after scrolling 100px
-      const isScrolled = window.scrollY > 100;
+      const isScrolled = window.scrollY > 1100;
       if (isScrolled !== scrolled) {
         setScrolled(isScrolled);
       }
@@ -27,10 +27,45 @@ const Navbar = () => {
   }, [scrolled]);
 
   const scrollToSection = (id: string) => {
+    // Special case for hero section
+    if (id === 'hero') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      setMenuOpen(false);
+      return;
+    }
+    
+    // Try with the original ID first
     const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    
+    // If not found, try alternative IDs for problematic sections
+    let targetElement = element;
+    if (!targetElement && id === 'about') {
+      // Try common alternative IDs for the about section
+      const alternativeIds = ['about-section', 'aboutSection', 'about-me'];
+      for (const altId of alternativeIds) {
+        const alt = document.getElementById(altId);
+        if (alt) {
+          targetElement = alt;
+          break;
+        }
+      }
+    }
+    
+    if (targetElement) {
+      // Use a more reliable scrolling method with offset
+      const yOffset = -80; // Adjust based on navbar height
+      const y = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      
+      window.scrollTo({
+        top: y,
+        behavior: 'smooth'
+      });
       setMenuOpen(false); // Close menu after navigation
+    } else {
+      console.error(`Could not find section with ID "${id}" or its alternatives`);
     }
   };
 
@@ -55,17 +90,24 @@ const Navbar = () => {
     >
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex items-center justify-between h-16 md:h-20">
-        {/* Logo */}
+        {/* Logo - Updated to scroll to hero section */}
         <div className="flex-shrink-0">
-        <Link to="/" className="flex items-center">
-          <img 
-          src="/lovable-uploads/themight MAIN LOGO SVG.png" 
-          alt="themight logo" 
-          className={`h-7 md:h-10 w-auto ${
-            theme === 'dark' ? 'invert brightness-200' : 'invert brightness-200'
-          }`}
-          />
-        </Link>
+          <div 
+            onClick={() => scrollToSection('hero')} 
+            className="flex items-center cursor-pointer"
+          >
+            <img 
+              src="/lovable-uploads/themight MAIN LOGO SVG.png" 
+              alt="themight logo" 
+              className={`h-7 md:h-10 w-auto transition-all duration-300 ${
+                theme === 'dark' 
+                  ? 'invert brightness-200' // Always light in dark theme
+                  : scrolled 
+                    ? 'invert-0' // Dark logo when scrolled in light theme
+                    : 'invert brightness-200' // Light logo at top in light theme
+              }`}
+            />
+          </div>
         </div>
         
         {/* Desktop Navigation - Centered */}
@@ -75,10 +117,13 @@ const Navbar = () => {
           <div key={item.id} className="relative group">
             <button 
             onClick={() => scrollToSection(item.id)}
-            className={`${theme === 'dark' 
-              ? 'text-gray-300 hover:text-electric-blue' 
-              : 'text-gray-300 hover:text-strong-green'
-            } transition-colors font-bold text-base lg:text-lg py-2 px-2 rounded-md hover:bg-white/10`}
+            className={`transition-colors font-bold text-base lg:text-lg py-2 px-2 rounded-md hover:bg-white/10 ${
+              theme === 'dark' 
+                ? 'text-gray-300 hover:text-electric-blue' 
+                : scrolled 
+                  ? 'text-gray-800 hover:text-strong-green' 
+                  : 'text-gray-300 hover:text-strong-green'
+            }`}
             >
             {item.label}
             </button>
@@ -121,7 +166,13 @@ const Navbar = () => {
         </div>
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className={`${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-800 hover:text-black'} ml-2`}
+          className={`ml-2 ${
+            theme === 'dark' 
+              ? 'text-gray-300 hover:text-white' 
+              : scrolled 
+                ? 'text-gray-800 hover:text-black' 
+                : 'text-gray-300 hover:text-white'
+          }`}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
           <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -143,11 +194,13 @@ const Navbar = () => {
           <button 
             key={item.id}
             onClick={() => scrollToSection(item.id)}
-            className={`${
+            className={`transition-colors font-bold py-3 px-4 rounded-md text-left text-base ${
             theme === 'dark'
               ? 'text-gray-300 hover:text-electric-blue hover:bg-black/20' 
-              : 'text-gray-700 hover:text-strong-green hover:bg-strong-green/10'
-            } transition-colors font-bold py-3 px-4 rounded-md text-left text-base`}
+              : scrolled
+                ? 'text-gray-800 hover:text-strong-green hover:bg-strong-green/10'
+                : 'text-gray-300 hover:text-strong-green hover:bg-strong-green/10'
+            }`}
           >
             {item.label}
           </button>

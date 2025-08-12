@@ -72,7 +72,7 @@ const PricingSection = () => {
       {/* Mobile & Tablet Section - Completely Separate */}
       <section className={`block lg:hidden seamless-section relative overflow-hidden pb-0 ${
         theme === 'dark' 
-          ? 'bg-zinc-900 bg-opacity-95' 
+          ? 'bg-black/60 bg-opacity-90'
           : 'bg-white'
       }`}>
         <div className="max-w-7xl mx-auto section-padding relative z-10">
@@ -186,7 +186,7 @@ const PricingSection = () => {
       {/* Desktop Section - Completely Separate */}
       <section className={`hidden lg:block seamless-section relative overflow-hidden pb-0 ${
         theme === 'dark' 
-          ? 'bg-zinc-900 bg-opacity-95' 
+          ? 'bg-black/60 bg-opacity-90' 
           : 'bg-white'
       }`}>
         <div className="max-w-7xl mx-auto section-padding relative z-10">

@@ -37,7 +37,7 @@ const AboutSection = () => {
   const transformationJourney = [
     {
       id: 1,
-      image: "/lovable-uploads/J1.jpg",
+      image: "/lovable-uploads/J1.png",
       title: "Day Zero",
       year: "2017",
       description: "Just a scrawny kid, tired and scared, but something inside me knew it was time. No more excuses.",
@@ -94,9 +94,9 @@ const AboutSection = () => {
   }, [transformationJourney.length]);
 
   return (
-    <section ref={sectionRef} className={`relative min-h-screen overflow-hidden ${
+    <section id="about" ref={sectionRef} className={`relative min-h-screen overflow-hidden ${
       theme === 'dark' 
-        ? 'bg-zinc-900 bg-opacity-95' 
+        ? 'bg-black/60 bg-opacity-90' 
         : 'bg-white'
     }`}>
       <div className="max-w-7xl mx-auto px-6 pt-20 pb-10">
@@ -127,7 +127,7 @@ const AboutSection = () => {
                         : 'bg-white border border-gray-200 shadow-md'
                     } rounded-xl overflow-hidden opacity-0 ${
                       isActive 
-                        ? 'animate-simpleFade shadow-lg' 
+                        ? 'animate-simpleFade shadow-xl' 
                         : ''
                     }`}
                     style={{
@@ -137,13 +137,13 @@ const AboutSection = () => {
                   >
                     <div className="relative">
                       {/* Full-size Image */}
-                      <div className="relative w-full overflow-hidden" style={{height: "180px"}}>
+                      <div className="relative w-full overflow-hidden rounded-t-xl" style={{height: "220px"}}>
                         <img 
                           src={stage.image}
                           alt={`Abhiram's transformation - ${stage.title}`}
-                          className="w-full h-full object-cover object-center"
+                          className="w-full h-full object-cover object-center scale-125"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
                         
                         {/* Year Badge as a small overlay on image */}
                         <div className="absolute top-3 right-3 z-10">
@@ -182,22 +182,6 @@ const AboutSection = () => {
                       </p>
                     </div>
                   </div>
-
-                  {/* Add journey scroll indicator after first card with improved styling */}
-                  {/* {index === 0 && (
-                    <div className="flex flex-col items-center py-3 my-0">
-                      <div className={`flex items-center gap-2 px-5 py-2 rounded-full ${
-                        theme === 'dark'
-                          ? 'bg-zinc-900/90 border border-electric-blue/30 shadow-md'
-                          : 'bg-white shadow-sm border border-electric-blue/20'
-                      }`}>
-                        <p className="text-xs text-electric-blue font-medium">
-                          Keep scrolling for more
-                        </p>
-                        <ChevronDown className="text-electric-blue w-4 h-4 animate-bounce" />
-                      </div>
-                    </div>
-                  )} */}
                   
                   {/* Reduced spacing and added a thin line divider between cards */}
                   {index < transformationJourney.length - 1 && (
@@ -313,14 +297,14 @@ const AboutSection = () => {
                           </div>
 
                           {/* Image Container */}
-                          <div className="relative group mb-6">
+                          <div className="relative mb-6">
                             <div className="overflow-hidden rounded-3xl shadow-2xl h-96 w-full">
                               <img 
                                 src={stage.image}
                                 alt={`Abhiram's transformation - ${stage.title}`}
-                                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                                className="w-full h-full object-cover object-center scale-110"
                               />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                              {/* <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-70" /> */}
                             </div>
                           </div>
                         </div>
@@ -378,14 +362,14 @@ const AboutSection = () => {
                           </div>
 
                           {/* Image Container */}
-                          <div className="relative group mb-6">
+                          <div className="relative mb-6">
                             <div className="overflow-hidden rounded-3xl shadow-2xl h-96 w-full">
                               <img 
                                 src={stage.image}
                                 alt={`Abhiram's transformation - ${stage.title}`}
-                                className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                                className="w-full h-full object-cover object-center scale-110"
                               />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                              {/* <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-70" /> */}
                             </div>
                           </div>
                         </div>

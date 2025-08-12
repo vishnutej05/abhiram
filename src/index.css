@@ -525,6 +525,26 @@ All colors MUST be HSL.
   animation: pulse-slow 3s ease-in-out infinite;
 }
 
+@keyframes shimmer-slow {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer-slow {
+  animation: shimmer-slow 2.5s linear infinite;
+}
+
+@keyframes shimmer-fast {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer-fast {
+  animation: shimmer-fast 1.5s linear infinite;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -541,4 +561,29 @@ All colors MUST be HSL.
 .fade-in-only {
   opacity: 1 !important;
   transition: opacity 1.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* Text shadow utilities for enhanced hover effects */
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-md {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), 0 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.dark .text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+.dark .text-shadow-md {
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.15);
+}
+
+.dark .text-shadow-lg {
+  text-shadow: 0 4px 8px rgba(255, 255, 255, 0.2), 0 2px 3px rgba(255, 255, 255, 0.1);
 }

@@ -177,7 +177,7 @@ const ContactForm = () => {
           ref={sectionRef}
           className={`lg:hidden seamless-section min-h-[100vh] py-12 flex flex-col ${
             theme === 'dark'
-              ? 'bg-zinc-900 bg-opacity-95'
+              ? 'bg-black/60 bg-opacity-90'
               : 'bg-gradient-to-br from-slate-50 via-white to-emerald-50'
           } relative overflow-hidden`}
         >
@@ -441,7 +441,7 @@ const ContactForm = () => {
         </section>  
         
         {/* Desktop Section - Completely Separate */}
-        <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'bg-zinc-900 bg-opacity-95' : 'bg-white'}`}>
+        <section className={`hidden lg:block seamless-section ${theme === 'dark' ? 'bg-black/60 bg-opacity-90' : 'bg-white'}`}>
           <div className="w-full py-12">
             <div className="text-center mb-12">
               <h2 className={`text-4xl md:text-5xl font-bold mb-4 font-formom font-helvetica ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>

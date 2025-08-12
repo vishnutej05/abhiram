@@ -5,11 +5,14 @@ const Footer = () => {
   const { theme } = useTheme();
   
   return (
-    <footer className={`border-t ${
+    <footer className={`relative ${
       theme === 'dark' 
-        ? 'bg-zinc-900 border-zinc-800' 
-        : 'bg-slate-50 border-slate-200'
+        ? 'bg-gradient-to-b from-black to-black/90' 
+        : 'bg-slate-50 border-t border-slate-200'
     } py-8`}>
+      {theme === 'dark' && (
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-zinc-800 via-zinc-500 to-zinc-800"></div>
+      )}
       <div className="max-w-4xl mx-auto px-4">
         {/* Main Footer Content - Simplified */}
         <div className="flex flex-col items-center space-y-4">

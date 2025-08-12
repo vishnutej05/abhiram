@@ -13,14 +13,14 @@ const VSLSection = () => {
   return (
     <section id="vsl" className={`pt-4 pb-8 md:pt-6 md:pb-12 relative overflow-hidden ${
       theme === 'dark' 
-        ? 'bg-zinc-900 bg-opacity-95' 
+        ? 'bg-black/60 bg-opacity-90' 
         : 'bg-white'
     }`}>
       <div className="relative z-10 w-full flex flex-col items-center justify-center mx-auto px-0 sm:px-2 lg:px-4 text-center pt-4">
         {/* YouTube Video */}
         <div className={`aspect-video max-w-4xl w-full max-h-[400px] md:max-h-[480px] rounded-xl md:rounded-3xl overflow-hidden shadow-2xl flex justify-center items-center ${
           theme === 'dark' 
-            ? '' 
+            ? 'border border-zinc-600/80' 
             : ''
         }`} style={{ background: 'none', marginBottom: '1.5rem' }}>
           <iframe

@@ -54,7 +54,7 @@ const FAQSection = () => {
 			id="faq"
 			className={`pt-16 pb-20 ${
 				theme === 'dark'
-					? 'bg-zinc-900 bg-opacity-95'
+					? 'bg-black/60 bg-opacity-90'
 					: 'bg-gradient-to-b from-slate-50 to-white'
 			}`}
 		>
