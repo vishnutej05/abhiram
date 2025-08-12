@@ -32,9 +32,9 @@ const HeroSection = () => {
     }`}>
       {/* Desktop Background Image (hidden on mobile) */}
       <div 
-        className="absolute inset-0 bg-cover bg-no-repeat hidden md:block mt-8"
+        className="absolute inset-0 bg-cover bg-no-repeat hidden md:block"
         style={{
-          backgroundImage: 'url(/lovable-uploads/hero1.png)',
+          backgroundImage: 'url(/lovable-uploads/hero2.png)',
           backgroundPosition: 'right center',
           backgroundSize: 'cover',
           transition: 'opacity 0.5s ease-in-out',
