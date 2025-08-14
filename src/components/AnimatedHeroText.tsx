@@ -47,12 +47,12 @@ const AnimatedHeroText = () => {
           onMouseLeave={() => setIsHovered(false)}
         >
           <div 
-            className={`absolute inset-0 flex items-center justify-start font-bold text-lg transition-all duration-500 
+            className={`absolute inset-0 flex items-center justify-start font-bold transition-all duration-500 
               ${isAnimating ? 'opacity-0 translate-x-[-20px]' : 'opacity-100 translate-x-0'}`}
           >
             <div className="relative group">
               <span 
-                className={`${currentWord.color} font-extrabold relative z-10 
+                className={`${currentWord.color} font-extrabold text-2xl relative z-10 
                   ${pulseEffect ? 'scale-110' : 'scale-100'} 
                   ${isHovered ? 'scale-105' : ''} 
                   transition-all duration-300`}
@@ -75,17 +75,17 @@ const AnimatedHeroText = () => {
         
         {/* Equals and BETTER YOU with shimmer effect */}
         <div 
-          className="flex items-center mt-3 relative"
+          className="flex items-center mt-1 relative"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <span className={`font-bold text-lg ${theme === 'dark' ? 'text-white' : 'text-white'} relative 
+          <span className={`font-bold ${theme === 'dark' ? 'text-white' : 'text-white'} relative 
             ${isHovered ? 'scale-105' : ''} transition-transform duration-300`}>
             =
           </span>
           
           <div className="relative ml-2 overflow-hidden">
-            <span className={`font-bold text-lg text-white relative z-10 
+            <span className={`font-bold text-2xl text-white relative z-10 
               ${isHovered ? 'scale-105' : ''} transition-all duration-300`}>
               BETTER YOU
             </span>

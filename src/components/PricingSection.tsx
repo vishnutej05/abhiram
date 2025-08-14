@@ -128,7 +128,7 @@ const PricingSection = () => {
                       {featuresToShow.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-start gap-1.5">
                           <span className={`text-sm font-bold ${
-                            theme === 'dark' ? 'text-electric-blue' : 'text-mint-500'
+                            theme === 'dark' ? 'text-emerald-600' : 'text-emerald-600'
                           }`}>✓</span>
                           <span className={`text-xs sm:text-sm text-left font-helvetica leading-normal ${
                             theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'

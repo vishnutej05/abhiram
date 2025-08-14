@@ -47,7 +47,7 @@ const AboutSection = () => {
     {
       id: 2,
       image: "/lovable-uploads/J3.jpg",
-      title: "The Grind",
+      title: "The Battle",
       year: "2019",
       description: "Every rep hurt. Every meal mattered. I chose myself over comfort, discipline over instant gratification.",
       icon: Zap,
@@ -65,9 +65,9 @@ const AboutSection = () => {
     {
       id: 4,
       image: "/lovable-uploads/J4.jpg",
-      title: "The Evolution",
+      title: "The Destination",
       year: "2025",
-      description: "Not just transformed—evolved. The body changed, but the mind became unbreakable. This is just the beginning.",
+      description: "Not just transformed, Evolved. The body changed, but the mind became unbreakable. This is just the beginning.",
       icon: Trophy,
       color: theme === 'dark' ? "from-electric-blue to-amber-gold" : "from-strong-green to-amber-gold"
     }

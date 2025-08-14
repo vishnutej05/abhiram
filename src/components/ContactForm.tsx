@@ -185,7 +185,7 @@ const ContactForm = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
             style={{
-              backgroundImage: `url('/lovable-uploads/pic 2.png')`,
+              backgroundImage: `url('/lovable-uploads/form.png')`,
             }}
           ></div>
           
@@ -457,7 +457,7 @@ const ContactForm = () => {
               <div
                 className="relative h-full w-full"
                 style={{
-                  backgroundImage: "url('/lovable-uploads/Regis form.png')",
+                  backgroundImage: "url('/lovable-uploads/form.png')",
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   backgroundRepeat: 'no-repeat',
