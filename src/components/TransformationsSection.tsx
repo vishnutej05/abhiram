@@ -10,6 +10,26 @@ const TransformationsSection = () => {
 
   const transformations = [
     {
+      name: "Nabeel",
+      age: 27,
+      location: "IT Professional",
+      beforeImg: "/testimonials/Nabeel/b.JPG",
+      afterImg: "/testimonials/Nabeel/a.JPG",
+      results: "Lean & Strong Physique",
+      timeframe: "4 months",
+      testimonial: "What I love about Abhiram's approach is the clarity - no complicated theories, just proven methods that work. The results speak for themselves.",
+    },
+    {
+      name: "Karavi",
+      age: 28,
+      location: "Musician",
+      beforeImg: "/testimonials/Karavi/b.JPG",
+      afterImg: "/testimonials/Karavi/a.JPG",
+      results: "Complete Body Transformation",
+      timeframe: "5 months",
+      testimonial: "The program perfectly balanced my creative lifestyle with fitness goals. I found an approach that works with my irregular schedule and delivers lasting results.",
+    },
+    {
       name: "Ajay",
       age: 28,
       location: "Creator",
@@ -48,26 +68,6 @@ const TransformationsSection = () => {
       results: "Strength & Functional Fitness",
       timeframe: "4 months",
       testimonial: "Outstanding program that delivered exactly what I wanted - serious strength gains and functional fitness that carries over to everything I do.",
-    },
-    {
-      name: "Karavi",
-      age: 28,
-      location: "Musician",
-      beforeImg: "/testimonials/Karavi/b.JPG",
-      afterImg: "/testimonials/Karavi/a.JPG",
-      results: "Complete Body Transformation",
-      timeframe: "5 months",
-      testimonial: "The program perfectly balanced my creative lifestyle with fitness goals. I found an approach that works with my irregular schedule and delivers lasting results.",
-    },
-    {
-      name: "Nabeel",
-      age: 27,
-      location: "IT Professional",
-      beforeImg: "/testimonials/Nabeel/b.JPG",
-      afterImg: "/testimonials/Nabeel/a.JPG",
-      results: "Lean & Strong Physique",
-      timeframe: "4 months",
-      testimonial: "What I love about Abhiram's approach is the clarity - no complicated theories, just proven methods that work. The results speak for themselves.",
     },
     {
       name: "Rahul",

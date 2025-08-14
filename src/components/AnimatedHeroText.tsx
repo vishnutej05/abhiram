@@ -52,7 +52,7 @@ const AnimatedHeroText = () => {
           >
             <div className="relative group">
               <span 
-                className={`${currentWord.color} font-extrabold text-2xl relative z-10 
+                className={`${currentWord.color} font-extrabold text-3xl relative z-10 
                   ${pulseEffect ? 'scale-110' : 'scale-100'} 
                   ${isHovered ? 'scale-105' : ''} 
                   transition-all duration-300`}
@@ -85,7 +85,7 @@ const AnimatedHeroText = () => {
           </span>
           
           <div className="relative ml-2 overflow-hidden">
-            <span className={`font-bold text-2xl text-white relative z-10 
+            <span className={`font-bold text-3xl text-white relative z-10 
               ${isHovered ? 'scale-105' : ''} transition-all duration-300`}>
               BETTER YOU
             </span>
