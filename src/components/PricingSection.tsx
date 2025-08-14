@@ -148,7 +148,7 @@ const PricingSection = () => {
                           {plan.features.slice(MAX_FEATURES).map((feature, featureIndex) => (
                             <div key={featureIndex + MAX_FEATURES} className="flex items-center gap-2">
                               <span className={`text-base font-bold ${
-                                theme === 'dark' ? 'text-electric-blue' : 'text-mint-500'
+                                theme === 'dark' ? 'text-emerald-600' : 'text-emerald-600'
                               }`}>✓</span>
                               <span className={`text-sm sm:text-base text-left font-helvetica ${
                                 theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
@@ -242,7 +242,7 @@ const PricingSection = () => {
                       {plan.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-start gap-2">
                           <span className={`text-lg mt-0.5 ${
-                            theme === 'dark' ? 'text-electric-blue' : 'text-emerald-600'
+                            theme === 'dark' ? 'text-emerald-600' : 'text-emerald-600'
                           }`}>✓</span>
                           <span className={`text-sm text-left font-helvetica ${
                             theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
