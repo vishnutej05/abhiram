@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
 import { useTheme } from '../hooks/use-theme';
 
@@ -7,6 +7,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme } = useTheme();
+  const location = useLocation();
+  const navigate = useNavigate();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -26,18 +28,35 @@ const Navbar = () => {
     };
   }, [scrolled]);
 
-  const scrollToSection = (id: string) => {
-    // Special case for hero section
+  const scrollToSection = (id: string, path: string) => {
+    // Special case for hero section - set URL to homepage
     if (id === 'hero') {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
+      
+      // Update URL to homepage if not already there
+      if (location.pathname !== '/') {
+        navigate('/');
+      }
+      
       setMenuOpen(false);
       return;
     }
     
-    // Try with the original ID first
+    // Update the URL to match the section
+    if (location.pathname !== path) {
+      navigate(path);
+    }
+    
+    // If we're already handling the scroll through the route change, we can stop here
+    if (location.pathname !== '/' && location.pathname !== path) {
+      setMenuOpen(false);
+      return;
+    }
+    
+    // Handle scroll behavior directly
     const element = document.getElementById(id);
     
     // If not found, try alternative IDs for problematic sections
@@ -70,14 +89,14 @@ const Navbar = () => {
   };
 
   const navigationItems = [
-    { id: 'vsl', label: 'Video', tooltip: 'Watch transformation stories' },
-    { id: 'about', label: 'About', tooltip: 'Learn about Coach Abhiram' },
-    { id: 'transformations', label: 'Results', tooltip: 'See real transformations' },
-    // { id: 'features', label: 'Programs', tooltip: 'Discover our fitness programs' },
-    { id: 'pricing', label: 'Pricing', tooltip: 'Find your path' },
-    { id: 'contact', label: 'Contact', tooltip: 'Start your transformation' },
-    { id: 'instagram', label: 'Instagram', tooltip: 'Follow the journey' },
-    { id: 'faq', label: 'FAQ', tooltip: 'Get answers to common questions' },
+    { id: 'vsl', label: 'Video', tooltip: 'Watch transformation stories', path: '/video' },
+    { id: 'about', label: 'About', tooltip: 'Learn about Coach Abhiram', path: '/about' },
+    { id: 'transformations', label: 'Results', tooltip: 'See real transformations', path: '/results' },
+    // { id: 'features', label: 'Programs', tooltip: 'Discover our fitness programs', path: '/programs' },
+    { id: 'pricing', label: 'Pricing', tooltip: 'Find your path', path: '/pricing' },
+    { id: 'contact', label: 'Contact', tooltip: 'Start your transformation', path: '/contact' },
+    { id: 'instagram', label: 'Instagram', tooltip: 'Follow the journey', path: '/instagram' },
+    { id: 'faq', label: 'FAQ', tooltip: 'Get answers to common questions', path: '/faq' },
   ];
 
   return (
@@ -90,11 +109,15 @@ const Navbar = () => {
     >
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex items-center justify-between h-16 md:h-20">
-        {/* Logo - Updated to scroll to hero section */}
+        {/* Logo - Updated to use React Router Link */}
         <div className="flex-shrink-0">
-          <div 
-            onClick={() => scrollToSection('hero')} 
+          <Link
+            to="/"
             className="flex items-center cursor-pointer"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection('hero', '/');
+            }}
           >
             <img 
               src="/lovable-uploads/themight MAIN LOGO SVG.png" 
@@ -107,7 +130,7 @@ const Navbar = () => {
                     : 'invert brightness-200' // Light logo at top in light theme
               }`}
             />
-          </div>
+          </Link>
         </div>
         
         {/* Desktop Navigation - Centered */}
@@ -115,8 +138,8 @@ const Navbar = () => {
         <div className="flex items-center justify-center space-x-6 lg:space-x-8">
           {navigationItems.map((item) => (
           <div key={item.id} className="relative group">
-            <button 
-            onClick={() => scrollToSection(item.id)}
+            <Link 
+            to={item.path}
             className={`transition-colors font-bold text-base lg:text-lg py-2 px-2 rounded-md hover:bg-white/10 ${
               theme === 'dark' 
                 ? 'text-gray-300 hover:text-electric-blue' 
@@ -124,9 +147,13 @@ const Navbar = () => {
                   ? 'text-gray-800 hover:text-strong-green' 
                   : 'text-gray-300 hover:text-strong-green'
             }`}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection(item.id, item.path);
+            }}
             >
             {item.label}
-            </button>
+            </Link>
             {/* Stylish Tooltip */}
             <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
             <div className={`${theme === 'dark' 
@@ -191,9 +218,14 @@ const Navbar = () => {
         <div className={`md:hidden py-4 px-2 rounded-b-lg animate-fade-in bg-transparent backdrop-blur-md`}>
         <div className="flex flex-col space-y-4">
           {navigationItems.map((item) => (
-          <button 
+          <Link
             key={item.id}
-            onClick={() => scrollToSection(item.id)}
+            to={item.path}
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection(item.id, item.path);
+              setMenuOpen(false);
+            }}
             className={`transition-colors font-bold py-3 px-4 rounded-md text-left text-base ${
             theme === 'dark'
               ? 'text-gray-300 hover:text-electric-blue hover:bg-black/20' 
@@ -203,18 +235,23 @@ const Navbar = () => {
             }`}
           >
             {item.label}
-          </button>
+          </Link>
           ))}
-          <button 
-          onClick={() => scrollToSection('contact')}
-          className={`w-full text-center py-4 rounded-md text-base font-bold mt-4 ${
+          <Link
+          to="/contact"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection('contact', '/contact');
+            setMenuOpen(false);
+          }}
+          className={`w-full text-center py-4 rounded-md text-base font-bold mt-4 block ${
             theme === 'dark'
             ? 'bg-electric-blue text-zinc-900 hover:bg-electric-blue/90'
             : 'bg-strong-green text-white hover:bg-strong-green/90'
           }`}
           >
           Get Started
-          </button>
+          </Link>
         </div>
         </div>
       )}

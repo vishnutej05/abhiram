@@ -53,6 +53,27 @@ const ContactForm = () => {
       alert(`Please fill in all required fields: ${missingFields.join(', ')}`);
       return;
     }
+    
+    // Validate data types
+    // Validate age is a number
+    if (isNaN(Number(formData.age)) || Number(formData.age) <= 0) {
+      alert('Please enter a valid age (must be a positive number)');
+      return;
+    }
+    
+    // Validate phone format (basic validation for numbers with optional hyphens and plus)
+    const phoneRegex = /^[+]?[\d\s-()]{10,15}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      alert('Please enter a valid phone number');
+      return;
+    }
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert('Please enter a valid email address');
+      return;
+    }
 
     setIsSubmitting(true);
     setSubmitStatus('idle');
@@ -163,10 +184,41 @@ const ContactForm = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value, type } = e.target;
+    
+    // Validate numeric inputs during typing
+    if (name === 'age') {
+      // Allow only positive integers for age
+      if (type === 'number') {
+        // HTML number inputs handle numeric validation already
+        setFormData({
+          ...formData,
+          [name]: value
+        });
+      } else {
+        // For non-number type inputs, validate manually
+        const numValue = value.replace(/[^0-9]/g, '');
+        setFormData({
+          ...formData,
+          [name]: numValue
+        });
+      }
+    } 
+    // Validate phone during typing (allow only numbers, +, -, (, ), and spaces)
+    else if (name === 'phone') {
+      const phoneValue = value.replace(/[^\d\s+()-]/g, '');
+      setFormData({
+        ...formData,
+        [name]: phoneValue
+      });
+    }
+    // For all other fields, update normally
+    else {
+      setFormData({
+        ...formData,
+        [name]: value
+      });
+    }
   };
 
   return (
@@ -250,6 +302,7 @@ const ContactForm = () => {
                         name="email"
                         type="email"
                         required
+                        pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
                         value={formData.email}
                         onChange={handleChange}
                         className={`w-full pl-8 pr-3 py-2 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent ${
@@ -258,6 +311,7 @@ const ContactForm = () => {
                             : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
                         }`}
                         placeholder="Your email address"
+                        title="Please enter a valid email address"
                       />
                       <div className="absolute left-2 top-1/2 transform -translate-y-1/2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={theme === 'dark' ? '#aaa' : '#666'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -274,6 +328,7 @@ const ContactForm = () => {
                       name="phone"
                       type="tel"
                       required
+                      pattern="[+]?[\d\s-()]{10,15}"
                       value={formData.phone}
                       onChange={handleChange}
                       className={`w-full px-2 py-1 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent ${
@@ -282,6 +337,7 @@ const ContactForm = () => {
                           : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
                       }`}
                       placeholder="Your phone number"
+                      title="Please enter a valid phone number (10-15 digits, may include +, -, spaces)"
                     />
                   </div>
                 </div>
@@ -294,8 +350,10 @@ const ContactForm = () => {
                     name="age"
                     type="number"
                     required
-                    min="18"
-                    max="99"
+                    min="1"
+                    max="120"
+                    step="1"
+                    inputMode="numeric"
                     value={formData.age}
                     onChange={handleChange}
                     className={`w-full px-3 py-2 text-xs rounded-lg border-2 transition-all duration-200 focus:ring-2 focus:border-transparent ${
@@ -304,6 +362,7 @@ const ContactForm = () => {
                         : 'bg-white border-emerald-100 focus:ring-strong-green hover:border-strong-green/70'
                     }`}
                     placeholder="Your age"
+                    title="Please enter a valid age (1-120)"
                   />
                 </div>
 
@@ -511,6 +570,7 @@ const ContactForm = () => {
                       name="email"
                       type="email"
                       required
+                      pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
                       value={formData.email}
                       onChange={handleChange}
                       className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent border-2 transition-all duration-200 ${
@@ -519,6 +579,7 @@ const ContactForm = () => {
                           : 'border-electric-blue-100 focus:ring-electric-blue-400 hover:border-electric-blue-300'
                       }`}
                       placeholder="Your email address"
+                      title="Please enter a valid email address"
                     />
                   </div>
                   
@@ -533,6 +594,7 @@ const ContactForm = () => {
                         name="phone"
                         type="tel"
                         required
+                        pattern="[+]?[\d\s-()]{10,15}"
                         value={formData.phone}
                         onChange={handleChange}
                         className={`w-full px-4 py-3 rounded-lg focus:ring-2 focus:border-transparent border-2 transition-all duration-200 ${
@@ -541,6 +603,7 @@ const ContactForm = () => {
                             : 'border-electric-blue-100 focus:ring-electric-blue-400 hover:border-electric-blue-300'
                         }`}
                         placeholder="Your phone number"
+                        title="Please enter a valid phone number (10-15 digits, may include +, -, spaces)"
                       />
                     </div>
                     
@@ -552,8 +615,10 @@ const ContactForm = () => {
                         id="age"
                         name="age"
                         type="number"
-                        min="18"
-                        max="99"
+                        min="1"
+                        max="120"
+                        step="1"
+                        inputMode="numeric"
                         required
                         value={formData.age}
                         onChange={handleChange}
@@ -563,6 +628,7 @@ const ContactForm = () => {
                             : 'border-electric-blue-100 focus:ring-electric-blue-400 hover:border-electric-blue-300'
                         }`}
                         placeholder="Your age"
+                        title="Please enter a valid age (1-120)"
                       />
                     </div>
                   </div>

@@ -1,4 +1,5 @@
 
+import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import VSLSection from '@/components/VSLSection';
@@ -11,7 +12,34 @@ import InstagramSection from '@/components/InstagramSection';
 import FAQSection from '@/components/FAQSection';
 import Footer from '@/components/Footer';
 
-const Index = () => {
+// Define the props type
+interface IndexProps {
+  section?: string;
+}
+
+const Index = ({ section }: IndexProps) => {
+  // Scroll to the specified section when the component mounts
+  useEffect(() => {
+    if (section) {
+      // Short delay to ensure the component is fully rendered
+      const timer = setTimeout(() => {
+        const element = document.getElementById(section);
+        if (element) {
+          // Add offset for the navbar
+          const yOffset = -80;
+          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          
+          window.scrollTo({
+            top: y,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [section]);
+
   return (
     <div className="min-h-screen">
       <Navbar />
