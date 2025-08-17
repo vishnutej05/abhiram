@@ -33,7 +33,7 @@ const Footer = () => {
           {/* Social Links - Smaller and visible in both themes */}
           <div className="flex justify-center space-x-3 mt-2">
             <a 
-              href="https://instagram.com/abhiramnair" 
+              href="https://www.instagram.com/coachpotate/" 
               target="_blank" 
               rel="noopener noreferrer"
               className={`w-8 h-8 rounded-full flex items-center justify-center transition-transform hover:scale-110 ${
@@ -46,7 +46,7 @@ const Footer = () => {
               <Instagram className="w-4 h-4" />
             </a>
             <a 
-              href="mailto:coach@themight.com"
+              href="mailto:themight0084@gmail.com"
               className={`w-8 h-8 rounded-full flex items-center justify-center transition-transform hover:scale-110 ${
                 theme === 'dark'
                   ? 'bg-amber-gold text-black'
