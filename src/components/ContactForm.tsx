@@ -81,7 +81,7 @@ const ContactForm = () => {
     try {
       // New Google Sheets App Script deployment URL
       // You'll need to replace this with your new deployment URL after setting up the script
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbzo1aYOXY5coarz5tlDytrwfCtfhIE9rtjuIFtdd_eCtfK3_uS6ejD8l3DNYjbTLBLRRA/exec';
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzxoK3wELELKJW7kmVU5XsnBpYKUSO8iQUXzOu-tGVN5FjZOjXyBzoEjdGw-RQ8yM_wsw/exec';
       
       // Create a form element to submit via hidden iframe - this method avoids CORS issues
       const form = document.createElement('form');

@@ -2,10 +2,10 @@
 
 // Configuration - Update these values with your own
 const CONFIG = {
-  SHEET_ID: '1ESuC87f_J1mIICArJ2LnKxxn_gquv6eYVJcoEmq77jg', // Replace with your new Google Sheet ID
+  SHEET_ID: '1_ytrQr-ot8QXb4YnEV5oMMJT8-dWkKuwuUDW4dk7ACI', // Replace with your new Google Sheet ID from the new account
   SHEET_NAME: 'Form Submissions',
-  NOTIFICATION_EMAIL: 'themight0084@gmail.com', // Updated email address - MAKE SURE THIS IS THE EMAIL YOU WANT TO RECEIVE NOTIFICATIONS AT
-  BACKUP_SHEET_ID: '1BGOGgnN5JfhIX4oSCjLys5k8rZ8w2CK4yZPm_vWvWPg', // Create a new Google Sheet and put its ID here
+  NOTIFICATION_EMAIL: 'themight0084@gmail.com', // Update to the email address where you want to receive notifications
+  BACKUP_SHEET_ID: '1nXMCKP_JVsqP2xBfsvMj_OGXW8XbmoHr2K8-nu4xcY8', // Replace with your new backup Google Sheet ID from the new account
   BACKUP_SHEET_NAME: 'Backup Form Submissions',
   ENABLE_BACKUP: true // Set to false to disable backup functionality
 };
