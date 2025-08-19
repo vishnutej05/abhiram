@@ -25,8 +25,9 @@ const PricingSection = () => {
     {
       name: "1 Month",
       duration: "1 Month",
-      description: "Initial fitness consultation",
+      description: "",
       features: [
+        "Initial fitness consultation",
         "Personalized workout plan",
         "Tailored nutrition plan",
         "Bi-weekly progress check-ins"
@@ -128,7 +129,7 @@ const PricingSection = () => {
                       {featuresToShow.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-start gap-1.5">
                           <span className={`text-sm font-bold ${
-                            theme === 'dark' ? 'text-emerald-600' : 'text-emerald-600'
+                            theme === 'dark' ? 'text-[hsl(142,71%,50%)]' : 'text-emerald-600'
                           }`}>✓</span>
                           <span className={`text-xs sm:text-sm text-left font-helvetica leading-normal ${
                             theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
@@ -148,7 +149,7 @@ const PricingSection = () => {
                           {plan.features.slice(MAX_FEATURES).map((feature, featureIndex) => (
                             <div key={featureIndex + MAX_FEATURES} className="flex items-center gap-2">
                               <span className={`text-base font-bold ${
-                                theme === 'dark' ? 'text-emerald-600' : 'text-emerald-600'
+                                theme === 'dark' ? 'text-[hsl(142,71%,50%)]' : 'text-emerald-600'
                               }`}>✓</span>
                               <span className={`text-sm sm:text-base text-left font-helvetica ${
                                 theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
@@ -229,12 +230,12 @@ const PricingSection = () => {
                       </div>
                     </div>
                   )}
-                                      <div className="space-y-6 text-center flex-1 flex flex-col">
-                    <div className="space-y-2">
+                    <div className="space-y-6 text-center flex-1 flex flex-col">
+                    <div className="text-center">
                       <div className={`font-bold text-2xl font-helvetica ${
-                        theme === 'dark' ? 'text-white' : 'text-emerald-600'
+                        theme === 'dark' ? 'text-[hsl(142,71%,50%)]' : 'text-emerald-600'
                       }`}>{plan.duration}</div>
-                      <p className={`text-sm font-helvetica ${
+                      <p className={`mt-3 text-sm font-helvetica ${
                         theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
                       }`}>{plan.description}</p>
                     </div>
@@ -242,7 +243,7 @@ const PricingSection = () => {
                       {plan.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-start gap-2">
                           <span className={`text-lg mt-0.5 ${
-                            theme === 'dark' ? 'text-emerald-600' : 'text-emerald-600'
+                            theme === 'dark' ? 'text-[hsl(142,71%,50%)]' : 'text-emerald-600'
                           }`}>✓</span>
                           <span className={`text-sm text-left font-helvetica ${
                             theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
@@ -261,8 +262,8 @@ const PricingSection = () => {
                         <>
                           {plan.features.slice(MAX_FEATURES).map((feature, featureIndex) => (
                             <div key={featureIndex + MAX_FEATURES} className="flex items-center gap-3">
-                              <span className={`text-xl font-bold ${
-                                theme === 'dark' ? 'text-electric-blue' : 'text-mint-500'
+                              <span className={`text-xl ${
+                                theme === 'dark' ? 'text-[hsl(142,71%,50%)]' : 'text-emerald-600'
                               }`}>✓</span>
                               <span className={`font-light text-base text-left font-helvetica ${
                                 theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
