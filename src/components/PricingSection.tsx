@@ -3,16 +3,6 @@ import { Button } from "@/components/ui/button";
 import { useTheme } from '../hooks/use-theme';
 
 const PricingSection = () => {
-  // State                     className="w-full font-bold py-2 mt-auto rounded-xl transition-all duration-300 text-sm bg-[hsl(142,71%,50%)] hover:opacity-90 text-black"ack expanded cards
-  const [expanded, setExpanded] = React.useState<number | null>(null);
-
-  // Max features to show before collapsing
-  const MAX_FEATURES = 4;
-
-  // Toggle expand/collapse for a card
-  const handleExpand = (index: number) => {
-    setExpanded(expanded === index ? null : index);
-  };
   // Scroll to contact form handler
   const scrollToForm = () => {
     const form = document.getElementById('contact');
@@ -62,7 +52,6 @@ const PricingSection = () => {
       description: "Includes all 6-Month perks",
       features: [
         "Advanced behavioral-based habit coaching",
-        "In-app workout videos + custom form correction videos",
         "Sleep optimization guide",
         "Exclusive e-book with basic recipes"
       ]
@@ -87,9 +76,6 @@ const PricingSection = () => {
           {/* Mobile Plans Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6 px-4">
             {plans.map((plan, index) => {
-              const isExpanded = expanded === index;
-              const showMore = plan.features.length > MAX_FEATURES && !isExpanded;
-              const featuresToShow = showMore ? plan.features.slice(0, MAX_FEATURES) : plan.features;
               return (
                 <div
                   key={index}
@@ -125,8 +111,8 @@ const PricingSection = () => {
                         theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
                       }`}>{plan.description}</p>
                     </div>
-                    <div className={`space-y-1 mb-3 ${plan.duration === "6 Months" && isExpanded ? "max-h-[200px] overflow-y-auto pr-2 custom-scrollbar" : ""}`}>
-                      {featuresToShow.map((feature, featureIndex) => (
+                    <div className="space-y-1 mb-3">
+                      {plan.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-start gap-1.5">
                           <span className={`text-sm font-bold ${
                             theme === 'dark' ? 'text-[hsl(142,71%,50%)]' : 'text-emerald-600'
@@ -136,34 +122,6 @@ const PricingSection = () => {
                           }`}>{feature}</span>
                         </div>
                       ))}
-                      {showMore && (
-                        <button
-                          className={`text-xs underline font-semibold mt-1 ${theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}`}
-                          onClick={() => handleExpand(index)}
-                        >
-                          More Perks
-                        </button>
-                      )}
-                      {isExpanded && plan.features.length > MAX_FEATURES && (
-                        <>
-                          {plan.features.slice(MAX_FEATURES).map((feature, featureIndex) => (
-                            <div key={featureIndex + MAX_FEATURES} className="flex items-center gap-2">
-                              <span className={`text-base font-bold ${
-                                theme === 'dark' ? 'text-[hsl(142,71%,50%)]' : 'text-emerald-600'
-                              }`}>✓</span>
-                              <span className={`text-sm sm:text-base text-left font-helvetica ${
-                                theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
-                              }`}>{feature}</span>
-                            </div>
-                          ))}
-                          <button
-                            className={`mt-2 text-xs underline font-semibold ${theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}`}
-                            onClick={() => handleExpand(index)}
-                          >
-                            Show Less
-                          </button>
-                        </>
-                      )}
                     </div>
                   </div>
                   <div className="flex justify-center">
@@ -207,9 +165,6 @@ const PricingSection = () => {
           {/* Desktop Plans Grid */}
           <div className="grid lg:grid-cols-2 xl:grid-cols-4 gap-8 mb-16">
             {plans.map((plan, index) => {
-              const isExpanded = expanded === index;
-              const showMore = plan.features.length > MAX_FEATURES && !isExpanded;
-              const featuresToShow = showMore ? plan.features.slice(0, MAX_FEATURES) : plan.features;
               return (
                 <div
                   key={index}
@@ -239,7 +194,7 @@ const PricingSection = () => {
                         theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
                       }`}>{plan.description}</p>
                     </div>
-                    <div className={`space-y-4 flex-1 ${plan.duration === "6 Months" ? "max-h-[300px] overflow-y-auto pr-2 six-month-scrollbar" : ""}`}>
+                    <div className="space-y-4 flex-1">
                       {plan.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-start gap-2">
                           <span className={`text-lg mt-0.5 ${
@@ -250,34 +205,6 @@ const PricingSection = () => {
                           }`}>{feature}</span>
                         </div>
                       ))}
-                      {showMore && (
-                        <button
-                          className={`mt-2 text-xs underline font-semibold ${theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}`}
-                          onClick={() => handleExpand(index)}
-                        >
-                          More Perks
-                        </button>
-                      )}
-                      {isExpanded && plan.features.length > MAX_FEATURES && (
-                        <>
-                          {plan.features.slice(MAX_FEATURES).map((feature, featureIndex) => (
-                            <div key={featureIndex + MAX_FEATURES} className="flex items-center gap-3">
-                              <span className={`text-xl ${
-                                theme === 'dark' ? 'text-[hsl(142,71%,50%)]' : 'text-emerald-600'
-                              }`}>✓</span>
-                              <span className={`font-light text-base text-left font-helvetica ${
-                                theme === 'dark' ? 'text-gray-300' : 'text-muted-gray'
-                              }`}>{feature}</span>
-                            </div>
-                          ))}
-                          <button
-                            className={`mt-2 text-xs underline font-semibold ${theme === 'dark' ? 'text-electric-blue' : 'text-emerald-700'}`}
-                            onClick={() => handleExpand(index)}
-                          >
-                            Show Less
-                          </button>
-                        </>
-                      )}
                     </div>
                   </div>
                   <div className="flex justify-center">

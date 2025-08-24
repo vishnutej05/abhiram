@@ -125,7 +125,8 @@ const HeroSection = () => {
           backgroundPosition: 'right center',
           backgroundSize: 'cover',
           transition: 'opacity 0.5s ease-in-out',
-          opacity: 1
+          opacity: 1,
+          pointerEvents: 'none' // Prevent background from capturing clicks
         }}
       >
         <div className={`absolute inset-0 ${
@@ -173,12 +174,12 @@ const HeroSection = () => {
             </div>
             
             {/* CTA Button */}
-            <div className="mt-12 opacity-0" 
+            <div className="mt-12 opacity-0 relative z-20" 
               style={{animation: isLoaded ? "fadeIn 1.5s ease-in-out 1.8s forwards" : "none"}}>
               <button 
                 onClick={scrollToForm}
                 className="btn-primary text-xl font-bold px-10 py-5 rounded-xl shadow-xl 
-                  transition-all duration-300 hover:scale-105 active:scale-95"
+                  transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
               >
                 Start Your Fitness Journey Today
               </button>
@@ -192,7 +193,7 @@ const HeroSection = () => {
         theme === 'dark' 
           ? 'bg-gradient-to-t from-black to-transparent' 
           : 'bg-gradient-to-t from-slate-900/40 to-transparent'
-      } z-10`}></div>
+      } z-5 pointer-events-none`}></div>
     </div>
   );
 

@@ -123,7 +123,7 @@ const InstagramSection = () => {
           </div>
           
           {/* Mobile Grid - 2 columns */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8 max-w-sm mx-auto">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8 max-w-md mx-auto w-full">
             {displayPosts.slice(0, 4).map((post, index) => (
               <div 
                 key={post.id}
@@ -136,11 +136,10 @@ const InstagramSection = () => {
               >
                 {posts.length > 0 && post.imageUrl && post.imageUrl !== '/placeholder.svg' ? (
                   <div className="relative w-full h-full">
-                    <img 
-                      src={post.imageUrl} 
-                      alt={post.altText || post.caption || 'Instagram post'} 
-                      className="w-full h-full object-cover"
-                    />
+                    <div 
+                      className="w-full h-full bg-center bg-no-repeat bg-cover" 
+                      style={{ backgroundImage: `url(${post.imageUrl})` }}
+                    ></div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-2 left-2 right-2 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="flex items-center gap-2 mb-1">
@@ -158,9 +157,20 @@ const InstagramSection = () => {
                     theme === 'dark'
                       ? 'text-gray-300 group-hover:text-electric-blue'
                       : 'text-gray-700 group-hover:text-strong-green'
-                  } transition-colors relative`}>
-                    <Instagram size={32} className="mb-2" />
-                    <span className="text-xs sm:text-sm font-semibold text-center leading-tight">
+                  } transition-colors relative`}
+                  style={{ 
+                    backgroundImage: `url(${post.imageUrl})`, 
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                  }}>
+                    <div className={`absolute inset-0 ${
+                      theme === 'dark'
+                        ? 'bg-zinc-800/80'
+                        : 'bg-white/80'
+                    }`}></div>
+                    <Instagram size={32} className="mb-2 relative z-10" />
+                    <span className="text-xs sm:text-sm font-semibold text-center leading-tight relative z-10">
                       {post.label || 'Instagram Post'}
                     </span>
                     <div className={`absolute inset-0 ${
@@ -224,7 +234,7 @@ const InstagramSection = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12 max-w-6xl mx-auto">
             {displayPosts.slice(0, 4).map((post, index) => (
               <div 
                 key={post.id}
@@ -237,11 +247,10 @@ const InstagramSection = () => {
               >
                 {posts.length > 0 && post.imageUrl && post.imageUrl !== '/placeholder.svg' ? (
                   <div className="relative w-full h-full">
-                    <img 
-                      src={post.imageUrl} 
-                      alt={post.altText || post.caption || 'Instagram post'} 
-                      className="w-full h-full object-cover"
-                    />
+                    <div 
+                      className="absolute inset-0 bg-center bg-no-repeat bg-cover" 
+                      style={{ backgroundImage: `url(${post.imageUrl})` }}
+                    ></div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       <div className="flex items-center gap-3 mb-2">
@@ -259,9 +268,20 @@ const InstagramSection = () => {
                     theme === 'dark'
                       ? 'text-gray-300 group-hover:text-electric-blue'
                       : 'text-gray-700 group-hover:text-strong-green'
-                  } transition-colors relative`}>
-                    <Instagram size={48} className="mb-3" />
-                    <span className="text-base font-semibold text-center px-4">
+                  } transition-colors relative`}
+                  style={{ 
+                    backgroundImage: `url(${post.imageUrl})`, 
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                  }}>
+                    <div className={`absolute inset-0 ${
+                      theme === 'dark'
+                        ? 'bg-zinc-800/80'
+                        : 'bg-white/80'
+                    }`}></div>
+                    <Instagram size={48} className="mb-3 relative z-10" />
+                    <span className="text-base font-semibold text-center px-4 relative z-10">
                       {post.label || 'Instagram Post'}
                     </span>
                     <div className={`absolute inset-0 ${

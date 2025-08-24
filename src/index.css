@@ -456,11 +456,13 @@ All colors MUST be HSL.
     color: white;
     @apply font-bold px-8 py-3 rounded-lg transition-all duration-300 border-none;
     box-shadow: 0 4px 20px rgba(28, 28, 28, 0.3);
+    position: relative;
+    z-index: 10;
   }
   
   .btn-primary:hover {
-    background: hsl(120, 8%, 97%); /* Direct strong-green value */
-    color: black;
+    background: hsl(142, 71%, 25%); /* Slightly darker green on hover for better visibility */
+    color: white;
     @apply -translate-y-1;
     box-shadow: 0 8px 25px rgba(17, 134, 75, 0.4);
   }
@@ -472,8 +474,9 @@ All colors MUST be HSL.
   }
   
   :root.dark .btn-primary:hover {
-    background: hsl(0, 0%, 100%); /* Direct amber-gold value */
-    box-shadow: 0 3px 5px rgba(209, 225, 208, 0.4);
+    background: hsl(142, 71%, 45%); /* Slightly darker green on hover */
+    color: hsl(0, 0%, 5%);
+    box-shadow: 0 8px 25px rgba(17, 134, 75, 0.5);
   }
   
   .btn-secondary {
